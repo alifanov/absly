@@ -125,7 +125,9 @@ ROOT_URLCONF = 'absly.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'absly.wsgi.application'
 
-TEMPLATE_DIRS = ('/home/vampire/PycharmProjects/absly/templates',)
+TEMPLATE_DIRS = (
+    BASE_DIR + '/templates/',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
