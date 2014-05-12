@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', TemplateView.as_view(
-        template_name='index.html'
+        template_name='communicate_list.html'
     ), name='home'),
     # url(r'^absly/', include('absly.foo.urls')),
 
