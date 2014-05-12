@@ -4,3 +4,7 @@
 .top-menu-dropdown-link {
     line-height: 50px;
 }
+
+.dropdown-menu li {
+    text-align: right;
+}
