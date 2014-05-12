@@ -27,3 +27,7 @@
 .events-item-info p {
     min-height: 50px;
 }
+
+.events-item .glyphicon-remove {
+    color: #333;
+}
