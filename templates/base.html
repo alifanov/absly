@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Absly</title>
 
     <!-- Bootstrap -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,20 @@
     <![endif]-->
 </head>
 <body>
-<h1>Hello, world!</h1>
+<div class="top-menu pull-right">
+    <div class="dropdown">
+        <a data-toggle="dropdown" href="#">Username</a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">Profile</a>
+            </li>
+            <li>
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="navbar-brand">Absly</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
