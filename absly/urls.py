@@ -6,7 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', TemplateView.as_view(), name='home'),
+    url(r'^$', TemplateView.as_view(
+        template_name='index.html'
+    ), name='home'),
     # url(r'^absly/', include('absly.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
