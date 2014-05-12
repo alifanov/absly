@@ -23,3 +23,7 @@
 .events {
     margin-top: 20px;
 }
+
+.events-item-info p {
+    min-height: 50px;
+}
