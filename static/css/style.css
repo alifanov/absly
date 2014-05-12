@@ -12,3 +12,10 @@
 .dropdown-menu li {
     text-align: right;
 }
+
+.sort span {
+    display: inline-block;
+    float: left;
+    padding-top: 10px;
+    margin-right: 20px;
+}
