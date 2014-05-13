@@ -29,9 +29,10 @@ class News(models.Model):
             soup = BeautifulSoup(r.text)
             self.title = soup.title
             self.description = soup.get_text()[:200]
-            if soup.find('img'):
-                raise ValueError(soup.find('img')['src'])
-                self.photo = self.save_image_from_url(soup.find('img')['src'])
+            img = soup.find('img')
+            if img:
+                if not u'mc.yandex' in img['src']:
+                    self.photo = self.save_image_from_url(soup.find('img')['src'])
         super(News, self).save(*args, **kwargs)
 
     def save_image_from_url(self, url):
