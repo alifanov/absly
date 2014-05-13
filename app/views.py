@@ -8,6 +8,15 @@ class EventsListView(ListView):
     context_object_name = 'news'
     template_name = 'communicate_list.html'
 
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('new-news'):
+            nn = request.POST.get('new-news')
+            if u'http://' in nn:
+                News.objects.create(
+                    link=nn
+                )
+        return self.get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         ctx = super(EventsListView, self).get_context_data(**kwargs)
         ctx['groups'] = NewsGroup.objects.all()
