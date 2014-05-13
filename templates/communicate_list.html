@@ -5,6 +5,7 @@
         <div class="add-news">
             <div class="form-group">
                 <form method="POST">
+                    {% csrf_token %}
                     <input name="new-news" class="form-control" placeholder="Insert your news and press Enter..." />
                 </form>
             </div>
