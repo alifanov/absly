@@ -30,16 +30,16 @@ class News(models.Model):
             if r.status_code == 200 and r.text:
                 soup = BeautifulSoup(r.text)
                 self.title = soup.title.string
-                self.description = soup.get_text()[:200].decode('utf-8')
-                img = soup.find('img')
-                if img:
-                    nn = img['src']
-                    if not u'mc.yandex' in nn:
-                        img_url = nn
-                        if nn[0] == u'/':
-                            u = urlparse(self.link)
-                            img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
-                        self.save_image_from_url(img_url)
+#                self.description = soup.get_text()[:200]
+#                img = soup.find('img')
+#                if img:
+#                    nn = img['src']
+#                    if not u'mc.yandex' in nn:
+#                        img_url = nn
+#                        if nn[0] == u'/':
+#                            u = urlparse(self.link)
+#                            img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
+#                        self.save_image_from_url(img_url)
 
         super(News, self).save(*args, **kwargs)
 
