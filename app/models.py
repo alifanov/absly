@@ -30,7 +30,7 @@ class News(models.Model):
             if r.status_code == 200 and r.text:
                 soup = BeautifulSoup(r.text)
                 self.title = soup.title.string
-                self.description = soup.get_text()[:200]
+                self.description = soup.get_text()[:200].decode('utf-8')
                 img = soup.find('img')
                 if img:
                     nn = img['src']
