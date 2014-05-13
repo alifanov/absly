@@ -53,9 +53,8 @@ class News(models.Model):
         for block in r.iter_content():
             if not block: break
             lf.write(block)
-        raise ValueError(u'Тупим')
-
-        self.photo.save(fname, files.File(lf))
+        lf.flush()
+        self.photo.save(fname, files.File(lf), save=True)
 
     def __unicode__(self):
         return self.title
