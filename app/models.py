@@ -49,7 +49,7 @@ class News(models.Model):
         fname = url.split('/')[-1]
         lf = tempfile.NamedTemporaryFile()
 
-        for block in r.iter_content(1024*8):
+        for block in r.iter_content():
             if not block: break
             lf.write(block)
 
