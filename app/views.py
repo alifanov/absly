@@ -12,9 +12,10 @@ class EventsListView(ListView):
         if request.POST.get('new-news'):
             nn = request.POST.get('new-news')
             if u'http://' in nn:
-                News.objects.get_or_create(
+                n,cr = News.objects.get_or_create(
                     link=nn
                 )
+                n.
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
