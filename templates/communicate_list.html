@@ -19,6 +19,7 @@
                         <label>
                             <input type="checkbox" name="cb_events" value="1" /> {{ group.name }}
                         </label>
+                        <span class="badge">{{ group.news.count }}</span>
                     </li>
                     {% endfor %}
                 </ul>
