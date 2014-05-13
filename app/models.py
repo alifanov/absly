@@ -2,6 +2,7 @@
 from django.db import models
 from bs4 import BeautifulSoup
 from django.core import files
+from urlparse import urlparse
 import requests
 import tempfile
 # Create your models here.
@@ -31,8 +32,14 @@ class News(models.Model):
             self.description = soup.get_text()[:200]
             img = soup.find('img')
             if img:
-                if not u'mc.yandex' in img['src']:
-                    self.photo = self.save_image_from_url(soup.find('img')['src'])
+                nn = img['src']
+                if not u'mc.yandex' in nn:
+                    img_url = nn
+                    if nn[0] == u'/':
+                        u = urlparse(self.link)
+                        img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
+                    self.photo = self.save_image_from_url(img_url)
+
         super(News, self).save(*args, **kwargs)
 
     def save_image_from_url(self, url):
