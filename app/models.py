@@ -29,7 +29,7 @@ class News(models.Model):
             r = requests.get(self.link)
             if r.status_code == 200 and r.text:
                 soup = BeautifulSoup(r.text)
-                self.title = soup.title.string.decode('utf-8')
+                self.title = soup.title.string.encode('utf-8')
 #                self.description = soup.get_text()[:200]
 #                img = soup.find('img')
 #                if img:
