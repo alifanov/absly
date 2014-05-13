@@ -12,7 +12,7 @@ class EventsListView(ListView):
         if request.POST.get('new-news'):
             nn = request.POST.get('new-news')
             if u'http://' in nn:
-                News.objects.create(
+                News.objects.get_or_create(
                     link=nn
                 )
         return self.get(request, *args, **kwargs)
