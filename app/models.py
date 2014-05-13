@@ -44,7 +44,7 @@ class News(models.Model):
 
     def save_image_from_url(self, url):
         r = requests.get(url)
-        if r.status_code != r.codes.ok:
+        if r.status_code != requests.codes.ok:
             return
         fname = url.split('/')[-1]
         lf = tempfile.NamedTemporaryFile()
