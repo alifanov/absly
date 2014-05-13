@@ -18,7 +18,7 @@ class NewsGroup(models.Model):
 
 class News(models.Model):
     link = models.TextField(verbose_name=u'Ссылка на новость')
-    title = models.CharField(max_length=100, verbose_name=u'Заголовок', blank=True)
+    title = models.CharField(max_length=512, verbose_name=u'Заголовок', blank=True)
     description = models.TextField(verbose_name=u'Описание', blank=True)
     created = models.DateTimeField(verbose_name=u'Дата создания', auto_now=True)
     photo = models.ImageField(upload_to='uploads/', verbose_name=u'Фотография статьи', blank=True)
