@@ -43,6 +43,7 @@ class News(models.Model):
         super(News, self).save(*args, **kwargs)
 
     def save_image_from_url(self, url):
+        raise ValueError(url)
         r = requests.get(url)
         if r.status_code != requests.codes.ok:
             return
