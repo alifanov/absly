@@ -43,12 +43,13 @@ class News(models.Model):
         super(News, self).save(*args, **kwargs)
 
     def save_image_from_url(self, url):
-        raise ValueError(url)
         r = requests.get(url)
         if r.status_code != requests.codes.ok:
             return
         fname = url.split('/')[-1]
         lf = tempfile.NamedTemporaryFile()
+
+        raise ValueError(u'Тупим')
 
         for block in r.iter_content():
             if not block: break
