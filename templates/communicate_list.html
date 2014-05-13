@@ -11,41 +11,13 @@
         <div class="row">
             <div class="col-sm-2">
                 <ul class="list-group">
+                    {% for group in groups %}
                     <li class="list-group-item">
                         <label>
-                            <input type="checkbox" name="cb_events" value="1" /> Events
+                            <input type="checkbox" name="cb_events" value="1" /> {{ group.name }}
                         </label>
                     </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> Steps
-                        </label>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> Conference
-                        </label>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> Mentors
-                        </label>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> System
-                        </label>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> Webinars
-                        </label>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                        <input type="checkbox" name="cb_events" value="1" /> News
-                        </label>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-sm-10">
