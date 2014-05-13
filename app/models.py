@@ -23,7 +23,7 @@ class News(models.Model):
     description = models.TextField(verbose_name=u'Описание', blank=True)
     created = models.DateTimeField(verbose_name=u'Дата создания', auto_now=True)
     photo = models.ImageField(upload_to='uploads/', verbose_name=u'Фотография статьи', blank=True)
-    group = models.ForeignKey(NewsGroup, verbose_name=u'Группа новостей', null=True)
+    group = models.ForeignKey(NewsGroup, verbose_name=u'Группа новостей', null=True, related_name='news')
 
     def save(self, *args, **kwargs):
         if not self.title:
