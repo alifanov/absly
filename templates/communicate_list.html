@@ -40,27 +40,29 @@
                     </ul>
                 </div>
                 <div class="events">
+                    {% for n in news %}
                     <div class="panel panel-default events-item">
                         <div class="panel-body">
                             <div class="media">
                                 <a href="#" class="pull-left">
-                                    <img src="" width="100" height="100" class="media-object" />
+                                    <img src="{{ MEDIA_URL }}{{ n.photo }}" width="100" height="100" class="media-object" />
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Heading
+                                    <h4 class="media-heading">{{ n.title }}
                                         <a href="#"><span class="pull-right glyphicon glyphicon-remove"></span></a>
                                     </h4>
                                     <div class="events-item-info">
                                         <p>
-                                            aslkdlaskd;alskd;alskd;lsakd;lkas;ldk
+                                            {{ n.description }}
                                         </p>
-                                        <span class="events-item-date pull-right">04.05.03</span>
-                                        <a href="#">Link</a>
+                                        <span class="events-item-date pull-right">{{ n.created|time:"H:i" }}{{ n.created|date:"d.m.Y" }}</span>
+                                        <a href="{{ n.link }}" target="_blank">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
