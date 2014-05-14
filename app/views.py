@@ -15,22 +15,22 @@ class EventsListView(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'communicate_list.html'
+    sort_val = ''
 
     def get_queryset(self):
         qs = News.objects.order_by('-created')
-        sort_val = ''
         if self.request.GET.get('sort'):
-            sort_val = self.request.GET.get('sort')
-            self.request.session['sort'] = sort_val
+            self.sort_val = self.request.GET.get('sort')
+            self.request.session['sort'] = self.sort_val
         else:
-            sort_val = self.request.session.get('sort', '')
-        if sort_val == 'day':
+            self.sort_val = self.request.session.get('sort', '')
+        if self.sort_val == 'day':
             day_ago = arrow.utcnow().replace(hours=-24).datetime
             return qs.filter(created__gte=day_ago)
-        if sort_val == 'week':
+        if self.sort_val == 'week':
             day_ago = arrow.utcnow().replace(days=-7).datetime
             return qs.filter(created__gte=day_ago)
-        if sort_val == 'month':
+        if self.sort_val == 'month':
             day_ago = arrow.utcnow().replace(days=-30).datetime
             return qs.filter(created__gte=day_ago)
         return qs
