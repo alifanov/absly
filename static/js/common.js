@@ -12,5 +12,5 @@ $(function(){
     });
 
     var r = Raphael('graphics', 300, 300);
-    r.piechart(0, 0, 100, [76, 70, 67, 71, 69]);
+    r.piechart(50, 50, 100, [76, 70, 67, 71, 69]);
 });
