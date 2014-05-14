@@ -52,3 +52,7 @@
 .strategy-steps-done ul li {
     opacity: 0.4;
 }
+
+.strategy-recomendation {
+    padding-right: 30px;
+}
