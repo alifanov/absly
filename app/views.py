@@ -3,6 +3,7 @@
 from app.models import News, NewsGroup
 from django.views.generic import ListView, View
 from django.http import HttpResponse
+import arrow
 
 class EventDeleteView(View):
     def get(self, request, *args, **kwargs):
@@ -14,6 +15,25 @@ class EventsListView(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'communicate_list.html'
+
+    def get_queryset(self):
+        qs = News.objects.order_by('-created')
+        sort_val = ''
+        if self.request.GET.get('sort'):
+            sort_val = self.request.GET.get('sort')
+            self.request.session['sort'] = sort_val
+        else:
+            sort_val = self.request.session.get('sort', '')
+        if sort_val == 'day':
+            day_ago = arrow.utcnow().replace(hours=-24).datetime
+            return qs.filter(created__lte=day_ago)
+        if sort_val == 'week':
+            day_ago = arrow.utcnow().replace(days=-7).datetime
+            return qs.filter(created__lte=day_ago)
+        if sort_val == 'month':
+            day_ago = arrow.utcnow().replace(days=-30).datetime
+            return qs.filter(created__lte=day_ago)
+        return qs
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('new-news'):
