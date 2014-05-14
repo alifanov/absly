@@ -32,7 +32,7 @@ class News(models.Model):
                 soup = BeautifulSoup(r.text)
                 self.title = soup.title.string.encode('utf-8')
                 self.description = soup.find('meta', {'name': 'description'})['content']
-                img = soup.find('img')
+                img = soup.findAll(itemprop="image")[0]
                 if img:
                     nn = img['src']
                     raise ValueError(nn)
