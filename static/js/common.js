@@ -8,5 +8,6 @@ $(function(){
                 _this.parents('.events-item').slideUp();
             }
         })
+        return false;
     })
 });
