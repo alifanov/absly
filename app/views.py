@@ -26,13 +26,13 @@ class EventsListView(ListView):
             sort_val = self.request.session.get('sort', '')
         if sort_val == 'day':
             day_ago = arrow.utcnow().replace(hours=-24).datetime
-            return qs.filter(created__lte=day_ago)
+            return qs.filter(created__gte=day_ago)
         if sort_val == 'week':
             day_ago = arrow.utcnow().replace(days=-7).datetime
-            return qs.filter(created__lte=day_ago)
+            return qs.filter(created__gte=day_ago)
         if sort_val == 'month':
             day_ago = arrow.utcnow().replace(days=-30).datetime
-            return qs.filter(created__lte=day_ago)
+            return qs.filter(created__gte=day_ago)
         return qs
 
     def post(self, request, *args, **kwargs):
