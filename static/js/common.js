@@ -11,7 +11,7 @@ $(function(){
         return false;
     });
 
-    var r = Raphael('graphics', 600, 250);
+    var r = Raphael('graphics', 600, 200);
     r.piechart(70, 50, 50, [76, 70, 67, 71, 69]);
     r.piechart(70, 170, 50, [70, 67, 71, 69, 76, 76, 76]);
 
