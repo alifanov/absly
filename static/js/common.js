@@ -13,7 +13,7 @@ $(function(){
 
     var r = Raphael('graphics', 600, 300);
     r.piechart(70, 50, 50, [76, 70, 67, 71, 69]);
-    r.piechart(70, 150, 50, [76, 70, 67, 71, 69]);
+    r.piechart(70, 170, 50, [70, 67, 71, 69, 76, 76, 76]);
 
     var fin = function () {
             this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
