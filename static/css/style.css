@@ -35,3 +35,7 @@
 .startup-menu {
     margin-bottom: 20px;
 }
+
+.border-strategy {
+    border-left: 3px solid #999;
+}
