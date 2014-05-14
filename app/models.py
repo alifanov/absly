@@ -32,16 +32,16 @@ class News(models.Model):
                 soup = BeautifulSoup(r.text)
                 self.title = soup.title.string.encode('utf-8')
                 self.description = soup.find('meta', {'name': 'description'})['content']
-                img = soup.findAll(itemprop="image")[0]
-                if img:
-                    nn = img['src']
-                    raise ValueError(nn)
-                    if not u'mc.yandex' in nn:
-                        img_url = nn
-                        if nn[0] == u'/':
-                            u = urlparse(self.link)
-                            img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
-                        self.save_image_from_url(img_url)
+                for img in soup.findAll('img'):
+                    if img:
+                        nn = img['src']
+                        if not u'mc.yandex' in nn:
+                            img_url = nn
+                            if nn[0] == u'/':
+                                u = urlparse(self.link)
+                                img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
+                            self.save_image_from_url(img_url)
+                            break
 
         super(News, self).save(*args, **kwargs)
 
