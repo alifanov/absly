@@ -11,6 +11,6 @@ $(function(){
         return false;
     });
 
-    var r = Raphael('graphics');
+    var r = Raphael('graphics', 300, 300);
     r.piechart(0, 0, 100, [76, 70, 67, 71, 69]);
 });
