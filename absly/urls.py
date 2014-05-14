@@ -11,6 +11,7 @@ urlpatterns = patterns('',
         template_name='index.html'
     ), name='home'),
 
+    url(r'^strategy/$', TemplateView.as_view(template_name='strategy.html'), name='strategy'),
     url(r'^communicate/$', EventsListView.as_view(), name='events'),
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
     # url(r'^absly/', include('absly.foo.urls')),
