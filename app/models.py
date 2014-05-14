@@ -58,7 +58,6 @@ class News(models.Model):
             lf.write(block)
         lf.flush()
         self.photo.save(fname, files.File(lf))
-        self.photo = get_thumbnail(self.photo, '100x100', crop='center', quality=99)
 
     def __unicode__(self):
         return self.title
