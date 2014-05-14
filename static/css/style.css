@@ -56,3 +56,7 @@
 .strategy-recomendation {
     padding-right: 30px;
 }
+
+.strategy-recomendation a span {
+    padding-right: 30px;
+}
