@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', TemplateView.as_view(
-        template_name='communicate_list.html'
+        template_name='index.html'
     ), name='home'),
 
     url(r'^communicate/$', EventsListView.as_view(), name='events'),

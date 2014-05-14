@@ -41,7 +41,7 @@
         <li>
             <a href="#">Dashboard</a>
         </li>
-        <li>
+        <li {% if active == 'communicate' %}class="active"{% endif %}>
             <a href="{% url 'events' %}">Communicate</a>
         </li>
         <li>

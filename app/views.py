@@ -50,4 +50,5 @@ class EventsListView(ListView):
         ctx = super(EventsListView, self).get_context_data(**kwargs)
         ctx['groups'] = NewsGroup.objects.all()
         ctx['sort_val'] = self.sort_val
+        ctx['active'] = 'communicate'
         return ctx
