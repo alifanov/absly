@@ -35,9 +35,9 @@ class News(models.Model):
                 img = soup.find('img')
                 if img:
                     nn = img['src']
+                    raise ValueError(nn)
                     if not u'mc.yandex' in nn:
                         img_url = nn
-                        raise ValueError(img_url)
                         if nn[0] == u'/':
                             u = urlparse(self.link)
                             img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
