@@ -47,7 +47,6 @@
 
 .strategy-steps ul li {
     list-style: none;
-    font-size: 40px;
 }
 
 .strategy-steps-done ul li {
@@ -60,4 +59,5 @@
 
 .strategy-recomendation a span {
     padding-right: 10px;
+    font-size: 18px;
 }
