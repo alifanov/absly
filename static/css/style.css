@@ -49,6 +49,6 @@
     list-style: none;
 }
 
-.strategy-steps-done {
+.strategy-steps-done ul li {
     opacity: 0.4;
 }
