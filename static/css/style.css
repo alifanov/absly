@@ -44,3 +44,7 @@
 .strategy-log {
     padding: 10px;
 }
+
+.strategy-steps ul li {
+    list-style: none;
+}
