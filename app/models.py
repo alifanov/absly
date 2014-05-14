@@ -57,8 +57,8 @@ class News(models.Model):
             if not block: break
             lf.write(block)
         lf.flush()
-        thumbnail = get_thumbnail(files.File(lf), '100x100', crop='center', quality=99)
-        self.photo.save(fname, thumbnail, save=True)
+        self.photo.save(fname, files.File(lf))
+        self.photo = get_thumbnail(self.photo, '100x100', crop='center', quality=99)
 
     def __unicode__(self):
         return self.title
