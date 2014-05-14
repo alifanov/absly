@@ -40,3 +40,7 @@
     min-height: 500px;
     border-left: 3px solid #999;
 }
+
+.strategy-log {
+    padding: 10px;
+}
