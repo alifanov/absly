@@ -11,9 +11,6 @@ $(function(){
         return false;
     });
 
-//    var r = Raphael();
     var r = Raphael('graphics', 640, 480);
-// Creates pie chart at with center at 320, 200,
-// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-    r.barchart(320, 240, 100, [55, 20, 13, 32, 5, 1, 2], {});
+    к.barchart(0, 0, 620, 260, [76, 70, 67, 71, 69], {})ж
 });
