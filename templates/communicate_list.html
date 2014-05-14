@@ -28,13 +28,13 @@
                 <div class="sort">
                     <span>New events by </span>
                     <ul class="nav nav-pills">
-                        <li class="active">
+                        <li {% if sort_val == "day" %}class="active"{% endif %}>
                             <a href="?sort=day">day</a>
                         </li>
-                        <li>
+                        <li {% if sort_val == "week" %}class="active"{% endif %}>
                             <a href="?sort=week">week</a>
                         </li>
-                        <li>
+                        <li {% if sort_val == "month" %}class="active"{% endif %}>
                             <a href="?sort=month">month</a>
                         </li>
                     </ul>
