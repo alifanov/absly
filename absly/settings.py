@@ -141,7 +141,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'app',
-    'south'
+    'south',
+    'sorl.thumbnail'
 )
 
 # A sample logging configuration. The only tangible logging
