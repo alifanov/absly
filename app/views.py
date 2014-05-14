@@ -1,7 +1,14 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView
+from django.views.generic import ListView, View
+from django.http import HttpResponse
+
+class EventDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('pk') and News.objects.filter(pk=kwargs.get('pk')).exists():
+            News.objects.filter(pk=kwargs.get('pk')).delete()
+        return HttpResponse('OK')
 
 class EventsListView(ListView):
     model = News
