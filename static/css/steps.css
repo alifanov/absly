@@ -1,6 +1,11 @@
-.steps {
+.stepwizard-step p {
+    margin-top: 10px;
+}
+
+.stepwizard-row {
     display: table-row;
 }
+
 .stepwizard {
     display: table;
     width: 100%;
