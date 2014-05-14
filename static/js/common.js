@@ -7,7 +7,7 @@ $(function(){
             success: function(){
                 _this.parents('.events-item').slideUp();
             }
-        })
+        });
         return false;
     })
 });
