@@ -12,5 +12,7 @@ $(function(){
     });
 
     var r = Raphael('graphics');
-    r.piechart(0, 0, 100, [76, 70, 67, 71, 69]);
+    r.piechart(0, 0, 100, [76, 70, 67, 71, 69], {
+        colors: ['#000', '#fff']
+    });
 });
