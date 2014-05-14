@@ -48,3 +48,7 @@
 .strategy-steps ul li {
     list-style: none;
 }
+
+.strategy-steps-done {
+    opacity: 0.4;
+}
