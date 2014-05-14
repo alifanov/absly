@@ -9,7 +9,8 @@ $(function(){
             }
         });
         return false;
-    })
+    });
 
     var r = Raphael('graphics');
+    r.piechart(0, 0, 100, [10, 20, 50, 20, 30]);
 });
