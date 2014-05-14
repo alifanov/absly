@@ -5,6 +5,7 @@ from django.core import files
 from urlparse import urlparse
 import requests
 import tempfile
+from sorl.thumbnail import get_thumbnail
 # Create your models here.
 
 class NewsGroup(models.Model):
@@ -41,6 +42,7 @@ class News(models.Model):
                                 u = urlparse(self.link)
                                 img_url = u'{}://{}{}'.format(u.scheme, u.netloc, nn)
                             self.save_image_from_url(img_url)
+                            self.photo = get_thumbnail(self.photo, '100x100', crop='center', quality=99)
                             break
 
         super(News, self).save(*args, **kwargs)
