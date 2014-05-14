@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
 {% block content %}
     <div class="container">
         <div class="add-news">
@@ -45,7 +47,9 @@
                         <div class="panel-body">
                             <div class="media">
                                 <a href="#" class="pull-left">
-                                    <img src="{{ MEDIA_URL }}{{ n.photo }}" width="100" height="100" class="media-object" />
+                                    {% thumbnail n.photo "100x100" crop="center" as im %}
+                                    <img src="{{ img.url }}" width="{{ im.width }}" height="{{ im.height }}" class="media-object" />
+                                    {% endthumbnail %}
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{ n.title }}
