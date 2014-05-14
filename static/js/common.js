@@ -10,4 +10,6 @@ $(function(){
         });
         return false;
     })
+
+    var r = Raphael('graphics');
 });
