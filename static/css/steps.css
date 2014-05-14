@@ -1,3 +1,6 @@
+.steps {
+    display: table-row;
+}
 .stepwizard {
     display: table;
     width: 100%;
