@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
-from app.views import EventsListView, EventDeleteView
+from app.views import EventsListView, EventDeleteView, StrategyView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -11,7 +11,7 @@ urlpatterns = patterns('',
         template_name='index.html'
     ), name='home'),
 
-    url(r'^strategy/$', TemplateView.as_view(template_name='strategy.html'), name='strategy'),
+    url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
     url(r'^communicate/$', EventsListView.as_view(), name='events'),
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
     # url(r'^absly/', include('absly.foo.urls')),

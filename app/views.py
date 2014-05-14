@@ -1,9 +1,17 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, TemplateView
 from django.http import HttpResponse
 import arrow
+
+class StrategyView(TemplateView):
+    template_name = 'strategy.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(StrategyView, self).get_context_data(**kwargs)
+        ctx['active'] = 'strategy'
+        return ctx
 
 class EventDeleteView(View):
     def get(self, request, *args, **kwargs):
