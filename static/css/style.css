@@ -47,6 +47,7 @@
 
 .strategy-steps ul li {
     list-style: none;
+    line-height: 40px;
 }
 
 .strategy-steps-done ul li {
