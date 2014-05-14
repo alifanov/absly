@@ -20,5 +20,5 @@ $(function(){
         fout = function () {
             this.flag.animate({opacity: 0}, 300, function () {this.remove();});
         };
-    r.barchart(100, 0, 300, 100, [[55, 20, 13, 32, 5, 1, 2, 10]]).hover(fin, fout);
+    r.barchart(100, 20, 300, 100, [[55, 20, 13, 32, 5, 1, 2, 10]]).hover(fin, fout);
 });
