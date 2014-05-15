@@ -62,3 +62,8 @@
     font-size: 18px;
     color: #777;
 }
+
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+}
