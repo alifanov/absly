@@ -68,7 +68,9 @@
     margin: 0 auto;
 }
 
-ul.main-objects li {
+ul.main-objects {
     padding-left: 0px;
+}
+ul.main-objects li {
     list-style: none;
 }
