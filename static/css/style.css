@@ -87,3 +87,11 @@ ul.main-objects > li > ul > li {
 ul.main-objects li {
     list-style: none;
 }
+
+.strategy-recomendation a {
+    color: #777;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border-radius: 1px solid #333;
+}
