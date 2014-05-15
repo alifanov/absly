@@ -67,3 +67,7 @@
     width: 300px;
     margin: 0 auto;
 }
+
+ul.main-objects li {
+    list-style: none;
+}
