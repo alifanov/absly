@@ -111,3 +111,9 @@ ul.main-objects li {
 .steps-done-item a span {
     margin-top: 2px;
 }
+
+.steps-in-progress-item {
+    padding: 15px;
+    color: white;
+    background: #00a4d3;
+}
