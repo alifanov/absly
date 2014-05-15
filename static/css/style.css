@@ -107,3 +107,7 @@ ul.main-objects li {
     border-radius: 3px;
     border: 1px solid #ccc;
 }
+
+.steps-done-item a span {
+    margin-top: 2px;
+}
