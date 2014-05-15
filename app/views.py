@@ -4,9 +4,15 @@ from app.models import News, NewsGroup
 from django.views.generic import ListView, View, TemplateView
 from django.http import HttpResponse
 import arrow
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required, permission_required
 
 class StrategyView(TemplateView):
     template_name = 'strategy.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(StrategyView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         ctx = super(StrategyView, self).get_context_data(**kwargs)
@@ -19,11 +25,21 @@ class EventDeleteView(View):
             News.objects.filter(pk=kwargs.get('pk')).delete()
         return HttpResponse('OK')
 
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(EventDeleteView, self).dispatch(request, *args, **kwargs)
+
+
 class EventsListView(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'communicate_list.html'
     sort_val = ''
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(EventsListView, self).dispatch(request, *args, **kwargs)
+
 
     def get_queryset(self):
         qs = News.objects.order_by('-created')
