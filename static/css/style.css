@@ -116,6 +116,7 @@ ul.main-objects li {
     padding: 15px;
     color: white;
     background: #428bca;
+    margin-bottom: 20px;
 }
 
 .steps-in-progress-item.width-100 {
