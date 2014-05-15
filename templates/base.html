@@ -49,8 +49,8 @@
         <li {% if active == 'strategy' %}class="active"{% endif %}>
             <a href="{% url 'strategy' %}">Strategy</a>
         </li>
-        <li>
-            <a href="#">Steps</a>
+        <li {% if active == 'steps' %}class="active"{% endif %}>
+            <a href="{% url 'steps' %}">Steps</a>
         </li>
         <li>
             <a href="#">Metrics</a>
