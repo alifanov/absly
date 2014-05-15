@@ -69,5 +69,6 @@
 }
 
 ul.main-objects li {
+    padding-left: 0px;
     list-style: none;
 }
