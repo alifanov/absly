@@ -117,3 +117,16 @@ ul.main-objects li {
     color: white;
     background: #428bca;
 }
+
+.steps-in-progress-item.width-100 {
+    width: 100%;
+}
+
+.steps-in-progress-item.width-50 {
+    width: 50%;
+}
+
+.steps-in-progress-item.width-70 {
+    width: 70%;
+}
+
