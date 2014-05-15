@@ -34,7 +34,7 @@ class EventsListView(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'communicate_list.html'
-    sort_val = ''
+    sort_val = 'day'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
