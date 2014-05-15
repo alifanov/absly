@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container">
+        <div class="white-block">
+
+        <form method="post" action="." class="main-offset login-form" >
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username|attr:"placeholder:Имя пользователя"|attr:"class:form-control"|attr:"required:required"|attr:"autofocus:autofocus" }}
+            </div>
+            <div class="form-group">
+                {{ form.password|attr:"placeholder:Пароль"|attr:"class:form-control"|attr:"required:required" }}
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">Войти</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+
+            <p>
+                <a href="{% url "social:begin" "vk-oauth2" %}">Войти через vk.com</a>
+            </p>
+
+        </form>
+        </div>
+
+    </div>
+{% endblock %}

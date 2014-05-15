@@ -1,0 +1,6 @@
+{% load i18n %}
+Активация аккаунта на сайте {{ site.name }}:
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+{% blocktrans %}Ссылка действует ещё {{ expiration_days }} дней.{% endblocktrans %}

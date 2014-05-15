@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container">
+        <div class="white-block">
+        <form method="post" action="." class="login-form">
+            <h1>Регистрация</h1>
+            <div class="alert-warning">
+                {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+            </div>
+
+            {% if form.errors %}
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username|attr:"class:form-control"|attr:"placeholder:Имя пользователя" }}
+            </div>
+            <div class="form-group">
+                {{ form.email|attr:"class:form-control"|attr:"placeholder:E-mail" }}
+            </div>
+            <div class="form-group">
+                {{ form.password1|attr:"class:form-control"|attr:"placeholder:Пароль" }}
+            </div>
+            <div class="form-group">
+                {{ form.password2|attr:"class:form-control"|attr:"placeholder:Пароль еще раз" }}
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
+
+            <hr />
+
+            <p>или войти через социальные сети</p>
+
+            <div class="social-reg">
+                <a href="{% url "social:begin" 'vk-oauth2' %}">
+                    <img src="{{ STATIC_URL }}img/vk-reg.png" />
+                </a>
+            </div>
+
+        </form>
+        <div class="other-reg">
+            <a href="{% url 'company_registration' %}">[Зарегистрироваться как компания]</a>
+        </div>
+        </div>
+    </div>
+{% endblock %}

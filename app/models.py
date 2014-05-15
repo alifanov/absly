@@ -6,10 +6,12 @@ from urlparse import urlparse
 import requests
 import tempfile
 from sorl.thumbnail import get_thumbnail
+from django.contrib.auth.models import User
 # Create your models here.
 
 class NewsGroup(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название группы')
+    users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='news_groups')
 
     def __unicode__(self):
         return self.name
@@ -25,6 +27,7 @@ class News(models.Model):
     created = models.DateTimeField(verbose_name=u'Дата создания', auto_now=True)
     photo = models.ImageField(upload_to='uploads/', verbose_name=u'Фотография статьи', blank=True)
     group = models.ForeignKey(NewsGroup, verbose_name=u'Группа новостей', null=True, related_name='news')
+    users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='news')
 
     def save(self, *args, **kwargs):
         if not self.title:

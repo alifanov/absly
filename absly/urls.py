@@ -11,6 +11,8 @@ urlpatterns = patterns('',
         template_name='index.html'
     ), name='home'),
 
+    url(r'^accounts/', include('registration.backends.default.urls')),
+
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
     url(r'^communicate/$', EventsListView.as_view(), name='events'),
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
