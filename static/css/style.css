@@ -94,6 +94,7 @@ ul.main-objects li {
 .steps-recomendations-item .bg-primary a {
     color: #fff;
 }
+.steps-done-item,
 .steps-recomendations-item {
     color: #333;
     padding: 5px;
