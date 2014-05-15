@@ -71,6 +71,11 @@
 ul.main-objects {
     padding-left: 0px;
 }
+
+ul.main-objects ul {
+    padding-left: 5px;
+}
+
 ul.main-objects li {
     list-style: none;
 }
