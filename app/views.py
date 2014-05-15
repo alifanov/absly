@@ -47,7 +47,7 @@ class EventsListView(ListView):
             self.sort_val = self.request.GET.get('sort')
             self.request.session['sort'] = self.sort_val
         else:
-            self.sort_val = self.request.session.get('sort', '')
+            self.sort_val = self.request.session.get('sort', self.sort_val)
         if self.sort_val == 'day':
             day_ago = arrow.utcnow().replace(hours=-24).datetime
             return qs.filter(created__gte=day_ago)
