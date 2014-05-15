@@ -66,6 +66,7 @@ class EventsListView(ListView):
                 n,cr = News.objects.get_or_create(
                     link=nn
                 )
+                n.users.add(request.user)
                 n.group = NewsGroup.objects.get(name=u'News')
                 n.save()
         return self.get(request, *args, **kwargs)
