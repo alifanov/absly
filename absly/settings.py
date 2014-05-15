@@ -143,7 +143,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'app',
     'south',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'widget_tweaks'
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
