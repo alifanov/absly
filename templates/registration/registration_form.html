@@ -42,20 +42,7 @@
 
             <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
 
-            <hr />
-
-            <p>или войти через социальные сети</p>
-
-            <div class="social-reg">
-                <a href="{% url "social:begin" 'vk-oauth2' %}">
-                    <img src="{{ STATIC_URL }}img/vk-reg.png" />
-                </a>
-            </div>
-
         </form>
-        <div class="other-reg">
-            <a href="{% url 'company_registration' %}">[Зарегистрироваться как компания]</a>
-        </div>
         </div>
     </div>
 {% endblock %}
