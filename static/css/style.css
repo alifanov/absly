@@ -192,6 +192,10 @@ ul.main-objects li {
     display: none;
 }
 
+.top-charts {
+    height: 50px;
+}
+
 .top-charts span {
     position: absolute;
 }
