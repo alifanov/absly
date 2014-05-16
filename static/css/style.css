@@ -113,13 +113,13 @@ ul.main-objects li {
 }
 
 .steps-in-progress-item-step {
-    padding: 15px;
     color: white;
-    background: #428bca;
 }
 
 .steps-in-progress-item {
+    padding: 15px;
     margin-bottom: 20px;
+    background: #428bca;
 }
 
 .steps-in-progress-item-step.width-100 {
