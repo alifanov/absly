@@ -36,30 +36,30 @@
     </div>
 </div>
 <div class="navbar-brand">Absly</div>
+    <div class="startup-menu container">
+        <ul class="nav nav-pills">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li {% if active == 'communicate' %}class="active"{% endif %}>
+                <a href="{% url 'events' %}">Communicate</a>
+            </li>
+            <li {% if active == 'strategy' %}class="active"{% endif %}>
+                <a href="{% url 'strategy' %}">Strategy</a>
+            </li>
+            <li {% if active == 'steps' %}class="active"{% endif %}>
+                <a href="{% url 'steps' %}">Steps</a>
+            </li>
+            <li>
+                <a href="#">Metrics</a>
+            </li>
+            <li>
+                <a href="#">Summary</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
-<div class="startup-menu container">
-    <ul class="nav nav-pills">
-        <li>
-            <a href="#">Dashboard</a>
-        </li>
-        <li {% if active == 'communicate' %}class="active"{% endif %}>
-            <a href="{% url 'events' %}">Communicate</a>
-        </li>
-        <li {% if active == 'strategy' %}class="active"{% endif %}>
-            <a href="{% url 'strategy' %}">Strategy</a>
-        </li>
-        <li {% if active == 'steps' %}class="active"{% endif %}>
-            <a href="{% url 'steps' %}">Steps</a>
-        </li>
-        <li>
-            <a href="#">Metrics</a>
-        </li>
-        <li>
-            <a href="#">Summary</a>
-        </li>
-    </ul>
-</div>
 
 {% block content %}
 {% endblock %}
