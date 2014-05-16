@@ -29,7 +29,7 @@ $(function(){
 
     if($("#charts").length)
     {
-        var r2 = Raphael('charts', 100, 30);
+        var r2 = Raphael('charts', 200, 50);
 
         r2.barchart(0, 0, 100, 30, [[10, 20, 30, 0, 20, 50]]);
     }
