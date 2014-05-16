@@ -152,6 +152,6 @@ ul.main-objects li {
     display: none;
 }
 
-.steps-in-progress-taskss:hover > span.glyphicon {
-    display: show;
+.steps-in-progress-tasks li:hover > span.glyphicon {
+    display: inline-block;
 }
