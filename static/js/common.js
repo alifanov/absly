@@ -33,4 +33,8 @@ $(function(){
 
         r2.barchart(0, 0, 200, 70, [[10, 20, 30, 2, 20, 50]]);
     }
+
+    $(".steps-done-item a").click(function(){
+        $(this).parents('.steps-done-item').find('.steps-done-item-desc').slideToggle();
+    });
 });
