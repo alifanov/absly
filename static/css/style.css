@@ -195,3 +195,7 @@ ul.main-objects li {
 .top-charts span {
     position: absolute;
 }
+
+.top-charts span.data {
+    margin-left: 20px;
+}
