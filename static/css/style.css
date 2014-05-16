@@ -117,9 +117,7 @@ ul.main-objects li {
 }
 
 .steps-in-progress-item {
-    padding: 15px;
     margin-bottom: 20px;
-    background: #428bca;
 }
 
 .steps-in-progress-item-step.width-100 {
@@ -161,6 +159,10 @@ ul.main-objects li {
     margin-left: 50px;
 }
 
+.steps-in-progress-item-step-text {
+    padding: 15px;
+    background: #428bca;
+}
 .steps-in-progress-item-step-date {
     background: #ffffff;
     float: right;
