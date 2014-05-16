@@ -131,3 +131,11 @@ ul.main-objects li {
     width: 70%;
 }
 
+.steps-in-progress-item a {
+    padding-left: 10px;
+    border-left: 1px solid #ccc;
+}
+
+.steps-in-progress-item a:first-child {
+    border-left: 0px;
+}
