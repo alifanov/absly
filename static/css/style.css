@@ -148,10 +148,10 @@ ul.main-objects li {
     list-style: none;
 }
 
-.steps-in-progress-tasks li > span.glyphicon {
+.steps-in-progress-tasks li > a.remove-task {
     display: none;
 }
 
-.steps-in-progress-tasks li:hover > span.glyphicon {
+.steps-in-progress-tasks li:hover > a.remove-task {
     display: inline-block;
 }
