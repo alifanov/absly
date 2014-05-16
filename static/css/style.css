@@ -112,22 +112,22 @@ ul.main-objects li {
     margin-top: 2px;
 }
 
-.steps-in-progress-item {
+.steps-in-progress-item-step {
     padding: 15px;
     color: white;
     background: #428bca;
     margin-bottom: 20px;
 }
 
-.steps-in-progress-item.width-100 {
+.steps-in-progress-item-step.width-100 {
     width: 100%;
 }
 
-.steps-in-progress-item.width-50 {
+.steps-in-progress-item-step.width-50 {
     width: 50%;
 }
 
-.steps-in-progress-item.width-70 {
+.steps-in-progress-item-step.width-70 {
     width: 70%;
 }
 
