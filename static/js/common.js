@@ -36,5 +36,6 @@ $(function(){
 
     $(".steps-done-item a").click(function(){
         $(this).parents('.steps-done-item').find('.steps-done-item-desc').slideToggle();
+        return false;
     });
 });
