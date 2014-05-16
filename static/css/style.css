@@ -169,3 +169,12 @@ ul.main-objects li {
     width: 100px;
     color: #777;
     padding: 15px;}
+
+.timelines {
+    position: absolute;
+}
+
+.timelines div {
+    width: 100px;
+    border-left: 1px dashed #777;
+}
