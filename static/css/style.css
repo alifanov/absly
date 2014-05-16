@@ -182,3 +182,7 @@ ul.main-objects li {
     border-left: 1px dashed #777;
     float: left;
 }
+
+.steps-done-item .steps-done-item-desc {
+    display: none;
+}
