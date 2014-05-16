@@ -33,6 +33,12 @@ $(function(){
 
         r2.barchart(0, 0, 200, 70, [[10, 20, 30, 2, 20, 50]]);
     }
+    if($("#spec-chart").length)
+    {
+        var r2 = Raphael('spec-chart', 200, 50);
+
+        r2.barchart(0, 0, 200, 70, [[10, 20, 30, 2, 20, 50]]);
+    }
 
     $(".steps-done-item a").click(function(){
         $(this).parents('.steps-done-item').find('.steps-done-item-desc').slideToggle();
