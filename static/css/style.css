@@ -160,3 +160,7 @@ ul.main-objects li {
 #charts {
     margin-left: 50px;
 }
+
+.steps-in-progress-item-step-date {
+    background: #ffffff;
+}
