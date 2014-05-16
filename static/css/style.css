@@ -140,6 +140,6 @@ ul.main-objects li {
     border-left: 1px solid #ccc;
 }
 
-.steps-in-progress-item a:first-child {
+.steps-in-progress-item a:first-of-type{
     border-left: 0px;
 }
