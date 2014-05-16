@@ -33,11 +33,15 @@ $(function(){
 
         r2.barchart(0, 0, 200, 70, [[10, 20, 30, 2, 20, 50]]);
     }
-    if($("#spec-chart").length)
+    if($("#spec-chart-0").length)
     {
-        var r2 = Raphael('spec-chart', 100, 50);
+        var r0 = Raphael('spec-chart-0', 100, 50);
+        var r1 = Raphael('spec-chart-1', 100, 50);
+        var r2 = Raphael('spec-chart-2', 100, 50);
 
-        r2.barchart(0, 0, 100, 70, [[10, 20, 30, 2, 20, 50]]);
+        r0.barchart(0, 0, 100, 70, [[50, 20, 30, 2, 20, 50]]);
+        r1.barchart(0, 0, 100, 70, [[10, 20, 10, 2, 20, 50]]);
+        r2.barchart(0, 0, 100, 70, [[40, 20, 40, 49, 20, 50]]);
     }
 
     $(".steps-done-item a").click(function(){
