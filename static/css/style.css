@@ -163,4 +163,6 @@ ul.main-objects li {
 
 .steps-in-progress-item-step-date {
     background: #ffffff;
+    float: right;
+    width: 100px;
 }
