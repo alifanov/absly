@@ -173,6 +173,7 @@ ul.main-objects li {
 .timelines {
     position: absolute;
     right: 0px;
+    margin-right: 100px;
 }
 
 .timelines div {
