@@ -29,8 +29,8 @@ $(function(){
 
     if($("#charts").length)
     {
-        var r2 = Raphael('charts', 200, 50);
+        var r2 = Raphael('charts', 400, 50);
 
-        r2.barchart(0, 0, 200, 50, [[10, 20, 30, 0, 20, 50]]);
+        r2.barchart(0, 0, 400, 50, [[10, 20, 30, 0, 20, 50]]);
     }
 });
