@@ -143,3 +143,15 @@ ul.main-objects li {
 .steps-in-progress-item a:first-of-type{
     border-left: 0px;
 }
+
+.steps-in-progress-tasks li {
+    list-style: none;
+}
+
+.steps-in-progress-tasks li > span.glyphicon {
+    display: none;
+}
+
+.steps-in-progress-tasks li:hover > span.glyphicon {
+    display: show;
+}
