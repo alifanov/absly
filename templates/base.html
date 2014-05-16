@@ -57,6 +57,7 @@
                 <a href="#">Summary</a>
             </li>
         </ul>
+        {% if request.user.is_authenticated %}
         <ul class="nav navbar-right nav-pills">
             <li class="">
                 <div class="top-charts">
@@ -79,8 +80,8 @@
                     <div id="spec-chart-2"></div>
                 </div>
             </li>
-
         </ul>
+        {% endif %}
     </div>
 </div>
 
