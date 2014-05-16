@@ -150,6 +150,7 @@ ul.main-objects li {
 
 .steps-in-progress-tasks li > a.remove-task {
     display: none;
+    color: #777;
 }
 
 .steps-in-progress-tasks li:hover > a.remove-task {
