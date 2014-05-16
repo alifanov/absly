@@ -173,10 +173,11 @@ ul.main-objects li {
 .timelines {
     position: absolute;
     right: 0px;
-    margin-right: 100px;
+    margin-right: 200px;
 }
 
 .timelines div {
+    min-height: 380px;
     width: 100px;
     border-left: 1px dashed #777;
     float: left;
