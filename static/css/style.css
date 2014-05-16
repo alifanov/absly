@@ -34,6 +34,9 @@
 
 .startup-menu {
     margin-bottom: 20px;
+}
+
+.startup-menu ul {
     margin-top: 5px;
 }
 
