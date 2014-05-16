@@ -156,3 +156,7 @@ ul.main-objects li {
 .steps-in-progress-tasks li:hover > a.remove-task {
     display: inline-block;
 }
+
+#charts {
+    margin-left: 20px;
+}
