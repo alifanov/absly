@@ -191,3 +191,7 @@ ul.main-objects li {
 .steps-done-item .steps-done-item-desc {
     display: none;
 }
+
+.top-charts span {
+    position: absolute;
+}
