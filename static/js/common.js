@@ -37,7 +37,7 @@ $(function(){
     {
         var r2 = Raphael('spec-chart', 100, 50);
 
-        r2.barchart(0, 0, 100, 50, [[10, 20, 30, 2, 20, 50]]);
+        r2.barchart(0, 0, 100, 70, [[10, 20, 30, 2, 20, 50]]);
     }
 
     $(".steps-done-item a").click(function(){
