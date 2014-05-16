@@ -148,9 +148,9 @@ ul.main-objects li {
     list-style: none;
 }
 
-.steps-in-progress-tasks li > span.glyphicon {
-    display: none;
-}
+/*.steps-in-progress-tasks li > span.glyphicon {*/
+    /*display: none;*/
+/*}*/
 
 .steps-in-progress-tasks li:hover > span.glyphicon {
     display: show;
