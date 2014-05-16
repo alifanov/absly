@@ -1,5 +1,6 @@
 .top {
-    height: 50px;
+    height: 60px;
+    border-bottom: 1px solid #ccc;
 }
 .top-menu {
     margin-right: 20px;
@@ -37,7 +38,7 @@
 }
 
 .startup-menu ul {
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 .border-strategy {
