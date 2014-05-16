@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
-from app.views import EventsListView, EventDeleteView, StrategyView, StepsView
+from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('registration.backends.default.urls')),
 
+    url(r'^metrics/$', MetricsView.as_view(), name='metrics'),
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
     url(r'^steps/$', StepsView.as_view(), name='steps'),
     url(r'^communicate/$', EventsListView.as_view(), name='events'),
