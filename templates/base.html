@@ -50,8 +50,8 @@
             <li {% if active == 'steps' %}class="active"{% endif %}>
                 <a href="{% url 'steps' %}">Steps</a>
             </li>
-            <li>
-                <a href="#">Metrics</a>
+            <li {% if active == 'metrics' %}class="active"{% endif %}>
+                <a href="{% url 'metrics' %}">Metrics</a>
             </li>
             <li>
                 <a href="#">Summary</a>
