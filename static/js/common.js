@@ -45,11 +45,11 @@ $(function(){
     }
     if($("#metrics-chart-1").length)
     {
-        var r0 = Raphael('metrics-chart-1', 100, 50);
+        var r0 = Raphael('metrics-chart-1', 100, 100);
 //        var r1 = Raphael('spec-chart-2', 100, 50);
 //        var r2 = Raphael('spec-chart-3', 100, 50);
 
-        r0.barchart(0, 0, 100, 70, [[50, 20, 30, 2, 20, 50]]);
+        r0.barchart(0, 0, 100, 100, [[50, 20, 30, 2, 20, 50]]);
 //        r1.barchart(0, 0, 100, 70, [[10, 20, 10, 2, 20, 50]]);
 //        r2.barchart(0, 0, 100, 70, [[40, 20, 40, 49, 20, 50]]);
     }
