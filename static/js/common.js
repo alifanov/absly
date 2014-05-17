@@ -45,7 +45,7 @@ $(function(){
     }
     if($("#metrics-chart-1").length)
     {
-        var r0 = Raphael('spec-chart-1', 100, 50);
+        var r0 = Raphael('metrics-chart-1', 100, 50);
 //        var r1 = Raphael('spec-chart-2', 100, 50);
 //        var r2 = Raphael('spec-chart-3', 100, 50);
 
