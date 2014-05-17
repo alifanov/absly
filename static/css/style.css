@@ -205,3 +205,7 @@ ul.main-objects li {
 .top-charts span.data {
     margin-left: 20px;
 }
+
+.metrics-item-left {
+    text-align: center;
+}
