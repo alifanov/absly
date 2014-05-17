@@ -208,4 +208,6 @@ ul.main-objects li {
 
 .metrics-item-left {
     text-align: center;
+    width: 100px;
+    float: left;
 }
