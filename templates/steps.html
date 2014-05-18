@@ -41,7 +41,7 @@
 
             </div>
         </div>
-        <button class="btn btn-success">
+        <button class="btn btn-success" data-toggle="modal" data-target="#addNewModal">
             <span class="glyphicon glyphicon-plus"></span>
             Add new item</button>
     </div>
@@ -171,4 +171,69 @@
         </div>
     </div>
 </div>
+
+    <div class="modal fade" id="addNewModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add new step</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3">Task</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" placeholder="What shall be done">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3">Category</label>
+                            <div class="col-lg-9">
+                                <select class="form-control">
+                                    <option>Customer</option>
+                                    <option>Product</option>
+                                    <option>Fundrising</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3">Graphic-nased</label>
+                            <div class="col-lg-9">
+                                <input checked="checked" class="form-control" type="checkbox" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+{#                            <label class="col-lg-3">Graphic-nased</label>#}
+                            <div class="col-lg-9 col-lg-offset-3">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <select class="form-control">
+                                            <option>User count</option>
+                                            <option>Money</option>
+                                            <option>Bounce Rate</option>
+                                            <option>Premium users</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control" placeholder="Value" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4">Deadline</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" placeholder="19.05.2014" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
