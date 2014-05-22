@@ -1,6 +1,6 @@
 $(function(){
     $(".es-item-text-view").click(function(){
-        var tarea = $(this).parents('.es-item-text').find('textarea');
+        var tarea = $(this).parents('.es-item-text').eq(0).find('textarea');
         tarea.text($(this).text());
         tarea.show();
         tarea.focus();
