@@ -213,5 +213,6 @@ ul.main-objects li {
 }
 
 .summary .main-link a {
-    font-size: 16px;
+    font-size: 18px;
+    text-decoration: underline;
 }
