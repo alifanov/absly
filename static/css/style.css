@@ -216,6 +216,10 @@ ul.main-objects li {
     margin-bottom: 30px;
 }
 
+.summary .sub-links a.glyphicon-ok {
+    color: green;
+}
+
 .summary .main-link a {
     font-size: 18px;
     text-decoration: underline;
