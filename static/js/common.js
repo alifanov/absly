@@ -9,7 +9,7 @@ $(function(){
     });
 
     $('.es-item-btns button').click(function(){
-        var titemtext = $(this).parents('.es-item-text').eq(0);
+        var titemtext = $(this).parents('.es-item').find('.es-item-text').eq(0);
         var tarea = $(this).parents('.es-item').find('.es-item-text-area');
         var tview = $(this).parents('.es-item').find('.es-item-text-view');
         tview.text(tarea.val());
