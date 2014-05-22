@@ -256,6 +256,7 @@ ul.main-objects li {
 
 .es-item-btns {
     position: relative;
+    min-height: 100px;
 }
 
 .es-item-btns button {
