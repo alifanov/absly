@@ -8,6 +8,15 @@ $(function(){
         $(this).hide();
     });
 
+    $('.es-item-btns button').click(function(){
+        var tarea = $(this).parents('.es-item').find('.es-item-text-area');
+        var tview = $(this).parents('.es-item').find('.es-item-text-view');
+        tview.text(tarea.text());
+        tarea.hide();
+        tview.show();
+        $(this).hide();
+    });
+
     $(".remove-news-btn").click(function(){
         var _this = $(this);
         $.ajax({
