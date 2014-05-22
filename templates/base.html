@@ -54,7 +54,7 @@
                 <a href="{% url 'metrics' %}">Metrics</a>
             </li>
             <li {% if active == 'summary' %}class="active"{% endif %}>
-                <a href="#">Summary</a>
+                <a href="{% url 'summary' %}">Summary</a>
             </li>
         </ul>
         {% if request.user.is_authenticated %}
