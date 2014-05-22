@@ -257,3 +257,11 @@ ul.main-objects li {
 .es-item-btns button {
     float: right;
 }
+
+.es-addon-btns {
+    text-align: right;
+}
+
+.es-addon-btns button {
+    margin-bottom: 10px;
+}
