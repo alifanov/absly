@@ -1,6 +1,6 @@
 $(function(){
     $(".es-item-text-view").click(function(){
-       $(this).closest('.es-item-text-area').show();
+       $(this).parents('.es-item-text').find('textarea').show();
        $(this).hide();
     });
 
