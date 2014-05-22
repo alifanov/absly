@@ -14,9 +14,8 @@ $(function(){
         var tview = $(this).parents('.es-item').find('.es-item-text-view');
         tview.text(tarea.val());
         if(tarea.val() == ''){
-            console.log('AREA: ' + titem);
-            titem.removeClass('done');
-            titem.addClass('empty');
+            titemtext.removeClass('done');
+            titemtext.addClass('empty');
         }
         tarea.hide();
         tview.show();
