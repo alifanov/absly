@@ -1,6 +1,8 @@
 $(function(){
     $(".es-item-text-view").click(function(){
-       $(this).parents('.es-item-text').find('textarea').show();
+        var tarea = $(this).parents('.es-item-text').find('textarea');
+        tarea.text($(this).text());
+       tarea.show();
        $(this).hide();
     });
 
