@@ -1,4 +1,9 @@
 $(function(){
+    $(".es-item-text-view").click(function(){
+       $(this).closest('.es-item-text-area').show();
+       $(this).hide();
+    });
+
     $(".remove-news-btn").click(function(){
         var _this = $(this);
         $.ajax({
