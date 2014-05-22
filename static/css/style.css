@@ -241,6 +241,10 @@ ul.main-objects li {
     border-radius: 5px;
 }
 
+.es-item-text-view:hover {
+    cursor: text;
+}
+
 .es-item-btns button {
     float: right;
 }
