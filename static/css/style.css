@@ -211,3 +211,7 @@ ul.main-objects li {
     width: 100px;
     float: left;
 }
+
+.summary .main-link a {
+    font-size: 16px;
+}
