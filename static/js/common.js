@@ -9,9 +9,14 @@ $(function(){
     });
 
     $('.es-item-btns button').click(function(){
+        var titem = $(this).parents('.es-item').eq(0);
         var tarea = $(this).parents('.es-item').find('.es-item-text-area');
         var tview = $(this).parents('.es-item').find('.es-item-text-view');
         tview.text(tarea.val());
+        if(tarea.val() == ''){
+            titem.removeClass('done');
+            titem.addClass('empty');
+        }
         tarea.hide();
         tview.show();
         $(this).hide();
