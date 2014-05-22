@@ -216,7 +216,7 @@ ul.main-objects li {
     margin-bottom: 30px;
 }
 
-.summary .sub-links a.glyphicon-ok {
+.summary .sub-links span.glyphicon-ok {
     color: green;
 }
 
