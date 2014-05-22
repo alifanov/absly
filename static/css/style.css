@@ -254,6 +254,10 @@ ul.main-objects li {
     cursor: text;
 }
 
+.es-item-btns {
+    position: relative;
+}
+
 .es-item-btns button {
     position: absolute;
     right: 0;
