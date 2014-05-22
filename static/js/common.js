@@ -4,6 +4,7 @@ $(function(){
         tarea.text($(this).text());
         tarea.show();
         tarea.focus();
+        $('.es-item-btns button').show();
         $(this).hide();
     });
 
