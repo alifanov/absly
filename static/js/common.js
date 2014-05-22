@@ -9,13 +9,22 @@ $(function(){
     });
 
     $('.es-item-btns button').click(function(){
+        var titem = $(this).parents('.es-item').eq(0);
         var titemtext = $(this).parents('.es-item').find('.es-item-text').eq(0);
         var tarea = $(this).parents('.es-item').find('.es-item-text-area');
         var tview = $(this).parents('.es-item').find('.es-item-text-view');
         tview.text(tarea.val());
         if(tarea.val() == ''){
+            titem.find('h4').removeClass('text-success');
+            titem.find('h4').addClass('text-danger');
             titemtext.removeClass('done');
             titemtext.addClass('empty');
+        }
+        else{
+            titem.find('h4').removeClass('text-danger');
+            titem.find('h4').addClass('text-success');
+            titemtext.removeClass('empty');
+            titemtext.addClass('done');
         }
         tarea.hide();
         tview.show();
