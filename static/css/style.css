@@ -220,6 +220,10 @@ ul.main-objects li {
     color: green;
 }
 
+.summary .sub-links span.glyphicon-remove {
+    color: red;
+}
+
 .summary .main-link a {
     font-size: 18px;
     text-decoration: underline;
