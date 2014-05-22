@@ -4,7 +4,7 @@ $(function(){
         tarea.text($(this).text());
         tarea.show();
         tarea.focus();
-        $(this).parents('.es-item-text').eq(0).find('.es-item-btns button').show();
+        $(this).parents('.es-item').eq(0).find('.es-item-btns button').show();
         $(this).hide();
     });
 
