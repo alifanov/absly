@@ -224,6 +224,10 @@ ul.main-objects li {
     color: red;
 }
 
+.summary .es-data h2 {
+    text-align: center;
+}
+
 .summary .main-link a {
     font-size: 18px;
     text-decoration: underline;
