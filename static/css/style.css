@@ -238,4 +238,5 @@ ul.main-objects li {
     height: 100px;
     border: 1px solid #02c35b;
     padding: 10px;
+    border-radius: 5px;
 }
