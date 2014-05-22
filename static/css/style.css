@@ -256,12 +256,13 @@ ul.main-objects li {
 
 .es-item-btns {
     position: relative;
-    min-height: 100px;
+    min-height: 45px;
 }
 
 .es-item-btns button {
     position: absolute;
     right: 0;
+    top: 0;
 }
 
 .es-addon-btns {
