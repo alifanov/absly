@@ -13,8 +13,8 @@ $(function(){
         var tarea = $(this).parents('.es-item').find('.es-item-text-area');
         var tview = $(this).parents('.es-item').find('.es-item-text-view');
         tview.text(tarea.val());
-        console.log('AREA: ' + titem);
         if(tarea.val() == ''){
+            console.log('AREA: ' + titem);
             titem.removeClass('done');
             titem.addClass('empty');
         }
