@@ -240,3 +240,7 @@ ul.main-objects li {
     padding: 10px;
     border-radius: 5px;
 }
+
+.es-item-btns button {
+    float: right;
+}
