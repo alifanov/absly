@@ -216,13 +216,13 @@ ul.main-objects li {
     margin-bottom: 30px;
 }
 
-.summary .sub-links span.glyphicon-ok {
-    color: green;
-}
+/*.summary .sub-links span.glyphicon-ok {*/
+    /*color: green;*/
+/*}*/
 
-.summary .sub-links span.glyphicon-remove {
-    color: red;
-}
+/*.summary .sub-links span.glyphicon-remove {*/
+    /*color: red;*/
+/*}*/
 
 .summary .es-data h2 {
     text-align: center;
