@@ -255,7 +255,8 @@ ul.main-objects li {
 }
 
 .es-item-btns button {
-    float: right;
+    position: absolute;
+    right: 0;
 }
 
 .es-addon-btns {
