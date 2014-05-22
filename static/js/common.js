@@ -2,8 +2,9 @@ $(function(){
     $(".es-item-text-view").click(function(){
         var tarea = $(this).parents('.es-item-text').find('textarea');
         tarea.text($(this).text());
-       tarea.show();
-       $(this).hide();
+        tarea.show();
+        tarea.focus();
+        $(this).hide();
     });
 
     $(".remove-news-btn").click(function(){
