@@ -7,6 +7,18 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
+class ExecutiveSummaryView(TemplateView):
+    template_name = 'summary.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(ExecutiveSummaryView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(ExecutiveSummaryView, self).get_context_data(**kwargs)
+        ctx['active'] = 'summary'
+        return ctx
+
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
 
