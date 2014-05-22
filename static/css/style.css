@@ -212,6 +212,10 @@ ul.main-objects li {
     float: left;
 }
 
+.summary .es-description {
+    margin-bottom: 30px;
+}
+
 .summary .main-link a {
     font-size: 18px;
     text-decoration: underline;
