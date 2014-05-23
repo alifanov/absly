@@ -293,10 +293,10 @@ ul.main-objects li {
 
 .canvas-bottom {
     border-top: 1px solid #ccc;
-    min-height: 100px;
 }
 
 .canvas-bottom div {
+    min-height: 100px;
     border-collapse: collapse;
     border-left: 1px solid #ccc;
 }
