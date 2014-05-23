@@ -278,3 +278,11 @@ ul.main-objects li {
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.canvas .row .col-lg-5 {
+    min-height: 550px;
+}
+
+.canvas .row .col-lg-5 .row .col-lg-6 div {
+    min-height: 275px;
+}
