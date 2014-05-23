@@ -10,7 +10,7 @@ $(function(){
 
     $(".canvas td").click(function(){
         $(".canvas .form-group").hide();
-        $(this).find('.form-group').show();
+        $(this).find('.form-group').show().focus();
     });
 
     $(".segments .canvas-block-items li a").click(function(){
