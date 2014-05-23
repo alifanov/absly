@@ -4,6 +4,7 @@ $(function(){
             var txt = $(this).val();
             var _ul = $(this).parents('td').eq(0).find('.canvas-block-items');
             _ul.append('<li><a href="#">' + txt + '</a></li>');
+            $(this).val('');
         }
     });
 
