@@ -280,9 +280,9 @@ ul.main-objects li {
 }
 
 .canvas .row .col-lg-5 {
-    min-height: 550px;
+    min-height: 500px;
 }
 
 .canvas .row .col-lg-5 .row .col-lg-6 div {
-    min-height: 275px;
+    min-height: 250px;
 }
