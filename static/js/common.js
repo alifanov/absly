@@ -16,6 +16,7 @@ $(function(){
     $(".segments .canvas-block-items li a").click(function(){
         $(".segments .canvas-block-items li").removeClass('active');
        $(this).parents('li').eq(0).addClass('active');
+        $("td:not(.segments) .canvas-block-items li:not(." + $(this).text().slugIt() + ")").hide()
         return false;
     });
 
