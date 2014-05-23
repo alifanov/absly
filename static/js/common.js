@@ -14,6 +14,7 @@ $(function(){
     });
 
     $(".canvas-block-items li a").click(function(){
+       $(this).parents('li').eq(0).addClass('active');
         return false;
     });
 
