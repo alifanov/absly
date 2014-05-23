@@ -273,3 +273,8 @@ ul.main-objects li {
 .es-addon-btns button {
     margin-bottom: 10px;
 }
+
+.navbar-nav>li>a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
