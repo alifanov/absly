@@ -290,3 +290,7 @@ ul.main-objects li {
 .canvas {
     border: 1px solid #ccc;
 }
+
+.canvas-bottom {
+    min-height: 100px;
+}
