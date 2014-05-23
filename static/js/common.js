@@ -13,6 +13,10 @@ $(function(){
         $(this).find('.form-group').show();
     });
 
+    $(".canvas-block-items li a").click(function(){
+        return false;
+    });
+
     $(".es-item-text-view").click(function(){
         var tarea = $(this).parents('.es-item-text').eq(0).find('textarea');
         tarea.text($(this).text());
