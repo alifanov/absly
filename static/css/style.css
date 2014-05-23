@@ -290,6 +290,10 @@ ul.main-objects li {
     border: 1px solid #ccc;
 }
 
+.canvas > .row > div:first-of-type {
+    border-left: 0px;
+}
+
 .canvas > .row > div {
     border-left: 1px solid #ccc;
     min-height: 500px;
