@@ -287,3 +287,7 @@ ul.main-objects li {
 .canvas-block-items li {
     list-style: none;
 }
+
+.canvas-block-items li.active {
+    padding-left: 20px;
+}
