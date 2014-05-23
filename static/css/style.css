@@ -286,3 +286,7 @@ ul.main-objects li {
 .canvas .row .col-lg-5 .row .col-lg-6 div {
     min-height: 250px;
 }
+
+.canvas {
+    border: 1px solid #ccc;
+}
