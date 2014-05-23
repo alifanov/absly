@@ -13,7 +13,8 @@ $(function(){
         $(this).find('.form-group').show();
     });
 
-    $(".canvas-block-items li a").click(function(){
+    $(".segments .canvas-block-items li a").click(function(){
+        $(".segments .canvas-block-items li").removeClass('active');
        $(this).parents('li').eq(0).addClass('active');
         return false;
     });
