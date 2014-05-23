@@ -8,6 +8,11 @@ $(function(){
         }
     });
 
+    $(".canvas td").click(function(){
+        $(".canvas .form-group").hide();
+        $(this).find('.form-group').show();
+    });
+
     $(".es-item-text-view").click(function(){
         var tarea = $(this).parents('.es-item-text').eq(0).find('textarea');
         tarea.text($(this).text());
