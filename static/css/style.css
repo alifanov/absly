@@ -295,3 +295,8 @@ ul.main-objects li {
     border-top: 1px solid #ccc;
     min-height: 100px;
 }
+
+.canvas-bottom div {
+    border-collapse: collapse;
+    border-left: 1px solid #ccc;
+}
