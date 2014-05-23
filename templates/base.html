@@ -50,6 +50,9 @@
             <li {% if active == 'steps' %}class="active"{% endif %}>
                 <a href="{% url 'steps' %}">Steps</a>
             </li>
+            <li {% if active == 'canvas' %}class="active"{% endif %}>
+                <a href="{% url 'canvas' %}">BM canvas</a>
+            </li>
             <li {% if active == 'metrics' %}class="active"{% endif %}>
                 <a href="{% url 'metrics' %}">Metrics</a>
             </li>
