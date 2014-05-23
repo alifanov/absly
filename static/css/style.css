@@ -291,6 +291,10 @@ ul.main-objects li {
     border: 1px solid #ccc;
 }
 
+.canvas .row > div {
+    border-left: 1px solid #ccc;
+}
+
 .canvas-bottom {
     border-top: 1px solid #ccc;
 }
