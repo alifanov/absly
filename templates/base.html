@@ -53,16 +53,18 @@
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
         <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
             <a href="/">
                 <i class="icon-home"></i>
                 <span>Home</span>
             </a>
         </li>
         <li {% if active == 'communicate' %}class="active"{% endif %}>
+            {% if active == 'communicate' %}
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+            {% endif %}
             <a href="{% url 'events' %}">
                 <i class="icon-comments-alt"></i>
                 <span>Communications</span>
