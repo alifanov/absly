@@ -112,6 +112,20 @@
                 <span>Metrics</span>
             </a>
         </li>
+        {% if active == 'summary' %}
+        <li>
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+        {% else %}
+            <li>
+        {% endif %}
+            <a href="{% url 'summary' %}">
+                <i class="icon-sitemap"></i>
+                <span>Summary</span>
+            </a>
+        </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
