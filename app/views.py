@@ -7,6 +7,19 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
+class DashboardView(TemplateView):
+    template_name = 'dashboard.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(DashboardView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(DashboardView, self).get_context_data(**kwargs)
+        ctx['active'] = 'canvas'
+        return ctx
+
+
 class CanvasView(TemplateView):
     template_name = 'canvas.html'
 
@@ -124,5 +137,5 @@ class EventsListView(ListView):
         ctx = super(EventsListView, self).get_context_data(**kwargs)
         ctx['groups'] = NewsGroup.objects.all()
         ctx['sort_val'] = self.sort_val
-        ctx['active'] = 'communicate'
+        ctx['active'] = 'events'
         return ctx
