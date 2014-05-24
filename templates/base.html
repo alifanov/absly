@@ -52,7 +52,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
@@ -62,7 +62,7 @@
                 <span>Home</span>
             </a>
         </li>
-        <li>
+        <li {% if active == 'communicate' %}class="active"{% endif %}>
             <a href="{% url 'events' %}">
                 <i class="icon-comments-alt"></i>
                 <span>Communications</span>
