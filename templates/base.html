@@ -70,17 +70,19 @@
                 <span>Communications</span>
             </a>
         </li>
+        {% if active == 'steps' %}
         <li>
-            <a class="dropdown-toggle" href="#">
-                <i class="icon-group"></i>
-                <span>Users</span>
-                <i class="icon-chevron-down"></i>
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+        {% else %}
+            <li>
+        {% endif %}
+            <a href="{% url 'steps' %}">
+                <i class="icon-check"></i>
+                <span>Steps</span>
             </a>
-            <ul class="submenu">
-                <li><a href="user-list.html">User list</a></li>
-                <li><a href="new-user.html">New user form</a></li>
-                <li><a href="user-profile.html">User profile</a></li>
-            </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
