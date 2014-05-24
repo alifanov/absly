@@ -98,6 +98,20 @@
                 <span>BM Canvas</span>
             </a>
         </li>
+        {% if active == 'metrics' %}
+        <li>
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+        {% else %}
+            <li>
+        {% endif %}
+            <a href="{% url 'matrics' %}">
+                <i class="icon-signal"></i>
+                <span>Metrics</span>
+            </a>
+        </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
