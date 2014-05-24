@@ -6,17 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Absly</title>
 
-    <!-- Bootstrap -->
-    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/steps.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="{{ STATIC_URL }}theme/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}theme/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- libraries -->
+    <link href="{{ STATIC_URL }}theme/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}theme/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}theme/css/compiled/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}theme/css/compiled/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}theme/css/compiled/icons.css" />
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}theme/css/compiled/index.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+
+    <!-- lato font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />
+
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+{#    #}
+{#    #}
+{#    #}
+{#    <!-- Bootstrap -->#}
+{#    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">#}
+{#    <link href="{{ STATIC_URL }}css/steps.css" rel="stylesheet">#}
+{#    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">#}
+{##}
+{#    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->#}
+{#    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->#}
+{#    <!--[if lt IE 9]>#}
+{#      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>#}
+{#      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>#}
+{#    <![endif]-->#}
 </head>
 <body>
 <div class="top">
@@ -92,15 +120,25 @@
 {% block content %}
 {% endblock %}
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-<script src="{{ STATIC_URL }}js/jquery.slugit.js"></script>
-<script src="{{ STATIC_URL }}js/raphael-min.js"></script>
-<script src="{{ STATIC_URL }}js/g.raphael-min.js"></script>
-<script src="{{ STATIC_URL }}js/g.pie-min.js"></script>
-<script src="{{ STATIC_URL }}js/g.bar-min.js"></script>
-<script src="{{ STATIC_URL }}js/common.js"></script>
+{#<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->#}
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>#}
+{#<!-- Include all compiled plugins (below), or include individual files as needed -->#}
+{#<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/jquery.slugit.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/raphael-min.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/g.raphael-min.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/g.pie-min.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/g.bar-min.js"></script>#}
+{#<script src="{{ STATIC_URL }}js/common.js"></script>#}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{{ STATIC_URL }}theme/js/bootstrap.min.js"></script>
+<script src="{{ STATIC_URL }}theme/js/jquery-ui-1.10.2.custom.min.js"></script>
+<!-- knob -->
+<script src="{{ STATIC_URL }}theme/js/jquery.knob.js"></script>
+<!-- flot charts -->
+<script src="{{ STATIC_URL }}theme/js/jquery.flot.js"></script>
+<script src="{{ STATIC_URL }}theme/js/jquery.flot.stack.js"></script>
+<script src="{{ STATIC_URL }}theme/js/jquery.flot.resize.js"></script>
+<script src="{{ STATIC_URL }}theme/js/theme.js"></script>
 </body>
 </html>
