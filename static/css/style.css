@@ -311,6 +311,6 @@ ul.main-objects li {
 }
 
 .definition-level a:hover,
-.definition-level a.done, {
+.definition-level a.done {
     opacity: 1;
 }
