@@ -310,6 +310,7 @@ ul.main-objects li {
     opacity: 0.2;
 }
 
-.definition-level a.done {
+.definition-level a:hover,
+.definition-level a.done, {
     opacity: 1;
 }
