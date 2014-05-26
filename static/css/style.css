@@ -299,3 +299,12 @@ ul.main-objects li {
 .canvas-block-items li.active {
     padding-left: 20px;
 }
+
+.definition-level a {
+    width: 15px;
+    height: 7px;
+    background: green;
+    display: inline-block;
+    margin-right: 10%;
+    margin-bottom: 3px;
+}
