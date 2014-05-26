@@ -6,6 +6,10 @@
     vertical-align: top!important;
 }
 
+.segments .form-control {
+    width: inherit;
+}
+
 .top {
     height: 70px;
     padding-top: 10px;
