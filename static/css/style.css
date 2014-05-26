@@ -303,8 +303,13 @@ ul.main-objects li {
 .definition-level a {
     width: 15px;
     height: 7px;
-    background: green;
     display: inline-block;
     margin-right: 10%;
     margin-bottom: 3px;
+    background: green;
+    opacity: 0.7;
+}
+
+.definition-level a.done {
+    opacity: 1;
 }
