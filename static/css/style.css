@@ -8,6 +8,7 @@
 
 .canvas .table tr td .form-control {
     width: 200px;
+    display: none;
 }
 
 .top {
