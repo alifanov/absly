@@ -6,7 +6,7 @@
     vertical-align: top!important;
 }
 
-.segments .form-control {
+.canvas .table tr td .form-control {
     width: inherit;
 }
 
