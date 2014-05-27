@@ -25,7 +25,7 @@ $(function(){
         $(this).find('.form-group').show().find('input').focus();
     });
 
-    $(".segments .canvas-block-items li a").click(function(){
+    $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
         $(".segments .canvas-block-items li").removeClass('active');
         $(".segments .canvas-block-items li a").removeClass('icon-play');
