@@ -1,4 +1,9 @@
 $(function(){
+    $(".canvas-element-item-del").click(function(){
+        $(this).parents('li').remove();
+        return false;
+    });
+
     $(".canvas .form-control").keypress(function(e){
         if(e.which == 13){
             var txt = $(this).val();
