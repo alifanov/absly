@@ -310,7 +310,7 @@ ul.main-objects li {
     display: inline;
 }
 
-.canvas-block-items input {
+.canvas td input {
     border-radius: 0px;
 }
 
