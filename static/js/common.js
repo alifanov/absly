@@ -2,9 +2,11 @@ $(function(){
     $(".canvas .form-control").keypress(function(e){
         if(e.which == 13){
             var txt = $(this).val();
-            var _ul = $(this).parents('td').eq(0).find('.canvas-block-items');
-            _ul.append('<li><a href="#">' + txt + '</a></li>');
-            $(this).val('');
+            if (txt){
+                var _ul = $(this).parents('td').eq(0).find('.canvas-block-items');
+                _ul.append('<li><a href="#">' + txt + '</a></li>');
+                $(this).val('');
+            }
         }
     });
 
