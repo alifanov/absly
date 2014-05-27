@@ -361,3 +361,7 @@ ul.main-objects li {
 #main-stats .stat {
     min-height: 112px;
 }
+
+#sidebar-nav {
+    padding-top: 0;
+}
