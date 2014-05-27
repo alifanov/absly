@@ -1,6 +1,5 @@
 $(function(){
-    $(".definition-level a").bind('click', function(){
-        alert('123');
+    $(".definition-level a").live('click', function(){
         var _def_lvl = $(this).parents('.definition-level').eq(0);
         _def_lvl.find('a').removeClass('done');
         $(this).toggleClass('done');
