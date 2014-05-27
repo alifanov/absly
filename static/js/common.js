@@ -1,6 +1,6 @@
 $(function(){
     $(".definition-level a").click(function(){
-        $(this).toggleClass('done'));
+        $(this).toggleClass('done');
         return false;
     });
 
