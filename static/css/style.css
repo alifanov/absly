@@ -112,6 +112,7 @@ ul.main-objects li {
 .steps-recomendations-item.bg-primary a,
 .steps-recomendations-item.bg-primary {
     color: #fff;
+    background: #32a0ee;
 }
 .steps-done-item,
 .steps-recomendations-item {
