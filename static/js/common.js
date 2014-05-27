@@ -1,5 +1,5 @@
 $(function(){
-    $(".definition-level a").click(function(){
+    $(".definition-level a").on('click', function(){
         var _def_lvl = $(this).parents('.definition-level').eq(0);
         _def_lvl.find('a').removeClass('done');
         $(this).toggleClass('done');
