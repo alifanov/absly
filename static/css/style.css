@@ -313,6 +313,7 @@ ul.main-objects li {
 .canvas-block-items li a {
     color: #32a0ee;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .canvas-block-items input {
