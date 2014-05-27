@@ -309,6 +309,16 @@ ul.main-objects li {
     display: block;
 }
 
+.canvas-block-items li a:hover,
+.canvas-block-items li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.canvas-block-items input {
+    border-radius: 0px;
+}
+
 .canvas-element-title {
     margin-bottom: 10px;
 }
