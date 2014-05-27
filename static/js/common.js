@@ -4,6 +4,7 @@ $(function(){
         var lvl = parseInt($(this).attr('rel'));
         if ($(this).hasClass('done') && lvl > 0){
             var _def_lvl = $(this).parents('.definition-level').eq(0);
+            _def_lvl.find('a').removeClass('done'));
             _.each(_.range(1, lvl), function(a){
                 _def_lvl.find('a[rel="' + a + '"]').addClass('done');
             })
