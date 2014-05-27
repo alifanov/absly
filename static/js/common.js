@@ -1,4 +1,9 @@
 $(function(){
+    $(".definition-level a").click(function(){
+        $(this).toggleClass('done'));
+        return false;
+    });
+
     $(".canvas-element-item-del").click(function(){
         $(this).parents('li').remove();
         return false;
