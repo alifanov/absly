@@ -1,10 +1,10 @@
 $(function(){
     $(".definition-level a").click(function(){
+        var _def_lvl = $(this).parents('.definition-level').eq(0);
+        _def_lvl.find('a').removeClass('done');
         $(this).toggleClass('done');
         var lvl = parseInt($(this).attr('rel'));
         if ($(this).hasClass('done') && lvl > 0){
-            var _def_lvl = $(this).parents('.definition-level').eq(0);
-            _def_lvl.find('a').removeClass('done');
             _.each(_.range(0, lvl+1), function(a){
                 _def_lvl.find('a[rel="' + a + '"]').addClass('done');
             })
