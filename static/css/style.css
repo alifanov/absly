@@ -312,7 +312,7 @@ ul.main-objects li {
     display: block;
 }
 
-.canvas-block-items li:hover a .canvas-element-item-del {
+.canvas-block-items li:hover a.canvas-element-item-del {
     display: inline;
 }
 
