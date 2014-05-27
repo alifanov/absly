@@ -245,10 +245,19 @@
         {% else %}
             <li>
         {% endif %}
-            <a href="{% url 'summary' %}">
+            <a class="dropdown-toggle" href="{% url 'summary' %}">
                 <i class="icon-sitemap"></i>
                 <span>Summary</span>
+                <i class="icon-chevron-down"></i>
             </a>
+            <ul class="submenu">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Outer factors</a></li>
+                <li><a href="#">Business Models</a></li>
+                <li><a href="#">Strategy</a></li>
+            </ul>
+
         </li>
 {#        <li>#}
 {#            <a class="dropdown-toggle" href="#">#}
