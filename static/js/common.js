@@ -22,7 +22,17 @@ $(function(){
             var txt = $(this).val();
             if (txt){
                 var _ul = $(this).parents('td').eq(0).find('.canvas-block-items');
-                _ul.append('<li><a href="#">' + txt + '</a></li>');
+                _ul.append('<li><a href="#">' + txt + '' +
+                    '                            <a href="#" class="canvas-element-item-del">'+
+                    '<span class="icon-remove pull-right"></span>'+
+                '</a>'+
+                    '<div class="definition-level">'+
+                    '<a href="#" rel="0"></a>'+
+                    '<a href="#" rel="1"></a>'+
+                    '<a href="#" rel="2"></a>'+
+                    '<a href="#" rel="3"></a>'+
+                '</div>'+
+                    '</a></li>');
                 $(this).val('');
             }
         }
