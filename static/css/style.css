@@ -294,6 +294,19 @@ ul.main-objects li {
 
 .canvas-block-items li {
     list-style: none;
+    list-style: none;
+    display: block;
+    background: #E9E9E9;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.canvas-block-items li div.definition-level {
+    display: none;
+}
+
+.canvas-block-items li:hover div.definition-level {
+    display: block;
 }
 
 .canvas-block-items li.active {
@@ -314,3 +327,4 @@ ul.main-objects li {
 .definition-level a.done {
     opacity: 1;
 }
+
