@@ -309,6 +309,10 @@ ul.main-objects li {
     display: block;
 }
 
+.canvas-element-title {
+    margin-bottom: 10px;
+}
+
 .canvas-block-items li.active {
     padding-left: 20px;
 }
