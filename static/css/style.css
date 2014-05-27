@@ -351,3 +351,6 @@ ul.main-objects li {
     opacity: 1;
 }
 
+#main-stats .stat {
+    min-height: 112px;
+}
