@@ -12,7 +12,7 @@ $(function(){
         return false;
     });
 
-    $(".canvas-element-item-del").click(function(){
+    $(document).on('click', '.canvas-element-item-del', function(){
         $(this).parents('li').remove();
         return false;
     });
