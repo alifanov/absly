@@ -270,7 +270,7 @@ ul.main-objects li {
 .es-item-btns button {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 5px;
 }
 
 .es-addon-btns {
