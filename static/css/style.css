@@ -310,6 +310,10 @@ ul.main-objects li {
     display: inline;
 }
 
+.canvas-block-items input {
+    border-radius: 0px;
+}
+
 .canvas-block-items li a:hover,
 .canvas-block-items li a {
     color: #32a0ee;
