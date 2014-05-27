@@ -301,12 +301,19 @@ ul.main-objects li {
     padding: 5px;
 }
 
-.canvas-block-items li div.definition-level {
+.canvas-block-items li div.definition-level,
+.canvas-block-items li .canvas-element-item-del
+{
     display: none;
 }
 
-.canvas-block-items li:hover div.definition-level {
+.canvas-block-items li:hover div.definition-level
+{
     display: block;
+}
+
+.canvas-block-items li:hover a .canvas-element-item-del {
+    display: inline;
 }
 
 .canvas-block-items li a:hover,
