@@ -23,9 +23,9 @@ $(function(){
     $(".segments .canvas-block-items li a").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
         $(".segments .canvas-block-items li").removeClass('active');
-//        $(".segments .canvas-block-items li").removeClass('icon-play');
+        $(".segments .canvas-block-items li a").removeClass('icon-play');
        $(this).parents('li').eq(0).addClass('active');
-//       $(this).parents('li').eq(0).addClass('icon-play');
+       $(this).parents('li').eq(0).find('a.canvas-element-item-link').addClass('icon-play');
         $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
         return false;
     });
