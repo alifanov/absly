@@ -245,11 +245,11 @@
         {% else %}
             <li>
         {% endif %}
-            <a class="dropdown-toggle" href="{% url 'summary' %}">
+{#            <a class="dropdown-toggle" href="{% url 'summary' %}">#}
                 <i class="icon-sitemap"></i>
                 <span>Summary</span>
                 <i class=" icon-chevron-down"></i>
-            </a>
+{#            </a>#}
             <ul class="submenu">
                 {% for sg in summary_groups %}
                 <li><a href="{% url 'summary-group' pk=sg.pk %}">{{ sg.name }}</a></li>
