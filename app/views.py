@@ -48,7 +48,7 @@ class LeftMenuMixin(object):
         ctx['summary_groups'] = SummaryGroup.objects.order_by('order')
         return ctx
 
-class DashboardView(TemplateView):
+class DashboardView(LeftMenuMixin, TemplateView):
     template_name = 'dashboard.html'
 
     @method_decorator(login_required)
@@ -61,7 +61,7 @@ class DashboardView(TemplateView):
         return ctx
 
 
-class CanvasView(TemplateView):
+class CanvasView(LeftMenuMixin, TemplateView):
     template_name = 'canvas.html'
 
     @method_decorator(login_required)
@@ -107,7 +107,7 @@ class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, Updat
     form_class = SummaryItemForm
 #    exclude = ['name','group', 'public']
 
-class MetricsView(TemplateView):
+class MetricsView(LeftMenuMixin, TemplateView):
     template_name = 'metrics.html'
 
     @method_decorator(login_required)
@@ -119,7 +119,7 @@ class MetricsView(TemplateView):
         ctx['active'] = 'metrics'
         return ctx
 
-class StepsView(TemplateView):
+class StepsView(LeftMenuMixin, TemplateView):
     template_name = 'steps.html'
 
     @method_decorator(login_required)
@@ -131,7 +131,7 @@ class StepsView(TemplateView):
         ctx['active'] = 'steps'
         return ctx
 
-class StrategyView(TemplateView):
+class StrategyView(LeftMenuMixin, TemplateView):
     template_name = 'strategy.html'
 
     @method_decorator(login_required)
@@ -154,7 +154,7 @@ class EventDeleteView(View):
         return super(EventDeleteView, self).dispatch(request, *args, **kwargs)
 
 
-class EventsListView(ListView):
+class EventsListView(LeftMenuMixin, ListView):
     model = News
     context_object_name = 'news'
     template_name = 'communicate_list.html'
