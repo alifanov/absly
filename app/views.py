@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
 from app.models import SummaryGroup, SummaryItem
+from app.forms import SummaryItemForm
 import json
 
 class AjaxableResponseMixin(object):
@@ -100,7 +101,8 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
 class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
     template_name = 'summaryitem_form.html'
     model = SummaryItem
-    exclude = ['name','group', 'public']
+    form_class = SummaryItemForm
+#    exclude = ['name','group', 'public']
 
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
