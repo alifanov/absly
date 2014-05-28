@@ -193,7 +193,11 @@
                 <i class="icon-comments-alt"></i>
                 <span>Communications</span>
             </a>
-        </li>
+        <ul class="submenu">
+            {% for sg in news_groups %}
+                <li><a href="{% url 'communicate-group' pk=sg.pk %}">{{ sg.name }}</a></li>
+            {% endfor %}
+        </ul>
         {% if active == 'steps' %}
         <li>
             <div class="pointer">

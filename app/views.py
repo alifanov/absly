@@ -7,7 +7,7 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup, SummaryItem
+from app.models import SummaryGroup, SummaryItem, NewsGroup
 from app.forms import SummaryItemForm
 import json
 
@@ -46,6 +46,7 @@ class LeftMenuMixin(object):
     def get_context_data(self, **kwargs):
         ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
         ctx['summary_groups'] = SummaryGroup.objects.order_by('order')
+        ctx['news_groups'] = NewsGroup.objects.all()
         return ctx
 
 class DashboardView(LeftMenuMixin, TemplateView):
@@ -202,3 +203,9 @@ class EventsListView(LeftMenuMixin, ListView):
         ctx['sort_val'] = self.sort_val
         ctx['active'] = 'events'
         return ctx
+
+class EventsGroupListView(EventsListView):
+    def get_queryset(self):
+        ng = NewsGroup.objects.get(self.kwargs.get('pk'))
+        qs = super(EventsGroupListView, self).get_queryset()
+        return qs.filter(group__pk=ng.pk)
