@@ -10,11 +10,11 @@
                 <div class="es-item">
                     <h4 class="{% if sge.is_empty_text %}text-success{% else %}text-danger{% endif %}">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>
                     <div class="es-item-text {% if sge.is_empty_text %}done{% else %}empty{% endif %}">
-                        <form method="POST" action="{% url 'summary-item-update' pk=sge.pk %}">
-                            {% csrf_token %}
-                            <textarea name="text" id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
+{#                        <form method="POST" action="{% url 'summary-item-update' pk=sge.pk %}">#}
+{#                            {% csrf_token %}#}
+{#                            <textarea name="text" id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>#}
                             <div class="es-item-text-view">{{ sge.text }}</div>
-                        </form>
+{#                        </form>#}
                     </div>
                     <div class="es-item-btns">
                         <div class="view-settings">Who can view: <a href="#">{% if sge.public %}Everyone{% else %}Only me{% endif %}</a></div>
