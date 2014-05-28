@@ -251,11 +251,13 @@
                 <i class=" icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{% url 'summary' %}">About</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">Outer factors</a></li>
-                <li><a href="#">Business Models</a></li>
-                <li><a href="#">Strategy</a></li>
+                {% for sg in summary_groups %}
+                <li><a href="{% url 'summary' %}">{{ sg.name }}</a></li>
+                {% endfor %}
+{#                <li><a href="#">Product</a></li>#}
+{#                <li><a href="#">Outer factors</a></li>#}
+{#                <li><a href="#">Business Models</a></li>#}
+{#                <li><a href="#">Strategy</a></li>#}
             </ul>
 
         </li>

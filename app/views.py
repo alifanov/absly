@@ -7,6 +7,14 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
+from app.models import SummaryGroup
+
+class LeftMenuMixin(object):
+    def get_context_data(self, *kwargs):
+        ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
+        ctx['summary_groups'] = SummaryGroup.objects.order_by('order')
+        return ctx
+
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
 
@@ -32,7 +40,7 @@ class CanvasView(TemplateView):
         ctx['active'] = 'canvas'
         return ctx
 
-class ExecutiveSummaryView(TemplateView):
+class ExecutiveSummaryView(LeftMenuMixin, TemplateView):
     template_name = 'summary.html'
 
     @method_decorator(login_required)
