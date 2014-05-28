@@ -153,11 +153,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'summary',
     'app',
     'south',
     'sorl.thumbnail',
     'widget_tweaks',
-    'summary',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
