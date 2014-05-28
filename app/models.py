@@ -28,7 +28,7 @@ class SummaryItem(models.Model):
     public = models.BooleanField(default=False, verbose_name=u'Is public data')
 
     def __unicode__(self):
-        return self.name
+        return u'{} -> {}'.format(self.group.name, self.name)
 
     class Meta:
         verbose_name = u'SummaryItem'
