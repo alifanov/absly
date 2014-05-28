@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
-    url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view, name='summary-item-update'),
+    url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view(), name='summary-item-update'),
 
     url(r'^metrics/$', MetricsView.as_view(), name='metrics'),
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
