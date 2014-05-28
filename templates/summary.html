@@ -18,7 +18,7 @@
             <div class="es-item-text {% if sge.is_empty_text %}done{% else %}empty{% endif %}">
             <form method="POST" action="{% url 'summary-item-update' pk=sge.pk %}">
                 {% csrf_token %}
-                <textarea id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
+                <textarea name="text" id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
                 <div class="es-item-text-view">{{ sge.text }}</div>
             </form>
             </div>
