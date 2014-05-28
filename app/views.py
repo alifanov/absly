@@ -34,6 +34,7 @@ class AjaxableResponseMixin(object):
         # call form.save() for example).
 #        response = super(AjaxableResponseMixin, self).form_valid(form)
 #        if self.request.is_ajax():
+        form.save()
         data = {
             'pk': self.object.pk,
             }
