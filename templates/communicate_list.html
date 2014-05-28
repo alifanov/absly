@@ -13,22 +13,6 @@
             </div>
         </div>
         <hr/>
-        <div class="row">
-            <div class="col-sm-3">
-                <ul class="list-group">
-                    {% for group in groups %}
-                    <li class="list-group-item">
-                        <label>
-                            <input type="checkbox" name="cb_events" value="1" /> {{ group.name }}
-                        </label>
-                        {% if group.news.count %}
-                            <span class="badge">{{ group.news.count }}</span>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col-sm-9">
                 <div class="sort">
                     <span>New events by </span>
                     <ul class="nav nav-pills">
@@ -70,7 +54,5 @@
                     </div>
                     {% endfor %}
                 </div>
-        </div>
-
     </div>
 {% endblock %}
