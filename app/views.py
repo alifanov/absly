@@ -98,6 +98,7 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         return ctx
 
 class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
+    template_name = 'summaryitem_form.html'
     model = SummaryItem
     fields = ['text',]
 
