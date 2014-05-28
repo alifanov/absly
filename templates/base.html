@@ -246,8 +246,10 @@
             <li>
         {% endif %}
 {#            <a class="dropdown-toggle" href="{% url 'summary' %}">#}
-                <i class="icon-sitemap"></i>
-                <span>Summary</span>
+                <a href="{% url 'summary' %}">
+                    <i class="icon-sitemap"></i>
+                    <span>Summary</span>
+                </a>
                 <i class=" icon-chevron-down"></i>
 {#            </a>#}
             <ul class="submenu">
