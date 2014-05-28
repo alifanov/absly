@@ -32,14 +32,14 @@ class AjaxableResponseMixin(object):
         # We make sure to call the parent's form_valid() method because
         # it might do some processing (in the case of CreateView, it will
         # call form.save() for example).
-        response = super(AjaxableResponseMixin, self).form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-                }
-            return self.render_to_json_response(data)
-        else:
-            return response
+#        response = super(AjaxableResponseMixin, self).form_valid(form)
+#        if self.request.is_ajax():
+        data = {
+            'pk': self.object.pk,
+            }
+        return self.render_to_json_response(data)
+#        else:
+#            return response
 
 class LeftMenuMixin(object):
     def get_context_data(self, **kwargs):
