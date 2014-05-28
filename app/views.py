@@ -100,7 +100,7 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
 class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
     template_name = 'summaryitem_form.html'
     model = SummaryItem
-    fields = ['text',]
+    field = ['text',]
 
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
