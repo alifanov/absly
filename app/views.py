@@ -1,7 +1,7 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView
+from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, FormView
 from django.http import HttpResponse
 from app.forms import SummaryItemForm
 import arrow
@@ -97,7 +97,7 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         ctx['active'] = 'summary'
         return ctx
 
-class ExecutiveSummaryItemUpdateView(LeftMenuMixin, UpdateView):
+class ExecutiveSummaryItemUpdateView(LeftMenuMixin, FormView):
     form_class = SummaryItemForm
 
 class MetricsView(TemplateView):
