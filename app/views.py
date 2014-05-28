@@ -3,12 +3,11 @@
 from app.models import News, NewsGroup
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView
 from django.http import HttpResponse
-from app.forms import SummaryItemForm
 import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup
+from app.models import SummaryGroup, SummaryItem
 
 class AjaxableResponseMixin(object):
     """
@@ -98,7 +97,8 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         return ctx
 
 class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
-    form_class = SummaryItemForm
+    model = SummaryItem
+    fields = ['text',]
 
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
