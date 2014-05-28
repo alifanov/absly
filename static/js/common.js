@@ -79,6 +79,13 @@ $(function(){
             titem.find('h4').addClass('text-success');
             titemtext.removeClass('empty');
             titemtext.addClass('done');
+
+            var tform = titem.find('form').eq(0);
+            $.ajax({
+                type: "POST",
+                url: tform.attr('action'),
+                data: tform.serializeArray()
+            });
         }
         tarea.hide();
         tview.show();
