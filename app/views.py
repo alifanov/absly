@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from app.models import SummaryGroup
 
 class LeftMenuMixin(object):
-    def get_context_data(self, *kwargs):
+    def get_context_data(self, **kwargs):
         ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
         ctx['summary_groups'] = SummaryGroup.objects.order_by('order')
         return ctx
