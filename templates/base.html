@@ -261,7 +261,7 @@
                     <i class=" icon-chevron-down"></i>
                 </a>
 {#            </a>#}
-            <ul class="submenu">
+            <ul class="submenu {% if active == 'summary' %}active{% endif %}">
                 {% for sg in summary_groups %}
                 <li><a href="{% url 'summary-group' pk=sg.pk %}">{{ sg.name }}</a></li>
                 {% endfor %}
