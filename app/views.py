@@ -8,7 +8,7 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup
+from app.models import SummaryGroup, SummaryItem
 
 class AjaxableResponseMixin(object):
     """
@@ -97,8 +97,9 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         ctx['active'] = 'summary'
         return ctx
 
-class ExecutiveSummaryItemUpdateView(LeftMenuMixin, FormView):
+class ESItemUpdateView(LeftMenuMixin, FormView):
     form_class = SummaryItemForm
+    model = SummaryItem
 
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
