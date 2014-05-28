@@ -3,129 +3,54 @@
 {% block content %}
     <div class="container summary">
     <h1>Executive Summary
-        <button class="btn btn-primary pull-right">
-            <span class="icon-eye-open"></span> Preview
-        </button>
+{#        <button class="btn btn-primary pull-right">#}
+{#            <span class="icon-eye-open"></span> Preview#}
+{#        </button>#}
     </h1>
-    <div class="es-description">
-        <h4>
-            Здесь собрана вся важная информация о вашем проекте
-        </h4>
-        <div>Заполняйте:</div>
-        <div>Формируйте:</div>
-        <div>Отправляйте:</div>
-    </div>
-{#    <div class="es-links">#}
-{#        <div class="row">#}
-{#            <div class="col-lg-2">#}
-{#                <div class="main-link">#}
-{#                    <a href="#about">О проекте</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#descripion"><span class="text-success glyphicon glyphicon-ok"></span> Описание</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#achivement"><span class="text-danger glyphicon glyphicon-remove"></span> Достижения</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#advisors"><span class="text-danger glyphicon glyphicon-remove"></span> Адвизоры</a>#}
-{#                </div>#}
+{#    <div class="es-description">#}
+{#        <h3>{{ sg.name }}</h3>#}
+{#    </div>#}
+    <div class="es-data">
+        <h2>{{ sg.name }}</h2>
+        {% for sge in sg.items.all %}
+        <div class="es-item">
+            <h4 class="text-success">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>
+            <div class="es-item-text done">
+                <textarea id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
+                <div class="es-item-text-view">{{ sge.text }}</div>
+            </div>
+            <div class="es-item-btns">
+                <div class="view-settings">Who can view: <a href="#">{% if sge.public %}Everyone{% else %}Only me{% endif %}</a></div>
+                <button class="btn btn-primary" style="display: none;"> Save</button>
+            </div>
+        </div>
+            {% if not forloop.last %}
+                <hr />
+            {% endif %}
+        {% endfor %}
+{#        <div class="es-item">#}
+{#            <h4 class="text-success">Достижения</h4>#}
+{#            <div class="es-item-text done">#}
+{#                <textarea id="es1-text-area" class="es-item-text-area" style="display: none;"></textarea>#}
+{#                <div class="es-item-text-view">Есть первая версия</div>#}
 {#            </div>#}
-{#            <div class="col-lg-2">#}
-{#                <div class="main-link">#}
-{#                    <a href="#about">О продукте</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#descripion"><span class="text-success glyphicon glyphicon-ok"></span> Целевая аудитория</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#achivement"><span class="text-danger glyphicon glyphicon-remove"></span> Проблема</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#advisors"><span class="text-success glyphicon glyphicon-ok"></span> Решение</a>#}
-{#                </div>#}
+{#            <div class="es-item-btns">#}
+{#                <div class="view-settings">Who can view: <a href="#">Only me</a></div>#}
+{#                <button class="btn btn-primary" style="display: none;"> Save</button>#}
 {#            </div>#}
-{#            <div class="col-lg-2">#}
-{#                <div class="main-link">#}
-{#                    <a href="#about">Внешние факторы</a>#}
+{#            <div class="es-addon-btns">#}
+{#                <div>#}
+{#                    <button class="btn btn-primary">#}
+{#                        <span class="icon-plus"></span> 1 min pitch#}
+{#                    </button>#}
 {#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#descripion"><span class="text-success glyphicon glyphicon-ok"></span> Рынок</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#achivement"><span class="text-danger glyphicon glyphicon-remove"></span> Конкуренты</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#advisors"><span class="text-danger glyphicon glyphicon-remove"></span> Преимущества</a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col-lg-2">#}
-{#                <div class="main-link">#}
-{#                    <a href="#about">О компании</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#descripion"><span class="text-success glyphicon glyphicon-ok"></span> Бизнес-модель</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#achivement"><span class="text-danger glyphicon glyphicon-remove"></span> Команда</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#advisors"><span class="text-danger glyphicon glyphicon-remove"></span> Технология</a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col-lg-4">#}
-{#                <div class="main-link">#}
-{#                    <a href="#about">ХЗ как назвать</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#descripion"><span class="text-success glyphicon glyphicon-ok"></span> Стратегия продвижения</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#achivement"><span class="text-danger glyphicon glyphicon-remove"></span> Финанс и план-график</a>#}
-{#                </div>#}
-{#                <div class="sub-links">#}
-{#                    <a href="#advisors"><span class="text-danger glyphicon glyphicon-remove"></span> Предложение инвестору</a>#}
+{#                <div>#}
+{#                    <button class="btn btn-primary">#}
+{#                        <span class="icon-plus"></span> Advisors#}
+{#                    </button>#}
 {#                </div>#}
 {#            </div>#}
 {#        </div>#}
-{#    </div>#}
-    <div class="es-data">
-        <h2>About</h2>
-        <div class="es-item">
-            <h4 class="text-success">Description <span class="icon-eye-open"></span></h4>
-            <div class="es-item-text done">
-                <textarea id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
-                <div class="es-item-text-view">Big Data платформа для CEO стартапов</div>
-            </div>
-            <div class="es-item-btns">
-                <div class="view-settings">Who can view: <a href="#">Everyone</a></div>
-                <button class="btn btn-primary" style="display: none;"> Save</button>
-            </div>
-        </div>
-        <hr />
-        <div class="es-item">
-            <h4 class="text-success">Достижения</h4>
-            <div class="es-item-text done">
-                <textarea id="es1-text-area" class="es-item-text-area" style="display: none;"></textarea>
-                <div class="es-item-text-view">Есть первая версия</div>
-            </div>
-            <div class="es-item-btns">
-                <div class="view-settings">Who can view: <a href="#">Only me</a></div>
-                <button class="btn btn-primary" style="display: none;"> Save</button>
-            </div>
-            <div class="es-addon-btns">
-                <div>
-                    <button class="btn btn-primary">
-                        <span class="icon-plus"></span> 1 min pitch
-                    </button>
-                </div>
-                <div>
-                    <button class="btn btn-primary">
-                        <span class="icon-plus"></span> Advisors
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
 {% endblock %}
