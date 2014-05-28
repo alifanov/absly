@@ -27,6 +27,9 @@ class SummaryItem(models.Model):
     text = models.TextField(verbose_name=u'Data')
     public = models.BooleanField(default=False, verbose_name=u'Is public data')
 
+    def is_empty_text(self):
+        return True and self.text
+
     def __unicode__(self):
         return u'{} -> {}'.format(self.group.name, self.name)
 
