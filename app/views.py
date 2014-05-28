@@ -97,7 +97,7 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         ctx['active'] = 'summary'
         return ctx
 
-class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
+class ExecutiveSummaryItemUpdateView(LeftMenuMixin, UpdateView):
     form_class = SummaryItemForm
 
 class MetricsView(TemplateView):

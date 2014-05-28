@@ -16,9 +16,11 @@ urlpatterns = patterns('',
 
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
+
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
     url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView(), name='summary-item-update'),
+
     url(r'^metrics/$', MetricsView.as_view(), name='metrics'),
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
     url(r'^steps/$', StepsView.as_view(), name='steps'),
