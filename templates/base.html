@@ -245,15 +245,11 @@
         {% else %}
             <li>
         {% endif %}
-
+            <a class="dropdown-toggle" href="{% url 'summary' %}">
                 <i class="icon-sitemap"></i>
-                <a class="" href="{% url 'summary' %}">
-                    <span>Summary</span>
-                </a>
-
-                <a href="#" class="dropdown-toggle">
-                    <i class=" icon-chevron-down"></i>
-                </a>
+                <span>Summary</span>
+                <i class=" icon-chevron-down"></i>
+            </a>
             <ul class="submenu">
                 <li><a href="{% url 'summary' %}">About</a></li>
                 <li><a href="#">Product</a></li>
