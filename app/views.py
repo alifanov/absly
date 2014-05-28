@@ -206,6 +206,6 @@ class EventsListView(LeftMenuMixin, ListView):
 
 class EventsGroupListView(EventsListView):
     def get_queryset(self):
-        ng = NewsGroup.objects.get(self.kwargs.get('pk'))
+        ng = NewsGroup.objects.get(pk=self.kwargs.get('pk'))
         qs = super(EventsGroupListView, self).get_queryset()
         return qs.filter(group__pk=ng.pk)
