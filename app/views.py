@@ -74,7 +74,7 @@ class CanvasView(TemplateView):
         return ctx
 
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
-    template_name = 'summary_view.html'
+    template_name = 'summary_list.html'
     model = SummaryGroup
     context_object_name = 'sgs'
 
