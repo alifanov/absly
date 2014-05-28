@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
-CanvasView, DashboardView
+CanvasView, DashboardView, ExecutiveSummaryItemView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
+    url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
     url(r'^metrics/$', MetricsView.as_view(), name='metrics'),
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
     url(r'^steps/$', StepsView.as_view(), name='steps'),

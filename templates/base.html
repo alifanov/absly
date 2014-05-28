@@ -252,7 +252,7 @@
             </a>
             <ul class="submenu">
                 {% for sg in summary_groups %}
-                <li><a href="{% url 'summary' %}">{{ sg.name }}</a></li>
+                <li><a href="{% url 'summary-group' pk=sg.pk %}">{{ sg.name }}</a></li>
                 {% endfor %}
 {#                <li><a href="#">Product</a></li>#}
 {#                <li><a href="#">Outer factors</a></li>#}

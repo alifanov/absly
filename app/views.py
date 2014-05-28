@@ -1,7 +1,7 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView, View, TemplateView
+from django.views.generic import ListView, View, TemplateView, DetailView
 from django.http import HttpResponse
 import arrow
 from django.utils.decorators import method_decorator
@@ -49,6 +49,20 @@ class ExecutiveSummaryView(LeftMenuMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(ExecutiveSummaryView, self).get_context_data(**kwargs)
+        ctx['active'] = 'summary'
+        return ctx
+
+class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
+    template_name = 'summary.html'
+    model = SummaryGroup
+    context_object_name = 'sg'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(ExecutiveSummaryItemView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(ExecutiveSummaryItemView, self).get_context_data(**kwargs)
         ctx['active'] = 'summary'
         return ctx
 
