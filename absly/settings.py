@@ -156,7 +156,8 @@ INSTALLED_APPS = (
     'app',
     'south',
     'sorl.thumbnail',
-    'widget_tweaks'
+    'widget_tweaks',
+    'summary',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
