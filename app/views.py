@@ -73,8 +73,9 @@ class CanvasView(TemplateView):
         ctx['active'] = 'canvas'
         return ctx
 
-class ExecutiveSummaryView(LeftMenuMixin, TemplateView):
-    template_name = 'summary.html'
+class ExecutiveSummaryView(LeftMenuMixin, ListView):
+    template_name = 'summary_view.html'
+    model = SummaryGroup
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
