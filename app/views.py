@@ -76,6 +76,7 @@ class CanvasView(TemplateView):
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
     template_name = 'summary_view.html'
     model = SummaryGroup
+    context_object_name = 'sgs'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
