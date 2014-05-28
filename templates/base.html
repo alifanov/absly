@@ -196,7 +196,7 @@
         <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
             <i class="icon-chevron-down"></i>
             </a>
-        <ul class="submenu">
+        <ul class="submenu {% if active == 'events' %}active{% endif %}">
             {% for sg in news_groups %}
                 <li><a href="{% url 'communicate-group' pk=sg.pk %}">{{ sg.name }}</a></li>
             {% endfor %}
