@@ -1,14 +1,14 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, FormView
+from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView
 from django.http import HttpResponse
 from app.forms import SummaryItemForm
 import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup, SummaryItem
+from app.models import SummaryGroup
 
 class AjaxableResponseMixin(object):
     """
@@ -97,9 +97,8 @@ class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
         ctx['active'] = 'summary'
         return ctx
 
-class ESItemUpdateView(LeftMenuMixin, FormView):
+class ExecutiveSummaryItemUpdateView(AjaxableResponseMixin, LeftMenuMixin, UpdateView):
     form_class = SummaryItemForm
-    model = SummaryItem
 
 class MetricsView(TemplateView):
     template_name = 'metrics.html'
