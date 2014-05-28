@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
 from app.models import SummaryGroup, SummaryItem
+import json
 
 class AjaxableResponseMixin(object):
     """
