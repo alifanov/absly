@@ -365,3 +365,15 @@ ul.main-objects li {
 #sidebar-nav {
     padding-top: 0;
 }
+
+.content {
+    margin-left: 197px;
+}
+
+#sidebar-nav #dashboard-menu {
+    margin-left: 0;
+}
+
+#sidebar-nav {
+    width: 200px;
+}
