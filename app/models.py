@@ -49,7 +49,7 @@ class CanvasBlockItemParameter(models.Model):
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БД')
 
     def __unicode__(self):
-        return
+        return self.name
 
     class Meta:
         verbose_name = u'Параметр'
