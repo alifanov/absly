@@ -1,8 +1,8 @@
 $(function(){
-    $(".add-canvas-block-item").click(function(){
-        alert('add modal window');
-        return false;
-    });
+//    $(".add-canvas-block-item").click(function(){
+//        alert('add modal window');
+//        return false;
+//    });
 
     $(document).on('click', '.definition-level a', function(){
         var _def_lvl = $(this).parents('.definition-level').eq(0);
