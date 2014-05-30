@@ -22,33 +22,7 @@ $(function(){
         return false;
     });
 
-    $(".canvas .form-control").keypress(function(e){
-        if(e.which == 13){
-            var txt = $(this).val();
-            if (txt){
-                var _ul = $(this).parents('td').eq(0).find('.canvas-block-items');
-                _ul.append('<li><a href="#">' + txt + '' +
-                    '                            <a href="#" class="canvas-element-item-del">'+
-                    '<span class="icon-remove pull-right"></span>'+
-                '</a>'+
-                    '<div class="definition-level">'+
-                    '<a href="#" rel="0"></a>'+
-                    '<a href="#" rel="1"></a>'+
-                    '<a href="#" rel="2"></a>'+
-                    '<a href="#" rel="3"></a>'+
-                '</div>'+
-                    '</a></li>');
-                $(this).val('');
-            }
-        }
-    });
-
-//    $(".canvas td").click(function(){
-//        $(".canvas .form-group").hide();
-//        $(this).find('.form-group').show().find('input').focus();
-//    });
-
-    $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
+    $(".segments .canvas-block-items li a.canvas-element-item-link").toggle(function(){
         $("td:not(.segments) .canvas-block-items li").show();
         $(".segments .canvas-block-items li").removeClass('active');
         $(".segments .canvas-block-items li a").removeClass('icon-play');
@@ -56,6 +30,10 @@ $(function(){
        $(this).parents('li').eq(0).find('a.canvas-element-item-link').addClass('icon-play');
         $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
         return false;
+    }, function(){
+        $("td:not(.segments) .canvas-block-items li").show();
+        $(".segments .canvas-block-items li").removeClass('active');
+        $(".segments .canvas-block-items li a").removeClass('icon-play');
     });
 
     $(".es-item-text-view").click(function(){
