@@ -378,6 +378,6 @@ ul.main-objects li {
     width: 210px;
 }
 
-.canvas-element-item-link {
+li.active a.canvas-element-item-link {
     margin-left: -15px;
 }
