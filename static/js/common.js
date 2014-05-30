@@ -9,7 +9,7 @@ $(function(){
                 $("#add-element-modal-id form").slideUp();
 
                 setTimeout(function(){
-                    window.reload();
+                    location.reload();
                 }, 1000);
             }
         });
