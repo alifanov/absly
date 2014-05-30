@@ -38,10 +38,10 @@ $(function(){
         }
     });
 
-    $(".canvas td").click(function(){
-        $(".canvas .form-group").hide();
-        $(this).find('.form-group').show().find('input').focus();
-    });
+//    $(".canvas td").click(function(){
+//        $(".canvas .form-group").hide();
+//        $(this).find('.form-group').show().find('input').focus();
+//    });
 
     $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
