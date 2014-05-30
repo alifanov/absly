@@ -1,4 +1,8 @@
 $(function(){
+    $(".add-canvas-block-item").click(function(){
+        alert('add modal window');
+    });
+
     $(document).on('click', '.definition-level a', function(){
         var _def_lvl = $(this).parents('.definition-level').eq(0);
         _def_lvl.find('a').removeClass('done');
