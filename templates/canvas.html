@@ -88,7 +88,7 @@
                     <ul class="canvas-block-items">
                         {% for it in cse.elements.all %}
                         <li>
-                            <a href="#" rel="venture-funds" class="canvas-element-item-link"> {{ it.name }} (3)</a>
+                            <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>
                             <a href="#" class="canvas-element-item-del">
                                 <span class="icon-remove pull-right"></span>
                             </a>
@@ -100,30 +100,6 @@
                             </div>
                         </li>
                         {% endfor %}
-                        <li>
-                            <a href="#" class="canvas-element-item-link"> Business Angles (1)</a>
-                            <a href="#" class="canvas-element-item-del">
-                                <span class="icon-remove pull-right"></span>
-                            </a>
-                            <div class="definition-level">
-                                <a href="#" rel="0" class="done"></a>
-                                <a href="#" rel="1"></a>
-                                <a href="#" rel="2"></a>
-                                <a href="#" rel="3"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" rel="ceo-of-startups" class="canvas-element-item-link"> CEO of startups (1)</a>
-                            <a href="#" class="canvas-element-item-del">
-                                <span class="icon-remove pull-right"></span>
-                            </a>
-                            <div class="definition-level">
-                                <a href="#" rel="0" class="done"></a>
-                                <a href="#" rel="1"></a>
-                                <a href="#" rel="2"></a>
-                                <a href="#" rel="3"></a>
-                            </div>
-                        </li>
                     </ul>
                     <a class="add-canvas-block-item" href="#">
                         <div class="icon-plus "></div>
