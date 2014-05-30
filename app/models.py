@@ -32,7 +32,7 @@ class CanvasBlockItem(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название элемента')
     slug = models.CharField(max_length=200, verbose_name=u'Slug')
     level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности')
-    block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ')
+    block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='elements')
 
     def is_segment(self):
         return self.block.slug == 'customer-development'

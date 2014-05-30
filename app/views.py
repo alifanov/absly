@@ -7,7 +7,7 @@ import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup, SummaryItem, NewsGroup
+from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock
 from app.forms import SummaryItemForm
 import json
 
@@ -72,6 +72,8 @@ class CanvasView(LeftMenuMixin, TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super(CanvasView, self).get_context_data(**kwargs)
         ctx['active'] = 'canvas'
+        ctx['cse'] = CanvasBlock.objects.get(slug='customer-segments')
+        ctx['vp'] = CanvasBlock.objects.get(slug='value-proposition')
         return ctx
 
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
