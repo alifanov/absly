@@ -38,7 +38,7 @@ class CanvasBlockItem(models.Model):
         return self.block.slug == 'customer-development'
 
     def __unicode__(self):
-        return self.name
+        return u'{} -> {}'.format(self.block.name, self.name)
 
     class Meta:
         verbose_name = u'Элемент блока БМ'
