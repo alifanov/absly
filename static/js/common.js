@@ -34,6 +34,7 @@ $(function(){
 //        $("td:not(.segments) .canvas-block-items li").show();
 //        $(".segments .canvas-block-items li").removeClass('active');
 //        $(".segments .canvas-block-items li a").removeClass('icon-play');
+        return false;
     });
 
     $(".es-item-text-view").click(function(){
