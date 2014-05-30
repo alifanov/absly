@@ -377,3 +377,7 @@ ul.main-objects li {
 #sidebar-nav {
     width: 210px;
 }
+
+.canvas-element-item-link {
+    margin-left: -15px;
+}
