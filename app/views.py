@@ -23,10 +23,10 @@ class AjaxableResponseMixin(object):
 
     def form_invalid(self, form):
         response = super(AjaxableResponseMixin, self).form_invalid(form)
-        if self.request.is_ajax():
-            return self.render_to_json_response(form.errors, status=400)
-        else:
-            return response
+#        if self.request.is_ajax():
+        return self.render_to_json_response(form.errors, status=400)
+#        else:
+#            return response
 
     def form_valid(self, form):
         # We make sure to call the parent's form_valid() method because
@@ -34,7 +34,7 @@ class AjaxableResponseMixin(object):
         # call form.save() for example).
 #        response = super(AjaxableResponseMixin, self).form_valid(form)
 #        if self.request.is_ajax():
-        form.save()
+        self.object = form.save()
         data = {
             'pk': self.object.pk,
             }
