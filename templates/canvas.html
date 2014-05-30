@@ -163,18 +163,18 @@
                         </div>
                         <div class="modal-form-body">
                             {% csrf_token %}
-                            <input type="hidden" name="canvas_block" value="" id="canvas-block-slug-id" />
+                            <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
                                 <div class="form-group">
-                                    <select>
+                                    <select name="">
                                         <option>Choose customer segment...</option>
                                         {% for c in cse.elements.all %}
-                                            <option>{{ c.name }}</option>
+                                            <option value="{{ c.slug }}">{{ c.name }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>
-                                        <input class="form-control" type="text" placeholder="Insert element name..." />
+                                        <input name="name" class="form-control" type="text" placeholder="Insert element name..." />
                                     </label>
                                 </div>
                         </div>
