@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
-CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView
+CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
+    url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
