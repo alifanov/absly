@@ -25,8 +25,8 @@ $(function(){
     $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
         $(".segments .canvas-block-items li a").removeClass('icon-play');
+        $(".segments .canvas-block-items li").removeClass('active');
         if (!$(this).parents('li').eq(0).hasClass('active')){
-            $(".segments .canvas-block-items li").removeClass('active');
             $(this).parents('li').eq(0).addClass('active');
             $(this).parents('li').eq(0).find('a.canvas-element-item-link').addClass('icon-play');
             $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
