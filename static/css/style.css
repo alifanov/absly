@@ -381,3 +381,13 @@ ul.main-objects li {
 li.active a.canvas-element-item-link {
     margin-left: -15px;
 }
+
+.add-canvas-block-item div {
+    color: white;
+    background: #32a0ee;
+    padding: 10px;
+}
+
+.add-canvas-block-item:hover div {
+    background: #34adff;
+}
