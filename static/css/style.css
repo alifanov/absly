@@ -390,4 +390,5 @@ li.active a.canvas-element-item-link {
 
 .add-canvas-block-item:hover div {
     background: #34adff;
+    text-decoration: none;
 }
