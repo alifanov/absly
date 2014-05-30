@@ -6,6 +6,13 @@
     vertical-align: top!important;
 }
 
+.canvas .table tr td .add-canvas-block-item {
+    display: none;
+}
+.canvas .table tr td:hover .add-canvas-block-item {
+    display: block;
+}
+
 .top {
     height: 70px;
     padding-top: 10px;
