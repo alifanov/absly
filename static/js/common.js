@@ -24,8 +24,7 @@ $(function(){
 
     $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
-        alert($(this).parents('li').eq(0).hide());
-        if ($(this).parents('li').eq(0).hasClass('active')){
+        if (!$(this).parents('li').eq(0).hasClass('active')){
             $(".segments .canvas-block-items li").removeClass('active');
             $(".segments .canvas-block-items li a").removeClass('icon-play');
             $(this).parents('li').eq(0).addClass('active');
