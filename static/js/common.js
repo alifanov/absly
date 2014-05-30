@@ -1,4 +1,21 @@
 $(function(){
+    $("#add-element-modal-id form").submit(function(){
+        $.ajax({
+            type: 'POST',
+            url: '/canvas/element/add/',
+            data: $(this).serializeArray(),
+            success: function(resp){
+                $("#add-element-modal-id .alert-success").slideDown();
+                $("#add-element-modal-id form").slideUp();
+
+                setTimeout(function(){
+                    window.reload();
+                }, 1000);
+            }
+        });
+        return false;
+    });
+
 //    $(".add-canvas-block-item").click(function(){
 //        alert('add modal window');
 //        return false;
