@@ -31,9 +31,9 @@ $(function(){
         $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
         return false;
     }, function(){
-        $("td:not(.segments) .canvas-block-items li").show();
-        $(".segments .canvas-block-items li").removeClass('active');
-        $(".segments .canvas-block-items li a").removeClass('icon-play');
+//        $("td:not(.segments) .canvas-block-items li").show();
+//        $(".segments .canvas-block-items li").removeClass('active');
+//        $(".segments .canvas-block-items li a").removeClass('icon-play');
     });
 
     $(".es-item-text-view").click(function(){
