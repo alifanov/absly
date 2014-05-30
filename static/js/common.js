@@ -16,6 +16,11 @@ $(function(){
         return false;
     });
 
+    $(".add-canvas-block-item").mouseover(function(){
+        var slug = $(this).attr('rel');
+        $("#canvas-block-slug-id").val(slug);
+    });
+
 //    $(".add-canvas-block-item").click(function(){
 //        alert('add modal window');
 //        return false;

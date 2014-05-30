@@ -101,7 +101,7 @@
                         </li>
                         {% endfor %}
                     </ul>
-                    <a class="add-canvas-block-item" href="#" data-toggle="modal" data-target="#add-element-modal-id">
+                    <a class="add-canvas-block-item" href="#" rel="{{ cse.slug }}" data-toggle="modal" data-target="#add-element-modal-id">
                         <div class="icon-plus "></div>
                     </a>
                 </td>
@@ -161,6 +161,16 @@
                         Element successfully added
                     </div>
                     <form method="post">
+                        {% csrf_token %}
+                    <input type="hidden" name="canvas_block" value="" id="canvas-block-slug-id" />
+                        <div class="form-group">
+                            <select>
+                                <option>Choose customer segment...</option>
+                                {% for c in cse.elements.all %}
+                                    <option>{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label>
                                 <input class="form-control" type="text" placeholder="Insert element name..." />

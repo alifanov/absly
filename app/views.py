@@ -1,13 +1,13 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup
-from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView
+from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
 from django.http import HttpResponse
 import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 
-from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock
+from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem
 from app.forms import SummaryItemForm
 import json
 
@@ -41,6 +41,9 @@ class AjaxableResponseMixin(object):
         return self.render_to_json_response(data)
 #        else:
 #            return response
+
+class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
+    model = CanvasBlockItem
 
 class LeftMenuMixin(object):
     def get_context_data(self, **kwargs):
