@@ -9,6 +9,64 @@ from sorl.thumbnail import get_thumbnail
 from django.contrib.auth.models import User
 # Create your models here.
 
+class CanvasBlock(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Название блока')
+    slug = models.CharField(max_length=200, verbose_name=u'Slug')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'Блок шаблона бизнес-модели'
+        verbose_name_plural = u'Блоки шаблона бизнес-модели'
+
+
+ITEM_LEVEL_CHOICE = (
+    ('0', u'Гипотеза'),
+    ('1', u'Исследование'),
+    ('2', u'Проверено фактами'),
+    ('3', u'Проверено деньгами')
+)
+
+class CanvasBlockItem(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Название элемента')
+    slug = models.CharField(max_length=200, verbose_name=u'Slug')
+    level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности')
+    block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ')
+
+    def is_segment(self):
+        return self.block.slug == 'customer-development'
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'Элемент блока БМ'
+        verbose_name_plural = u'Элементы блока БМ'
+
+class CanvasBlockItemParameter(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Параметр элемента БМ')
+    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БД')
+
+    def __unicode__(self):
+        return
+
+    class Meta:
+        verbose_name = u'Параметр'
+        verbose_name_plural = u'Параметры'
+
+class CanvasBlockItemParameterValue(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Значение')
+    parameter = models.ForeignKey(CanvasBlockItemParameter, verbose_name=u'Параметр элемента БМ')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'Значение параметра'
+        verbose_name_plural = u'Значения параметров'
+
+
 class SummaryGroup(models.Model):
     name = models.CharField(verbose_name=u'Name', max_length=100)
     order = models.IntegerField(verbose_name=u'Order', default=0)
