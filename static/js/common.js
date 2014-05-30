@@ -1,6 +1,7 @@
 $(function(){
     $(".add-canvas-block-item").click(function(){
         alert('add modal window');
+        return false;
     });
 
     $(document).on('click', '.definition-level a', function(){
