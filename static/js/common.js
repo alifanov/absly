@@ -31,7 +31,7 @@ $(function(){
             $(this).parents('li').eq(0).find('a.canvas-element-item-link').addClass('icon-play');
             $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
         }
-        $(".segments .canvas-block-items li").removeClass('active');
+//        $(".segments .canvas-block-items li").removeClass('active');
         return false;
     });
 
