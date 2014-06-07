@@ -83,6 +83,7 @@
                         Customer Segments
                     </div>
                     <ul class="canvas-block-items">
+                        {% verbatim %}
                             <li ng-repeat="s in segments">
                                 <a href="#" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" class="canvas-element-item-del">
@@ -95,6 +96,7 @@
                                     <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
                                 </div>
                             </li>
+                        {% endverbatim %}
                     </ul>
                     <a class="add-canvas-block-item" href="#" rel="{{ cse.pk }}" data-toggle="modal" data-target="#add-element-modal-id">
                         <div class="icon-plus "></div>
