@@ -78,9 +78,9 @@
                         <input type="text" class="form-control" />
                     </div>
                 </td>
-                <td width="20%" rowspan="2" class="segments">
+                <td width="20%" rowspan="2" class="segments" ng-controller="customerSegmentsCtrl">
                     <div class="canvas-element-title">
-                        {{ cse.name }}
+                        Customer Segments
                     </div>
                     <ul class="canvas-block-items">
                         {% for it in cse.elements.all %}
