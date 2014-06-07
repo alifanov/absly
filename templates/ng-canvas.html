@@ -84,18 +84,18 @@
                     </div>
                     <ul class="canvas-block-items">
                         {% for it in cse.elements.all %}
-                        <li>
-                            <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>
-                            <a href="#" class="canvas-element-item-del">
-                                <span class="icon-remove pull-right"></span>
-                            </a>
-                            <div class="definition-level">
-                                <a href="#" rel="0" {% if it.level == 0 %}class="done"{% endif %}></a>
-                                <a href="#" rel="1" {% if it.level == 1 %}class="done"{% endif %}></a>
-                                <a href="#" rel="2" {% if it.level == 2 %}class="done"{% endif %}></a>
-                                <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
-                            </div>
-                        </li>
+                            <li>
+                                <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>
+                                <a href="#" class="canvas-element-item-del">
+                                    <span class="icon-remove pull-right"></span>
+                                </a>
+                                <div class="definition-level">
+                                    <a href="#" rel="0" {% if it.level == 0 %}class="done"{% endif %}></a>
+                                    <a href="#" rel="1" {% if it.level == 1 %}class="done"{% endif %}></a>
+                                    <a href="#" rel="2" {% if it.level == 2 %}class="done"{% endif %}></a>
+                                    <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
+                                </div>
+                            </li>
                         {% endfor %}
                     </ul>
                     <a class="add-canvas-block-item" href="#" rel="{{ cse.pk }}" data-toggle="modal" data-target="#add-element-modal-id">
@@ -161,19 +161,19 @@
                         <div class="modal-form-body">
                             {% csrf_token %}
                             <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
-                                <div class="form-group">
-                                    <select name="">
-                                        <option>Choose customer segment...</option>
-                                        {% for c in cse.elements.all %}
-                                            <option value="{{ c.slug }}">{{ c.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>
-                                        <input name="name" class="form-control" type="text" placeholder="Insert element name..." />
-                                    </label>
-                                </div>
+                            <div class="form-group">
+                                <select name="">
+                                    <option>Choose customer segment...</option>
+                                    {% for c in cse.elements.all %}
+                                        <option value="{{ c.slug }}">{{ c.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input name="name" class="form-control" type="text" placeholder="Insert element name..." />
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
