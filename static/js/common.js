@@ -1,4 +1,13 @@
-
+function customerSegmentsCtrl($scope){
+    $scope.segments = [
+        {
+            name: 'Startups CEO'
+        },
+        {
+            name: 'Venture Funs'
+        }
+    ];
+}
 
 $(function(){
     $("#add-element-modal-id form").submit(function(){
