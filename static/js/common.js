@@ -1,6 +1,5 @@
 function customerSegmentsCtrl($scope){
     $scope.segments = [
-        "1",
         {
             "name": 'Startups CEO'
         },
