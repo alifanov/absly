@@ -1,3 +1,5 @@
+
+
 $(function(){
     $("#add-element-modal-id form").submit(function(){
         $.ajax({
