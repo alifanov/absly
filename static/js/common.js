@@ -5,7 +5,7 @@ function customerSegmentsCtrl($scope){
             "name": 'Startups CEO'
         },
         {
-            "name": 'Venture Funs'
+            "name": 'Venture Funds'
         }
     ];
 }
