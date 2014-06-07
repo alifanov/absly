@@ -1,10 +1,10 @@
 function customerSegmentsCtrl($scope){
     $scope.segments = [
         {
-            name: 'Startups CEO'
+            "name": 'Startups CEO'
         },
         {
-            name: 'Venture Funs'
+            "name": 'Venture Funs'
         }
     ];
 }
