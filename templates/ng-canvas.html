@@ -83,9 +83,8 @@
                         Customer Segments
                     </div>
                     <ul class="canvas-block-items">
-                        {% for it in cse.elements.all %}
-                            <li>
-                                <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>
+                            <li ng-repeat="segment in segments">
+                                <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ segment.name }} (3)</a>
                                 <a href="#" class="canvas-element-item-del">
                                     <span class="icon-remove pull-right"></span>
                                 </a>
@@ -96,7 +95,6 @@
                                     <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
                                 </div>
                             </li>
-                        {% endfor %}
                     </ul>
                     <a class="add-canvas-block-item" href="#" rel="{{ cse.pk }}" data-toggle="modal" data-target="#add-element-modal-id">
                         <div class="icon-plus "></div>
