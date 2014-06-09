@@ -123,8 +123,8 @@
                     </div>
                     <ul class="canvas-block-items">
                         {% verbatim %}
-                            <li  ng-repeat="s in segments">
-                                <a ng-cloak href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
+                            <li ng-cloak ng-repeat="s in segments">
+                                <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del">
                                     <span class="icon-remove pull-right"></span>
                                 </a>
