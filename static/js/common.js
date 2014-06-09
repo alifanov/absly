@@ -11,7 +11,9 @@ function customerSegmentsCtrl($scope){
     ];
     $scope.remove=function(item){
         var index=$scope.bdays.indexOf(item);
-        $scope.bdays.splice(index,1);
+        if(index != -1){
+            $scope.bdays.splice(index,1);
+        }
     };
     $scope.setLevel = function(item, v){
         item.level = v;
