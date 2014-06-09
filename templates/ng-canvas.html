@@ -84,6 +84,7 @@
                     </div>
                     <ul class="canvas-block-items">
                         {% verbatim %}
+                            {{ segments|json }}
                             <li ng-cloak ng-repeat="s in segments">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del">
