@@ -1,10 +1,4 @@
 function customerSegmentsCtrl($scope){
-    $scope.addNewElement = function(){
-        $scope.segments.add({
-            name: $scope.elementName,
-            level: 0
-        });
-    };
 
     $scope.segments = [
         {
@@ -16,6 +10,13 @@ function customerSegmentsCtrl($scope){
             level: 0
         }
     ];
+    $scope.addNewElement = function(){
+        $scope.segments.add({
+            name: $scope.elementName,
+            level: 0
+        });
+    };
+
     $scope.remove=function(item){
         var index=$scope.segments.indexOf(item);
         if(index != -1){
