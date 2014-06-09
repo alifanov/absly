@@ -1,16 +1,25 @@
 function customerSegmentsCtrl($scope){
     $scope.segments = [
         {
-            "name": 'Startups CEO'
+            "name": 'Startups CEO',
+            level: 0
         },
         {
-            "name": 'Venture Funds'
+            "name": 'Venture Funds',
+            level: 0
         }
     ];
     $scope.remove=function(item){
-        var index=$scope.bdays.indexOf(item)
+        var index=$scope.bdays.indexOf(item);
         $scope.bdays.splice(index,1);
     };
+    $scope.setLevel = function(item, v){
+        item.level = v;
+    };
+    $scope.getLevelClass = function(item, v){
+        if(item.level <= v) return 'done';
+        return '';
+    }
 }
 
 $(function(){

@@ -90,10 +90,10 @@
                                     <span class="icon-remove pull-right"></span>
                                 </a>
                                 <div class="definition-level">
-                                    <a href="#" rel="0" {% if it.level == 0 %}class="done"{% endif %}></a>
-                                    <a href="#" rel="1" {% if it.level == 1 %}class="done"{% endif %}></a>
-                                    <a href="#" rel="2" {% if it.level == 2 %}class="done"{% endif %}></a>
-                                    <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
+                                    <a href="#" rel="0" ng-click="setLevel(s, 0)" ng-class="getLevelClass(s, 0)"></a>
+                                    <a href="#" rel="1" ng-click="setLevel(s, 1)" ng-class="getLevelClass(s, 1)"></a>
+                                    <a href="#" rel="2" ng-click="setLevel(s, 2)" ng-class="getLevelClass(s, 2)"></a>
+                                    <a href="#" rel="3" ng-click="setLevel(s, 3)" ng-class="getLevelClass(s, 3)"></a>
                                 </div>
                             </li>
                         {% endverbatim %}
