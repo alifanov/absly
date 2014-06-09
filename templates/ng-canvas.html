@@ -1,7 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container canvas" >
+    <div class="container canvas" ng-controller="customerSegmentsCtrl">
+        <div class="modal fade" id="add-element-modal-id" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add element</h4>
+                    </div>
+                    <form method="post">
+                        <div class="modal-body">
+                            <div style="display: none;" class="alert-success">
+                                Element successfully added
+                            </div>
+                            <div class="modal-form-body">
+                                {% csrf_token %}
+                                <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
+                                <div class="form-group">
+                                    <select name="">
+                                        <option>Choose customer segment...</option>
+                                        {% verbatim %}
+                                            <option ng-repeat="c in segments" value="{{ c.name }}">{{ c.name }}</option>
+                                        {% endverbatim %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input name="name" class="form-control" type="text" ng-model="elementName" placeholder="Insert element name..." />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary"  ng-click="addNewElement()">Add</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <table height="100%" class="table table-bordered">
             <tr style="height: 200px">
                 <td width="20%" rowspan="2">
@@ -78,7 +117,7 @@
                         <input type="text" class="form-control" />
                     </div>
                 </td>
-                <td width="20%" rowspan="2" class="segments" ng-controller="customerSegmentsCtrl">
+                <td width="20%" rowspan="2" class="segments">
                     <div class="canvas-element-title">
                         Customer Segments
                     </div>
@@ -147,42 +186,5 @@
         </table>
     </div>
 
-    <div class="modal fade" id="add-element-modal-id" ng-controller="customerSegmentsCtrl">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Add element</h4>
-                </div>
-                <form method="post">
-                    <div class="modal-body">
-                        <div style="display: none;" class="alert-success">
-                            Element successfully added
-                        </div>
-                        <div class="modal-form-body">
-                            {% csrf_token %}
-                            <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
-                            <div class="form-group">
-                                <select name="">
-                                    <option>Choose customer segment...</option>
-                                    {% verbatim %}
-                                        <option ng-repeat="c in segments" value="{{ c.name }}">{{ c.name }}</option>
-                                    {% endverbatim %}
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <input name="name" class="form-control" type="text" ng-model="elementName" placeholder="Insert element name..." />
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary"  ng-click="addNewElement()">Add</button>
-                    </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+
 {% endblock %}
