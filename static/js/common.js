@@ -11,7 +11,6 @@ function customerSegmentsCtrl($scope){
         }
     ];
     $scope.addNewElement = function(){
-        console.log(123);
         $scope.segments.push({
             name: $scope.elementName,
             level: 0
