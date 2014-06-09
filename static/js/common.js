@@ -12,7 +12,7 @@ function customerSegmentsCtrl($scope){
     ];
     $scope.addNewElement = function(){
         $scope.segments.push({
-            name: $scope.elementName,
+            name: '123',
             level: 0
         });
     };
