@@ -164,7 +164,9 @@
                             <div class="form-group">
                                 <select name="">
                                     <option>Choose customer segment...</option>
-                                        <option ng-repeat="c in segments" value="{{ c.name }}">{{ c.name }}</option>
+                                    {% verbatim %}
+                                        <option ng-repeat="{{ c in segments }}" value="{{ c.name }}">{{ c.name }}</option>
+                                    {% endverbatim %}
                                 </select>
                             </div>
                             <div class="form-group">
