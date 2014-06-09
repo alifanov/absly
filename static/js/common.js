@@ -11,10 +11,7 @@ function customerSegmentsCtrl($scope){
         }
     ];
     $scope.addNewElement = function(){
-        $scope.segments.push({
-            name: '123',
-            level: 0
-        });
+        $scope.segments = [];
     };
 
     $scope.remove=function(item){
