@@ -65,10 +65,10 @@ $(function(){
         return false;
     });
 
-    $(document).on('click', '.canvas-element-item-del', function(){
-        $(this).parents('li').remove();
-        return false;
-    });
+//    $(document).on('click', '.canvas-element-item-del', function(){
+//        $(this).parents('li').remove();
+//        return false;
+//    });
 
     $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
         $("td:not(.segments) .canvas-block-items li").show();
