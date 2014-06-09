@@ -7,6 +7,10 @@ function customerSegmentsCtrl($scope){
             "name": 'Venture Funds'
         }
     ];
+    $scope.remove=function(item){
+        var index=$scope.bdays.indexOf(item)
+        $scope.bdays.splice(index,1);
+    };
 }
 
 $(function(){

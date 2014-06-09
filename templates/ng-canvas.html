@@ -86,7 +86,7 @@
                         {% verbatim %}
                             <li ng-cloak ng-repeat="s in segments">
                                 <a href="#" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
-                                <a href="#" class="canvas-element-item-del">
+                                <a href="#" ng-click="remove(s)" class="canvas-element-item-del">
                                     <span class="icon-remove pull-right"></span>
                                 </a>
                                 <div class="definition-level">
