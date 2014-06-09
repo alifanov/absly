@@ -33,23 +33,23 @@ function customerSegmentsCtrl($scope){
 }
 
 $(function(){
-    $("#add-element-modal-id form").submit(function(){
-        $.ajax({
-            type: 'POST',
-            url: '/canvas/element/add/',
-            data: $(this).serializeArray(),
-            success: function(resp){
-                $("#add-element-modal-id .alert-success").slideDown();
-                $("#add-element-modal-id form").slideUp();
-
-                setTimeout(function(){
-                    location.reload();
-                }, 1000);
-            }
-        });
-        return false;
-    });
-
+//    $("#add-element-modal-id form").submit(function(){
+//        $.ajax({
+//            type: 'POST',
+//            url: '/canvas/element/add/',
+//            data: $(this).serializeArray(),
+//            success: function(resp){
+//                $("#add-element-modal-id .alert-success").slideDown();
+//                $("#add-element-modal-id form").slideUp();
+//
+//                setTimeout(function(){
+//                    location.reload();
+//                }, 1000);
+//            }
+//        });
+//        return false;
+//    });
+//
     $(".add-canvas-block-item").mouseover(function(){
         var slug = $(this).attr('rel');
         $("#canvas-block-slug-id").val(slug);
