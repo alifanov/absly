@@ -1,4 +1,11 @@
 function customerSegmentsCtrl($scope){
+    $scope.addNewElement = function(){
+        $scope.segments.add({
+            name: $scope.elementName,
+            level: 0
+        });
+    };
+
     $scope.segments = [
         {
             "name": 'Startups CEO',
