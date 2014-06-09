@@ -10,9 +10,9 @@ function customerSegmentsCtrl($scope){
         }
     ];
     $scope.remove=function(item){
-        var index=$scope.bdays.indexOf(item);
+        var index=$scope.segments.indexOf(item);
         if(index != -1){
-            $scope.bdays.splice(index,1);
+            $scope.segments.splice(index,1);
         }
     };
     $scope.setLevel = function(item, v){
