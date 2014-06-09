@@ -17,7 +17,7 @@ function customerSegmentsCtrl($scope){
         item.level = v;
     };
     $scope.getLevelClass = function(item, v){
-        if(item.level <= v) return 'done';
+        if(v <= item.level) return 'done';
         return '';
     }
 }
