@@ -146,7 +146,7 @@
         </table>
     </div>
 
-    <div class="modal fade" id="add-element-modal-id">
+    <div class="modal fade" id="add-element-modal-id" ng-controller="customerSegmentsCtrl">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,9 +164,7 @@
                             <div class="form-group">
                                 <select name="">
                                     <option>Choose customer segment...</option>
-                                    {% for c in cse.elements.all %}
-                                        <option value="{{ c.slug }}">{{ c.name }}</option>
-                                    {% endfor %}
+                                        <option ng-repeat="c in segments" value="{{ c.name }}">{{ c.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
