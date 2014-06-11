@@ -37,7 +37,6 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.searchActiveSegment = function(el){
-        return true;
         if(!$scope.activeSegment) return true;
         if($scope.activeSegment == el.segment) return true;
         else return false;
