@@ -20,7 +20,6 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.setActiveBlock = function(element){
-        console.log('123');
         $scope.activeBlock = element;
     };
 
@@ -32,9 +31,9 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.remove=function(item){
-        var index=$scope.segments.indexOf(item);
+        var index=$scope.activeBlock.indexOf(item);
         if(index != -1){
-            $scope.segments.splice(index,1);
+            $scope.activeBlock.splice(index,1);
         }
     };
     $scope.setLevel = function(item, v){
