@@ -42,8 +42,8 @@ function customerSegmentsCtrl($scope){
         else return false;
     };
 
-    $scope.activeSegmentClass = function(s){
-        if (s == $scope.activeSegment) return "icon-play";
+    $scope.activeSegmentClass = function(s, className){
+        if (s == $scope.activeSegment) return className;
         return "";
     };
 
