@@ -36,6 +36,12 @@ function customerSegmentsCtrl($scope){
         }
     };
 
+    $scope.searchActiveSegment = function(el){
+        if(!$scope.activeSegment) return true;
+        if($scope.activeSegment == el.segment) return true;
+        else return false;
+    };
+
     $scope.activeSegmentClass = function(s){
         if (s == $scope.activeSegment) return "icon-play";
         return "";
