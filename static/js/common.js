@@ -34,7 +34,7 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.activeSegmentClass = function(s){
-        if (s == $scope.activeSegment) return "active";
+        if (s == $scope.activeSegment) return "icon-play";
         return "";
     };
 
