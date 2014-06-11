@@ -9,6 +9,7 @@ function customerSegmentsCtrl($scope){
     $scope.revenuestreams = [];
     $scope.relationship = [];
     $scope.propositions = [];
+    $scope.partners = [];
 
     $scope.segments = [
         {

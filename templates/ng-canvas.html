@@ -43,13 +43,13 @@
 
         <table height="100%" class="table table-bordered">
             <tr style="height: 200px">
-                <td width="20%" rowspan="2">
+                <td width="20%" rowspan="2" ng-mouseover="setActiveBlock(partners)">
                     <div class="canvas-element-title">
                         Key Partners
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in activities">
+                            <li ng-cloak ng-repeat="s in partners">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
