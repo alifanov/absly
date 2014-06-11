@@ -23,6 +23,10 @@ function customerSegmentsCtrl($scope){
     ];
     $scope.activeBlock = $scope.segments;
 
+    $scope.isSegment = function(){
+        return $scope.activeBlock == $scope.segments;
+    };
+
     $scope.testf = function(){
         console.log('test');
     };
