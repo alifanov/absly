@@ -14,14 +14,17 @@ function customerSegmentsCtrl($scope){
         }
     ];
     $scope.activeBlock = $scope.segments;
-    $scope.setActiveBlock = function(element){
 
+    $scope.testf = function(){
+        console.log('test');
+    };
+
+    $scope.setActiveBlock = function(element){
+        console.log('123');
         $scope.activeBlock = element;
     };
 
     $scope.addNewElement = function(){
-        console.log('123');
-
         $scope.activeBlock.push({
             name: $scope.elementName,
             level: 0
