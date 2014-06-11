@@ -57,7 +57,9 @@
                 </td>
                 <td width="20%">
                     <div class="canvas-element-title">
+                        {% verbatim %}
                         Key Activities {{ activities|json }}
+                        {% endverbatim %}
                     </div>
                     <ul class="canvas-block-items">
                             <li ng-cloak ng-repeat="s in activities">
