@@ -30,7 +30,10 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.setActiveSegment = function(s){
-        $scope.activeSegment = s;
+        if(s == $scope.activeSegment) $scope.activeSegment = null;
+        else{
+            $scope.activeSegment = s;
+        }
     };
 
     $scope.activeSegmentClass = function(s){
