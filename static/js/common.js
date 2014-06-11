@@ -15,6 +15,7 @@ function customerSegmentsCtrl($scope){
     ];
     $scope.activeBlock = $scope.segments;
     $scope.setActiveBlock = function(element){
+        console.log('123');
         $scope.activeBlock = element;
     };
 
