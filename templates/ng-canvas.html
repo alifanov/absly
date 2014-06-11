@@ -77,7 +77,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in activities">
+                            <li ng-cloak ng-repeat="s in activities | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -161,7 +161,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in segments | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in segments">
                                 <a href="#" ng-model="s.name" rel="#"  ng-class="activeSegmentClass(s)" class="canvas-element-item-link"  ng-click="setActiveSegment(s)"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
