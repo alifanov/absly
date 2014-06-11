@@ -98,7 +98,7 @@
                         <div class="icon-plus "></div>
                     </a>
                 </td>
-                <td width="20%" colspan="2" rowspan="2">
+                <td width="20%" colspan="2" rowspan="2" ng-mouseover="setActiveBlock(propositions)">
                     <div class="canvas-element-title">
                         Value Proposition
                     </div>
@@ -127,7 +127,7 @@
                 </td>
 
                 </td>
-                <td width="20%">
+                <td width="20%" ng-mouseover="setActiveBlock(relationship)">
                     <div class="canvas-element-title">
                         Customer Relationship
                     </div>
@@ -155,13 +155,13 @@
                     </a>
                 </td>
                 </td>
-                <td width="20%" rowspan="2" class="segments">
+                <td width="20%" rowspan="2" class="segments" ng-mouseover="setActiveBlock(segments)">
                     <div class="canvas-element-title">
                         Customer Segments
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in activities">
+                            <li ng-cloak ng-repeat="s in segments">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -185,7 +185,7 @@
                 </td>
             </tr>
             <tr style="height: 200px">
-                <td>
+                <td ng-mouseover="setActiveBlock(resources)">
                     <div class="canvas-element-title">
                         Key Resources
                     </div>
@@ -213,7 +213,7 @@
                     </a>
                 </td>
                 </td>
-                <td>
+                <td ng-mouseover="setActiveBlock(channels)">
                     <div class="canvas-element-title">
                         Channles
                     </div>
@@ -243,7 +243,7 @@
                 </td>
             </tr>
             <tr style="height: 100px">
-                <td colspan="3" width="50%">
+                <td colspan="3" width="50%" ng-mouseover="setActiveBlock(costs)">
                     <div class="canvas-element-title">
                         Cost Structure
                     </div>
@@ -271,7 +271,7 @@
                     </a>
                 </td>
                 </td>
-                <td colspan="3" width="50%">
+                <td colspan="3" width="50%" ng-mouseover="setActiveBlock(revenuestreams)">
                     <div class="canvas-element-title">
                         Revenue Streams
                     </div>
