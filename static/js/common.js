@@ -1,5 +1,13 @@
 function customerSegmentsCtrl($scope){
 
+    $scope.activeBlock = $scope.segments;
+
+    $scope.activities = [];
+
+    $scope.setActiveBlock = function(element){
+        $scope.activeBlock = element;
+    };
+
     $scope.segments = [
         {
             "name": 'Startups CEO',
@@ -11,7 +19,7 @@ function customerSegmentsCtrl($scope){
         }
     ];
     $scope.addNewElement = function(){
-        $scope.segments.push({
+        $scope.activeBlock.push({
             name: $scope.elementName,
             level: 0
         });

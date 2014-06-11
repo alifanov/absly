@@ -59,11 +59,24 @@
                     <div class="canvas-element-title">
                         Key Activities
                     </div>
-                    <ul class="canvas-block-items"></ul>
+                    <ul class="canvas-block-items">
+                            <li ng-cloak ng-repeat="s in activities">
+                                <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
+                                <a href="#" ng-click="remove(s)" class="canvas-element-item-del">
+                                    <span class="icon-remove pull-right"></span>
+                                </a>
+                                <div class="definition-level">
+                                    <a href="#" rel="0" ng-click="setLevel(s, 0)" ng-class="getLevelClass(s, 0)"></a>
+                                    <a href="#" rel="1" ng-click="setLevel(s, 1)" ng-class="getLevelClass(s, 1)"></a>
+                                    <a href="#" rel="2" ng-click="setLevel(s, 2)" ng-class="getLevelClass(s, 2)"></a>
+                                    <a href="#" rel="3" ng-click="setLevel(s, 3)" ng-class="getLevelClass(s, 3)"></a>
+                                </div>
+                            </li>
+                    </ul>
                     <div class="form-group" style="display: none;">
                         <input type="text" class="form-control" />
                     </div>
-                    <a class="add-canvas-block-item" href="#">
+                    <a class="add-canvas-block-item" href="#"  data-toggle="modal" data-target="#add-element-modal-id" ng-click="setActiveBLock(activities)">
                         <div class="icon-plus "></div>
                     </a>
                 </td>
