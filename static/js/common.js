@@ -2,6 +2,13 @@ function customerSegmentsCtrl($scope){
 
 
     $scope.activities = [];
+    $scope.costs = [];
+    $scope.resources = [];
+    $scope.channels = [];
+    $scope.activities = [];
+    $scope.revenuestreams = [];
+    $scope.relationship = [];
+    $scope.propositions = [];
 
     $scope.segments = [
         {
