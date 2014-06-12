@@ -19,14 +19,38 @@ function customerSegmentsCtrl($scope){
             }
         ]
     };
-    $scope.costs = [];
-    $scope.resources = [];
-    $scope.channels = [];
-    $scope.activities = [];
-    $scope.revenuestreams = [];
-    $scope.relationship = [];
-    $scope.propositions = [];
-    $scope.partners = [];
+    $scope.costs = {
+        name: 'Cost Structure',
+        items: []
+    };
+    $scope.resources = {
+        name: 'Key Resources',
+        items: []
+    };
+    $scope.channels = {
+        name: 'Channels',
+        items: []
+    };
+    $scope.activities = {
+        name: 'Key Activities',
+        items: []
+    };
+    $scope.revenuestreams = {
+        name: 'Revenue Streams',
+        items: []
+    };
+    $scope.relationship = {
+        name: 'Customer Relationship',
+        items: []
+    };
+    $scope.propositions = {
+        name: 'Value Proposition',
+        items: []
+    };
+    $scope.partners = {
+        name: 'Key Partners',
+        items: []
+    };
 
     $scope.activeSegment = null;
 
