@@ -38,13 +38,18 @@
             {% endif %}
 
                 <h6>Log in</h6>
-                <input class="form-control" type="text" placeholder="E-mail address">
-                <input class="form-control" type="password" placeholder="Your password">
-                <a href="#" class="forgot">Forgot password?</a>
-                <div class="remember">
-                    <input id="remember-me" type="checkbox">
-                </div>
-                <a class="btn-glow primary login" href="#">Log in</a>
+            <form method="POST" autocomplete="off" action="">
+                {{ form.username|add_class:"form-control"|attr:"placeholder:E-mail address" }}
+                {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
+{#                <input class="form-control" type="text" placeholder="E-mail address">#}
+{#                <input class="form-control" type="password" placeholder="Your password">#}
+{#                <a href="#" class="forgot">Forgot password?</a>#}
+{#                <div class="remember">#}
+{#                    <input id="remember-me" type="checkbox">#}
+{#                </div>#}
+            <button class="btn-glow primary login">Log in</button>
+                </form>
+{#                <a class="btn-glow primary login" href="#">Log in</a>#}
             </div>
         </div>
 
