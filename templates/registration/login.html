@@ -39,6 +39,7 @@
 
                 <h6>Log in</h6>
             <form method="POST">
+                {% csrf_token %}
                 {{ form.username|add_class:"form-control"|attr:"placeholder:E-mail address" }}
                 {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
 {#                <input class="form-control" type="text" placeholder="E-mail address">#}
