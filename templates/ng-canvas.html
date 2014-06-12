@@ -17,13 +17,14 @@
                             <div class="modal-form-body">
                                 {% csrf_token %}
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
-                                <div class="form-group" ng-repeat="q in activeBlock.questions">
-                                <select>
                                     {% verbatim %}
+                                <div class="form-group" ng-repeat="q in activeBlock.questions">
+                                    <p>{{ q }}</p>
+                                <select>
                                     <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>
-                                    {% endverbatim %}
                                 </select>
                                 </div>
+                                    {% endverbatim %}
                                 <div class="form-group" ng-hide="isSegment()">
                                     <select name="" ng-model="newElement.segment" ng-options="s.name for s in segments.items">
                                     </select>
