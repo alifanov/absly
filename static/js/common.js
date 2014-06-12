@@ -23,6 +23,8 @@ function customerSegmentsCtrl($scope){
             level: 0
         }
     ];
+    $scope.newElement.segment = $scope.segments[0];
+
     $scope.activeBlock = $scope.segments;
 
     $scope.isSegment = function(){
@@ -62,7 +64,6 @@ function customerSegmentsCtrl($scope){
             level: 0
         });
         $scope.newElement.name = '';
-        $scope.newElement.segment = $scope.segments[0];
         $("#add-element-modal-id").modal('hide');
     };
 
