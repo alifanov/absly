@@ -18,7 +18,7 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
                                 <div class="form-group" ng-hide="isSegment()">
-                                    <select name="" ng-model="newElement.segment" ng-options="s.name for s in segments">
+                                    <select name="" ng-model="newElement.segment" ng-options="s.name for s in segments.items">
                                     </select>
                                 </div>
                                 <div class="form-group">
