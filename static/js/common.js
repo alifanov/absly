@@ -31,10 +31,6 @@ function customerSegmentsCtrl($scope){
         name: 'Channels',
         items: []
     };
-    $scope.activities = {
-        name: 'Key Activities',
-        items: []
-    };
     $scope.revenuestreams = {
         name: 'Revenue Streams',
         items: []
