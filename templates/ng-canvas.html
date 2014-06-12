@@ -17,7 +17,7 @@
                             <div class="modal-form-body">
                                 {% csrf_token %}
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
-                                <select ng-repeat="q in activeBlock.questions" ng-options="a for a in q.ans"></select>
+                                <select ng-repeat="q in activeBlock.questions" ng-options="a in q.ans"></select>
                                 <div class="form-group" ng-hide="isSegment()">
                                     <select name="" ng-model="newElement.segment" ng-options="s.name for s in segments.items">
                                     </select>
