@@ -42,7 +42,7 @@
                 {% csrf_token %}
                 {{ form.username|add_class:"form-control"|attr:"placeholder:E-mail address" }}
                 {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
-                <input name="next" value="/" />
+                <input name="next" value="/" type="hidden" />
 {#                <input class="form-control" type="text" placeholder="E-mail address">#}
 {#                <input class="form-control" type="password" placeholder="Your password">#}
 {#                <a href="#" class="forgot">Forgot password?</a>#}
