@@ -1,7 +1,24 @@
 function customerSegmentsCtrl($scope){
 
 
-    $scope.activities = [];
+    $scope.activities = {
+        name: 'Key Activitis',
+        items: [],
+        questions: [
+            {
+                q: 'Какой процесс создает основную ценность ?',
+                ans: [
+                    'личные продажи',
+                    'разработка платформы',
+                    'разработка платформы',
+                    'отношения с клиентами',
+                    'разработка новшеств',
+                    'исследования',
+                    'маркетинг'
+                ]
+            }
+        ]
+    };
     $scope.costs = [];
     $scope.resources = [];
     $scope.channels = [];
@@ -13,18 +30,30 @@ function customerSegmentsCtrl($scope){
 
     $scope.activeSegment = null;
 
-    $scope.segments = [
-        {
-            "name": 'Startups CEO',
-            level: 0
-        },
-        {
-            "name": 'Venture Funds',
-            level: 0
-        }
-    ];
+    $scope.segments = {
+        name: 'Customer segments',
+        questions: [
+            {
+                q: 'Кто ваши клиенты ?',
+                ans: [
+                    'бизнес',
+                    'люди'
+                ]
+            }
+        ],
+        items: [
+            {
+                "name": 'Startups CEO',
+                level: 0
+            },
+            {
+                "name": 'Venture Funds',
+                level: 0
+            }
+        ]
+    };
     $scope.newElement = {
-        segment: $scope.segments[0],
+        segment: $scope.segments.items[0],
         name: ''
     };
 

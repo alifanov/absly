@@ -161,7 +161,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in segments" ng-class="activeSegmentClass(s, 'active')">
+                            <li ng-cloak ng-repeat="s in segments.items" ng-class="activeSegmentClass(s, 'active')">
                                 <a href="#" ng-model="s.name" rel="#"
                                    ng-class="activeSegmentClass(s, 'icon-play')" class="canvas-element-item-link"  ng-click="setActiveSegment(s)"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
