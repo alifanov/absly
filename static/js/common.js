@@ -23,7 +23,10 @@ function customerSegmentsCtrl($scope){
             level: 0
         }
     ];
-//    $scope.newElement.segment = $scope.segments[0];
+    $scope.newElement = {
+        segment: $scope.segments[0],
+        name: ''
+    };
 
     $scope.activeBlock = $scope.segments;
 
