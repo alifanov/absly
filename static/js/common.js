@@ -100,9 +100,9 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.remove=function(item){
-        var index=$scope.activeBlock.indexOf(item);
+        var index=$scope.activeBlock.items.indexOf(item);
         if(index != -1){
-            $scope.activeBlock.splice(index,1);
+            $scope.activeBlock.items.splice(index,1);
         }
     };
     $scope.setLevel = function(item, v){
