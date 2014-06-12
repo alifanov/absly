@@ -157,10 +157,12 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'widget_tweaks',
+    'djdrill'
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
-
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+MANDRILL_API_KEY = 'RDps2uN2lIy6-bpvWRctyQ'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
