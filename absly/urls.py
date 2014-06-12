@@ -8,9 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', TemplateView.as_view(
-        template_name='index.html'
-    ), name='home'),
+    url(r'^$', DashboardView.as_view(), name='home'),
 
     url(r'^accounts/', include('registration.backends.default.urls')),
 
