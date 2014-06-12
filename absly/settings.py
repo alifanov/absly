@@ -159,7 +159,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'djrill'
 )
-
+DEFAULT_FROM_EMAIL = 'info@absly.progernachas.ru'
 ACCOUNT_ACTIVATION_DAYS = 3
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 MANDRILL_API_KEY = 'RDps2uN2lIy6-bpvWRctyQ'
