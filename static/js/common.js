@@ -61,6 +61,8 @@ function customerSegmentsCtrl($scope){
             segment: $scope.newElement.segment,
             level: 0
         });
+        $scope.newElement.name = '';
+        $scope.newElement.segment = $scope.segments[0];
         $("#add-element-modal-id").modal('hide');
     };
 
