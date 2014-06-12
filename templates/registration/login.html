@@ -10,10 +10,27 @@
 {% block body_content %}
     <div class="header">
         <a href="/">
-            <img src="{{ STATIC_URL }}theme/img/logo.png" class="logo" alt="logo" />
+            ABSLY
         </a>
     </div>
     <div class="login-wrapper">
+            <div class="alert-warning">
+                {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+            </div>
+
+            {% if form.errors %}
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         <div class="box">
             <div class="content-wrap">
                 <h6>Sign Up</h6>
@@ -21,14 +38,14 @@
                 <input class="form-control" type="password" placeholder="Password">
                 <input class="form-control" type="password" placeholder="Confirm Password">
                 <div class="action">
-                    <a class="btn-glow primary signup" href="index.html">Sign up</a>
+                    <a class="btn-glow primary signup" href="#">Sign up</a>
                 </div>
             </div>
         </div>
 
         <div class="already">
             <p>Already have an account?</p>
-            <a href="{% url 'auth_login' %}">Sign in</a>
+            <a href="{% url 'auth_register' %}">Sign in</a>
         </div>
     </div>
 {% endblock %}

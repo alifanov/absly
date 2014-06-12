@@ -3,11 +3,17 @@
 
 {% load widget_tweaks %}
 
-{% block content %}
-    <div class="container">
-        <div class="white-block">
-        <form method="post" action="." class="login-form">
-            <h1>Регистрация</h1>
+{% block inner_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}theme/css/compiled/signup.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block body_content %}
+    <div class="header">
+        <a href="/">
+            ABSLY
+        </a>
+    </div>
+    <div class="login-wrapper">
             <div class="alert-warning">
                 {% if form.non_field_errors %}
                     {{ form.non_field_errors }}
@@ -25,24 +31,21 @@
                 </div>
             {% endif %}
 
+        <div class="box">
+            <div class="content-wrap">
+                <h6>Sign Up</h6>
+                <input class="form-control" type="text" placeholder="E-mail address">
+                <input class="form-control" type="password" placeholder="Password">
+                <input class="form-control" type="password" placeholder="Confirm Password">
+                <div class="action">
+                    <a class="btn-glow primary signup" href="#">Sign up</a>
+                </div>
+            </div>
+        </div>
 
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.username|attr:"class:form-control"|attr:"placeholder:Имя пользователя" }}
-            </div>
-            <div class="form-group">
-                {{ form.email|attr:"class:form-control"|attr:"placeholder:E-mail" }}
-            </div>
-            <div class="form-group">
-                {{ form.password1|attr:"class:form-control"|attr:"placeholder:Пароль" }}
-            </div>
-            <div class="form-group">
-                {{ form.password2|attr:"class:form-control"|attr:"placeholder:Пароль еще раз" }}
-            </div>
-
-            <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
-
-        </form>
+        <div class="already">
+            <p>Already have an account?</p>
+            <a href="{% url 'auth_register' %}">Sign in</a>
         </div>
     </div>
 {% endblock %}
