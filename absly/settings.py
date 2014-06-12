@@ -157,7 +157,7 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'widget_tweaks',
-    'djdrill'
+    'djrill'
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
