@@ -400,3 +400,13 @@ li.active a.canvas-element-item-link {
     background: #34adff;
     text-decoration: none;
 }
+
+.login-header {
+    margin-bottom: 0;
+}
+
+.login-wrapper .top-home-link {
+    display: block;
+    margin: 30px auto;
+    font-size: 26px;
+}
