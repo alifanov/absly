@@ -49,7 +49,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in partners | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in partners.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
