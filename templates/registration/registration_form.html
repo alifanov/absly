@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block body_content %}
-    <div class="header">
-        <a href="/">
-            ABSLY
-        </a>
+    <div class="header login-header">
     </div>
     <div class="login-wrapper">
+        <a href="/" class="top-home-link">
+            ABSLY
+        </a>
             <div class="alert-warning">
                 {% if form.non_field_errors %}
                     {{ form.non_field_errors }}
@@ -34,18 +34,21 @@
         <div class="box">
             <div class="content-wrap">
                 <h6>Sign Up</h6>
-                <input class="form-control" type="text" placeholder="E-mail address">
-                <input class="form-control" type="password" placeholder="Password">
-                <input class="form-control" type="password" placeholder="Confirm Password">
-                <div class="action">
-                    <a class="btn-glow primary signup" href="#">Sign up</a>
-                </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.email|add_class:"form-control"|attr:"placeholder:E-mail address" }}
+                {{ form.username|add_class:"form-control"|attr:"placeholder:Your login" }}
+                {{ form.password1|add_class:"form-control"|attr:"placeholder:Your password" }}
+                {{ form.password2|add_class:"form-control"|attr:"placeholder:Repeat password" }}
+                <input name="next" value="/" type="hidden" />
+                <button type="submit" class="btn-glow primary login">Log in</button>
+            </form>
             </div>
         </div>
 
         <div class="already">
             <p>Already have an account?</p>
-            <a href="{% url 'registration_register' %}">Sign in</a>
+            <a href="{% url 'auth_login' %}">Sign in</a>
         </div>
     </div>
 {% endblock %}

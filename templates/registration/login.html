@@ -37,17 +37,10 @@
                 <h6>Log in</h6>
             <form method="POST">
                 {% csrf_token %}
-                {{ form.username|add_class:"form-control"|attr:"placeholder:E-mail address" }}
+                {{ form.username|add_class:"form-control"|attr:"placeholder:Your email" }}
                 {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
                 <input name="next" value="/" type="hidden" />
-{#                <input class="form-control" type="text" placeholder="E-mail address">#}
-{#                <input class="form-control" type="password" placeholder="Your password">#}
-{#                <a href="#" class="forgot">Forgot password?</a>#}
-{#                <div class="remember">#}
-{#                    <input id="remember-me" type="checkbox">#}
-{#                </div>#}
-            <button type="submit" class="btn-glow primary login">Log in</button>
-{#                <input type="submit" class="btn-glow primary login"  />Log in#}
+                <button type="submit" class="btn-glow primary login">Log in</button>
                 </form>
             </div>
         </div>
