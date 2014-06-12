@@ -77,7 +77,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in activities | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in activities.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -104,7 +104,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in propositions | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in propositions.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -133,7 +133,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in relationship | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in relationship.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -192,7 +192,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in resources | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in resources.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -220,7 +220,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in channels | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in channels.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -250,7 +250,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in costs | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in costs.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
@@ -278,7 +278,7 @@
                     </div>
                     {% verbatim %}
                     <ul class="canvas-block-items">
-                            <li ng-cloak ng-repeat="s in revenuestreams | filter:searchActiveSegment">
+                            <li ng-cloak ng-repeat="s in revenuestreams.items | filter:searchActiveSegment">
                                 <a href="#" ng-model="s.name" rel="#" class="canvas-element-item-link"> {{s.name}} (3)</a>
                                 <a href="#" ng-click="remove(s)" class="canvas-element-item-del" onclick="return false;">
                                     <span class="icon-remove pull-right"></span>
