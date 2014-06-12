@@ -19,7 +19,7 @@
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
                                 <select ng-repeat="q in activeBlock.questions">
                                     {% verbatim %}
-                                    <option ng-repeat="a in q.ans">{{ q.ans }}</option>
+                                    <option ng-repeat="a in q.ans">{{ a }}</option>
                                     {% endverbatim %}
                                 </select>
                                 <div class="form-group" ng-hide="isSegment()">
