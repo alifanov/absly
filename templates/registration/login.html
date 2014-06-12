@@ -14,6 +14,12 @@
         </a>
     </div>
     <div class="login-wrapper">
+        <a href="index.html">
+            <img class="logo" src="img/logo-white.png" alt="logo" />
+        </a>
+
+        <div class="box">
+            <div class="content-wrap">
             <div class="alert-warning">
                 {% if form.non_field_errors %}
                     {{ form.non_field_errors }}
@@ -31,21 +37,21 @@
                 </div>
             {% endif %}
 
-        <div class="box">
-            <div class="content-wrap">
-                <h6>Sign Up</h6>
+                <h6>Log in</h6>
                 <input class="form-control" type="text" placeholder="E-mail address">
-                <input class="form-control" type="password" placeholder="Password">
-                <input class="form-control" type="password" placeholder="Confirm Password">
-                <div class="action">
-                    <a class="btn-glow primary signup" href="#">Sign up</a>
+                <input class="form-control" type="password" placeholder="Your password">
+                <a href="#" class="forgot">Forgot password?</a>
+                <div class="remember">
+                    <input id="remember-me" type="checkbox">
+                    <label for="remember-me">Remember me</label>
                 </div>
+                <a class="btn-glow primary login" href="index.html">Log in</a>
             </div>
         </div>
 
-        <div class="already">
-            <p>Already have an account?</p>
-            <a href="{% url 'auth_register' %}">Sign in</a>
+        <div class="no-account">
+            <p>Don't have an account?</p>
+            <a href="signup.html">Sign up</a>
         </div>
     </div>
 {% endblock %}
