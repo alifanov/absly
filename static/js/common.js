@@ -90,7 +90,7 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.addNewElement = function(){
-        $scope.activeBlock.push({
+        $scope.activeBlock.items.push({
             name: $scope.newElement.name,
             segment: $scope.newElement.segment,
             level: 0
