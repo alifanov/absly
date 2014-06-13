@@ -15,7 +15,7 @@ function customerSegmentsCtrl($scope){
                     'исследования',
                     'маркетинг'
                 ],
-                a: null
+                a: 'личные продажи'
             }
         ]
     };
