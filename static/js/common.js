@@ -20,7 +20,29 @@ function customerSegmentsCtrl($scope){
     };
     $scope.costs = {
         name: 'Cost Structure',
-        items: []
+        items: [],
+        questions: [
+            {
+                q: 'КАКИЕ ВАШИ ОСНОВНЫЕ ЗАТРАТЫ?',
+                ans: [
+                    'исследования и разработки',
+                    'прямые продажи',
+                    'плата партнерам и поставщикам',
+                    'затраты на транзакцию',
+                    'производство продукции',
+                    'материалы и оборудование',
+                    'маркетинг',
+                    'обслуживание и поддержка'
+                ]
+            },
+            {
+                q: 'ТИПЫ ЗАТРАТ',
+                ans: [
+                    'постоянные',
+                    'переменные'
+                ]
+            }
+        ]
     };
     $scope.resources = {
         name: 'Key Resources',
@@ -36,7 +58,15 @@ function customerSegmentsCtrl($scope){
     };
     $scope.relationship = {
         name: 'Customer Relationship',
-        items: []
+        items: [],
+        questions: [{
+            q: 'Тип взаимоотношений с клиентами',
+            ans: [
+                'автоматизировано',
+                'персонально',
+                'комбинировано'
+            ]
+        }]
     };
     $scope.propositions = {
         name: 'Value Proposition',
