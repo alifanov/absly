@@ -20,9 +20,9 @@
                                     {% verbatim %}
                                 <div class="form-group" ng-repeat="q in activeBlock.questions">
                                     <p>{{ q.q }}</p>
-                                <select  ng-model="newElement.qs[$index].a">
-                                    <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>
-                                </select>
+                                    <select  ng-model="q.a">
+                                        <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>
+                                    </select>
                                 </div>
                                     {% endverbatim %}
                                 <div class="form-group" ng-hide="isSegment()">

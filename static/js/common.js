@@ -14,7 +14,8 @@ function customerSegmentsCtrl($scope){
                     'разработка новшеств',
                     'исследования',
                     'маркетинг'
-                ]
+                ],
+                a: null
             }
         ]
     };
@@ -139,10 +140,17 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.addNewElement = function(){
+        var params = [];
+        angular.forEach($scope.activeBlock.questions, function(q, index){
+            params.push({
+                q: q.q,
+                a: q.a
+            });
+        });
         $scope.activeBlock.items.push({
             name: $scope.newElement.name,
             segment: $scope.newElement.segment,
-            params: [$scope.newElement.qs],
+            params: params,
             level: 0
         });
         $scope.newElement.name = '';
