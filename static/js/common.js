@@ -142,7 +142,7 @@ function customerSegmentsCtrl($scope){
         $scope.activeBlock.items.push({
             name: $scope.newElement.name,
             segment: $scope.newElement.segment,
-            params: $scope.newElement.qs,
+            params: [$scope.newElement.qs],
             level: 0
         });
         $scope.newElement.name = '';
