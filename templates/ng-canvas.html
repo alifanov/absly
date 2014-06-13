@@ -18,9 +18,9 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
                                     {% verbatim %}
-                                <div class="form-group" ng-repeat="q in activeBlock.questions" ng-model="newElement.q">
+                                <div class="form-group" ng-repeat="q in activeBlock.questions">
                                     <p>{{ q.q }}</p>
-                                <select>
+                                <select  ng-model="newElement.q">
                                     <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>
                                 </select>
                                 </div>
