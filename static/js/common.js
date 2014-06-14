@@ -177,7 +177,7 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.addNewElement = function(){
-        if ($scope.newElement.name){
+        if ($scope.newElement.params){
 
         }
         else{
