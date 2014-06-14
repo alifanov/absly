@@ -219,7 +219,7 @@ function customerSegmentsCtrl($scope){
         }
     };
     $scope.editElement = function(item){
-//        $scope.newElement = item;
+        $scope.newElement = item;
         $("#add-element-modal-id").modal('show');
     };
     $scope.setLevel = function(item, v){
