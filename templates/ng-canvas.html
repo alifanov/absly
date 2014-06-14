@@ -52,7 +52,7 @@
                                 <div class="form-group" ng-repeat="q in activeBlock.questions">
                                     <p>{{ q.q }}</p> {{ newElement.params[$index].a }}
                                     <select  ng-model="q.a" ng-init="newElement.params[$index].a">
-                                        <option ng-repeat="a in q.ans" ns-selected="newElement.params[$index].a" value="{{ a }}">{{ a }}</option>
+                                        <option ng-repeat="a in q.ans" ns-selected="newElement.params[$index].a==q.a" value="{{ a }}">{{ a }}</option>
                                     </select>
                                 </div>
                                     {% endverbatim %}
