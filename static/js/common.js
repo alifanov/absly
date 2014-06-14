@@ -220,6 +220,7 @@ function customerSegmentsCtrl($scope){
     };
     $scope.setLevel = function(item, v){
         $scope.activeElement = item;
+        $scope.activeElement.level = v;
         $("#change-level-id").modal('show');
 //        item.level = v;
     };
