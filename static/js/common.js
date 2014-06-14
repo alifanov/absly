@@ -201,11 +201,14 @@ function customerSegmentsCtrl($scope){
         }
     };
     $scope.setLevel = function(item, v){
+        $scope.activeElement = item;
         $("#change-level-id").modal('show');
 //        item.level = v;
     };
+    $scope.upgradeLevelSave = function(){
+        $("#change-level-id").modal('hide');
+    };
     $scope.getLevelClass = function(item, v){
-        $scope.activeElement = item;
         if(v <= item.level) return 'done';
         return '';
     }
