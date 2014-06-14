@@ -164,7 +164,8 @@ function customerSegmentsCtrl($scope){
         }
     };
     $scope.setLevel = function(item, v){
-        item.level = v;
+        $("#change-level-id").modal('show');
+//        item.level = v;
     };
     $scope.getLevelClass = function(item, v){
         if(v <= item.level) return 'done';
