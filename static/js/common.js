@@ -2,7 +2,7 @@ function customerSegmentsCtrl($scope){
 
 
     $scope.activities = {
-        name: 'Key Activitis',
+        name: 'Key Activities',
         items: [],
         questions: [
             {
