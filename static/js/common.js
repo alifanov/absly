@@ -177,6 +177,10 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.addNewElement = function(){
+        if ($scope.newElement.name){
+
+        }
+        else{
         var params = [];
         angular.forEach($scope.activeBlock.questions, function(q, index){
             params.push({
@@ -209,6 +213,7 @@ function customerSegmentsCtrl($scope){
                 ]
         });
         $scope.newElement.name = '';
+        }
         $("#add-element-modal-id").modal('hide');
     };
 
