@@ -94,11 +94,48 @@ function customerSegmentsCtrl($scope){
         items: [
             {
                 "name": 'Startups CEO',
-                level: 0
+                level: 0,
+                levels: [
+                    {
+                        name: 'Гипотеза',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено фактами',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено действиями',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено деньгами',
+                        log: ''
+                    }
+                ]
             },
             {
                 "name": 'Venture Funds',
-                level: 0
+                level: 0,
+                levels: [
+                    {
+                        name: 'Гипотеза',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено фактами',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено действиями',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено деньгами',
+                        log: ''
+                    }
+                ]
+
             }
         ]
     };
@@ -168,6 +205,7 @@ function customerSegmentsCtrl($scope){
 //        item.level = v;
     };
     $scope.getLevelClass = function(item, v){
+        $scope.activeElement = item;
         if(v <= item.level) return 'done';
         return '';
     }
