@@ -218,6 +218,10 @@ function customerSegmentsCtrl($scope){
             $scope.activeBlock.items.splice(index,1);
         }
     };
+    $scope.editElement = function(item){
+        $scope.newElement = item;
+        $("#add-element-modal-id").modal('show');
+    };
     $scope.setLevel = function(item, v){
         $scope.activeElement = item;
         $scope.activeElement.level = v;
