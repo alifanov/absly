@@ -177,10 +177,6 @@ function customerSegmentsCtrl($scope){
     };
 
     $scope.addNewElement = function(){
-        if ($scope.newElement.params){
-
-        }
-        else{
         var params = [];
         angular.forEach($scope.activeBlock.questions, function(q, index){
             params.push({
@@ -188,6 +184,10 @@ function customerSegmentsCtrl($scope){
                 a: q.a
             });
         });
+        if ($scope.newElement.params){
+            $scope.newElement.params = params;
+        }
+        else{
         $scope.activeBlock.items.push({
             name: $scope.newElement.name,
             segment: $scope.newElement.segment,
