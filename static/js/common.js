@@ -188,7 +188,25 @@ function customerSegmentsCtrl($scope){
             name: $scope.newElement.name,
             segment: $scope.newElement.segment,
             params: params,
-            level: 0
+            level: 0,
+            levels: [
+                    {
+                        name: 'Гипотеза',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено фактами',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено действиями',
+                        log: ''
+                    },
+                    {
+                        name: 'Проверено деньгами',
+                        log: ''
+                    }
+                ]
         });
         $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
