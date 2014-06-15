@@ -4,7 +4,6 @@ app.factory('Block', function($resource){
         '/api/canvas/:id', {id: "@id"}
     );
 });
-customerSegmentsCtrl.$inject = ['$scope', '$resource'];
 function customerSegmentsCtrl($scope){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
