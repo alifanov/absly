@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
 
-    url(r'^api/canvas$', include(canvas_blocks_urls)),
+    url(r'^api/canvas', include(canvas_blocks_urls)),
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
