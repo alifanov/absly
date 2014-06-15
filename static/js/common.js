@@ -1,10 +1,10 @@
-//angular.module('CanvasAppServices', ['ngResource']).
-//    factory('Block', function($resource){
-//        return $resource('api/canvas/:id/', {}, {
-//            query: {method: 'GET', params: {}, isArray: true}
-//        });
-//    });
-angular.module('canvasapp', []);
+angular.module('CanvasAppServices', ['ngResource']).
+    factory('Block', function($resource){
+        return $resource('api/canvas/:id/', {}, {
+            query: {method: 'GET', params: {}, isArray: true}
+        });
+    });
+angular.module('canvasapp', ['CanvasAppServices']);
 function customerSegmentsCtrl($scope){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
