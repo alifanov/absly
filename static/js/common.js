@@ -258,7 +258,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         $scope.activeElement = item;
         $scope.activeElement.level = v;
         $("#change-level-id").modal('show');
-//        item.level = v;
     };
     $scope.upgradeLevelSave = function(){
         $("#change-level-id").modal('hide');
