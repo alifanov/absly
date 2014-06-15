@@ -90,7 +90,19 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
     };
     $scope.partners = {
         name: 'Key Partners',
-        items: []
+        items: [],
+        questions: [
+            {
+            q: 'ВАМ НУЖНЫ ПАРТНЕРЫ?',
+            ans: [
+                'не нужны партнеры',
+                'слабо зависимы от партнера',
+                'уникальный партнер + спецусловия',
+                'уникальные партнеры',
+                'нужны заменяемые партнеры'
+            ]
+        }
+        ]
     };
 
     $scope.activeSegment = null;
