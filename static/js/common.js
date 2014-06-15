@@ -1,11 +1,11 @@
 var app = angular.module( "Canvas", [ "ngResource" ] );
 
-app.factory('Block', function($resource){
-    return $resource(
-        '/api/canvas/:id', {}, {}
-    );
-});
-function customerSegmentsCtrl($scope, 'Block'){
+//app.factory('Block', function($resource){
+//    return $resource(
+//        '/api/canvas/:id', {}, {}
+//    );
+//});
+function customerSegmentsCtrl($scope){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
 //    );
