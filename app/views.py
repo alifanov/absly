@@ -44,7 +44,7 @@ class AjaxableResponseMixin(object):
 
 class PartnersJSONView(View):
     def get(self, request, *args, **kwargs):
-        ra = {'content_type': 'aplpication/json'}
+        ra = {'content_type': 'application/json'}
         partners_block = CanvasBlock.objects.get(name='Key Partners')
         qs = partners_block.params.all()
         items = partners_block.elements.all()
