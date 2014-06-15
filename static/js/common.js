@@ -1,4 +1,5 @@
-var app = angular.module( "Canvas", [ "ngResource" ] );
+//var app = angular.module( "Canvas", [ "ngResource" ] );
+
 
 //app.factory('Block', function($resource){
 //    return $resource(
