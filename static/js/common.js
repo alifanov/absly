@@ -14,6 +14,8 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
 
     $scope.addElementForm = function(){
         $("#add-element-modal-id").modal('show');
+        $scope.newElement = angular.copy($scope.newElement);
+        $scope.newElement.segment = $scope.segments.items[0];
         $scope.newElement.params = {};
         angular.forEach($scope.activeBlock.questions, function(q, index){
             $scope.newElement.params[q.q] = '';
