@@ -210,7 +210,9 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
 
     $scope.addNewElement = function(){
         var params = [];
-        $scope.activeBlock.items.push(angular.copy($scope.newElement));
+        var addedElement = angular.copy($scope.newElement);
+        addedElement.segment = $scope.newElement.segment;
+        $scope.activeBlock.items.push(addedElement);
         $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
     };
