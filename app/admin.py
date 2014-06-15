@@ -2,11 +2,15 @@ from django.contrib import admin
 from app.models import News, NewsGroup, SummaryGroup, SummaryItem, CanvasBlock,CanvasBlockItem, CanvasBlockItemParameter,\
 CanvasBlockItemParameterValue
 
+class CanvasBlockParameterInline(admin.StackedInline):
+    model = CanvasBlockItemParameter
+
 class CanvasBlockAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
 
 class CanvasBlockItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
+    inlines = [CanvasBlockParameterInline]
 
 admin.site.register(News)
 admin.site.register(NewsGroup)
