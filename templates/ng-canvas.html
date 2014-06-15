@@ -51,7 +51,7 @@
                                     {% verbatim %}
                                 <div class="form-group" ng-repeat="q in activeBlock.questions">
                                     <p>{{ q.q }}</p>
-                                    <select ng-model="newElement.params[q.q].a" ng-options="a for a in q.ans">
+                                    <select ng-model="newElement.params[q.q]" ng-options="a for a in q.ans">
 <!--                                        <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>-->
                                     </select>
                                 </div>
