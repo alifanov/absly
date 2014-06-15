@@ -212,35 +212,31 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         angular.forEach($scope.activeBlock.questions, function(q, index){
             params[q.q] = q.a;
             });
-        if ($scope.newElement.params){
-        }
-        else{
-        $scope.activeBlock.items.push({
-            name: $scope.newElement.name,
-            segment: $scope.newElement.segment,
-            params: params,
-            level: 0,
-            levels: [
-                    {
-                        name: 'Гипотеза',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено фактами',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено действиями',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено деньгами',
-                        log: ''
-                    }
-                ]
-        });
-        $scope.newElement.name = '';
-        }
+            $scope.activeBlock.items.push({
+                name: $scope.newElement.name,
+                segment: $scope.newElement.segment,
+                params: params,
+                level: 0,
+                levels: [
+                        {
+                            name: 'Гипотеза',
+                            log: ''
+                        },
+                        {
+                            name: 'Проверено фактами',
+                            log: ''
+                        },
+                        {
+                            name: 'Проверено действиями',
+                            log: ''
+                        },
+                        {
+                            name: 'Проверено деньгами',
+                            log: ''
+                        }
+                    ]
+            });
+            $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
     };
 
