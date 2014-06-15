@@ -5,7 +5,7 @@ app.factory('Block', function($resource){
         '/api/canvas/:id', {}, {}
     );
 });
-function customerSegmentsCtrl($scope){
+function customerSegmentsCtrl($scope, 'Block'){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
 //    );
