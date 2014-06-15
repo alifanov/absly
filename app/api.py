@@ -22,3 +22,14 @@ class CanvasBlockList(generics.ListCreateAPIView):
 class CanvasBlockDetail(generics.RetrieveUpdateDestroyAPIView):
     model = CanvasBlock
     serializer_class = CanvasBlockSerializer
+
+class CanvasBlockItemList(generics.ListCreateAPIView):
+    model = CanvasBlockItem
+    serializer_class = CanvasBlockItemSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+class CanvasBlockItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = CanvasBlockItem
+    serializer_class = CanvasBlockItemSerializer
