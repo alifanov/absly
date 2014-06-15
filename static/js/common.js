@@ -211,13 +211,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
     $scope.addNewElement = function(){
         var params = [];
         angular.forEach($scope.activeBlock.questions, function(q, index){
-            params.push({
-                q: q.q,
-                a: q.a
+            params[q.q] = q.a;
             });
         });
         if ($scope.newElement.params){
-            $scope.newElement.params = params;
         }
         else{
         $scope.activeBlock.items.push({
