@@ -5,7 +5,7 @@ angular.module('CanvasAppServices', ['ngResource']).
         });
     });
 angular.module('canvasapp', ['CanvasAppServices']);
-function customerSegmentsCtrl($scope){
+app.controller('customerSegmentsCtrl', ['$scope', 'Block', function ($scope, Block){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
 //    );
@@ -248,7 +248,7 @@ function customerSegmentsCtrl($scope){
         if(v <= item.level) return 'done';
         return '';
     }
-}
+}]);
 
 $(function(){
 //    $("#add-element-modal-id form").submit(function(){
