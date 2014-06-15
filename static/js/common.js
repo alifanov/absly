@@ -16,7 +16,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         $("#add-element-modal-id").modal('show');
         $scope.newElement.params = {};
         angular.forEach($scope.activeBlock.questions, function(q, index){
-            $scope.params[q.q] = '';
+            $scope.newElement.params[q.q] = '';
         });
         return false;
     };
