@@ -209,34 +209,8 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
 
     $scope.addNewElement = function(){
         var params = [];
-        angular.forEach($scope.activeBlock.questions, function(q, index){
-            params[q.q] = q.a;
-            });
-            $scope.activeBlock.items.push({
-                name: $scope.newElement.name,
-                segment: $scope.newElement.segment,
-                params: params,
-                level: 0,
-                levels: [
-                        {
-                            name: 'Гипотеза',
-                            log: ''
-                        },
-                        {
-                            name: 'Проверено фактами',
-                            log: ''
-                        },
-                        {
-                            name: 'Проверено действиями',
-                            log: ''
-                        },
-                        {
-                            name: 'Проверено деньгами',
-                            log: ''
-                        }
-                    ]
-            });
-            $scope.newElement.name = '';
+        $scope.activeBlock.items.push(angular.copy($scope.newElement));
+        $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
     };
 
