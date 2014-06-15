@@ -1,7 +1,7 @@
 customerSegmentsCtrl.$inject = ['$scope', '$resource']
 function customerSegmentsCtrl($scope, $resource){
     $scope.Block = $resource(
-        '/api/canvas/:id', {id: @id}
+        '/api/canvas/:id', {id: "@id"}
     );
 
     $scope.activities = {
