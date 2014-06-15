@@ -14,6 +14,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
 
     $scope.addElementForm = function(){
         $("#add-element-modal-id").modal('show');
+        $scope.newElement.params = [];
         return false;
     };
 
