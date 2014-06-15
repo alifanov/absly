@@ -213,7 +213,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         angular.forEach($scope.activeBlock.questions, function(q, index){
             params[q.q] = q.a;
             });
-        });
         if ($scope.newElement.params){
         }
         else{
