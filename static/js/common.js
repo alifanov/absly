@@ -4,7 +4,7 @@ angular.module('CanvasAppServices', ['ngResource']).
             query: {method: 'GET', params: {}, isArray: true}
         });
     });
-angular.module('canvasapp', ['CanvasAppServices']);
+var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', function ($scope, Block){
 //    $scope.Block = $resource(
 //        '/api/canvas/:id', {id: "@id"}
