@@ -157,7 +157,8 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'widget_tweaks',
-    'djrill'
+    'djrill',
+    'rest_framework'
 )
 DEFAULT_FROM_EMAIL = 'info@absly.progernachas.ru'
 ACCOUNT_ACTIVATION_DAYS = 3
