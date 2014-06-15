@@ -12,6 +12,10 @@ angular.module('CanvasAppServices', ['ngResource']).
 var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function ($scope, Block, Element){
 
+    $scope.addElementForm = function(){
+        $("#-element-modal-id").modal('show');
+    };
+
     $scope.activities = {
         name: 'Key Activities',
         items: [],
