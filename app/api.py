@@ -2,10 +2,11 @@ from rest_framework import serializers, generics, permissions
 from models import CanvasBlock, CanvasBlockItem
 
 class CanvasBlockSerializer(serializers.ModelSerializer):
+    items = serializers.RelatedField(many=True)
 
     class Meta:
         model = CanvasBlock
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'items')
 
 class CanvasBlockItemSerializer(serializers.ModelSerializer):
     class Meta:
