@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
-CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView
+CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView, \
+    PartnersJSONView
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -18,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^ng-canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
+
+    url(r'^partners/json/$', PartnersJSONView.as_view(), name='partners-json'),
 
     url(r'^api/canvas/$', CanvasBlockList.as_view(), name='canvas-block-list'),
     url(r'^api/canvas/(?P<pk>\d+)/$', CanvasBlockDetail.as_view(), name='canvas-block-detail'),

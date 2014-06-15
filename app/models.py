@@ -46,8 +46,8 @@ class CanvasBlockItem(models.Model):
 
 class CanvasBlockItemParameter(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Параметр элемента БМ')
-    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БД', null=True, blank=True)
-    block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ')
+    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БД', null=True, blank=True, related_name='params')
+    block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='params')
 
     def __unicode__(self):
         return self.name
@@ -58,7 +58,7 @@ class CanvasBlockItemParameter(models.Model):
 
 class CanvasBlockItemParameterValue(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Значение')
-    parameter = models.ForeignKey(CanvasBlockItemParameter, verbose_name=u'Параметр элемента БМ')
+    parameter = models.ForeignKey(CanvasBlockItemParameter, verbose_name=u'Параметр элемента БМ', related_name='values')
 
     def __unicode__(self):
         return self.name
