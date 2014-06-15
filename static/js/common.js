@@ -1,8 +1,8 @@
 var app = angular.module( "Canvas", [ "ngResource" ] );
 app.factory('Block', function($resource){
-//    return $resource(
-//        '/api/canvas/:id', {id: "@id"}
-//    )
+    return $resource(
+        '/api/canvas/:id', {id: "@id"}
+    );
 });
 customerSegmentsCtrl.$inject = ['$scope', '$resource'];
 function customerSegmentsCtrl($scope){
