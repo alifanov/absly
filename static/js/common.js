@@ -1,6 +1,6 @@
 angular.module('CanvasAppServices', ['ngResource']).
     factory('Block', function($resource){
-        return $resource('api/canvas/:id/', {}, {
+        return $resource('/api/canvas/:id/', {}, {
             query: {method: 'GET', params: {}, isArray: true}
         });
     });
