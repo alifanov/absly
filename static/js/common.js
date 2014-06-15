@@ -1,4 +1,4 @@
-//var app = angular.module( "Canvas", [ "ngResource" ] );
+var app = angular.module( "Canvas", [ "ngResource" ] );
 
 customerSegmentsCtrl.$inject = ['$scope', '$resource'];
 function customerSegmentsCtrl($scope, $resource){
