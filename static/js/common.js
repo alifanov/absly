@@ -13,7 +13,8 @@ var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function ($scope, Block, Element){
 
     $scope.addElementForm = function(){
-        $("#-element-modal-id").modal('show');
+        $("#add-element-modal-id").modal('show');
+        return false;
     };
 
     $scope.activities = {
