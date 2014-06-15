@@ -172,6 +172,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
     };
     $scope.newElement = {
         segment: $scope.segments.items[0],
+        level: 0,
         name: ''
     };
 
