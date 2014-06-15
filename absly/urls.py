@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
 CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView
 
-from app.api import CanvasBlockList
+from app.api import CanvasBlockList, CanvasBlockDetail
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
 
     url(r'^api/canvas/$', CanvasBlockList.as_view(), name='canvas-block-list'),
+    url(r'^api/canvas/(?P<pk>\d+)/$', CanvasBlockDetail.as_view(), name='canvas-block-detail'),
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
