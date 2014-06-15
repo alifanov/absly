@@ -8,10 +8,6 @@ from app.api import CanvasBlockList
 from django.contrib import admin
 admin.autodiscover()
 
-canvas_blocks_urls = patterns('',
-    url(r'^$', CanvasBlockList.as_view(), name='canvas-block-list')
-)
-
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', DashboardView.as_view(), name='home'),
@@ -20,7 +16,7 @@ urlpatterns = patterns('',
 
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^ng-canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
-    url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
+    url(r'^asdsdcanvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
 
     url(r'^api/canvas/$', CanvasBlockList.as_view(), name='canvas-block-list'),
