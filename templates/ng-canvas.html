@@ -55,7 +55,7 @@
 <!--                                        <option ng-repeat="a in q.ans" value="{{ a }}">{{ a }}</option>-->
                                     </select>
                                 </div>
-                                    {{ newElement.segment=newElement.segment }}
+                                    {{ newElement.segment == segments.items[0] }}
                                 <div class="form-group" ng-hide="isSegment()">
                                     <select ng-model="newElement.segment" ng-options="s.name for s in segments.items">
                                     </select>
