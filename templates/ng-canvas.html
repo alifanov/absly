@@ -57,7 +57,7 @@
                                 </div>
                                     {{ newElement.segment }}
                                 <div class="form-group" ng-hide="isSegment()">
-                                    <select ng-model="newElement.segment" ng-options="s as s.name for s in segments.items">
+                                    <select ng-model="newElement.segment" ng-options="s.name for s in segments.items">
                                     </select>
                                 </div>
                                 {% endverbatim %}
