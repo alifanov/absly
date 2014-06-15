@@ -50,9 +50,7 @@ class PartnersJSONView(View):
         items = partners_block.elements.all()
         data = {'name': partners_block.name,
                 'questions': [{'q': q.name, 'ans': [a.name for a in q.values.all()]} for q in qs]}
-        ]
-        data = {}
-        return HttpResponse(data, **ra)
+        return HttpResponse(json.dumps(data), **ra)
 
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
