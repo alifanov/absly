@@ -2,7 +2,7 @@ from django.contrib import admin
 from app.models import News, NewsGroup, SummaryGroup, SummaryItem, CanvasBlock,CanvasBlockItem, CanvasBlockItemParameter,\
 CanvasBlockItemParameterValue
 
-class CanvasBlockParameterInline(admin.StackedInline):
+class CanvasBlockParameterInline(admin.TabularInline):
     model = CanvasBlockItemParameter
 
 class CanvasBlockAdmin(admin.ModelAdmin):
