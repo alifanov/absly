@@ -6,9 +6,7 @@ angular.module('CanvasAppServices', ['ngResource']).
     });
 var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', function ($scope, Block){
-//    $scope.Block = $resource(
-//        '/api/canvas/:id', {id: "@id"}
-//    );
+    $scope.blocks = Block.query();
 
     $scope.activities = {
         name: 'Key Activities',

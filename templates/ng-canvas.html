@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div  ng-app="canvasapp" class="container canvas">
+    <div  ng-app="canvasapp" class="container canvas" ng-controller="customerSegmentsCtrl">
     {% verbatim %}
-        {{ Block.query() }}
+        {{ blocks|json }}
     {% endverbatim %}
         <div class="modal fade" id="change-level-id" >
             <div class="modal-dialog">
