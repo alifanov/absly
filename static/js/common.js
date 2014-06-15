@@ -17,6 +17,8 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         $scope.newElement = angular.copy($scope.newElement);
         $scope.newElement.segment = $scope.segments.items[0];
         $scope.newElement.params = {};
+        $scope.newElement.name = '';
+        $scope.newElement.level = 0;
         angular.forEach($scope.activeBlock.questions, function(q, index){
             $scope.newElement.params[q.q] = '';
         });
