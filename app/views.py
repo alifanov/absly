@@ -54,7 +54,6 @@ class ParseCanvasDataView(View):
             if request.POST.get('data'):
                 data = request.POST.get('data')
                 data = json.loads(data)
-                raise ValueError(data)
                 for v in data:
                     block = CanvasBlock.objects.get(name=v['name'])
                     for ii in v['items']:
