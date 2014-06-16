@@ -42,6 +42,26 @@ class AjaxableResponseMixin(object):
 #        else:
 #            return response
 
+class ParseCanvasDataView(View):
+    def post(self, request, *args, **kwargs):
+        if request.POST:
+            if request.POST.get('data'):
+                data = request.POST.get('data')
+                data = json.loads(data)
+                for i,v in data.items():
+                    block = CanvasBlock.objects.get(name=v['name'])
+                    for ii in v['items']:
+                        if CanvasBlockItem.objects.filter(name=ii['name']).exists():
+                            element = CanvasBlockItem.objects.get(name=ii['name'])
+                            element.level = int(ii['level'])
+                        else:
+                            element = CanvasBlockItem.objects.create(
+                                name = ii['name'],
+                                block = block,
+                                level = int(ii['level'])
+                            )
+        return HttpResponse('OK')
+
 class CanvasBlockItenJSONMixin(object):
     def get(self, request, *args, **kwargs):
         ra = {'content_type': 'application/json'}

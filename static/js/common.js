@@ -227,6 +227,14 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.activeBlock.items.push(addedElement);
         $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
+
+        $.ajax({
+            type: "POST",
+            url: '/parse/json/',
+            data: {
+                'data': $.toJSON($scope)
+            }
+        });
     };
 
     $scope.remove=function(item){
