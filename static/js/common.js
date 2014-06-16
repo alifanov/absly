@@ -170,6 +170,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.propositions = data;
         $scope.initSegments($scope.propositions.items);
     });
+    $http({method: "GET", url: '/activities/json/'}).success(function(data, status, header, config){
+        $scope.activities = data;
+        $scope.initSegments($scope.activities.items);
+    });
 
     $scope.initSegments = function(items){
         angular.forEach(items, function(v, i){
