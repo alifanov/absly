@@ -2,6 +2,10 @@ from django.contrib import admin
 from app.models import News, NewsGroup, SummaryGroup, SummaryItem, CanvasBlock,CanvasBlockItem, CanvasBlockItemParameter,\
 CanvasBlockItemParameterValue
 
+class CBPVAdmin(admin.ModelAdmin):
+    model = CanvasBlockItemParameterValue
+    filter_horizontal = ['elements']
+
 class CBPVInline(admin.TabularInline):
     model = CanvasBlockItemParameterValue
 
