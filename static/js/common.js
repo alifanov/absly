@@ -166,8 +166,8 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.partners = data;
         angular.forEach($scope.partners.items, function(v, i){
             angular.forEach($scope.segments.items, function(vv, ii){
-                if(v.name == vv.name){
-                    $scope.partners.items[i] = $scope.segments.items[ii];
+                if(v.segment.name == vv.name){
+                    v.segment = vv;
                 }
             });
         });
