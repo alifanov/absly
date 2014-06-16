@@ -35,7 +35,6 @@ class CanvasBlockItem(models.Model):
     block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='elements')
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
-    value = models.ForeignKey('CanvasBlockItemParameterValue', verbose_name=u'Выбранное значение', null=True, blank=True)
 
     def is_segment(self):
         return self.block.slug == 'customer-segments'
@@ -62,9 +61,10 @@ class CanvasBlockItemParameter(models.Model):
 class CanvasBlockItemParameterValue(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Значение')
     parameter = models.ForeignKey(CanvasBlockItemParameter, verbose_name=u'Параметр элемента БМ', related_name='values')
+    elements = models.ManyToManyField(CanvasBlockItem, verbose_name=u'Элементы', related_name='params_values')
 
     def __unicode__(self):
-        return self.name
+        return u'{} -> {}'.format(self.parameter.name, self.name)
 
     class Meta:
         verbose_name = u'Значение параметра'

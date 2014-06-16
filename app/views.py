@@ -54,7 +54,7 @@ class PartnersJSONView(View):
             toadd_item = {
                 'level': i.level,
                 'name': i.name,
-                'params': dict([[p.name, p.value] for p in i.params.all()])
+                'params': dict([[p.parameter.name, p.name] for p in i.params_values.all()])
             }
             if i.segment:
                 toadd_item['segment'] = {
