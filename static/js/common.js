@@ -229,15 +229,15 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $("#add-element-modal-id").modal('hide');
 
         var data = [
-            $scope.segments,
-            $scope.propositions,
-            $scope.costs,
-            $scope.partners,
-            $scope.resources,
-            $scope.channels,
-            $scope.relationship,
+//            $scope.segments,
+//            $scope.propositions,
+//            $scope.costs,
+//            $scope.partners,
+//            $scope.resources,
+//            $scope.channels,
+//            $scope.relationship,
             $scope.activities,
-            $scope.revenuestreams
+//            $scope.revenuestreams
         ];
         $.ajax({
             type: "POST",
