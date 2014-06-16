@@ -8,7 +8,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem
+from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
+    CanvasBlockItemParameterValue
 from app.forms import SummaryItemForm
 import json
 
@@ -58,7 +59,7 @@ class ParseCanvasDataView(View):
                     block = CanvasBlock.objects.get(name=v['name'])
                     for ii in v['items']:
                         segment = CanvasBlockItem.objects.get(name=ii['segment']['name'])
-
+                        element = None
                         if CanvasBlockItem.objects.filter(name=ii['name']).exists():
                             element = CanvasBlockItem.objects.get(name=ii['name'])
                             element.level = int(ii['level'])
@@ -70,6 +71,15 @@ class ParseCanvasDataView(View):
                                 level = int(ii['level']),
                                 segment = segment
                             )
+
+                        for pk,pv in ii['params']:
+                            param = CanvasBlockItemParameter.objects.get(name=pk)
+                            value = CanvasBlockItemParameterValue.objects.get(
+                                name=pv,
+                                parameter=param
+                            )
+                            value.elements.add(element)
+
         return HttpResponse('OK')
 
 class CanvasBlockItenJSONMixin(object):
