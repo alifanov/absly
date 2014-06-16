@@ -10,7 +10,7 @@ angular.module('CanvasAppServices', ['ngResource']).
         });
     });
 var app = angular.module('canvasapp', ['CanvasAppServices']);
-app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function ($scope, Block, Element){
+app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', function ($scope, Block, Element, $http){
 
     $scope.addElementForm = function(){
         $("#add-element-modal-id").modal('show');
@@ -96,22 +96,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', function (
         name: 'Value Proposition',
         items: []
     };
-    $scope.partners = {
-        name: 'Key Partners',
-        items: [],
-        questions: [
-            {
-            q: 'ВАМ НУЖНЫ ПАРТНЕРЫ?',
-            ans: [
-                'не нужны партнеры',
-                'слабо зависимы от партнера',
-                'уникальный партнер + спецусловия',
-                'уникальные партнеры',
-                'нужны заменяемые партнеры'
-            ]
-        }
-        ]
-    };
+    $scope.partners = {};
+    $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
+        $scope.partners = data;
+    });
 
     $scope.activeSegment = null;
 

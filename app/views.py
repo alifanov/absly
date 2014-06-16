@@ -49,8 +49,7 @@ class PartnersJSONView(View):
         qs = partners_block.params.all()
         items = partners_block.elements.all()
         data = {'name': partners_block.name,
-                'questions': [{'q': q.name, 'ans': [a.name for a in q.values.all()]} for q in qs]}
-        data['items'] = []
+                'questions': [{'q': q.name, 'ans': [a.name for a in q.values.all()]} for q in qs], 'items': []}
         for i in items:
             toadd_item = {
                 'level': i.level,
