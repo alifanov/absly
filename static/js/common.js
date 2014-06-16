@@ -232,7 +232,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             type: "POST",
             url: '/parse/json/',
             data: {
-                'data': jQuery.toJSON($scope)
+                'data': angular.toJson($scope)
             }
         });
     };
