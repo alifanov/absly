@@ -43,7 +43,7 @@
                     <form method="post">
                         <div class="modal-body">
                             {% verbatim %}
-                            <div ng-repeat="level in newElement.levels">
+                            <div ng-repeat="level in newElement.levels" ng-visible="level.log">
                                 <div>{{ activeElement.levels[activeElement.level].name }} -> {{ activeElement.levels[activeElement.level + 1].name }}</div>
                                 <div>{{ level.log }}</div>
                             </div>
