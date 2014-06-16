@@ -53,6 +53,24 @@ class CanvasBlockItenJSONMixin(object):
         for i in items:
             toadd_item = {
                 'level': i.level,
+                'levels': [
+                    {
+                        'name': u'Гиптоеза',
+                        'log': u''
+                    },
+                    {
+                        'name': u'Проверено фактами',
+                        'log': u''
+                    },
+                    {
+                        'name': u'Проверено действиями',
+                        'log': u''
+                    },
+                    {
+                        'name': u'Проверено деньгами',
+                        'log': u''
+                    },
+                ],
                 'name': i.name,
                 'params': dict([[p.parameter.name, p.name] for p in i.params_values.all()])
             }
@@ -60,6 +78,24 @@ class CanvasBlockItenJSONMixin(object):
                 toadd_item['segment'] = {
                     'name': i.segment.name,
                     'level': i.segment.level,
+                    'levels': [
+                        {
+                            'name': u'Гиптоеза',
+                            'log': u''
+                        },
+                        {
+                            'name': u'Проверено фактами',
+                            'log': u''
+                        },
+                        {
+                            'name': u'Проверено действиями',
+                            'log': u''
+                        },
+                        {
+                            'name': u'Проверено деньгами',
+                            'log': u''
+                        },
+                    ],
                     'params': {}
                 }
             data['items'].append(toadd_item)
