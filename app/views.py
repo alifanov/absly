@@ -6,6 +6,7 @@ from django.http import HttpResponse
 import arrow
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
+from django.views.decorators.csrf import csrf_exempt
 
 from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem
 from app.forms import SummaryItemForm
@@ -43,6 +44,11 @@ class AjaxableResponseMixin(object):
 #            return response
 
 class ParseCanvasDataView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(ParseCanvasDataView, self).dispatch(*args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         if request.POST:
             if request.POST.get('data'):
