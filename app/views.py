@@ -59,7 +59,8 @@ class CanvasBlockItenJSONMixin(object):
             if i.segment:
                 toadd_item['segment'] = {
                     'name': i.segment.name,
-                    'level': i.segment.level
+                    'level': i.segment.level,
+                    'params': {}
                 }
             data['items'].append(toadd_item)
         return HttpResponse(json.dumps(data), **ra)
