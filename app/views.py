@@ -72,13 +72,14 @@ class ParseCanvasDataView(View):
                                 segment = segment
                             )
 
-                        for pk,pv in ii['params']:
-                            param = CanvasBlockItemParameter.objects.get(name=pk)
-                            value = CanvasBlockItemParameterValue.objects.get(
-                                name=pv,
-                                parameter=param
-                            )
-                            value.elements.add(element)
+                        if 'params' in ii:
+                            for pk,pv in ii['params']:
+                                param = CanvasBlockItemParameter.objects.get(name=pk)
+                                value = CanvasBlockItemParameterValue.objects.get(
+                                    name=pv,
+                                    parameter=param
+                                )
+                                value.elements.add(element)
 
         return HttpResponse('OK')
 
