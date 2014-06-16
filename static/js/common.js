@@ -164,14 +164,22 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     });
     $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
         $scope.partners = data;
-        angular.forEach($scope.partners.items, function(v, i){
+        $scope.initSegments($scope.partners);
+    });
+    $http({method: "GET", url: '/values/json/'}).success(function(data, status, header, config){
+        $scope.propositions = data;
+        $scope.initSegments($scope.propositions);
+    });
+
+    $scope.initSegments = function(items){
+        angular.forEach(items, function(v, i){
             angular.forEach($scope.segments.items, function(vv, ii){
                 if(v.segment.name == vv.name){
                     v.segment = vv;
                 }
             });
         });
-    });
+    };
 
     $scope.newElement = {
         segment: $scope.segments.items[0],

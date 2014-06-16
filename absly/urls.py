@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
 CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView, \
-    PartnersJSONView, SegmentsJSONView
+    PartnersJSONView, SegmentsJSONView, ValuePropositionJSONView
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -22,6 +22,7 @@ urlpatterns = patterns('',
 
     url(r'^partners/json/$', PartnersJSONView.as_view(), name='partners-json'),
     url(r'^segments/json/$', SegmentsJSONView.as_view(), name='segments-json'),
+    url(r'^values/json/$', ValuePropositionJSONView.as_view(), name='values-json'),
 
     url(r'^api/canvas/$', CanvasBlockList.as_view(), name='canvas-block-list'),
     url(r'^api/canvas/(?P<pk>\d+)/$', CanvasBlockDetail.as_view(), name='canvas-block-detail'),

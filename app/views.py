@@ -71,6 +71,9 @@ class PartnersJSONView(CanvasBlockItenJSONMixin, View):
 class SegmentsJSONView(CanvasBlockItenJSONMixin, View):
     name = 'Customer Segments'
 
+class ValuePropositionJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Value Proposition'
+
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
 
