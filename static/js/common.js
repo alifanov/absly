@@ -228,11 +228,22 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.newElement.name = '';
         $("#add-element-modal-id").modal('hide');
 
+        var data = [
+            $scope.segments,
+            $scope.propositions,
+            $scope.costs,
+            $scope.partners,
+            $scope.resources,
+            $scope.channels,
+            $scope.relationship,
+            $scope.activities,
+            $scope.revenuestreams
+        ];
         $.ajax({
             type: "POST",
             url: '/parse/json/',
             data: {
-                'data': angular.toJson($scope)
+                'data': data
             }
         });
     };
