@@ -164,11 +164,11 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     });
     $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
         $scope.partners = data;
-        $scope.initSegments($scope.partners);
+        $scope.initSegments($scope.partners.items);
     });
     $http({method: "GET", url: '/values/json/'}).success(function(data, status, header, config){
         $scope.propositions = data;
-        $scope.initSegments($scope.propositions);
+        $scope.initSegments($scope.propositions.items);
     });
 
     $scope.initSegments = function(items){
