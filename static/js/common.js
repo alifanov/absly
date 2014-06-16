@@ -97,9 +97,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         items: []
     };
     $scope.partners = {};
-    $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
-        $scope.partners = data;
-    });
 
     $scope.activeSegment = null;
 
@@ -164,6 +161,9 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     };
     $http({method: "GET", url: '/segments/json/'}).success(function(data, status, header, config){
         $scope.segments = data;
+    });
+    $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
+        $scope.partners = data;
     });
 
     $scope.newElement = {
