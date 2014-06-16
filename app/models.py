@@ -34,8 +34,10 @@ class CanvasBlockItem(models.Model):
     level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', blank=True)
     block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='elements')
 
+    segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
+
     def is_segment(self):
-        return self.block.slug == 'customer-development'
+        return self.block.slug == 'customer-segments'
 
     def __unicode__(self):
         return u'{} -> {}'.format(self.block.name, self.name)

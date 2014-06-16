@@ -52,11 +52,17 @@ class PartnersJSONView(View):
                 'questions': [{'q': q.name, 'ans': [a.name for a in q.values.all()]} for q in qs]}
         data['items'] = []
         for i in items:
-            data['items'].append({
-            'level': i.level,
-            'name': i.name,
-            'params': dict([[p.name, p.value] for p in i.params.all()])
-        })
+            toadd_item = {
+                'level': i.level,
+                'name': i.name,
+                'params': dict([[p.name, p.value] for p in i.params.all()])
+            }
+            if i.segment:
+                toadd_item['segment'] = {
+                    'name': i.segment.name,
+                    'level': i.segment.level
+                }
+            data['items'].append(toadd_item)
         return HttpResponse(json.dumps(data), **ra)
 
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
