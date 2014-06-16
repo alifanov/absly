@@ -164,6 +164,13 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     });
     $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
         $scope.partners = data;
+        angular.forEach($scope.partners.items, function(v, index){
+            angular.forEach($scope.segments.items, function(vv, index){
+                if(v.name == vv.name){
+                    v = vv;
+                }
+            });
+        });
     });
 
     $scope.newElement = {
