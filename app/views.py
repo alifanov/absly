@@ -68,7 +68,7 @@ class ParseCanvasDataView(View):
                                 name = ii['name'],
                                 block = block,
                                 level = int(ii['level']),
-                                segment = segmentπ
+                                segment = segment
                             )
         return HttpResponse('OK')
 
