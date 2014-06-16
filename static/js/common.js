@@ -243,7 +243,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             type: "POST",
             url: '/parse/json/',
             data: {
-                'data': data
+                'data': angular.toJson(data)
             }
         });
     };
