@@ -198,6 +198,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         else{
             $scope.activeSegment = s;
         }
+        return false;
     };
 
     $scope.searchActiveSegment = function(el){
