@@ -72,7 +72,6 @@ class ParseCanvasDataView(View):
                                 segment = segment
                             )
 
-                        raise ValueError(ii)
                         for pk,pv in ii['params']:
                             param = CanvasBlockItemParameter.objects.get(name=pk)
                             value = CanvasBlockItemParameterValue.objects.get(
