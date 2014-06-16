@@ -73,7 +73,7 @@ class ParseCanvasDataView(View):
                             )
 
                         if 'params' in ii and ii['params']:
-                            raise ValueError(ii['params'])
+                            raise ValueError(ii['name'], ii['params'])
                             for pk,pv in ii['params']:
                                 param = CanvasBlockItemParameter.objects.get(name=pk)
                                 value = CanvasBlockItemParameterValue.objects.get(
