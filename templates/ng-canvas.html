@@ -42,9 +42,12 @@
                     </div>
                     <form method="post">
                         <div class="modal-body">
-                            <div style="display: none;" class="alert-success">
-                                Element successfully added
+                            {% verbatim %}
+                            <div ng-repeat="level in newElement.levels">
+                                <div>{{ activeElement.levels[activeElement.level].name }} -> {{ activeElement.levels[activeElement.level + 1].name }}</div>
+                                <div>{{ level.log }}</div>
                             </div>
+                            {% endverbatim %}
                             <div class="modal-form-body">
                                 {% csrf_token %}
                                 <input type="hidden" name="block" value="" id="canvas-block-slug-id" />
