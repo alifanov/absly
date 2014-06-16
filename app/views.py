@@ -42,10 +42,10 @@ class AjaxableResponseMixin(object):
 #        else:
 #            return response
 
-class PartnersJSONView(View):
+class CanvasBlockItenJSONMixin(object):
     def get(self, request, *args, **kwargs):
         ra = {'content_type': 'application/json'}
-        partners_block = CanvasBlock.objects.get(name='Key Partners')
+        partners_block = CanvasBlock.objects.get(name=self.name)
         qs = partners_block.params.all()
         items = partners_block.elements.all()
         data = {'name': partners_block.name,
@@ -63,6 +63,9 @@ class PartnersJSONView(View):
                 }
             data['items'].append(toadd_item)
         return HttpResponse(json.dumps(data), **ra)
+
+class PartnersJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Key Partners'
 
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
