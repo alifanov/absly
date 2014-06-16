@@ -12,7 +12,7 @@ class CBPVInline(admin.TabularInline):
 class CBPAdminModel(admin.ModelAdmin):
     model = CanvasBlockItemParameter
     inlines = [CBPVInline]
-    list_display = ['name', 'block__name']
+    list_display = ['name', 'block']
 
 class CanvasBlockAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
