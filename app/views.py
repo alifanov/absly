@@ -54,7 +54,7 @@ class ParseCanvasDataView(View):
             if request.POST.get('data'):
                 data = request.POST.get('data')
                 data = json.loads(data)
-                for i,v in data.items():
+                for v in data:
                     block = CanvasBlock.objects.get(name=v['name'])
                     for ii in v['items']:
                         if CanvasBlockItem.objects.filter(name=ii['name']).exists():
