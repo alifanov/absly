@@ -2,7 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
 CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView, \
-    PartnersJSONView, SegmentsJSONView, ValuePropositionJSONView
+    PartnersJSONView, SegmentsJSONView, ValuePropositionJSONView, RevenueStreamsJSONView, CostStructureJSONView, \
+    KeyActivitiesJSONView, KeyResourseJSONView, ChannelsJSONView, CustomerRelationshipJSONView
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -23,6 +24,12 @@ urlpatterns = patterns('',
     url(r'^partners/json/$', PartnersJSONView.as_view(), name='partners-json'),
     url(r'^segments/json/$', SegmentsJSONView.as_view(), name='segments-json'),
     url(r'^values/json/$', ValuePropositionJSONView.as_view(), name='values-json'),
+    url(r'^revenue/json/$', RevenueStreamsJSONView.as_view(), name='revenue-json'),
+    url(r'^costs/json/$', CostStructureJSONView.as_view(), name='costs-json'),
+    url(r'^activities/json/$', KeyActivitiesJSONView.as_view(), name='activities-json'),
+    url(r'^resources/json/$', KeyResourseJSONView.as_view(), name='resources-json'),
+    url(r'^channels/json/$', ChannelsJSONView.as_view(), name='channels-json'),
+    url(r'^relations/json/$', CustomerRelationshipJSONView.as_view(), name='relations-json'),
 
     url(r'^api/canvas/$', CanvasBlockList.as_view(), name='canvas-block-list'),
     url(r'^api/canvas/(?P<pk>\d+)/$', CanvasBlockDetail.as_view(), name='canvas-block-detail'),

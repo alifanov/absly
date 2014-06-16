@@ -110,6 +110,24 @@ class SegmentsJSONView(CanvasBlockItenJSONMixin, View):
 class ValuePropositionJSONView(CanvasBlockItenJSONMixin, View):
     name = 'Value Proposition'
 
+class KeyActivitiesJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Key Activities'
+
+class KeyResourseJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Key Resources'
+
+class ChannelsJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Channels'
+
+class CustomerRelationshipJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Customer Relationship'
+
+class CostStructureJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Cost Structure'
+
+class RevenueStreamsJSONView(CanvasBlockItenJSONMixin, View):
+    name = 'Revenue Streams'
+
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
 
