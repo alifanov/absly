@@ -141,6 +141,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         if(index != -1){
             $scope.activeBlock.items.splice(index,1);
         }
+        $("#add-element-modal-id").modal('hide');
     };
 
     /* редактируем существующий элемент и ставим флаг что редактируем а не создаем заново */
