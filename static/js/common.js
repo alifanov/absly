@@ -278,6 +278,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         console.log($scope.activeElement.level, v);
 //        $scope.activeElement.level = v;
         $("#change-level-id").modal('show');
+        return false;
     };
     $scope.upgradeLevelSave = function(){
         $scope.activeElement.level = $scope.activeLevel;
