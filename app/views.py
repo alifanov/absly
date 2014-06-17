@@ -67,6 +67,7 @@ class ParseCanvasDataView(View):
                             element.level = int(ii['level'])
                             element.name = ii['name']
                             element.segment = segment
+                            element.save()
                         else:
                             element = CanvasBlockItem.objects.create(
                                 name = ii['name'],
