@@ -138,10 +138,12 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
     $scope.remove=function(item){
         var index=$scope.activeBlock.items.indexOf(item);
+        $scope.activeBlock.deleted = item.pk;
         if(index != -1){
             $scope.activeBlock.items.splice(index,1);
         }
         $("#add-element-modal-id").modal('hide');
+        $scope.saveDataToServer();
     };
 
     /* редактируем существующий элемент и ставим флаг что редактируем а не создаем заново */
