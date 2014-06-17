@@ -80,6 +80,7 @@ class ParseCanvasDataView(View):
                             element.updated_to_1_log = ii['levels'][1]['log']
                             element.updated_to_2_log = ii['levels'][2]['log']
                             element.updated_to_3_log = ii['levels'][3]['log']
+                            element.save()
 
                         if 'params' in ii and ii['params']:
                             element.params_values.clear()
