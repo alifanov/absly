@@ -113,15 +113,15 @@ class CanvasBlockItenJSONMixin(object):
                     },
                     {
                         'name': u'Проверено фактами',
-                        'log': u''
+                        'log': i.updated_to_1_log
                     },
                     {
                         'name': u'Проверено действиями',
-                        'log': u''
+                        'log': i.updated_to_2_log
                     },
                     {
                         'name': u'Проверено деньгами',
-                        'log': u''
+                        'log': i.updated_to_3_log
                     },
                 ],
                 'name': i.name,
@@ -139,15 +139,15 @@ class CanvasBlockItenJSONMixin(object):
                         },
                         {
                             'name': u'Проверено фактами',
-                            'log': u''
+                            'log': i.segment.updated_to_1_log
                         },
                         {
                             'name': u'Проверено действиями',
-                            'log': u''
+                            'log': i.segment.updated_to_2_log
                         },
                         {
                             'name': u'Проверено деньгами',
-                            'log': u''
+                            'log': i.segment.updated_to_3_log
                         },
                     ],
                     'params': {}
