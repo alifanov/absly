@@ -110,7 +110,7 @@ class CanvasBlockItenJSONMixin(object):
                 'level': i.level,
                 'levels': [
                     {
-                        'name': u'Гиптоеза',
+                        'name': u'Гипотеза',
                         'log': u''
                     },
                     {
@@ -136,7 +136,7 @@ class CanvasBlockItenJSONMixin(object):
                     'level': i.segment.level,
                     'levels': [
                         {
-                            'name': u'Гиптоеза',
+                            'name': u'Гипотеза',
                             'log': u''
                         },
                         {
