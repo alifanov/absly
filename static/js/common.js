@@ -42,6 +42,11 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
     $http({method: "GET", url: '/segments/json/'}).success(function(data, status, header, config){
         $scope.segments = data;
+            $scope.newElement = {
+            segment: $scope.segments.items[0],
+            level: 0,
+            name: ''
+        };
     });
     $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
         $scope.partners = data;
@@ -64,12 +69,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
                 }
             });
         });
-    };
-
-    $scope.newElement = {
-        segment: $scope.segments.items[0],
-        level: 0,
-        name: ''
     };
 
     $scope.activeBlock = $scope.segments;
