@@ -278,7 +278,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         console.log($scope.activeElement.level, v);
 //        $scope.activeElement.level = v;
         $("#change-level-id").modal('show');
-        return false;
     };
     $scope.upgradeLevelSave = function(){
         $scope.activeElement.level = $scope.activeLevel;
@@ -295,6 +294,10 @@ $(function(){
     $(".add-canvas-block-item").mouseover(function(){
         var slug = $(this).attr('rel');
         $("#canvas-block-slug-id").val(slug);
+    });
+
+    $(document).on('click', '.definition-level a', function(){
+
     });
 
     $(".es-item-text-view").click(function(){
