@@ -83,6 +83,7 @@ class ParseCanvasDataView(View):
                                     name=pv,
                                     parameter=param
                                 )
+                                value.elements.clear()
                                 value.elements.add(element)
 
         return HttpResponse('OK')
