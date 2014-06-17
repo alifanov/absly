@@ -28,140 +28,18 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         return false;
     };
 
-    $scope.activities = {
-        name: 'Key Activities',
-        items: [],
-        questions: [
-            {
-                q: 'Какой процесс создает основную ценность ?',
-                ans: [
-                    'личные продажи',
-                    'разработка платформы',
-                    'отношения с клиентами',
-                    'разработка новшеств',
-                    'исследования',
-                    'маркетинг'
-                ]
-            }
-        ]
-    };
-    $scope.costs = {
-        name: 'Cost Structure',
-        items: [],
-        questions: [
-            {
-                q: 'КАКИЕ ВАШИ ОСНОВНЫЕ ЗАТРАТЫ?',
-                ans: [
-                    'исследования и разработки',
-                    'прямые продажи',
-                    'плата партнерам и поставщикам',
-                    'затраты на транзакцию',
-                    'производство продукции',
-                    'материалы и оборудование',
-                    'маркетинг',
-                    'обслуживание и поддержка'
-                ]
-            },
-            {
-                q: 'ТИПЫ ЗАТРАТ',
-                ans: [
-                    'постоянные',
-                    'переменные'
-                ]
-            }
-        ]
-    };
-    $scope.resources = {
-        name: 'Key Resources',
-        items: []
-    };
-    $scope.channels = {
-        name: 'Channels',
-        items: []
-    };
-    $scope.revenuestreams = {
-        name: 'Revenue Streams',
-        items: []
-    };
-    $scope.relationship = {
-        name: 'Customer Relationship',
-        items: [],
-        questions: [{
-            q: 'Тип взаимоотношений с клиентами',
-            ans: [
-                'автоматизировано',
-                'персонально',
-                'комбинировано'
-            ]
-        }]
-    };
-    $scope.propositions = {
-        name: 'Value Proposition',
-        items: []
-    };
-    $scope.partners = {};
+    $scope.activities = null;
+    $scope.costs = null;
+    $scope.resources = null;
+    $scope.channels = null;
+    $scope.revenuestreams = null;
+    $scope.relationship = null;
+    $scope.propositions = null;
+    $scope.partners = null;
+    $scope.segments = null;
 
     $scope.activeSegment = null;
 
-    $scope.segments = {
-        name: 'Customer segments',
-        questions: [
-            {
-                q: 'Кто ваши клиенты ?',
-                ans: [
-                    'бизнес',
-                    'люди'
-                ]
-            }
-        ],
-        items: [
-            {
-                "name": 'Startups CEO',
-                level: 0,
-                levels: [
-                    {
-                        name: 'Гипотеза',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено фактами',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено действиями',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено деньгами',
-                        log: ''
-                    }
-                ]
-            },
-            {
-                "name": 'Venture Funds',
-                level: 0,
-                levels: [
-                    {
-                        name: 'Гипотеза',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено фактами',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено действиями',
-                        log: ''
-                    },
-                    {
-                        name: 'Проверено деньгами',
-                        log: ''
-                    }
-                ]
-
-            }
-        ]
-    };
     $http({method: "GET", url: '/segments/json/'}).success(function(data, status, header, config){
         $scope.segments = data;
     });
