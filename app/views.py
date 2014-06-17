@@ -62,7 +62,7 @@ class ParseCanvasDataView(View):
                         if 'segment' in ii:
                             segment = CanvasBlockItem.objects.get(name=ii['segment']['name'])
                         element = None
-                        if not CanvasBlockItem.objects.filter(name=ii['name']).exists():
+                        if CanvasBlockItem.objects.filter(name=ii['name']).exists():
                             element = CanvasBlockItem.objects.get(name=ii['name'])
                             element.level = int(ii['level'])
                             element.segment = segment
@@ -95,6 +95,7 @@ class CanvasBlockItenJSONMixin(object):
                 'questions': [{'q': q.name, 'ans': [a.name for a in q.values.all()]} for q in qs], 'items': []}
         for i in items:
             toadd_item = {
+                'pk': i.pk,
                 'level': i.level,
                 'levels': [
                     {
@@ -119,6 +120,7 @@ class CanvasBlockItenJSONMixin(object):
             }
             if i.segment:
                 toadd_item['segment'] = {
+                    'pk': i.segment.pk,
                     'name': i.segment.name,
                     'level': i.segment.level,
                     'levels': [
