@@ -296,19 +296,6 @@ $(function(){
         $("#canvas-block-slug-id").val(slug);
     });
 
-    $(document).on('click', '.definition-level a', function(){
-        var _def_lvl = $(this).parents('.definition-level').eq(0);
-        _def_lvl.find('a').removeClass('done');
-        $(this).toggleClass('done');
-        var lvl = parseInt($(this).attr('rel'));
-        if ($(this).hasClass('done') && lvl > 0){
-            _.each(_.range(0, lvl+1), function(a){
-                _def_lvl.find('a[rel="' + a + '"]').addClass('done');
-            })
-        }
-        return false;
-    });
-
     $(".es-item-text-view").click(function(){
         var tarea = $(this).parents('.es-item-text').eq(0).find('textarea');
         tarea.text($(this).text());
