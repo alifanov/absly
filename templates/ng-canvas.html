@@ -44,7 +44,7 @@
                         <div class="modal-body">
                             {% verbatim %}
                             <div ng-repeat="level in newElement.levels track by $index">
-                                <div  ng-show='level.log == "0"'>{{ activeElement.levels[$index].name }} -> {{ activeElement.levels[$index + 1].name }}</div>
+                                <div ng-show="level.log != ''">{{ activeElement.levels[$index].name }} -> {{ activeElement.levels[$index + 1].name }}</div>
                                 <div>{{ level.log }}</div>
                             </div>
                             {% endverbatim %}
