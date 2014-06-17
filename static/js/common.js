@@ -12,7 +12,10 @@ angular.module('CanvasAppServices', ['ngResource']).
 var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', function ($scope, Block, Element, $http){
 
+    $scope.editFlag = False;
+
     $scope.addElementForm = function(){
+        $scope.editFlag = False;
         $("#add-element-modal-id").modal('show');
         $scope.newElement = angular.copy($scope.newElement);
         $scope.newElement.segment = $scope.segments.items[0];
@@ -225,23 +228,24 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     };
 
     $scope.addNewElement = function(){
-        var params = [];
-        var addedElement = angular.copy($scope.newElement);
-        addedElement.segment = $scope.newElement.segment;
-        $scope.activeBlock.items.push(addedElement);
-        $scope.newElement.name = '';
+        if(!$scope.editFlag){
+            var addedElement = angular.copy($scope.newElement);
+            addedElement.segment = $scope.newElement.segment;
+            $scope.activeBlock.items.push(addedElement);
+            $scope.newElement.name = '';
+        }
         $("#add-element-modal-id").modal('hide');
 
         var data = [
-//            $scope.segments,
-//            $scope.propositions,
-//            $scope.costs,
-//            $scope.partners,
-//            $scope.resources,
-//            $scope.channels,
-//            $scope.relationship,
+            $scope.segments,
+            $scope.propositions,
+            $scope.costs,
+            $scope.partners,
+            $scope.resources,
+            $scope.channels,
+            $scope.relationship,
             $scope.activities,
-//            $scope.revenuestreams
+            $scope.revenuestreams
         ];
         $.ajax({
             type: "POST",
@@ -258,7 +262,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             $scope.activeBlock.items.splice(index,1);
         }
     };
+
+    /* редактируем существующий элемент и ставим флаг что редактируем а не создаем заново */
     $scope.editElement = function(item){
+        $scope.editFlag = False;
         $scope.newElement = item;
         $("#add-element-modal-id").modal('show');
     };
