@@ -61,6 +61,31 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.initSegments($scope.activities.items);
     });
 
+    $http({method: "GET", url: '/costs/json/'}).success(function(data, status, header, config){
+        $scope.costs = data;
+        $scope.initSegments($scope.costs.items);
+    });
+
+    $http({method: "GET", url: '/resources/json/'}).success(function(data, status, header, config){
+        $scope.resources = data;
+        $scope.initSegments($scope.resources.items);
+    });
+
+    $http({method: "GET", url: '/channels/json/'}).success(function(data, status, header, config){
+        $scope.channels = data;
+        $scope.initSegments($scope.channels.items);
+    });
+
+    $http({method: "GET", url: '/relations/json/'}).success(function(data, status, header, config){
+        $scope.relationship = data;
+        $scope.initSegments($scope.relationship.items);
+    });
+
+    $http({method: "GET", url: '/revenue/json/'}).success(function(data, status, header, config){
+        $scope.revenuestreams = data;
+        $scope.initSegments($scope.revenuestreams.items);
+    });
+
     $scope.initSegments = function(items){
         angular.forEach(items, function(v, i){
             angular.forEach($scope.segments.items, function(vv, ii){
