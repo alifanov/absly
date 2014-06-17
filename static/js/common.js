@@ -138,7 +138,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
     $scope.remove=function(item){
         var index=$scope.activeBlock.items.indexOf(item);
-        $scope.activeBlock.deleted = item.pk;
+//        $scope.activeBlock.deleted = item.pk;
         if(index != -1){
             $scope.activeBlock.items.splice(index,1);
         }
