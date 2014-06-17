@@ -297,7 +297,7 @@ $(function(){
     });
 
     $(document).on('click', '.definition-level a', function(){
-
+        return false;
     });
 
     $(".es-item-text-view").click(function(){
