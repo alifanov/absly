@@ -227,15 +227,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.activeBlock = element;
     };
 
-    $scope.addNewElement = function(){
-        if(!$scope.editFlag){
-            var addedElement = angular.copy($scope.newElement);
-            addedElement.segment = $scope.newElement.segment;
-            $scope.activeBlock.items.push(addedElement);
-            $scope.newElement.name = '';
-        }
-        $("#add-element-modal-id").modal('hide');
-
+    $scope.saveDataToServer = function(){
         var data = [
             $scope.segments,
             $scope.propositions,
@@ -256,6 +248,17 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         });
     };
 
+    $scope.addNewElement = function(){
+        if(!$scope.editFlag){
+            var addedElement = angular.copy($scope.newElement);
+            addedElement.segment = $scope.newElement.segment;
+            $scope.activeBlock.items.push(addedElement);
+            $scope.newElement.name = '';
+        }
+        $("#add-element-modal-id").modal('hide');
+        $scope.saveDataToServer();
+    };
+
     $scope.remove=function(item){
         var index=$scope.activeBlock.items.indexOf(item);
         if(index != -1){
@@ -271,11 +274,14 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     };
     $scope.setLevel = function(item, v){
         $scope.activeElement = item;
-        $scope.activeElement.level = v;
+        $scope.activeLevel = v;
+//        $scope.activeElement.level = v;
         $("#change-level-id").modal('show');
     };
     $scope.upgradeLevelSave = function(){
+        $scope.activeElement.level = $scope.activeLevel;
         $("#change-level-id").modal('hide');
+        $scope.saveDataToServer();
     };
     $scope.getLevelClass = function(item, v){
         if(v <= item.level) return 'done';
