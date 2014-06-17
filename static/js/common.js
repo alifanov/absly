@@ -284,32 +284,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 }]);
 
 $(function(){
-//    $("#add-element-modal-id form").submit(function(){
-//        $.ajax({
-//            type: 'POST',
-//            url: '/canvas/element/add/',
-//            data: $(this).serializeArray(),
-//            success: function(resp){
-//                $("#add-element-modal-id .alert-success").slideDown();
-//                $("#add-element-modal-id form").slideUp();
-//
-//                setTimeout(function(){
-//                    location.reload();
-//                }, 1000);
-//            }
-//        });
-//        return false;
-//    });
-//
     $(".add-canvas-block-item").mouseover(function(){
         var slug = $(this).attr('rel');
         $("#canvas-block-slug-id").val(slug);
     });
-
-//    $(".add-canvas-block-item").click(function(){
-//        alert('add modal window');
-//        return false;
-//    });
 
     $(document).on('click', '.definition-level a', function(){
         var _def_lvl = $(this).parents('.definition-level').eq(0);
@@ -323,26 +301,6 @@ $(function(){
         }
         return false;
     });
-
-//    $(document).on('click', '.canvas-element-item-del', function(){
-//        $(this).parents('li').remove();
-//        return false;
-//    });
-//
-//    $(".segments .canvas-block-items li a.canvas-element-item-link").click(function(){
-//        $("td:not(.segments) .canvas-block-items li").show();
-//        $(".segments .canvas-block-items li a").removeClass('icon-play');
-//        if (!$(this).parents('li').eq(0).hasClass('active')){
-//            $(this).parents('li').eq(0).addClass('active');
-//            $(this).parents('li').eq(0).find('a.canvas-element-item-link').addClass('icon-play');
-//            $("td:not(.segments) .canvas-block-items li:not(." + $(this).attr('rel') + ")").hide();
-//        }
-//        else
-//        {
-//            $(".segments .canvas-block-items li").removeClass('active');
-//        }
-//        return false;
-//    });
 
     $(".es-item-text-view").click(function(){
         var tarea = $(this).parents('.es-item-text').eq(0).find('textarea');
