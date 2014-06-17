@@ -36,6 +36,10 @@ class CanvasBlockItem(models.Model):
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
 
+    updated_to_1_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено фактами', blank=True)
+    updated_to_2_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено действиями', blank=True)
+    updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
+
     def is_segment(self):
         return self.block.slug == 'customer-segments'
 
