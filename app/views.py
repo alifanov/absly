@@ -76,6 +76,11 @@ class ParseCanvasDataView(View):
                                 segment = segment
                             )
 
+                        if 'levels' in ii:
+                            element.updated_to_1_log = ii['levels'][1]['log']
+                            element.updated_to_2_log = ii['levels'][2]['log']
+                            element.updated_to_3_log = ii['levels'][3]['log']
+
                         if 'params' in ii and ii['params']:
                             element.params_values.clear()
                             for pk,pv in ii['params'].items():
