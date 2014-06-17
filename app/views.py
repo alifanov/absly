@@ -62,7 +62,7 @@ class ParseCanvasDataView(View):
                         if 'segment' in ii:
                             segment = CanvasBlockItem.objects.get(pk=ii['segment']['pk'])
                         element = None
-                        if CanvasBlockItem.objects.filter(pk=ii['pk']).exists():
+                        if 'pk' in ii and CanvasBlockItem.objects.filter(pk=ii['pk']).exists():
                             element = CanvasBlockItem.objects.get(pk=ii['pk'])
                             element.level = int(ii['level'])
                             element.segment = segment
