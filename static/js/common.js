@@ -12,10 +12,10 @@ angular.module('CanvasAppServices', ['ngResource']).
 var app = angular.module('canvasapp', ['CanvasAppServices']);
 app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', function ($scope, Block, Element, $http){
 
-    $scope.editFlag = False;
+    $scope.editFlag = false;
 
     $scope.addElementForm = function(){
-        $scope.editFlag = False;
+        $scope.editFlag = false;
         $("#add-element-modal-id").modal('show');
         $scope.newElement = angular.copy($scope.newElement);
         $scope.newElement.segment = $scope.segments.items[0];
@@ -265,7 +265,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
     /* редактируем существующий элемент и ставим флаг что редактируем а не создаем заново */
     $scope.editElement = function(item){
-        $scope.editFlag = False;
+        $scope.editFlag = true;
         $scope.newElement = item;
         $("#add-element-modal-id").modal('show');
     };
