@@ -56,9 +56,9 @@ class ParseCanvasDataView(View):
                 data = request.POST.get('data')
                 data = json.loads(data)
                 for v in data:
-                    block = CanvasBlock.objects.get(name=v['name'])
                     if 'deleted' in v:
                         CanvasBlockItem.objects.filter(pk=v['deleted']).delete()
+                    block = CanvasBlock.objects.get(name=v['name'])
                     for ii in v['items']:
                         segment = None
                         if 'segment' in ii:
