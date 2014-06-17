@@ -150,11 +150,13 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $("#add-element-modal-id").modal('show');
     };
     $scope.setLevel = function(item, v){
-        $scope.activeElement = item;
-        $scope.activeLevel = v;
-        console.log($scope.activeElement.level, v);
-//        $scope.activeElement.level = v;
-        $("#change-level-id").modal('show');
+        if(v != 0)
+        {
+            $scope.activeElement = item;
+            $scope.activeLevel = v;
+            console.log($scope.activeElement.level, v);
+            $("#change-level-id").modal('show');
+        }
     };
     $scope.upgradeLevelSave = function(){
         $scope.activeElement.level = $scope.activeLevel;
