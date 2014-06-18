@@ -64,7 +64,7 @@ def ga_view(request):
         data = service.data().ga().get(
             start_date='2014-01-01',
             end_date='2014-06-18',
-            ids='ga:48405120',
+            ids='ga:82650359',
             metrics='ga:sessions'
         ).execute()
 
