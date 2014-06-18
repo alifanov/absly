@@ -60,9 +60,8 @@ def ga_view(request):
         http = credential.authorize(http)
         service = build("analytics", "v3", http=http)
         accounts = service.management().accounts().list().execute()
+        data = accounts
 
-        for a in accounts.get('items'):
-            data.append(a['name'])
     return render_to_response('ga.html', {
                 'data': data,
                 })
