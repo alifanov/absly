@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
 CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView, \
     PartnersJSONView, SegmentsJSONView, ValuePropositionJSONView, RevenueStreamsJSONView, CostStructureJSONView, \
-    KeyActivitiesJSONView, KeyResourseJSONView, ChannelsJSONView, CustomerRelationshipJSONView, ParseCanvasDataView
+    KeyActivitiesJSONView, KeyResourseJSONView, ChannelsJSONView, CustomerRelationshipJSONView, ParseCanvasDataView, \
+    auth_return, ga_view
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -12,6 +13,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^oauth2callback/$', auth_return, name='oauth2-callback'),
+    url(r'^ga/$', ga_view, name='ga-view'),
+
+
     url(r'^$', DashboardView.as_view(), name='home'),
 
     url(r'^accounts/', include('registration.backends.default.urls')),

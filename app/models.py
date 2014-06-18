@@ -7,7 +7,14 @@ import requests
 import tempfile
 from sorl.thumbnail import get_thumbnail
 from django.contrib.auth.models import User
+from oauth2client.django_orm import FlowField
+from oauth2client.django_orm import CredentialsField
+
 # Create your models here.
+class CredentialsModel(models.Model):
+    id = models.ForeignKey(User, primary_key=True)
+    credential = CredentialsField()
+
 
 class CanvasBlock(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название блока')
