@@ -47,6 +47,7 @@ def auth_return(request):
 
 class GAView(TemplateView):
     credentials = None
+    template_name = 'ga.html'
 
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
