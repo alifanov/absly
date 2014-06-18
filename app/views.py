@@ -47,24 +47,24 @@ def auth_return(request):
 
 @login_required
 def ga_view(request):
-  storage = Storage(CredentialsModel, 'id', request.user, 'credential')
-  credential = storage.get()
-  if credential is None or credential.invalid == True:
-    FLOW.params['state'] = xsrfutil.generate_token(settings.SECRET_KEY,
+    data = []
+    storage = Storage(CredentialsModel, 'id', request.user, 'credential')
+    credential = storage.get()
+    if credential is None or credential.invalid == True:
+        FLOW.params['state'] = xsrfutil.generate_token(settings.SECRET_KEY,
                                                    request.user)
-    authorize_url = FLOW.step1_get_authorize_url()
-    return HttpResponseRedirect(authorize_url)
-  else:
-    http = httplib2.Http()
-    http = credential.authorize(http)
-    service = build("plus", "v1", http=http)
-    activities = service.activities()
-    activitylist = activities.list(collection='public',
-                                   userId='me').execute()
-    logging.info(activitylist)
+        authorize_url = FLOW.step1_get_authorize_url()
+        return HttpResponseRedirect(authorize_url)
+    else:
+        http = httplib2.Http()
+        http = credential.authorize(http)
+        service = build("analytics", "v3", http=http)
+        accounts = service.management().accounts().list().execute()
 
+        for a in accounts.get('items'):
+            data.append(a['name'])
     return render_to_response('ga.html', {
-                'data': activitylist,
+                'data': data,
                 })
 
 class AjaxableResponseMixin(object):
