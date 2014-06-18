@@ -65,7 +65,7 @@ def ga_view(request):
             start_date='2014-01-01',
             end_date='2014-06-18',
             ids='ga:12658219',
-            metrics='gs:sessions'
+            metrics='ga:sessions'
         )
 
     return render_to_response('ga.html', {
