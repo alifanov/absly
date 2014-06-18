@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="container metrics">
-        {{ data }}
+        {% for d in data %}
+            {{ d }}
+        {% endfor %}
     </div>
 {% endblock %}
