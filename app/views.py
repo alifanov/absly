@@ -32,7 +32,8 @@ CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), '..','absly', 'client_s
 
 FLOW = flow_from_clientsecrets(
     CLIENT_SECRETS,
-  scope='https://www.googleapis.com/auth/analytics.readonly')
+  scope='https://www.googleapis.com/auth/analytics.readonly',
+    redirect_uri='http://absly.progernachas.ru/oauth2callback')
 
 @login_required
 def auth_return(request):
