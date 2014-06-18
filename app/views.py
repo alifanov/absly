@@ -61,6 +61,10 @@ def ga_view(request):
         service = build("analytics", "v3", http=http)
         accounts = service.management().accounts().list().execute()
         data = accounts
+        data = service.data().ga().get(
+            ids='ga:12658219',
+            metrics='gs:sessions'
+        )
 
     return render_to_response('ga.html', {
                 'data': data,
