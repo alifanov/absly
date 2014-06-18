@@ -15,6 +15,8 @@ class CredentialsModel(models.Model):
     id = models.ForeignKey(User, primary_key=True)
     credential = CredentialsField()
 
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^oauth2client\.django_orm\.CredentialsField"])
 
 class CanvasBlock(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название блока')
