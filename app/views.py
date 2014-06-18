@@ -45,6 +45,36 @@ def auth_return(request):
   storage.put(credential)
   return HttpResponseRedirect("/ga/")
 
+class GAView(TemplateView):
+    credentials = None
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
+        self.credential = storage.get()
+        if self.credential is None or self.credential.invalid == True:
+            FLOW.params['state'] = xsrfutil.generate_token(settings.SECRET_KEY,
+                                                       self.request.user)
+            authorize_url = FLOW.step1_get_authorize_url()
+            return HttpResponseRedirect(authorize_url)
+        return super(GAView, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        http = httplib2.Http()
+        http = self.credential.authorize(http)
+        service = build("analytics", "v3", http=http)
+        accounts = service.management().accounts().list().execute()
+        data = accounts
+        data = service.data().ga().get(
+            start_date='2014-01-01',
+            end_date='2014-06-18',
+            ids='ga:82650359',
+            metrics='ga:sessions'
+        ).execute()
+        ctx = super(GAView, self).get_context_data(**kwargs)
+        ctx['data'] = data
+        return ctx
+
 @login_required
 def ga_view(request):
     data = []
