@@ -80,6 +80,7 @@ class GAView(TemplateView):
             #     metrics='ga:sessions'
             # ).execute()
             ctx['data'] = data
+            ctx['accounts'] = profile_config
         return ctx
 
 @login_required
