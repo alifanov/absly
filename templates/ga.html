@@ -7,20 +7,20 @@
     {% else %}
         <form method="GET" action="">
             {% csrf_token %}
-            <select name="account">
+            <select name="account" id="ga_account">
                 {% for acc in accounts %}
                     <option value="{{ acc.0 }}">{{ acc.1 }}</option>
                 {% endfor %}
             </select>
             {% if webprops %}
-                <select name="webprop">
+                <select name="webprop" id="ga_webprop">
                     {% for wp in webprops %}
                         <option value="{{ wp.0 }}">{{ wp.1 }}</option>
                     {% endfor %}
                 </select>
             {% endif %}
             {% if profiles %}
-                <select name="profile">
+                <select name="profile" id="ga_profile">
                     {% for wp in profiles %}
                         <option value="{{ wp.0 }}">{{ wp.1 }}</option>
                     {% endfor %}

@@ -198,6 +198,14 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 }]);
 
 $(function(){
+    $("#ga_account").change(function(){
+        $("#ga_profile").remove();
+        $("#ga_webprop").remove();
+    });
+    $("#ga_webprop").change(function(){
+        $("#ga_profile").remove();
+    });
+
     $(".add-canvas-block-item").mouseover(function(){
         var slug = $(this).attr('rel');
         $("#canvas-block-slug-id").val(slug);
