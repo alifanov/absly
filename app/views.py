@@ -63,30 +63,40 @@ class GAView(TemplateView):
             authorize_url = FLOW.step1_get_authorize_url()
             ctx['auth_url'] = authorize_url
         else:
-            profile_config = []
 
             http = httplib2.Http()
             http = self.credential.authorize(http)
             service = build("analytics", "v3", http=http)
             accounts = service.management().accounts().list().execute()
+
+            accounts_config = []
             for acc in accounts.get('items'):
-                profile_config.append((acc.get('id'), acc.get('name')))
+                accounts_config.append((acc.get('id'), acc.get('name')))
+            ctx['accounts'] = accounts_config
             if self.request.GET.get('account'):
                 wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
                 webprops_config = []
                 for wp in wps.get('items'):
                     webprops_config.append((wp.get('id'), wp.get('name')))
                 ctx['webprops'] = webprops_config
+            if self.request.GET.get('webprop'):
+                profiles = service.management().profiles().list(
+                    accountId=self.request.GET.get('account'),
+                    webPropertyId=self.request.GET.get('webprop')
+                ).execute()
+                profiles_config = []
+                for pro in profiles.get('items'):
+                    profiles_config.append((pro.get('id'), pro.get('name')))
+                ctx['profiles'] = profiles_config
 
-            data = profile_config
+            # data = profile_config
             # data = service.data().ga().get(
             #     start_date='2014-01-01',
             #     end_date='2014-06-18',
             #     ids='ga:82650359',
             #     metrics='ga:sessions'
             # ).execute()
-            ctx['data'] = data
-            ctx['accounts'] = profile_config
+            # ctx['data'] = data
         return ctx
 
 @login_required
