@@ -71,6 +71,12 @@ class GAView(TemplateView):
             accounts = service.management().accounts().list().execute()
             for acc in accounts.get('items'):
                 profile_config.append((acc.get('id'), acc.get('name')))
+            if self.request.GET.get('account'):
+                wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
+                webprops_config = []
+                for wp in wps.get('items'):
+                    webprops_config.append((wp.get('id'), wp.get('name')))
+                ctx['webprops'] = webprops_config
 
             data = profile_config
             # data = service.data().ga().get(

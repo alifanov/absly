@@ -12,6 +12,13 @@
                     <option value="{{ acc.0 }}">{{ acc.1 }}</option>
                 {% endfor %}
             </select>
+            {% if webprops %}
+                <select name="webprop">
+                    {% for wp in webprops %}
+                        <option value="{{ wp.0 }}">{{ wp.1 }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
             <button type="submit" class="btn">Выбрать</button>
         </form>
         {{ data }}
