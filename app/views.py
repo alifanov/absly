@@ -70,7 +70,7 @@ class GAView(TemplateView):
             service = build("analytics", "v3", http=http)
             accounts = service.management().accounts().list().execute()
             for acc in accounts.get('items'):
-                profile_config.append((acc.get(id), acc.get('name')))
+                profile_config.append((acc.get('id'), acc.get('name')))
 
             data = profile_config
             # data = service.data().ga().get(
