@@ -65,18 +65,18 @@ class GAView(TemplateView):
         else:
             profile_config = {}
 
-        http = httplib2.Http()
-        http = self.credential.authorize(http)
-        service = build("analytics", "v3", http=http)
-        accounts = service.management().accounts().list().execute()
-        data = accounts
-        # data = service.data().ga().get(
-        #     start_date='2014-01-01',
-        #     end_date='2014-06-18',
-        #     ids='ga:82650359',
-        #     metrics='ga:sessions'
-        # ).execute()
-        ctx['data'] = data
+            http = httplib2.Http()
+            http = self.credential.authorize(http)
+            service = build("analytics", "v3", http=http)
+            accounts = service.management().accounts().list().execute()
+            data = accounts
+            # data = service.data().ga().get(
+            #     start_date='2014-01-01',
+            #     end_date='2014-06-18',
+            #     ids='ga:82650359',
+            #     metrics='ga:sessions'
+            # ).execute()
+            ctx['data'] = data
         return ctx
 
 @login_required
