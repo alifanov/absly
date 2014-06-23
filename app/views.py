@@ -63,13 +63,16 @@ class GAView(TemplateView):
             authorize_url = FLOW.step1_get_authorize_url()
             ctx['auth_url'] = authorize_url
         else:
-            profile_config = {}
+            profile_config = []
 
             http = httplib2.Http()
             http = self.credential.authorize(http)
             service = build("analytics", "v3", http=http)
             accounts = service.management().accounts().list().execute()
-            data = accounts
+            for acc in accounts.get('items'):
+                profile_config.append((acc.get(id), acc.get('name')))
+
+            data = profile_config
             # data = service.data().ga().get(
             #     start_date='2014-01-01',
             #     end_date='2014-06-18',
