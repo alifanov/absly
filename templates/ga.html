@@ -25,6 +25,8 @@
                         <option value="{{ wp.0 }}">{{ wp.1 }}</option>
                     {% endfor %}
                 </select>
+            {% else %}
+                <span>{{ profiles_error }}</span>
             {% endif %}
             <button type="submit" class="btn">Выбрать</button>
         </form>

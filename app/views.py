@@ -89,6 +89,8 @@ class GAView(TemplateView):
                     for pro in profiles.get('items'):
                         profiles_config.append((pro.get('id'), pro.get('name')))
                     ctx['profiles'] = profiles_config
+                else:
+                    ctx['profiles_error'] = u'Нет данных'
 
             # data = profile_config
             # data = service.data().ga().get(
