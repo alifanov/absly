@@ -84,11 +84,11 @@ class GAView(TemplateView):
                     accountId=self.request.GET.get('account'),
                     webPropertyId=self.request.GET.get('webprop')
                 ).execute()
-                ctx['data'] = profiles
-                # profiles_config = []
-                # for pro in profiles.get('items'):
-                #     profiles_config.append((pro.get('id'), pro.get('name')))
-                # ctx['profiles'] = profiles_config
+                if profiles.get('totalResults') > 0:
+                    profiles_config = []
+                    for pro in profiles.get('items'):
+                        profiles_config.append((pro.get('id'), pro.get('name')))
+                    ctx['profiles'] = profiles_config
 
             # data = profile_config
             # data = service.data().ga().get(
