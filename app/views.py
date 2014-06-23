@@ -70,10 +70,7 @@ class GAView(TemplateView):
             service = build("analytics", "v3", http=http)
             accounts = service.management().accounts().list().execute()
             for acc in accounts.get('items'):
-                properties_config = []
-                for wp in service.management().webproperties().list(accountId=acc.get('id')).execute().get('items'):
-                    properties_config.append((wp.get('id'), wp.get('name')))
-                profile_config.append((acc.get('id'), acc.get('name'), properties_config))
+                profile_config.append((acc.get('id'), acc.get('name')))
 
             data = profile_config
             # data = service.data().ga().get(

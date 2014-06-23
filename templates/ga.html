@@ -5,6 +5,15 @@
     {% if auth_url %}
         <a href="#">Подключить Google Analytics</a>
     {% else %}
+        <form method="GET" action="">
+            {% csrf_token %}
+            <select name="account">
+                {% for acc in accounts %}
+                    <option value="{{ acc.0 }}">{{ acc.1 }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Выбрать</button>
+        </form>
         {{ data }}
     {% endif %}
     </div>
