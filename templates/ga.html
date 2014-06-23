@@ -5,6 +5,7 @@
     {% if auth_url %}
         <a href="#">Подключить Google Analytics</a>
     {% else %}
+        {{ data }}
         <form method="GET" action="">
             {% csrf_token %}
             <select name="account" id="ga_account">
