@@ -79,6 +79,7 @@ class GAView(TemplateView):
                 for wp in wps.get('items'):
                     webprops_config.append((wp.get('id'), wp.get('name')))
                 ctx['webprops'] = webprops_config
+                ctx['account'] = self.request.GET.get('account')
             if self.request.GET.get('webprop'):
                 profiles = service.management().profiles().list(
                     accountId=self.request.GET.get('account'),
@@ -91,6 +92,7 @@ class GAView(TemplateView):
                     ctx['profiles'] = profiles_config
                 else:
                     ctx['profiles_error'] = u'Нет данных'
+                    ctx['webprop'] = self.request.GET.get('webprop')
             if self.request.GET.get('profile'):
                 ga_profile = None
                 if GAProfile.objects.filter(user=self.request.user).exists():
@@ -106,6 +108,7 @@ class GAView(TemplateView):
                         profile_id = self.request.GET.get('profile'),
                     )
                 ga_profile.save()
+                ctx['account'] = self.request.GET.get('account')
 
             # data = profile_config
             # data = service.data().ga().get(

@@ -11,7 +11,7 @@
             <div class="col-xs-4">
                             <select name="account" id="ga_account">
                 {% for acc in accounts %}
-                    <option value="{{ acc.0 }}">{{ acc.1 }}</option>
+                    <option {% if account == acc.0 %}selected="selected"{% endif %} value="{{ acc.0 }}">{{ acc.1 }}</option>
                 {% endfor %}
             </select>
             </div>
@@ -19,7 +19,7 @@
             {% if webprops %}
                 <select name="webprop" id="ga_webprop">
                     {% for wp in webprops %}
-                        <option value="{{ wp.0 }}">{{ wp.1 }}</option>
+                        <option {% if webprop == wp.0 %}selected="selected"{% endif %} value="{{ wp.0 }}">{{ wp.1 }}</option>
                     {% endfor %}
                 </select>
             {% endif %}
@@ -28,7 +28,7 @@
             {% if profiles %}
                 <select name="profile" id="ga_profile">
                     {% for wp in profiles %}
-                        <option value="{{ wp.0 }}">{{ wp.1 }}</option>
+                        <option {% if profile == wp.0 %}selected="selected"{% endif %} value="{{ wp.0 }}">{{ wp.1 }}</option>
                     {% endfor %}
                 </select>
             {% else %}
