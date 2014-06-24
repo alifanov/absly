@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container metrics ga-config">
+        <table class="table">
+            <tr>
+                <td>Acquisition</td>
+                <td>
+                    {% if ga_users %}
+                        {{ ga_users }}
+                    {% else %}
+                        <input class="form-control" type="text" />
+                    {% endif %}
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Activation</td>
+                <td>
+                    <input class="form-control" type="text" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Retention</td>
+                <td>
+                    <input class="form-control" type="text" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Referral</td>
+                <td>
+                    <input class="form-control" type="text" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Revenue</td>
+                <td>
+                    <input class="form-control" type="text" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

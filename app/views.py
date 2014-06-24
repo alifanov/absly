@@ -3,6 +3,7 @@
 from app.models import News, NewsGroup, GAProfile
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
 from django.http import HttpResponse
+from django.shortcuts import redirect
 import arrow, logging
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
@@ -45,16 +46,47 @@ def auth_return(request):
   storage.put(credential)
   return HttpResponseRedirect("/ga/")
 
-class GAView(TemplateView):
+class GAFunnelView(TemplateView):
+    credentials = None
+    template_name = 'ga-funnel.html'
+
+    def get(self, request, *args, **kwargs):
+        storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
+        self.credential = storage.get()
+        if self.credential is None or self.credential.invalid == True:
+            return redirect(reverse('ga-config-view'))
+        else:
+            return super(GAFunnelView, self).get(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(GAFunnelView, self).get_context_data(**kwargs)
+        http = httplib2.Http()
+        http = self.credential.authorize(http)
+        service = build("analytics", "v3", http=http)
+
+        ga_profile = GAProfile.objects.get(user=self.request.user)
+        ga_users = service.data().ga().get(
+            ids='ga:{}'.format(ga_profile.account_id),
+            start_date='2014-06-01',
+            end_date='2014-06-24',
+            metrics='ga:users'
+        ).execute()
+        ctx['ga_users'] = ga_users
+
+        accounts = service.management().accounts().list().execute()
+
+        return ctx
+
+class GAConfigView(TemplateView):
     credentials = None
     template_name = 'ga.html'
 
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
-        return super(GAView, self).dispatch(*args, **kwargs)
+        return super(GAConfigView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        ctx = super(GAView, self).get_context_data(**kwargs)
+        ctx = super(GAConfigView, self).get_context_data(**kwargs)
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:

@@ -14,7 +14,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^oauth2callback/$', auth_return, name='oauth2-callback'),
-    url(r'^ga/$', GAView.as_view(), name='ga-view'),
+    url(r'^ga-config/$', GAConfigView.as_view(), name='ga-config-view'),
 
 
     url(r'^$', DashboardView.as_view(), name='home'),

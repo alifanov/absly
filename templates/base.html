@@ -245,12 +245,19 @@
                 <i class="icon-signal"></i>
                 <span>Metrics</span>
             </a>
+            <ul class="submenu {% if active == 'metrics' %}active{% endif %}">
+                <li><a href="{% url 'ga-config-view' %}">Настройка GA</a></li>
+                <li><a href="{% url 'ga-funnel-view' %}">Воронка</a></li>
+            </ul>
         </li>
         {% if active == 'summary' %}
         <li>
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
+                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
+                    <i class=" icon-chevron-down"></i>
+                </a>
             </div>
         {% else %}
             <li>
@@ -268,10 +275,6 @@
                 {% for sg in summary_groups %}
                 <li><a href="{% url 'summary-group' pk=sg.pk %}">{{ sg.name }}</a></li>
                 {% endfor %}
-{#                <li><a href="#">Product</a></li>#}
-{#                <li><a href="#">Outer factors</a></li>#}
-{#                <li><a href="#">Business Models</a></li>#}
-{#                <li><a href="#">Strategy</a></li>#}
             </ul>
 
         </li>
