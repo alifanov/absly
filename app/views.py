@@ -71,7 +71,8 @@ class GAFunnelView(TemplateView):
             end_date='2014-06-24',
             metrics='ga:users'
         ).execute()
-        ctx['ga_users'] = ga_users.get('rows')
+        if ga_users.get('rows'):
+            ctx['ga_users'] = ga_users.get('rows')[0][0]
 
         accounts = service.management().accounts().list().execute()
 
