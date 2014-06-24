@@ -245,6 +245,9 @@
                 <i class="icon-signal"></i>
                 <span>Metrics</span>
             </a>
+                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
+                    <i class=" icon-chevron-down"></i>
+                </a>
             <ul class="submenu {% if active == 'metrics' %}active{% endif %}">
                 <li><a href="{% url 'ga-config-view' %}">Настройка GA</a></li>
                 <li><a href="{% url 'ga-funnel-view' %}">Воронка</a></li>
@@ -255,9 +258,6 @@
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
-                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
-                    <i class=" icon-chevron-down"></i>
-                </a>
             </div>
         {% else %}
             <li>
