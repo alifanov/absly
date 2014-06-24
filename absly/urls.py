@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
-from app.views import EventsListView, EventDeleteView, StrategyView, StepsView, MetricsView, ExecutiveSummaryView,\
-CanvasView, DashboardView, ExecutiveSummaryItemView, ExecutiveSummaryItemUpdateView, EventsGroupListView, CreateElementAjaxView, \
-    PartnersJSONView, SegmentsJSONView, ValuePropositionJSONView, RevenueStreamsJSONView, CostStructureJSONView, \
-    KeyActivitiesJSONView, KeyResourseJSONView, ChannelsJSONView, CustomerRelationshipJSONView, ParseCanvasDataView, \
-    auth_return, ga_view, GAView
+from app.views import *
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -15,6 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^oauth2callback/$', auth_return, name='oauth2-callback'),
     url(r'^ga-config/$', GAConfigView.as_view(), name='ga-config-view'),
+    url(r'^ga-funnel/$', GAFunnelView.as_view(), name='ga-funnel-view'),
 
 
     url(r'^$', DashboardView.as_view(), name='home'),
