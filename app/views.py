@@ -56,7 +56,7 @@ class GAFunnelView(TemplateView):
         if self.credential is None or self.credential.invalid == True:
             return redirect(reverse('ga-config-view'))
         else:
-            return super(GAFunnelView, self).get(*args, **kwargs)
+            return super(GAFunnelView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         ctx = super(GAFunnelView, self).get_context_data(**kwargs)
