@@ -18,6 +18,19 @@ class CredentialsModel(models.Model):
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules([], ["^oauth2client\.django_orm\.CredentialsField"])
 
+class GAProfile(models.Model):
+    profile_id = models.CharField(max_length=256, verbose_name=u'Профиль GA')
+    webproperty_id = models.CharField(max_length=256, verbose_name=u'Веб-свойство GA')
+    account_id = models.CharField(max_length=256, verbose_name=u'Аккаунт GA')
+    user = models.OneToOneField(User, verbose_name=u'Пользователь')
+
+    def __unicode__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = u'Настройка GA'
+        verbose_name_plural = u'Настройки GA'
+
 class CanvasBlock(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название блока')
     slug = models.CharField(max_length=200, verbose_name=u'Slug')

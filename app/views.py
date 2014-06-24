@@ -1,6 +1,6 @@
 #coding: utf-8
 # Create your views here.
-from app.models import News, NewsGroup
+from app.models import News, NewsGroup, GAProfile
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
 from django.http import HttpResponse
 import arrow, logging
@@ -91,6 +91,21 @@ class GAView(TemplateView):
                     ctx['profiles'] = profiles_config
                 else:
                     ctx['profiles_error'] = u'Нет данных'
+            if self.request.GET.get('profile'):
+                ga_profile = None
+                if GAProfile.objects.filter(user=self.request.user).exists():
+                    ga_profile = GAProfile.objects.get(user=self.request.user)
+                    ga_profile.account_id = self.request.GET.get('account')
+                    ga_profile.webproperty_id = self.request.GET.get('webprop')
+                    ga_profile.profile_id = self.request.GET.get('profile')
+                else:
+                    ga_profile = GAProfile(
+                        user=self.request.user,
+                        account_id = self.request.GET.get('account'),
+                        webproperty_id = self.request.GET.get('webprop'),
+                        profile_id = self.request.GET.get('profile'),
+                    )
+                ga_profile.save()
 
             # data = profile_config
             # data = service.data().ga().get(
