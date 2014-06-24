@@ -410,3 +410,7 @@ li.active a.canvas-element-item-link {
     margin: 30px auto;
     font-size: 26px;
 }
+
+.ga-config select {
+    width: 100%;
+}
