@@ -66,7 +66,7 @@ class GAFunnelView(TemplateView):
 
         ga_profile = GAProfile.objects.get(user=self.request.user)
         ga_users = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.account_id),
+            ids='ga:{}'.format(ga_profile.profile_id),
             start_date='2014-06-01',
             end_date='2014-06-24',
             metrics='ga:users'
