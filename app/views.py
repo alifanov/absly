@@ -183,7 +183,7 @@ class GAFunnelView(TemplateView):
             ).execute().get('rows')[0][0]
 
         if self.funnel_config.referral_page:
-            ctx['referral_page'] = service.data().ga().get(
+            ctx['referral_value'] = service.data().ga().get(
                 ids='ga:{}'.format(ga_profile.profile_id),
                 start_date='2014-06-01',
                 end_date='2014-06-24',
@@ -193,7 +193,7 @@ class GAFunnelView(TemplateView):
             ).execute().get('rows')[0][0]
 
         if self.funnel_config.revenue_page:
-            ctx['revenue_page'] = service.data().ga().get(
+            ctx['revenue_value'] = service.data().ga().get(
                 ids='ga:{}'.format(ga_profile.profile_id),
                 start_date='2014-06-01',
                 end_date='2014-06-24',
