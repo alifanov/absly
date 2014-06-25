@@ -31,33 +31,16 @@
                 </td>
                 <td>
                         {{ funnel_config_form.activation_page }}
-{#                    <select name="page">#}
-{#                        {% for p in ga_pages %}#}
-{#                            <option value="{{ p }}">{{ p }}</option>#}
-{#                        {% endfor %}#}
-{#                    </select>#}
                 </td>
                 <td>OR</td>
                 <td>
-                    <select name="event_category">
-                        {% for p in ga_events_categories %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                        {{ funnel_config_form.activation_event_categories }}
                 </td>
                 <td>
-                    <select name="event_action">
-                        {% for p in ga_events_actions %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                        {{ funnel_config_form.activation_event_action }}
                 </td>
                 <td>
-                    <select name="event_label">
-                        {% for p in ga_events_labels %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                        {{ funnel_config_form.activation_event_label }}
                 </td>
             </tr>
             <tr>
