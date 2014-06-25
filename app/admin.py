@@ -1,6 +1,6 @@
 from django.contrib import admin
 from app.models import News, NewsGroup, SummaryGroup, SummaryItem, CanvasBlock,CanvasBlockItem, CanvasBlockItemParameter,\
-CanvasBlockItemParameterValue, CredentialsModel, GAProfile
+CanvasBlockItemParameterValue, CredentialsModel, GAProfile, GAFunnelConfig
 
 class CBPVAdmin(admin.ModelAdmin):
     model = CanvasBlockItemParameterValue
@@ -20,6 +20,7 @@ class CanvasBlockAdmin(admin.ModelAdmin):
 class CanvasBlockItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
 
+admin.site.register(GAFunnelConfig)
 admin.site.register(CredentialsModel)
 admin.site.register(News)
 admin.site.register(NewsGroup)
