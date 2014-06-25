@@ -3,6 +3,7 @@ from app.models import SummaryItem, GAFunnelConfig
 
 class FunnelConfgiForm(ModelForm):
     class Meta:
+        model = GAFunnelConfig
         exclude=('user',)
 
 class SummaryItemForm(ModelForm):
