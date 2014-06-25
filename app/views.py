@@ -80,7 +80,7 @@ class GAFunnelView(TemplateView):
             end_date='2014-06-24',
             metrics='ga:uniquePageviews',
             dimensions='ga:pagePath',
-            filter='ga:pagePath==/'
+            filters='ga:pagePath==/'
         ).execute()
         ctx['ga_pages'] = ga_pages.get('rows')
 
