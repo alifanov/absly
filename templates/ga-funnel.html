@@ -47,13 +47,13 @@
     <script type="text/javascript">
         $(function(){
             var r = Raphael('funnel');
-            r.barchart(0, 0, 600, 600, [
-                $("#acquisition").val(),
-                $("#activation").val(),
-                $("#retention").val(),
-                $("#referral").val(),
-                $("#revenue").val()
-            ]);
+            r.barchart(0, 0, 600, 600, [100, 80, 60, 40, 20
+{#                $("#acquisition").val(),#}
+{#                $("#activation").val(),#}
+{#                $("#retention").val(),#}
+{#                $("#referral").val(),#}
+{#                $("#revenue").val()#}
+            ], {});
         });
     </script>
     </div>
