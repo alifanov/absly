@@ -47,10 +47,15 @@ def auth_return(request):
   storage.put(credential)
   return HttpResponseRedirect("/ga/")
 
-class GAFunnelView(TemplateView):
+class GAFunnelView(TemplateView, UpdateView):
     credentials = None
     template_name = 'ga-funnel.html'
     funnel_config = None
+    form_class = GAFunnelConfig
+
+    def get_object(self, queryset=None):
+        self.funnel_config, created = GAFunnelConfig.objects.get_or_create(user=self.request.user)
+        return self.funnel_config
 
     def get(self, request, *args, **kwargs):
         self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
