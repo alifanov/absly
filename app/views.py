@@ -56,8 +56,8 @@ class GAFunnelView(TemplateView):
         self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
+        request.POST['user'] = self.request.user.pk
         form = FunnelConfgiForm(request.POST, instance=self.funnel_config)
-        raise ValueError(form.fields['user'].value)
         if form.is_valid():
             form.save()
         return self.get(request, *args, **kwargs)
