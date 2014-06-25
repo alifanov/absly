@@ -118,7 +118,7 @@ class GAFunnelView(TemplateView):
         ).execute()
         ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
         fcf = FunnelConfgiForm(instance=self.funnel_config)
-        fcf.fields['activation_page'].queryset = ctx['ga_pages']
+        # fcf.fields['activation_page'].queryset = ctx['ga_pages']
         ctx['funnel_config_form'] = fcf
 
         return ctx
