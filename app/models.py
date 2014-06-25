@@ -39,7 +39,7 @@ class GAFunnelConfig(models.Model):
     activation_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
 
     def __unicode__(self):
-        return self.user.email
+        return self.user
 
     class Meta:
         verbose_name = u'Настройка воронки'
