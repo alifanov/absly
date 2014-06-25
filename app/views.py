@@ -249,7 +249,9 @@ class GAFunnelView(TemplateView):
                 metrics='ga:users',
                 filters=ff,
                 max_results=25
-            ).execute().get('rows')[0][0]
+            ).execute().get('rows')
+            if ctx['referral_value']:
+                ctx['referral_value'] = ctx['referral_value'][0][0]
 
 
         if self.funnel_config.revenue_page:
@@ -276,8 +278,9 @@ class GAFunnelView(TemplateView):
                 metrics='ga:users',
                 filters=ff,
                 max_results=25
-            ).execute().get('rows')[0][0]
-
+            ).execute().get('rows')
+            if ctx['revenue_value']:
+                ctx['revenue_value'] = ctx['revenue_value'][0][0]
 
         return ctx
 
