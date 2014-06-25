@@ -58,28 +58,35 @@
                 <td>
                     {{ funnel_config_form.retention_page }}
                 </td>
-                <td>OR</td>
-                <td>
-                    <select name="event_category">
-                        {% for p in ga_events_categories %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_action">
-                        {% for p in ga_events_actions %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_label">
-                        {% for p in ga_events_labels %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
+                {% if not funnel_config_form.retention_page.value %}
+                    <td>OR</td>
+                    <td>
+                        <select name="event_category">
+                            {% for p in ga_events_categories %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_action">
+                            {% for p in ga_events_actions %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_label">
+                            {% for p in ga_events_labels %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
             </tr>
             <tr>
                 <td>Referral</td>
@@ -89,28 +96,35 @@
                 <td>
                     {{ funnel_config_form.referral_page }}
                 </td>
-                <td>OR</td>
-                <td>
-                    <select name="event_category">
-                        {% for p in ga_events_categories %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_action">
-                        {% for p in ga_events_actions %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_label">
-                        {% for p in ga_events_labels %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
+                {% if not funnel_config_form.referral_page.value %}
+                    <td>OR</td>
+                    <td>
+                        <select name="event_category">
+                            {% for p in ga_events_categories %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_action">
+                            {% for p in ga_events_actions %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_label">
+                            {% for p in ga_events_labels %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
             </tr>
             <tr>
                 <td>Revenue</td>
@@ -120,28 +134,35 @@
                 <td>
                     {{ funnel_config_form.revenue_page }}
                 </td>
-                <td>OR</td>
-                <td>
-                    <select name="event_category">
-                        {% for p in ga_events_categories %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_action">
-                        {% for p in ga_events_actions %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <select name="event_label">
-                        {% for p in ga_events_labels %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
+                {% if not funnel_config_form.revenue_page.value %}
+                    <td>OR</td>
+                    <td>
+                        <select name="event_category">
+                            {% for p in ga_events_categories %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_action">
+                            {% for p in ga_events_actions %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select name="event_label">
+                            {% for p in ga_events_labels %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
             </tr>
         </table>
     <button type="submit" class="btn btn-primary">Сохранить</button>
