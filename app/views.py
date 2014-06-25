@@ -88,8 +88,6 @@ class GAFunnelView(TemplateView):
         ).execute()
         ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
-        self.funnel_config.fields['activation_page'].queryset = ctx['ga_pages']
-
         ga_events_categories = service.data().ga().get(
             ids='ga:{}'.format(ga_profile.profile_id),
             start_date='2014-06-01',
@@ -119,7 +117,9 @@ class GAFunnelView(TemplateView):
             max_results=25
         ).execute()
         ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
-        ctx['funnel_config_form'] = FunnelConfgiForm(instance=self.funnel_config)
+        fcf = FunnelConfgiForm(instance=self.funnel_config)
+        fcf.fields['activation_page'].queryset = ctx['ga_pages']
+        ctx['funnel_config_form'] = fcf
 
         return ctx
 
