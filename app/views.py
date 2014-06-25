@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
     CanvasBlockItemParameterValue
-from app.forms import SummaryItemForm
+from app.forms import SummaryItemForm, FunnelConfgiForm
 import json, os
 import httplib2
 
@@ -22,7 +22,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from app.models import CredentialsModel
+from app.models import CredentialsModel, GAFunnelConfig
 from django.conf import settings
 from oauth2client import xsrfutil
 from oauth2client.client import flow_from_clientsecrets
@@ -49,17 +49,18 @@ def auth_return(request):
 class GAFunnelView(TemplateView):
     credentials = None
     template_name = 'ga-funnel.html'
+    funnel_config = None
 
     def get(self, request, *args, **kwargs):
+        self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
+            user=self.request.user
+        )
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
             return redirect(reverse('ga-config-view'))
         else:
             return super(GAFunnelView, self).get(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-
 
     def get_context_data(self, **kwargs):
         ctx = super(GAFunnelView, self).get_context_data(**kwargs)
@@ -116,6 +117,7 @@ class GAFunnelView(TemplateView):
             max_results=25
         ).execute()
         ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
+        ctx['funnel_config_form'] = FunnelConfgiForm(instance=self.funnel_config)
 
         return ctx
 
