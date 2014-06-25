@@ -6,18 +6,14 @@
             <tr>
                 <td>Acquisition</td>
                 <td>
-                    {% if ga_users %}
-                        {{ ga_users }}
-                    {% else %}
-                        <input class="form-control" type="text" />
-                    {% endif %}
+                    <input class="form-control" id="acquisition" type="text" value="{{ ga_users|default:"0" }}" />
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td>Activation</td>
                 <td>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" id="activation" type="text" value="100" />
                 </td>
                 <td>
                     {{ ga_pages }}
@@ -26,24 +22,39 @@
             <tr>
                 <td>Retention</td>
                 <td>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" id="retention" type="text" value="50" />
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td>Referral</td>
                 <td>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" id="referral" type="text" value="40" />
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td>Revenue</td>
                 <td>
-                    <input class="form-control" type="text" />
+                    <input class="form-control" id="revenue" type="text" value="20" />
                 </td>
                 <td></td>
             </tr>
         </table>
+    <div id="funnel">
+
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            var r = Raphael('funnel');
+            r.barchart(0, 0, 600, 600, [
+                $("#acquisition").val(),
+                $("#activation").val(),
+                $("#retention").val(),
+                $("#referral").val(),
+                $("#revenue").val()
+            ]);
+        });
+    </script>
     </div>
 {% endblock %}
