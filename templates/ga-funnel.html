@@ -80,11 +80,7 @@
                     <input class="form-control" id="referral" type="text" value="{{ referral_value|default:"0" }}" />
                 </td>
                 <td>
-                    <select name="page">
-                        {% for p in ga_pages %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ funnel_config_form.referral_page }}
                 </td>
                 <td>OR</td>
                 <td>
@@ -115,11 +111,7 @@
                     <input class="form-control" id="revenue" type="text" value="{{ revenue_value|default:"0" }}" />
                 </td>
                 <td>
-                    <select name="page">
-                        {% for p in ga_pages %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ funnel_config_form.referral_page }}
                 </td>
                 <td>OR</td>
                 <td>
