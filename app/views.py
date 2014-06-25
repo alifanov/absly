@@ -136,14 +136,20 @@ class GAFunnelView(TemplateView):
         fcf.fields['activation_page'] = forms.ChoiceField(
             widget=forms.Select, choices=vars
         )
+        choices = [(c,c) for c in ctx['ga_events_categories']]
+        choices.insert(0, (u'', '----'))
         fcf.fields['activation_event_category'] = forms.ChoiceField(
-            widget=forms.Select, choices=[(c,c) for c in ctx['ga_events_categories']]
+            widget=forms.Select, choices=choices
         )
+        choices = [(c,c) for c in ctx['ga_events_actions']]
+        choices.insert(0, (u'', '----'))
         fcf.fields['activation_event_action'] = forms.ChoiceField(
-            widget=forms.Select, choices=[(c,c) for c in ctx['ga_events_actions']]
+            widget=forms.Select, choices=choices
         )
+        choices = [(c,c) for c in ctx['ga_events_labels']]
+        choices.insert(0, (u'', '----'))
         fcf.fields['activation_event_label'] = forms.ChoiceField(
-            widget=forms.Select, choices=[(c,c) for c in ctx['ga_events_labels']]
+            widget=forms.Select, choices=choices
         )
         ctx['funnel_config_form'] = fcf
 
