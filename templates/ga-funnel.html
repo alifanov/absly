@@ -61,25 +61,13 @@
                 {% if not funnel_config_form.retention_page.value %}
                     <td>OR</td>
                     <td>
-                        <select name="event_category">
-                            {% for p in ga_events_categories %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.retention_event_category }}
                     </td>
                     <td>
-                        <select name="event_action">
-                            {% for p in ga_events_actions %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.retention_event_action }}
                     </td>
                     <td>
-                        <select name="event_label">
-                            {% for p in ga_events_labels %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.retention_event_label }}
                     </td>
                 {% else %}
                     <td></td>
@@ -99,26 +87,15 @@
                 {% if not funnel_config_form.referral_page.value %}
                     <td>OR</td>
                     <td>
-                        <select name="event_category">
-                            {% for p in ga_events_categories %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.referral_event_category }}
                     </td>
                     <td>
-                        <select name="event_action">
-                            {% for p in ga_events_actions %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.referral_event_action }}
                     </td>
                     <td>
-                        <select name="event_label">
-                            {% for p in ga_events_labels %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.referral_event_label }}
                     </td>
+
                 {% else %}
                     <td></td>
                     <td></td>
@@ -137,25 +114,15 @@
                 {% if not funnel_config_form.revenue_page.value %}
                     <td>OR</td>
                     <td>
-                        <select name="event_category">
-                            {% for p in ga_events_categories %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.revenue_event_category }}
                     </td>
                     <td>
-                        <select name="event_action">
-                            {% for p in ga_events_actions %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.revenue_event_action }}
                     </td>
                     <td>
-                        <select name="event_label">
-                            {% for p in ga_events_labels %}
-                                <option value="{{ p }}">{{ p }}</option>
-                            {% endfor %}
-                        </select>
+                            {{ funnel_config_form.revenue_event_label }}
+                    </td>
+
                     </td>
                 {% else %}
                     <td></td>

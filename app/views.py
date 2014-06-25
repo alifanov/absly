@@ -133,33 +133,43 @@ class GAFunnelView(TemplateView):
         fcf = FunnelConfgiForm(instance=self.funnel_config)
         vars = [(c,c) for c in ctx['ga_pages']]
         vars.insert(0, (u'', '-----'))
-        fcf.fields['activation_page'] = forms.ChoiceField(
+        field = forms.ChoiceField(
             widget=forms.Select, choices=vars
         )
-        fcf.fields['retention_page'] = forms.ChoiceField(
-            widget=forms.Select, choices=vars
-        )
-        fcf.fields['referral_page'] = forms.ChoiceField(
-            widget=forms.Select, choices=vars
-        )
-        fcf.fields['revenue_page'] = forms.ChoiceField(
-            widget=forms.Select, choices=vars
-        )
+        fcf.fields['activation_page'] = field
+        fcf.fields['retention_page'] = field
+        fcf.fields['referral_page'] = field
+        fcf.fields['revenue_page'] = field
+
         choices = [(c,c) for c in ctx['ga_events_categories']]
         choices.insert(0, (u'', '----'))
-        fcf.fields['activation_event_category'] = forms.ChoiceField(
+        field = forms.ChoiceField(
             widget=forms.Select, choices=choices
         )
+        fcf.fields['activation_event_category'] = field
+        fcf.fields['retention_event_category'] = field
+        fcf.fields['referral_event_category'] = field
+        fcf.fields['revenue_event_category'] = field
+
         choices = [(c,c) for c in ctx['ga_events_actions']]
         choices.insert(0, (u'', '----'))
-        fcf.fields['activation_event_action'] = forms.ChoiceField(
+        field = forms.ChoiceField(
             widget=forms.Select, choices=choices
         )
+        fcf.fields['activation_event_action'] = field
+        fcf.fields['retention_event_action'] = field
+        fcf.fields['referral_event_action'] = field
+        fcf.fields['revenue_event_action'] = field
+
         choices = [(c,c) for c in ctx['ga_events_labels']]
         choices.insert(0, (u'', '----'))
-        fcf.fields['activation_event_label'] = forms.ChoiceField(
+        field = forms.ChoiceField(
             widget=forms.Select, choices=choices
         )
+        fcf.fields['activation_event_label'] = field
+        fcf.fields['retention_event_label'] = field
+        fcf.fields['referral_event_label'] = field
+        fcf.fields['revenue_event_label'] = field
         ctx['funnel_config_form'] = fcf
 
         if self.funnel_config.activation_page:
