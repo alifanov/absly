@@ -132,7 +132,7 @@ class GAFunnelView(TemplateView):
         ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
         fcf = FunnelConfgiForm(instance=self.funnel_config)
         vars = [(c,c) for c in ctx['ga_pages']]
-        vars.append((u'', '-----'))
+        vars.insert(0, (u'', '-----'))
         fcf.fields['activation_page'] = forms.ChoiceField(
             widget=forms.Select, choices=vars
         )
