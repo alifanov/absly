@@ -37,7 +37,7 @@
                     <td></td>
                 {% endif %}
                 {% if not funnel_config_form.activation_page.value %}
-                <td>OR</td>
+                <td>|</td>
                 <td>
                         {{ funnel_config_form.activation_event_category }}
                 </td>
@@ -67,7 +67,7 @@
                     <td></td>
                 {% endif %}
                 {% if not funnel_config_form.retention_page.value %}
-                    <td>OR</td>
+                    <td>|</td>
                     <td>
                             {{ funnel_config_form.retention_event_category }}
                     </td>
@@ -98,7 +98,7 @@
                 {% endif %}
 
                 {% if not funnel_config_form.referral_page.value %}
-                    <td>OR</td>
+                    <td>|</td>
                     <td>
                             {{ funnel_config_form.referral_event_category }}
                     </td>
@@ -129,7 +129,7 @@
                     <td></td>
                 {% endif %}
                 {% if not funnel_config_form.revenue_page.value %}
-                    <td>OR</td>
+                    <td>|</td>
                     <td>
                             {{ funnel_config_form.revenue_event_category }}
                     </td>
