@@ -80,9 +80,9 @@ class GAFunnelView(TemplateView):
             end_date='2014-06-24',
             metrics='ga:sessions',
             dimensions='ga:pagePath',
-            filters='ga:pagePath==/'
+            max_results=25
         ).execute()
-        ctx['ga_pages'] = ga_pages.get('rows')
+        ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
         accounts = service.management().accounts().list().execute()
 
