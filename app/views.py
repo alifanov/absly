@@ -145,6 +145,16 @@ class GAFunnelView(TemplateView):
         )
         ctx['funnel_config_form'] = fcf
 
+        if self.funnel_config.activation_page:
+            ctx['activation_value'] = service.data().ga().get(
+                ids='ga:{}'.format(ga_profile.profile_id),
+                start_date='2014-06-01',
+                end_date='2014-06-24',
+                metrics='ga:users',
+                filters='ga:pagePath=={}'.format(self.funnel_config.activation_page),
+                max_results=25
+            )
+
         return ctx
 
 class GAConfigView(TemplateView):

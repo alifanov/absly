@@ -27,7 +27,7 @@
             <tr>
                 <td>Activation</td>
                 <td>
-                    <input class="form-control" id="activation" type="text" value="100" />
+                    <input class="form-control" id="activation" type="text" value="{{ activation_value|default:"0" }}" />
                 </td>
                 <td>
                         {{ funnel_config_form.activation_page }}
