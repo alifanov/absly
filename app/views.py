@@ -63,9 +63,10 @@ class GAFunnelView(TemplateView):
         return self.get(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
-            user=self.request.user
-        )
+        if not self.funnel_config:
+            self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
+                user=request.user
+            )
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
