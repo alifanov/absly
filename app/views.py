@@ -74,6 +74,15 @@ class GAFunnelView(TemplateView):
         if ga_users.get('rows'):
             ctx['ga_users'] = ga_users.get('rows')[0][0]
 
+        ga_pages = service.data().ga().get(
+            ids='ga:{}'.format(ga_profile.profile_id),
+            start_date='2014-06-01',
+            end_date='2014-06-24',
+            metrics='ga:uniquePageviews',
+            dimensions='ga:pagePath'
+        )
+        ctx['ga_pages'] = ga_pages.get('rows')
+
         accounts = service.management().accounts().list().execute()
 
         return ctx
