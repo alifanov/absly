@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
     CanvasBlockItemParameterValue
 from app.forms import SummaryItemForm, FunnelConfgiForm
+from django import forms
 import json, os
 import httplib2
 
@@ -118,6 +119,9 @@ class GAFunnelView(TemplateView):
         ).execute()
         ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
         fcf = FunnelConfgiForm(instance=self.funnel_config)
+        fcf.activation_page = forms.ChoiceField(
+            widget=forms.Select, choices=[(c,c) for c in ctx['ga_pages']]
+        )
         # fcf.fields['activation_page'].queryset = ctx['ga_pages']
         ctx['funnel_config_form'] = fcf
 
