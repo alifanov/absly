@@ -58,6 +58,9 @@ class GAFunnelView(TemplateView):
         else:
             return super(GAFunnelView, self).get(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+
+
     def get_context_data(self, **kwargs):
         ctx = super(GAFunnelView, self).get_context_data(**kwargs)
         http = httplib2.Http()

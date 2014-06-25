@@ -31,6 +31,20 @@ class GAProfile(models.Model):
         verbose_name = u'Настройка GA'
         verbose_name_plural = u'Настройки GA'
 
+class GAFunnelConfig(models.Model):
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='funnel_configs')
+    activation_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
+    activation_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
+    activation_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
+    activation_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
+
+    def __unicode__(self):
+        self.user.email
+
+    class Meta:
+        verbose_name = u'Настройка воронки'
+        verbose_name_plural = u'Настройки воронки'
+
 class CanvasBlock(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название блока')
     slug = models.CharField(max_length=200, verbose_name=u'Slug')
