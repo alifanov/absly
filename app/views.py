@@ -58,7 +58,7 @@ class GAFunnelView(TemplateView, UpdateView):
         return self.funnel_config
 
     def get(self, request, *args, **kwargs):
-        sup = super(GAFunnelView, self).get(request, *args, **kwargs)
+        self.object = self.get_object()
         self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
@@ -67,7 +67,7 @@ class GAFunnelView(TemplateView, UpdateView):
         if self.credential is None or self.credential.invalid == True:
             return redirect(reverse('ga-config-view'))
         else:
-            return sup
+            return super(GAFunnelView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         ctx = super(GAFunnelView, self).get_context_data(**kwargs)
