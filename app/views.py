@@ -97,7 +97,7 @@ class GAFunnelView(TemplateView):
             end_date='2014-06-24',
             metrics='ga:sessions',
             dimensions='ga:pagePath',
-            max_results=25
+            max_results=125
         ).execute()
         ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
@@ -160,6 +160,36 @@ class GAFunnelView(TemplateView):
                 end_date='2014-06-24',
                 metrics='ga:users',
                 filters='ga:pagePath=={}'.format(self.funnel_config.activation_page),
+                max_results=25
+            ).execute().get('rows')[0][0]
+
+        if self.funnel_config.retention_page:
+            ctx['activation_value'] = service.data().ga().get(
+                ids='ga:{}'.format(ga_profile.profile_id),
+                start_date='2014-06-01',
+                end_date='2014-06-24',
+                metrics='ga:users',
+                filters='ga:pagePath=={}'.format(self.funnel_config.retention_page),
+                max_results=25
+            ).execute().get('rows')[0][0]
+
+        if self.funnel_config.referral_page:
+            ctx['activation_value'] = service.data().ga().get(
+                ids='ga:{}'.format(ga_profile.profile_id),
+                start_date='2014-06-01',
+                end_date='2014-06-24',
+                metrics='ga:users',
+                filters='ga:pagePath=={}'.format(self.funnel_config.referral_page),
+                max_results=25
+            ).execute().get('rows')[0][0]
+
+        if self.funnel_config.revenue_page:
+            ctx['activation_value'] = service.data().ga().get(
+                ids='ga:{}'.format(ga_profile.profile_id),
+                start_date='2014-06-01',
+                end_date='2014-06-24',
+                metrics='ga:users',
+                filters='ga:pagePath=={}'.format(self.funnel_config.revenue_page),
                 max_results=25
             ).execute().get('rows')[0][0]
 
