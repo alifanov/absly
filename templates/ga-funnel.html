@@ -46,14 +46,10 @@
             <tr>
                 <td>Retention</td>
                 <td>
-                    <input class="form-control" id="retention" type="text" value="50" />
+                    <input class="form-control" id="retention" type="text" value="{{ retention_value }}" />
                 </td>
                 <td>
-                    <select name="page">
-                        {% for p in ga_pages %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ funnel_config_form.retention_page }}
                 </td>
                 <td>OR</td>
                 <td>
