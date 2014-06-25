@@ -22,6 +22,27 @@
                         {% endfor %}
                     </select>
                 </td>
+                <td>
+                    <select name="event_category">
+                        {% for p in ga_events_categories %}
+                            <option value="{{ p }}">{{ p }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select name="event_action">
+                        {% for p in ga_events_actions %}
+                            <option value="{{ p }}">{{ p }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select name="event_label">
+                        {% for p in ga_events_labels %}
+                            <option value="{{ p }}">{{ p }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Retention</td>

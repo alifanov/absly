@@ -84,7 +84,35 @@ class GAFunnelView(TemplateView):
         ).execute()
         ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
-        accounts = service.management().accounts().list().execute()
+        ga_events_categories = service.data().ga().get(
+            ids='ga:{}'.format(ga_profile.profile_id),
+            start_date='2014-06-01',
+            end_date='2014-06-24',
+            metrics='ga:sessions',
+            dimensions='ga:eventCategory',
+            max_results=25
+        ).execute()
+        ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
+
+        ga_events_actions = service.data().ga().get(
+            ids='ga:{}'.format(ga_profile.profile_id),
+            start_date='2014-06-01',
+            end_date='2014-06-24',
+            metrics='ga:sessions',
+            dimensions='ga:eventAction',
+            max_results=25
+        ).execute()
+        ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
+
+        ga_events_labels = service.data().ga().get(
+            ids='ga:{}'.format(ga_profile.profile_id),
+            start_date='2014-06-01',
+            end_date='2014-06-24',
+            metrics='ga:sessions',
+            dimensions='ga:eventLabel',
+            max_results=25
+        ).execute()
+        ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
 
         return ctx
 
