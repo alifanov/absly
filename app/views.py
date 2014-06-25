@@ -182,13 +182,13 @@ class GAFunnelView(TemplateView):
                 max_results=25
             ).execute().get('rows')[0][0]
         if self.funnel_config.activation_event_category:
-            ff = ''
+            ff = u''
             if self.funnel_config.activation_event_category:
-                ff = 'ga:eventCategory=={}'.format(self.funnel_config.activation_event_category)
+                ff = u'ga:eventCategory=={}'.format(self.funnel_config.activation_event_category)
             if self.funnel_config.activation_event_action:
-                ff += ',ga:eventAction=={}'.format(self.funnel_config.activation_event_action)
+                ff += u',ga:eventAction=={}'.format(self.funnel_config.activation_event_action)
             if self.funnel_config.activation_event_label:
-                ff += ',ga:eventLabel=={}'.format(self.funnel_config.activation_event_label)
+                ff += u',ga:eventLabel=={}'.format(self.funnel_config.activation_event_label)
             ctx['activation_value'] = service.data().ga().get(
                 ids='ga:{}'.format(ga_profile.profile_id),
                 start_date='2014-06-01',
