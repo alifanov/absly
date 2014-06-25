@@ -78,7 +78,7 @@ class GAFunnelView(TemplateView):
             ids='ga:{}'.format(ga_profile.profile_id),
             start_date='2014-06-01',
             end_date='2014-06-24',
-            metrics='ga:uniquePageviews',
+            metrics='ga:sessions',
             dimensions='ga:pagePath',
             filters='ga:pagePath==/'
         ).execute()
