@@ -32,7 +32,7 @@ class GAProfile(models.Model):
         verbose_name_plural = u'Настройки GA'
 
 class GAFunnelConfig(models.Model):
-    user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='funnel_configs', null=True)
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='funnel_configs', null=True, blank=True)
     activation_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
     activation_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
     activation_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
