@@ -38,6 +38,21 @@ class GAFunnelConfig(models.Model):
     activation_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
     activation_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
 
+    retention_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
+    retention_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
+    retention_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
+    retention_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
+
+    referral_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
+    referral_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
+    referral_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
+    referral_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
+
+    revenue_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
+    revenue_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
+    revenue_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
+    revenue_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
+
     def __unicode__(self):
         return u'{}'.format(self.pk)
 
