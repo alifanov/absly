@@ -30,9 +30,11 @@
                 </td>
                 <td>
                     <select name="page">
-                        {% for p in ga_pages %}
-                            <option value="{{ p }}">{{ p }}</option>
-                        {% endfor %}
+                        {{ funnel_config_form.activation_page }}
+
+{#                        {% for p in ga_pages %}#}
+{#                            <option value="{{ p }}">{{ p }}</option>#}
+{#                        {% endfor %}#}
                     </select>
                 </td>
                 <td>OR</td>
