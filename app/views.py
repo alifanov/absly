@@ -153,7 +153,7 @@ class GAFunnelView(TemplateView):
                 metrics='ga:users',
                 filters='ga:pagePath=={}'.format(self.funnel_config.activation_page),
                 max_results=25
-            )
+            ).execute().get('rows')[0][0]
 
         return ctx
 
