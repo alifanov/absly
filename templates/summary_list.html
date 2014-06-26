@@ -14,6 +14,7 @@
                         <div>
                             {{ block.render }}
                         </div>
+                    {% endfor %}
                         <div class="es-addon-btns">
                             {% if sic.add_text %}
                                 <button class="btn btn-default">Add text</button>
@@ -25,7 +26,6 @@
                                 <button class="btn btn-default">Add link</button>
                             {% endif %}
                         </div>
-                    {% endfor %}
                 {% endfor %}
             {% else %}
                 {% for block in si.blocks.all %}
@@ -33,6 +33,7 @@
                         {{ block.render }}
                     </div>
 
+                {% endfor %}
                     {% if si.add_text %}
                         <button class="btn btn-default">Add text</button>
                     {% endif %}
@@ -43,7 +44,6 @@
                         <button class="btn btn-default">Add link</button>
                     {% endif %}
 
-                {% endfor %}
             {% endif %}
 
             {% for sge in sg.items.all %}
