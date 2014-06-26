@@ -126,18 +126,6 @@ class CanvasBlockItemParameterValue(models.Model):
         verbose_name_plural = u'Значения параметров'
 
 
-class SummaryGroup(models.Model):
-    name = models.CharField(verbose_name=u'Name', max_length=100)
-    order = models.IntegerField(verbose_name=u'Order', default=0)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = u'SummaryGroup'
-        verbose_name_plural = u'SummaryGroups'
-
-
 class SummaryItem(models.Model):
     parent = models.ForeignKey('self', verbose_name=u'Parent Item', null=True, blank=True)
     name = models.CharField(verbose_name=u'Name', max_length=100)
