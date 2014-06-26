@@ -17,7 +17,7 @@
                     {% endfor %}
                         <div class="es-addon-btns">
                             {% if sic.add_text %}
-                                <button class="btn btn-default">Add text</button>
+                                <button class="btn btn-default" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                             {% endif %}
                             {% if sic.add_image %}
                                 <button class="btn btn-default">Add image</button>
@@ -35,7 +35,7 @@
 
                 {% endfor %}
                     {% if si.add_text %}
-                        <button class="btn btn-default">Add text</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                     {% endif %}
                     {% if si.add_image %}
                         <button class="btn btn-default">Add image</button>
@@ -67,5 +67,34 @@
             {% endfor %}
         </div>
         {% endfor %}
+    </div>
+
+        <div class="modal fade" id="add-summary-text-block-modal-id">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add text block</h4>
+                </div>
+                <form method="post">
+                    <div class="modal-body">
+                        <div style="display: none;" class="alert-success">
+                            Block successfully added
+                        </div>
+                        <div class="modal-form-body">
+                            {% csrf_token %}
+                            <input type="hidden" name="item" value="" id="summary-item-id" />
+                                <div class="form-group">
+                                    <textarea></textarea>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 {% endblock %}
