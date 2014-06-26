@@ -139,10 +139,14 @@ class SummaryGroup(models.Model):
 
 
 class SummaryItem(models.Model):
-    group = models.ForeignKey(SummaryGroup, verbose_name=u'Group', related_name='items')
+    parent = models.ForeignKey('self', verbose_name=u'Parent Item', null=True, blank=True)
     name = models.CharField(verbose_name=u'Name', max_length=100)
-    text = models.TextField(verbose_name=u'Data')
     public = models.BooleanField(default=False, verbose_name=u'Is public data')
+
+    add_text = models.BooleanField(verbose_name=u'Can add text field', default=True)
+    add_image = models.BooleanField(verbose_name=u'Can add image field', default=False)
+    add_link = models.BooleanField(verbose_name=u'Can add link field', default=False)
+    add_linkedin = models.BooleanField(verbose_name=u'Can add linkedIn field', default=False)
 
     def is_empty_text(self):
         return True and self.text.strip()
@@ -154,6 +158,51 @@ class SummaryItem(models.Model):
         verbose_name = u'SummaryItem'
         verbose_name_plural = u'SummaryItems'
 
+
+class SummaryBlock(models.Model):
+    item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary')
+
+class SummaryTextBlock(SummaryBlock):
+    text = models.TextField(verbose_name=u'Текст')
+
+    def __unicode__(self):
+        return u'TextBlock for {}'.format(self.item.name)
+
+    class Meta:
+        verbose_name = u'ES TextBlock'
+        verbose_name_plural = u'ES TextBlocks'
+
+class SummaryImageBlock(SummaryBlock):
+    image = models.ImageField(upload_to='upload/', verbose_name=u'Image')
+
+    def __unicode__(self):
+        return 'Image #{} for {}'.format(self.pk, self.item.name)
+
+    class Meta:
+        verbose_name_plural = 'Images'
+        verbose_name = 'Image'
+
+class SummaryLinkBlock(SummaryBlock):
+    link = models.TextField(verbose_name=u'Link')
+
+    def __unicode__(self):
+        return 'Link for {}'.format(self.item.name)
+
+    class Meta:
+        verbose_name = 'Link'
+        verbose_name_plural = 'Links'
+
+class SummaryLinkedInBlock(SummaryLinkBlock):
+    avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
+    name = models.CharField(max_length=256, verbose_name=u'Name')
+    desc = models.TextField(verbose_name='Description')
+
+    def __unicode__(self):
+        return 'LinkedIn for {}'.format(self.name)
+
+    class Meta:
+        verbose_name = 'LinkedIn link'
+        verbose_name_plural = 'LinkedIn links'
 
 class NewsGroup(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название группы')
