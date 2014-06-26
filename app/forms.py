@@ -8,4 +8,3 @@ class FunnelConfgiForm(ModelForm):
 class SummaryItemForm(ModelForm):
     class Meta:
         model = SummaryItem
-        fields = ['text']
