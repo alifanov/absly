@@ -563,7 +563,6 @@ class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
 class LeftMenuMixin(object):
     def get_context_data(self, **kwargs):
         ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
-        ctx['summary_groups'] = SummaryGroup.objects.order_by('order')
         ctx['news_groups'] = NewsGroup.objects.all()
         return ctx
 
@@ -596,7 +595,7 @@ class CanvasView(LeftMenuMixin, TemplateView):
 
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
     template_name = 'summary_list.html'
-    model = SummaryGroup
+    model = SummaryItem
     context_object_name = 'sgs'
 
     @method_decorator(login_required)
@@ -610,7 +609,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
     template_name = 'summary.html'
-    model = SummaryGroup
+    model = SummaryItem
     context_object_name = 'sg'
 
     @method_decorator(login_required)
