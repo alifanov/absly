@@ -149,10 +149,13 @@ class SummaryItem(models.Model):
 
 
 class SummaryBlock(models.Model):
-    item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary')
+    item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
 
 class SummaryTextBlock(SummaryBlock):
     text = models.TextField(verbose_name=u'Текст')
+
+    def render(self):
+        return self.text
 
     def __unicode__(self):
         return u'TextBlock for {}'.format(self.item.name)
@@ -164,6 +167,9 @@ class SummaryTextBlock(SummaryBlock):
 class SummaryImageBlock(SummaryBlock):
     image = models.ImageField(upload_to='upload/', verbose_name=u'Image')
 
+    def render(self):
+        return '<img src="{}" class="es-img" />'.format(self.image.url)
+
     def __unicode__(self):
         return 'Image #{} for {}'.format(self.pk, self.item.name)
 
@@ -173,6 +179,9 @@ class SummaryImageBlock(SummaryBlock):
 
 class SummaryLinkBlock(SummaryBlock):
     link = models.TextField(verbose_name=u'Link')
+
+    def render(self):
+        return '<a href="{}">Link</a>'.format(self.link)
 
     def __unicode__(self):
         return 'Link for {}'.format(self.item.name)

@@ -10,8 +10,14 @@
             {% if si.childs %}
                 {% for sic in si.childs.all %}
                     <h4>{{ sic.name }}</h4>
+                    {% for block in sic.blocks.all %}
+                        {{ block.render }}
+                    {% endfor %}
                 {% endfor %}
             {% else %}
+                {% for block in si.blocks.all %}
+                    {{ block.render }}
+                {% endfor %}
             {% endif %}
 
             {% for sge in sg.items.all %}
