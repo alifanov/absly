@@ -140,7 +140,7 @@ class SummaryItem(models.Model):
         return True and self.text.strip()
 
     def __unicode__(self):
-        return u'{} -> {}'.format(self.group.name, self.name)
+        return self.name
 
     class Meta:
         verbose_name = u'SummaryItem'
