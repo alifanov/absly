@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import SummaryGroup, SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
+from app.models import SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
     CanvasBlockItemParameterValue
 from app.forms import SummaryItemForm, FunnelConfgiForm
 from django import forms
