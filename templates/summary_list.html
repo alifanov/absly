@@ -11,12 +11,38 @@
                 {% for sic in si.childs.all %}
                     <h4>{{ sic.name }}</h4>
                     {% for block in sic.blocks.all %}
-                        {{ block.render }}
+                        <div>
+                            {{ block.render }}
+                        </div>
+                        <div class="es-addon-btns">
+                            {% if sic.add_text %}
+                                <button class="btn btn-default">Add text</button>
+                            {% endif %}
+                            {% if sic.add_image %}
+                                <button class="btn btn-default">Add image</button>
+                            {% endif %}
+                            {% if sic.add_link %}
+                                <button class="btn btn-default">Add link</button>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 {% endfor %}
             {% else %}
                 {% for block in si.blocks.all %}
-                    {{ block.render }}
+                    <div>
+                        {{ block.render }}
+                    </div>
+
+                    {% if sic.add_text %}
+                        <button class="btn btn-default">Add text</button>
+                    {% endif %}
+                    {% if sic.add_image %}
+                        <button class="btn btn-default">Add image</button>
+                    {% endif %}
+                    {% if sic.add_link %}
+                        <button class="btn btn-default">Add link</button>
+                    {% endif %}
+
                 {% endfor %}
             {% endif %}
 
