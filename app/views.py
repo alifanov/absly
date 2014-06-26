@@ -599,7 +599,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
     context_object_name = 'summary_items'
 
     def get_queryset(self):
-        return self.request.user.summary_items.all()
+        return self.request.user.summary_items.filter(parent__isnull=True).all()
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
