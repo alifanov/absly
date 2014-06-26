@@ -596,7 +596,10 @@ class CanvasView(LeftMenuMixin, TemplateView):
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
     template_name = 'summary_list.html'
     model = SummaryItem
-    context_object_name = 'sgs'
+    context_object_name = 'summary_items'
+
+    def get_queryset(self):
+        return self.request.user.summary_items.all()
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

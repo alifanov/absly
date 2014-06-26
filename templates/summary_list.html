@@ -3,9 +3,17 @@
 {% block content %}
     <div class="container summary">
         <h1>Executive Summary</h1>
-        {% for sg in sgs %}
+        {% for si in summary_items %}
         <div class="es-data">
-            <h2>{{ sg.name }}</h2>
+            <h2>{{ si.name }}</h2>
+
+            {% if si.childs %}
+                {% for sic in si.childs.all %}
+                    <h4>{{ sic.name }}</h4>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+
             {% for sge in sg.items.all %}
                 <div class="es-item">
                     <h4 class="{% if sge.is_empty_text %}text-success{% else %}text-danger{% endif %}">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>

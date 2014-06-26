@@ -2,17 +2,13 @@
 
 {% block content %}
     <div class="container summary">
-    <h1>Executive Summary
-{#        <button class="btn btn-primary pull-right">#}
-{#            <span class="icon-eye-open"></span> Preview#}
-{#        </button>#}
-    </h1>
-{#    <div class="es-description">#}
-{#        <h3>{{ sg.name }}</h3>#}
-{#    </div>#}
+    <h1>Executive Summary</h1>
     <div class="es-data">
         <h2>{{ sg.name }}</h2>
-        {% for sge in sg.items.all %}
+
+
+
+        {% for sge in .all %}
         <div class="es-item">
             <h4 class="{% if sge.is_empty_text %}text-success{% else %}text-danger{% endif %}">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>
             <div class="es-item-text {% if sge.is_empty_text %}done{% else %}empty{% endif %}">
@@ -31,29 +27,6 @@
                 <hr />
             {% endif %}
         {% endfor %}
-{#        <div class="es-item">#}
-{#            <h4 class="text-success">Достижения</h4>#}
-{#            <div class="es-item-text done">#}
-{#                <textarea id="es1-text-area" class="es-item-text-area" style="display: none;"></textarea>#}
-{#                <div class="es-item-text-view">Есть первая версия</div>#}
-{#            </div>#}
-{#            <div class="es-item-btns">#}
-{#                <div class="view-settings">Who can view: <a href="#">Only me</a></div>#}
-{#                <button class="btn btn-primary" style="display: none;"> Save</button>#}
-{#            </div>#}
-{#            <div class="es-addon-btns">#}
-{#                <div>#}
-{#                    <button class="btn btn-primary">#}
-{#                        <span class="icon-plus"></span> 1 min pitch#}
-{#                    </button>#}
-{#                </div>#}
-{#                <div>#}
-{#                    <button class="btn btn-primary">#}
-{#                        <span class="icon-plus"></span> Advisors#}
-{#                    </button>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
     </div>
     </div>
 {% endblock %}

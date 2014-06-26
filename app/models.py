@@ -127,7 +127,8 @@ class CanvasBlockItemParameterValue(models.Model):
 
 
 class SummaryItem(models.Model):
-    parent = models.ForeignKey('self', verbose_name=u'Parent Item', null=True, blank=True)
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='summary_items')
+    parent = models.ForeignKey('self', verbose_name=u'Parent Item', null=True, blank=True, related_name='childs')
     name = models.CharField(verbose_name=u'Name', max_length=100)
     public = models.BooleanField(default=False, verbose_name=u'Is public data')
 
