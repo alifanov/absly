@@ -215,10 +215,7 @@ $(function(){
         var _this = $(this);
         $.ajax({
             type: "GET",
-            data: {
-                'pk': _this.attr('rel')
-            },
-            url: '/summary/update/block/',
+            url: '/summary/update/block/'+_this.attr('rel') + '/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
             }
