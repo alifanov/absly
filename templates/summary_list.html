@@ -13,7 +13,9 @@
                     {% for block in sic.blocks.all %}
                         <div class="es-block">
                             {{ block.render|safe }}
-                            <div class="es-edit-link">Edit</div>
+                            <div class="es-edit-block">
+                                <a href="#">Edit</a>
+                            </div>
                         </div>
                     {% endfor %}
                         <div class="es-addon-btns">
