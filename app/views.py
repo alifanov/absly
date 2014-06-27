@@ -747,3 +747,22 @@ class SummaryTextBlockView(CreateView):
     def get(self, request, *args, **kwargs):
         data = render_to_string(self.template_name, {'form': self.form_class()})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+
+class SummaryImageBlockView(CreateView):
+    model = SummaryImageBlock
+    form_class = SummaryImageBlockForm
+    template_name = 'summary/forms/edit.html'
+
+    def get(self, request, *args, **kwargs):
+        data = render_to_string(self.template_name, {'form': self.form_class()})
+        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+
+class SummaryLinkBlockView(CreateView):
+    model = SummaryLinkBlock
+    form_class = SummaryLinkBlockForm
+    template_name = 'summary/forms/edit.html'
+
+    def get(self, request, *args, **kwargs):
+        data = render_to_string(self.template_name, {'form': self.form_class()})
+        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+

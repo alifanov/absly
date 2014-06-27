@@ -206,7 +206,26 @@ $(function(){
             url: '/summary/text/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
-//                _this.modal('show');
+            }
+        })
+    });
+    $(".summary-image-text").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            url: '/summary/image/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+            }
+        })
+    });
+    $(".summary-link-text").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            url: '/summary/link/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
             }
         })
     });
