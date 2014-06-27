@@ -788,5 +788,5 @@ class SummaryUpdateBlockView(UpdateView):
 
     def get_form_class(self):
         block = self.get_object()
-        raise ValueError(block.__class__.name)
+        raise ValueError(block.__class__.__name__)
 
