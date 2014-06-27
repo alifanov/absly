@@ -182,6 +182,7 @@ class SummaryImageBlock(SummaryBlock):
 
 class SummaryLinkBlock(SummaryBlock):
     link = models.TextField(verbose_name=u'Link')
+    title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
     def render(self):
         return '<a href="{}">Link</a>'.format(self.link)
