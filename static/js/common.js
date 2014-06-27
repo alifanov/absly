@@ -199,17 +199,17 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
-    $(".summary-block-add").live('submit', function(){
-        $.ajax({
-            type: "POST",
-            url: $(this).attr('action'),
-            data: $(this).serializeArray(),
-            success: function(){
-                location.reload()
-            }
-        });
-        return false;
-    });
+//    $(".summary-block-add").live('submit', function(){
+//        $.ajax({
+//            type: "POST",
+//            url: $(this).attr('action'),
+//            data: $(this).serializeArray(),
+//            success: function(){
+//                location.reload()
+//            }
+//        });
+//        return false;
+//    });
 
     $(".summary-add-text").click(function(){
         var _this = $(this);
