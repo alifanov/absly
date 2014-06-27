@@ -185,7 +185,7 @@ class SummaryLinkBlock(SummaryBlock):
     title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
     def render(self):
-        return u'<a href="{}">Link</a>'.format(self.link)
+        return u'<a href="{}">{}</a>'.format(self.link, self.title)
 
     def __unicode__(self):
         return u'Link for {}'.format(self.item.name)
