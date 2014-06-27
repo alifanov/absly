@@ -217,6 +217,9 @@ $(function(){
         $.ajax({
             type: "GET",
             url: '/summary/image/block/',
+            data: {
+                'id': _this.val()
+            },
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
             }
@@ -227,6 +230,9 @@ $(function(){
         $.ajax({
             type: "GET",
             url: '/summary/link/block/',
+            data: {
+                'id': _this.val()
+            },
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
             }
