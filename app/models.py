@@ -185,14 +185,14 @@ class SummaryLinkBlock(SummaryBlock):
     title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
     def render(self):
-        return '<a href="{}">Link</a>'.format(self.link)
+        return u'<a href="{}">Link</a>'.format(self.link)
 
     def __unicode__(self):
-        return 'Link for {}'.format(self.item.name)
+        return u'Link for {}'.format(self.item.name)
 
     class Meta:
-        verbose_name = 'Link'
-        verbose_name_plural = 'Links'
+        verbose_name = u'Link'
+        verbose_name_plural = u'Links'
 
 class SummaryLinkedInBlock(SummaryLinkBlock):
     avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
