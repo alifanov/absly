@@ -9,9 +9,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import SummaryItem, NewsGroup, CanvasBlock, CanvasBlockItem, CanvasBlockItemParameter, \
-    CanvasBlockItemParameterValue
-from app.forms import SummaryItemForm, FunnelConfgiForm
+from app.models import *
+from app.forms import *
 from django import forms
 import json, os
 import httplib2
@@ -22,7 +21,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render_to_string
 from app.models import CredentialsModel, GAFunnelConfig
 from django.conf import settings
 from oauth2client import xsrfutil
@@ -738,3 +737,12 @@ class EventsGroupListView(EventsListView):
         ng = NewsGroup.objects.get(pk=self.kwargs.get('pk'))
         qs = super(EventsGroupListView, self).get_queryset()
         return qs.filter(group__pk=ng.pk)
+
+class SummaryTextBlockView(CreateView):
+    model = SummaryTextBlock
+    form_class = SummaryTextBlockForm
+    template_name = 'summary/forms/edit.html'
+
+    def get(self, request, *args, **kwargs):
+        data = render_to_string(self.template_name, {'form': self.form_class()})
+        return HttpResponse(json.dumps({'data': data}), content_type='application/json')

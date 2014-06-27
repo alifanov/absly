@@ -40,6 +40,8 @@ urlpatterns = patterns('',
     url(r'^api/canvas/item/$', CanvasBlockItemList.as_view(), name='canvas-block-item-list'),
     url(r'^api/canvas/item/(?P<pk>\d+)/$', CanvasBlockItemDetail.as_view(), name='canvas-block-item-detail'),
 
+    url(r'^summary/text/block/$', SummaryTextBlockView.as_view(), name='summary-text-block'),
+
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
     url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view(), name='summary-item-update'),

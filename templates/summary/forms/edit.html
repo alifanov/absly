@@ -1,0 +1,8 @@
+{% load widget_tweaks %}
+
+{% for field in form %}
+    <div class="form-group">
+        {{ field|add_class:"form-control" }}
+    </div>
+{% endfor %}
+<button class="btn btn-default">{% if form.instance %}Edit{% else %}Save{% endif %}</button>
