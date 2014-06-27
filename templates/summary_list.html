@@ -6,8 +6,23 @@
         {% for si in summary_items %}
         <div class="es-data">
             <h2>{{ si.name }}</h2>
+                {% for block in si.blocks.all %}
+                    <div class="es-block">
+                        {{ block.render }}
+                    </div>
+                {% endfor %}
 
-            {% if si.childs %}
+                    {% if si.add_text %}
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                    {% endif %}
+                    {% if si.add_image %}
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
+                    {% endif %}
+                    {% if si.add_link %}
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
+                    {% endif %}
+
+
                 {% for sic in si.childs.all %}
                     <h4>{{ sic.name }}</h4>
                     {% for block in sic.blocks.all %}
@@ -30,24 +45,6 @@
                             {% endif %}
                         </div>
                 {% endfor %}
-            {% else %}
-                {% for block in si.blocks.all %}
-                    <div class="es-block">
-                        {{ block.render }}
-                    </div>
-                {% endfor %}
-
-                    {% if si.add_text %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
-                    {% endif %}
-                    {% if si.add_image %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
-                    {% endif %}
-                    {% if si.add_link %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
-                    {% endif %}
-
-            {% endif %}
 
             {% for sge in sg.items.all %}
                 <div class="es-item">
