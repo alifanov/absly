@@ -788,5 +788,11 @@ class SummaryUpdateBlockView(UpdateView):
 
     def get_form_class(self):
         block = self.get_object()
-        raise ValueError(block.__class__.__name__)
+        if block.__class__.__name__ == 'SummaryTextBlock':
+            return SummaryTextBlockForm
+        if block.__class__.__name__ == 'SummaryImageBlock':
+            return SummaryImageBlockForm
+        if block.__class__.__name__ == 'SummaryLinkBlock':
+            return SummaryLinkBlockForm
+        return None
 
