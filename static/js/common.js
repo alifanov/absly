@@ -216,7 +216,7 @@ $(function(){
         $.ajax({
             type: "GET",
             data: {
-                'id': _this.attr('rel')
+                'pk': _this.attr('rel')
             },
             url: '/summary/update/block/',
             success: function(resp){
