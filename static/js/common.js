@@ -199,7 +199,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
-    $("form.summary-block-add").live('submit', function(){
+    $(document).on("form.summary-block-add", 'submit', function(){
         $.ajax({
             type: "POST",
             url: $(this).attr('action'),
