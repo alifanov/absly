@@ -9,6 +9,9 @@
                 {% for block in si.blocks.all %}
                     <div class="es-block">
                         {{ block.render }}
+                        <div class="es-edit-block">
+                            <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
+                        </div>
                     </div>
                 {% endfor %}
 
