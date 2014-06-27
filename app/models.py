@@ -9,6 +9,7 @@ from sorl.thumbnail import get_thumbnail
 from django.contrib.auth.models import User
 from oauth2client.django_orm import FlowField
 from oauth2client.django_orm import CredentialsField
+from polymorphic import PolymorphicModel
 
 # Create your models here.
 class CredentialsModel(models.Model):
@@ -147,7 +148,6 @@ class SummaryItem(models.Model):
         verbose_name = u'SummaryItem'
         verbose_name_plural = u'SummaryItems'
 
-from polymorphic import PolymorphicModel
 class SummaryBlock(PolymorphicModel):
     item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
 
