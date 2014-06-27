@@ -199,6 +199,16 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
+    $(".summary-add-text").click(function(){
+        $.ajax({
+            type: "GET",
+            url: '/summary/text/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+            }
+        })
+    });
+
     $("#ga_account").change(function(){
         $("#ga_profile").remove();
         $("#ga_webprop").remove();

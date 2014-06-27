@@ -35,7 +35,7 @@
 
                 {% endfor %}
                     {% if si.add_text %}
-                        <button class="btn btn-default" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                        <button class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                     {% endif %}
                     {% if si.add_image %}
                         <button class="btn btn-default">Add image</button>
@@ -77,16 +77,14 @@
                     <h4 class="modal-title">Add text block</h4>
                 </div>
                 <form method="post">
+                    {% csrf_token %}
                     <div class="modal-body">
                         <div style="display: none;" class="alert-success">
                             Block successfully added
                         </div>
                         <div class="modal-form-body">
-                            {% csrf_token %}
-                            <input type="hidden" name="item" value="" id="summary-item-id" />
-                                <div class="form-group">
-                                    <textarea></textarea>
-                                </div>
+
+
                         </div>
                     </div>
                     <div class="modal-footer">
