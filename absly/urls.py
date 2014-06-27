@@ -40,7 +40,7 @@ urlpatterns = patterns('',
     url(r'^api/canvas/item/$', CanvasBlockItemList.as_view(), name='canvas-block-item-list'),
     url(r'^api/canvas/item/(?P<pk>\d+)/$', CanvasBlockItemDetail.as_view(), name='canvas-block-item-detail'),
 
-    url(r'^summary/update/block/(?P<pk>\d+)/$', SummaryUpdateBlockView.as_view(), name='summary-update-block'),
+    url(r"^summary/update/block/(?P<pk>\d+)/$", SummaryUpdateBlockView.as_view(), name='summary-update-block'),
 
     url(r'^summary/text/block/$', SummaryTextBlockView.as_view(), name='summary-text-block'),
     url(r'^summary/link/block/$', SummaryLinkBlockView.as_view(), name='summary-link-block'),

@@ -787,6 +787,6 @@ class SummaryUpdateBlockView(UpdateView):
     success_url = '/summary/'
 
     def get_form_class(self):
-        block = SummaryBlock.objects.get(pk=self.request.GET.get('id'))
+        block = self.get_object()
         raise ValueError(block.__class__.name)
 
