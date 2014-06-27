@@ -1,4 +1,4 @@
-from django.forms import ModelForm, HiddenInput
+from django.forms import ModelForm, HiddenInput, TextInput
 from app.models import *
 
 class FunnelConfgiForm(ModelForm):
@@ -29,6 +29,7 @@ class SummaryLinkBlockForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(SummaryLinkBlockForm, self).__init__(*args, **kwargs)
         self.fields['item'].widget = HiddenInput()
+        self.fields['link'].widget = TextInput()
 
     class Meta:
         model = SummaryLinkBlock

@@ -76,8 +76,6 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Add text block</h4>
                 </div>
-                <form method="post">
-                    {% csrf_token %}
                     <div class="modal-body">
                         <div style="display: none;" class="alert-success">
                             Block successfully added
@@ -87,7 +85,6 @@
 
                         </div>
                     </div>
-                </form>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>

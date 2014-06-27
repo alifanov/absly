@@ -743,12 +743,13 @@ class SummaryTextBlockView(CreateView):
     model = SummaryTextBlock
     form_class = SummaryTextBlockForm
     template_name = 'summary/forms/edit.html'
+    success_url = '/summary/'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
             'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
         })
-        data = render_to_string(self.template_name, {'form': form})
+        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
 
 class SummaryImageBlockView(CreateView):
