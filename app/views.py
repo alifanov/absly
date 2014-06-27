@@ -21,7 +21,8 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, render_to_string
+from django.shortcuts import render_to_response
+from django.template.loader import render_to_string
 from app.models import CredentialsModel, GAFunnelConfig
 from django.conf import settings
 from oauth2client import xsrfutil
