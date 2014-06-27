@@ -168,17 +168,17 @@ class SummaryTextBlock(SummaryBlock):
         verbose_name_plural = u'ES TextBlocks'
 
 class SummaryImageBlock(SummaryBlock):
-    image = models.ImageField(upload_to='upload/', verbose_name=u'Image')
+    image = models.ImageField(upload_to=u'upload/', verbose_name=u'Image')
 
     def render(self):
-        return '<img src="{}" class="es-img" />'.format(self.image.url)
+        return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
     def __unicode__(self):
-        return 'Image #{} for {}'.format(self.pk, self.item.name)
+        return u'Image #{} for {}'.format(self.pk, self.item.name)
 
     class Meta:
-        verbose_name_plural = 'Images'
-        verbose_name = 'Image'
+        verbose_name_plural = u'Images'
+        verbose_name = u'Image'
 
 class SummaryLinkBlock(SummaryBlock):
     link = models.TextField(verbose_name=u'Link')
