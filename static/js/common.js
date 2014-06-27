@@ -206,7 +206,7 @@ $(function(){
             url: '/summary/text/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
-//                _this.modal('show');
+                _this.modal('show');
             }
         })
     });
