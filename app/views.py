@@ -802,5 +802,5 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryImageBlockForm
         if block.__class__.__name__ == 'SummaryLinkBlock':
             return SummaryLinkBlockForm
-        return None
+        return NotImplementedError(block.__class__.__name__)
 
