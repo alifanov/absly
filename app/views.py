@@ -762,6 +762,8 @@ class SummaryLinkBlockView(CreateView):
     form_class = SummaryLinkBlockForm
     template_name = 'summary/forms/edit.html'
 
+
+
     def get(self, request, *args, **kwargs):
         data = render_to_string(self.template_name, {'form': self.form_class()})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')

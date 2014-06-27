@@ -17,13 +17,13 @@
                     {% endfor %}
                         <div class="es-addon-btns">
                             {% if sic.add_text %}
-                                <button class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                             {% endif %}
                             {% if sic.add_image %}
-                                <button class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
+                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
                             {% endif %}
                             {% if sic.add_link %}
-                                <button class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
+                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
                             {% endif %}
                         </div>
                 {% endfor %}
@@ -35,13 +35,13 @@
 
                 {% endfor %}
                     {% if si.add_text %}
-                        <button class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                     {% endif %}
                     {% if si.add_image %}
-                        <button class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
                     {% endif %}
                     {% if si.add_link %}
-                        <button class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
                     {% endif %}
 
             {% endif %}
