@@ -786,6 +786,15 @@ class SummaryUpdateBlockView(UpdateView):
     model = SummaryBlock
     success_url = '/summary/'
 
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial={
+            'item': self.get_object()
+        })
+        csrf_token = request.COOKIES['csrftoken']
+        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
+        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+
+
     def get_form_class(self):
         block = self.get_object()
         if block.__class__.__name__ == 'SummaryTextBlock':
