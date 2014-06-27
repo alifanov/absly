@@ -20,10 +20,10 @@
                                 <button class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                             {% endif %}
                             {% if sic.add_image %}
-                                <button class="btn btn-default">Add image</button>
+                                <button class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
                             {% endif %}
                             {% if sic.add_link %}
-                                <button class="btn btn-default">Add link</button>
+                                <button class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
                             {% endif %}
                         </div>
                 {% endfor %}
@@ -35,13 +35,13 @@
 
                 {% endfor %}
                     {% if si.add_text %}
-                        <button class="btn btn-default summary-add-text" data-target="#add-summary-text-block-modal-id">Add text</button>
+                        <button class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                     {% endif %}
                     {% if si.add_image %}
-                        <button class="btn btn-default">Add image</button>
+                        <button class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
                     {% endif %}
                     {% if si.add_link %}
-                        <button class="btn btn-default">Add link</button>
+                        <button class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
                     {% endif %}
 
             {% endif %}
