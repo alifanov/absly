@@ -18,10 +18,18 @@ class SummaryTextBlockForm(ModelForm):
         model = SummaryTextBlock
 
 class SummaryImageBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryImageBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+
     class Meta:
         model = SummaryImageBlock
 
 class SummaryLinkBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryLinkBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+
     class Meta:
         model = SummaryLinkBlock
 
