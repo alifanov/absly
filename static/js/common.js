@@ -200,11 +200,13 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 $(function(){
 
     $(".summary-add-text").click(function(){
+        var _this = $(this);
         $.ajax({
             type: "GET",
             url: '/summary/text/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                _this.modal('show');
             }
         })
     });
