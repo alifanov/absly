@@ -149,7 +149,7 @@ class SummaryItem(models.Model):
 
 
 class SummaryBlock(models.Model):
-    item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks', blank=True, null=True)
+    item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
 
 class SummaryTextBlock(SummaryBlock):
     text = models.TextField(verbose_name=u'Текст')

@@ -12,7 +12,6 @@ class SummaryItemForm(ModelForm):
 class SummaryTextBlockForm(ModelForm):
     class Meta:
         model = SummaryTextBlock
-        exclude = ('item',)
 
 class SummaryImageBlockForm(ModelForm):
     class Meta:

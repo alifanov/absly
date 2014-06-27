@@ -762,13 +762,10 @@ class SummaryLinkBlockView(CreateView):
     form_class = SummaryLinkBlockForm
     template_name = 'summary/forms/edit.html'
 
-    def form_valid(self, form):
-        block = form.save()
-        block.item = SummaryItem.objects.get(self.request.GET.get('id'))
-        block.save()
-        return self.get(self.request)
-
     def get(self, request, *args, **kwargs):
-        data = render_to_string(self.template_name, {'form': self.form_class()})
+        form = self.form_class(initial={
+            'item': SummaryItem.objects.get(self.request.GET.get('id'))
+        })
+        data = render_to_string(self.template_name, {'form': form})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
 
