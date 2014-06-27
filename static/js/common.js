@@ -209,7 +209,7 @@ $(function(){
             }
         })
     });
-    $(".summary-image-text").click(function(){
+    $(".summary-add-image").click(function(){
         var _this = $(this);
         $.ajax({
             type: "GET",
@@ -219,7 +219,7 @@ $(function(){
             }
         })
     });
-    $(".summary-link-text").click(function(){
+    $(".summary-add-link").click(function(){
         var _this = $(this);
         $.ajax({
             type: "GET",
