@@ -211,6 +211,21 @@ $(function(){
         return false;
     });
 
+    $(".es-edit-block a").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            data: {
+                'id': _this.attr('rel')
+            },
+            url: '/summary/update/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+            }
+        })
+    });
+
+
     $(".summary-add-text").click(function(){
         var _this = $(this);
         $.ajax({

@@ -781,3 +781,12 @@ class SummaryLinkBlockView(CreateView):
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
 
+class SummaryUpdateBlockView(UpdateView):
+    template_name = 'summary/forms/edit.html'
+    model = SummaryBlock
+    success_url = '/summary/'
+
+    def get_form_class(self):
+        block = SummaryBlock.objects.get(pk=self.request.GET.get('id'))
+        raise ValueError(block.__class__.name)
+
