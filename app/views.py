@@ -746,7 +746,7 @@ class SummaryTextBlockView(CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
-            'item': SummaryItem.objects.get(self.request.GET.get('id'))
+            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
         })
         data = render_to_string(self.template_name, {'form': form})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
@@ -758,7 +758,7 @@ class SummaryImageBlockView(CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
-            'item': SummaryItem.objects.get(self.request.GET.get('id'))
+            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
         })
         data = render_to_string(self.template_name, {'form': form})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
@@ -770,7 +770,7 @@ class SummaryLinkBlockView(CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
-            'item': SummaryItem.objects.get(self.request.GET.get('id'))
+            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
         })
         data = render_to_string(self.template_name, {'form': form})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
