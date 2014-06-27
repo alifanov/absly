@@ -789,7 +789,7 @@ class SummaryUpdateBlockView(UpdateView):
     def get(self, request, *args, **kwargs):
         block = self.get_object()
         form = self.form_class(initial={
-            'item': block
+            'item': block.item
         })
         csrf_token = request.COOKIES['csrftoken']
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
