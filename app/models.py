@@ -150,8 +150,6 @@ class SummaryItem(models.Model):
 
 class SummaryBlock(models.Model):
     item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
-    class Meta:
-        abstract = True
 
 class SummaryTextBlock(SummaryBlock):
     text = models.TextField(verbose_name=u'Текст')
