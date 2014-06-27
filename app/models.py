@@ -147,8 +147,8 @@ class SummaryItem(models.Model):
         verbose_name = u'SummaryItem'
         verbose_name_plural = u'SummaryItems'
 
-
-class SummaryBlock(models.Model):
+from polymorphic import PolymorphicModel
+class SummaryBlock(PolymorphicModel):
     item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
 
     def render(self):
