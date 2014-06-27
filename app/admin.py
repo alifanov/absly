@@ -1,6 +1,5 @@
 from django.contrib import admin
-from app.models import News, NewsGroup, SummaryItem, CanvasBlock,CanvasBlockItem, CanvasBlockItemParameter,\
-CanvasBlockItemParameterValue, CredentialsModel, GAProfile, GAFunnelConfig
+from app.models import *
 
 class CBPVAdmin(admin.ModelAdmin):
     model = CanvasBlockItemParameterValue
@@ -22,6 +21,9 @@ class CanvasBlockItemAdmin(admin.ModelAdmin):
 
 admin.site.register(GAFunnelConfig)
 admin.site.register(CredentialsModel)
+admin.site.register(SummaryTextBlock)
+admin.site.register(SummaryImageBlock)
+admin.site.register(SummaryLinkBlock)
 admin.site.register(News)
 admin.site.register(NewsGroup)
 admin.site.register(GAProfile)
