@@ -11,8 +11,9 @@
                 {% for sic in si.childs.all %}
                     <h4>{{ sic.name }}</h4>
                     {% for block in sic.blocks.all %}
-                        <div>
+                        <div class="es-block">
                             {{ block.render|safe }}
+                            <div class="es-edit-link">Edit</div>
                         </div>
                     {% endfor %}
                         <div class="es-addon-btns">
@@ -29,7 +30,7 @@
                 {% endfor %}
             {% else %}
                 {% for block in si.blocks.all %}
-                    <div>
+                    <div class="es-block">
                         {{ block.render }}
                     </div>
 

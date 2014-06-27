@@ -414,3 +414,7 @@ li.active a.canvas-element-item-link {
 .ga-config select {
     width: 100%;
 }
+
+.es-block {
+    padding: 20px;
+}
