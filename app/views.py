@@ -757,6 +757,7 @@ class SummaryImageBlockView(CreateView):
     model = SummaryImageBlock
     form_class = SummaryImageBlockForm
     template_name = 'summary/forms/edit.html'
+    success_url = '/summary/'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
@@ -770,6 +771,7 @@ class SummaryLinkBlockView(CreateView):
     model = SummaryLinkBlock
     form_class = SummaryLinkBlockForm
     template_name = 'summary/forms/edit.html'
+    success_url = '/summary/'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
