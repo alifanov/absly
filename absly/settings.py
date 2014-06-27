@@ -158,7 +158,9 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'widget_tweaks',
     'djrill',
-    'rest_framework'
+    'rest_framework',
+    'polymorphic',
+    'django.contrib.contenttypes'
 )
 DEFAULT_FROM_EMAIL = 'info@absly.progernachas.ru'
 ACCOUNT_ACTIVATION_DAYS = 3
