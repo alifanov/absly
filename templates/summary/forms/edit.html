@@ -1,7 +1,7 @@
 {% load widget_tweaks %}
 
 <form method="POST" class="summary-block-add" action="{{ backurl }}">
-    {% csrf_token %}
+    <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     {% for field in form %}
         <div class="form-group">
             {{ field|add_class:"form-control" }}
