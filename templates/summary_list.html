@@ -12,7 +12,7 @@
                     <h4>{{ sic.name }}</h4>
                     {% for block in sic.blocks.all %}
                         <div>
-                            {{ block.render }}
+                            {{ block.render|safe }}
                         </div>
                     {% endfor %}
                         <div class="es-addon-btns">
