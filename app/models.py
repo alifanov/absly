@@ -8,9 +8,9 @@ import tempfile
 
 from bs4 import BeautifulSoup
 import requests
-from StringIO import StringIO
 import time
-from django.core.files.base import ContentFile
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 
 from sorl.thumbnail import get_thumbnail
 from django.contrib.auth.models import User
@@ -201,14 +201,15 @@ class SummaryLinkBlock(SummaryBlock):
         verbose_name = u'Link'
         verbose_name_plural = u'Links'
 
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
 
 
 class SummaryLinkedInBlock(SummaryLinkBlock):
     avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar', blank=True)
     name = models.CharField(max_length=256, verbose_name=u'Name')
     desc = models.TextField(verbose_name='Description')
+
+    def render(self):
+        return u'<div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p>'.format(self.avatar.url, self.name, self.desc)
 
     def save_image_from_url(self, url):
         r = requests.get(url)
