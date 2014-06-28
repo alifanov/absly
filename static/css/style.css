@@ -418,3 +418,11 @@ li.active a.canvas-element-item-link {
 .es-block {
     padding: 20px;
 }
+
+.contact-widget {
+    min-height: 100px;
+}
+
+.contact-widget img {
+    float: left;
+}
