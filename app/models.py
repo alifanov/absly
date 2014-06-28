@@ -209,7 +209,7 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     desc = models.TextField(verbose_name='Description')
 
     def render(self):
-        return u'<div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p>'.format(self.avatar.url, self.name, self.desc)
+        return u'<div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div>'.format(self.avatar.url, self.name, self.desc)
 
     def save_image_from_url(self, url):
         r = requests.get(url)
