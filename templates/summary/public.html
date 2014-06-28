@@ -57,7 +57,7 @@
                 <h2>{{ item.name }}</h2>
                 {% for block in item.blocks.all %}
                     <div>
-                        {{ block.render }}
+                        {{ block.render|safe }}
                     </div>
                 {% endfor %}
             </div>
