@@ -819,7 +819,7 @@ class SummaryPDFView(View):
             for i, item in enumerate(user.summary_items.all()):
                 p.drawString(100, 100*i, item.name)
                 for ii, block in enumerate(item.blocks.all()):
-                    p.drawString(100, 100*(i+ii), block.render_to_pdf())
+                    p.drawString(100, 100*(i+ii), block.render_to_pdf(request))
             p.showPage()
             p.save()
             return response
