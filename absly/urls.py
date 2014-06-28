@@ -19,8 +19,8 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
-    url(r'^ng-canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
-    url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
+    url(r'^canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
+    url(r'^ng-canvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
 
     url(r'^parse/json/$', ParseCanvasDataView.as_view(), name='parse-json'),
