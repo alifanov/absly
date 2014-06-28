@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container summary">
         <h1>Executive Summary
-            <button class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</button>
+            <a target="_blank" href="{{ pdf_link }}" class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</a>
             <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>
         </h1>
         {% for si in summary_items %}

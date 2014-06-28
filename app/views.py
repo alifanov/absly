@@ -618,6 +618,11 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
             'pk': self.request.user.pk
         })
         ctx['social_link'] = u'http://{}{}'.format(s.domain, path)
+        pdf_path = reverse('summary-public-pdf', kwargs={
+            'md5': m.hexdigest(),
+            'pk': self.request.user.pk
+        })
+        ctx['pdf_link'] = u'http://{}{}'.format(s.domain, path)
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
