@@ -827,11 +827,11 @@ class SummaryPDFView(View):
             p = canvas.Canvas(response)
             p.setFont('Arial', 10)
             for i, item in enumerate(user.summary_items.order_by('pk')):
-                p.drawString(100, 20*(i+1), u'{}'.format(i+1))
+                p.drawString(100, 20*(i+1), u'{}'.format(i))
                 # p.drawString(100, 20*(i+1), item.name)
                 for ii, block in enumerate(item.blocks.all()):
                     # p.drawString(200, 20*(i+ii+2), block.render_to_pdf(request))
-                    p.drawString(200, 20*(i+ii+2), u'{}'.format(i+ii+2))
+                    p.drawString(200, 20*(i+ii+2), u'{},{}'.format(i, ii))
             p.showPage()
             p.save()
             return response
