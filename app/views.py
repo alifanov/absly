@@ -814,7 +814,7 @@ class SummaryUpdateBlockView(UpdateView):
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase import ttfonts
 from StringIO import StringIO
-import pisa
+import ho.pisa as pisa
 from django.template.loader import get_template
 from django.template import Context
 from django.conf import settings
