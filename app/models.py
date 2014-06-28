@@ -227,8 +227,8 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         self.name = soup.find('span', attrs={'class': 'full-name'}).text
         avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
         self.desc = soup.find('p', attrs={'class': 'headline-title'}).text
-        super(SummaryLinkedInBlock, self).save(*args, **kwargs)
         self.save_image_from_url(avatar_link)
+        super(SummaryLinkedInBlock, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return 'LinkedIn for {}'.format(self.name)
