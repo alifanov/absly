@@ -609,6 +609,10 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
     def get_context_data(self, **kwargs):
         ctx = super(ExecutiveSummaryView, self).get_context_data(**kwargs)
         ctx['active'] = 'summary'
+        s = get_current_site(self.request)
+        m = hashlib.md5()
+        m.update(self.request.user.email)
+        ctx['social_link'] = u'{}://{}{}'.format(s.scheme, s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
@@ -749,14 +753,6 @@ class SummaryBlockView(CreateView):
         block.user = self.request.user
         block.save()
         return self.get(self.request)
-
-    def get_context_data(self, **kwargs):
-        ctx = super(SummaryBlockView, self).get_context_data(**kwargs)
-        s = get_current_site(self.request)
-        m = hashlib.md5()
-        m.update(self.request.user.email)
-        ctx['social_link'] = u'{}://{}{}'.format(s.scheme, s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
-        return ctx
 
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
