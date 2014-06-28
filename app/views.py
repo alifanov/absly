@@ -612,7 +612,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
         s = get_current_site(self.request)
         m = hashlib.md5()
         m.update(self.request.user.email)
-        ctx['social_link'] = u'http://{}{}'.format(s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
+        ctx['social_link'] = u'http://{}{}'.format(s.domain, u'/{}/{}/'.format(m.hexdigest(), self.request.user.pk))
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
@@ -810,7 +810,7 @@ class SummaryPubView(ListView):
         user = User.objects.get(pk=self.kwargs.get('pk'))
         m = hashlib.md5()
         m.update(user.email)
-        if m.hexdigit() == self.kwargs.get('md5'):
+        if m.hexdigest() == self.kwargs.get('md5'):
             return self.request.user.summary_items.order_by('pk')
         else:
             raise Http404
