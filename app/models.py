@@ -212,7 +212,8 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         self.name = soup.find('span', attrs={'class': 'full-name'}).text
         avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
         s = StringIO()
-        s.write(requests.get(avatar_link).content)
+        r = requests.get(avatar_link)
+        s.write(r.content)
         s.size = s.tell()
         av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
         self.avatar.save(av_name, ContentFile(s), save=False)
