@@ -826,12 +826,13 @@ class SummaryPDFView(View):
             pdfmetrics.registerFont(font_object)
             p = canvas.Canvas(response)
             p.setFont('Arial', 10)
+            i = 0
             for i, item in enumerate(user.summary_items.order_by('pk')):
-                p.drawString(100, 20*(i+1), u'{}'.format(i))
-                # p.drawString(100, 20*(i+1), item.name)
+                i += 20
+                p.drawString(100, i, item.name)
                 for ii, block in enumerate(item.blocks.all()):
-                    # p.drawString(200, 20*(i+ii+2), block.render_to_pdf(request))
-                    p.drawString(200, 20*(i+ii+2), u'{},{}'.format(i, ii))
+                    i += 20
+                    p.drawString(200, i, block.render_to_pdf(request))
             p.showPage()
             p.save()
             return response
