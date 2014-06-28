@@ -223,6 +223,7 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
 
 
     def save(self, *args, **kwargs):
+        if not u'http' in self.link: self.link = u'http://'+self.link
         html = requests.get(self.link).text
         soup = BeautifulSoup(html)
         self.name = soup.find('span', attrs={'class': 'full-name'}).text
