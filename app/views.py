@@ -2,17 +2,18 @@
 # Create your views here.
 from app.models import News, NewsGroup, GAProfile
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 import arrow, logging
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.sites.shortcuts import get_current_site
 
 from app.models import *
 from app.forms import *
 from django import forms
-import json, os
+import json, os, hashlib
 import httplib2
 
 from apiclient.discovery import build
@@ -749,6 +750,14 @@ class SummaryBlockView(CreateView):
         block.save()
         return self.get(self.request)
 
+    def get_context_data(self, **kwargs):
+        ctx = super(SummaryBlockView, self).get_context_data(**kwargs)
+        s = get_current_site(self.request)
+        m = hashlib.md5()
+        m.update(self.request.user.email)
+        ctx['social_link'] = u'{}://{}{}'.format(s.scheme, s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
+        return ctx
+
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
             'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
@@ -796,5 +805,16 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkBlockForm
         return NotImplementedError(block.__class__.__name__)
 
-class SummaryPubView(TemplateView):
+class SummaryPubView(ListView):
     template_name = 'summary/public.html'
+    model = SummaryItem
+    context_object_name = 'items'
+
+    def get_queryset(self):
+        user = User.objects.get(pk=self.kwargs.get('pk'))
+        m = hashlib.md5()
+        m.update(user.email)
+        if m.hexdigit() == self.kwargs.get('md5'):
+            return self.request.user.summary_items.order_by('pk')
+        else:
+            raise Http404
