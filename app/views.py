@@ -827,9 +827,9 @@ class SummaryPDFView(View):
             p = canvas.Canvas(response)
             p.setFont('Arial', 20)
             for i, item in enumerate(user.summary_items.all()):
-                p.drawString(100, 600, item.name)
+                p.drawString(800, 100*i, item.name)
                 for ii, block in enumerate(item.blocks.all()):
-                    p.drawString(100, 600, block.render_to_pdf(request))
+                    p.drawString(800, 100*(i+ii), block.render_to_pdf(request))
             p.showPage()
             p.save()
             return response
