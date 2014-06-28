@@ -15,7 +15,9 @@
                     </div>
                 {% endfor %}
                 <div class="es-addon-btns">
-
+                    {% if sic.add_linkedin %}
+                        <button value="{{ si.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
+                    {% endif %}
                     {% if si.add_text %}
                         <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                     {% endif %}
@@ -38,6 +40,9 @@
                         </div>
                     {% endfor %}
                         <div class="es-addon-btns">
+                            {% if sic.add_linkedin %}
+                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
+                            {% endif %}
                             {% if sic.add_text %}
                                 <button value="{{ sic.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
                             {% endif %}

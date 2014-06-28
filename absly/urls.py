@@ -42,6 +42,7 @@ urlpatterns = patterns('',
 
     url(r"^summary/update/block/(?P<pk>\d+)/$", SummaryUpdateBlockView.as_view(), name='summary-update-block'),
 
+    url(r'^summary/linkedin/block/$', SummaryLinkedInBlockView.as_view(), name='summary-linkedin-block'),
     url(r'^summary/text/block/$', SummaryTextBlockView.as_view(), name='summary-text-block'),
     url(r'^summary/link/block/$', SummaryLinkBlockView.as_view(), name='summary-link-block'),
     url(r'^summary/image/block/$', SummaryImageBlockView.as_view(), name='summary-image-block'),

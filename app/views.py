@@ -739,47 +739,33 @@ class EventsGroupListView(EventsListView):
         qs = super(EventsGroupListView, self).get_queryset()
         return qs.filter(group__pk=ng.pk)
 
-class SummaryTextBlockView(CreateView):
+class SummaryBlockView(CreateView):
+    template_name = 'summary/forms/edit.html'
+    success_url = '/summary/'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial={
+            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
+        })
+        csrf_token = request.COOKIES['csrftoken']
+        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
+        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+
+class SummaryTextBlockView(SummaryBlockView):
     model = SummaryTextBlock
     form_class = SummaryTextBlockForm
-    template_name = 'summary/forms/edit.html'
-    success_url = '/summary/'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial={
-            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
-        })
-        csrf_token = request.COOKIES['csrftoken']
-        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
-        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
-
-class SummaryImageBlockView(CreateView):
+class SummaryImageBlockView(SummaryBlockView):
     model = SummaryImageBlock
     form_class = SummaryImageBlockForm
-    template_name = 'summary/forms/edit.html'
-    success_url = '/summary/'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial={
-            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
-        })
-        csrf_token = request.COOKIES['csrftoken']
-        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
-        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
-
-class SummaryLinkBlockView(CreateView):
+class SummaryLinkBlockView(SummaryBlockView):
     model = SummaryLinkBlock
     form_class = SummaryLinkBlockForm
-    template_name = 'summary/forms/edit.html'
-    success_url = '/summary/'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial={
-            'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
-        })
-        csrf_token = request.COOKIES['csrftoken']
-        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
-        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+class SummaryLinkedInBlockView(SummaryBlockView):
+    model = SummaryLinkedInBlock
+    form_class = SummaryLinkedInBlockForm
 
 class SummaryUpdateBlockView(UpdateView):
     template_name = 'summary/forms/edit.html'

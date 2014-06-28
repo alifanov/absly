@@ -39,3 +39,14 @@ class SummaryLinkBlockForm(ModelForm):
     class Meta:
         model = SummaryLinkBlock
 
+class SummaryLinkedInBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryLinkedInBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+        self.fields['link'].widget = TextInput(attrs={
+            'placeholder': 'Insert link'
+        })
+
+    class Meta:
+        model = SummaryLinkedInBlock
+        exclude=['title', 'avatar', 'name', 'desc']
