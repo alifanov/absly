@@ -201,23 +201,32 @@ class SummaryLinkBlock(SummaryBlock):
         verbose_name = u'Link'
         verbose_name_plural = u'Links'
 
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+
+
 class SummaryLinkedInBlock(SummaryLinkBlock):
     avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
     name = models.CharField(max_length=256, verbose_name=u'Name')
     desc = models.TextField(verbose_name='Description')
+
+    def save_image_from_url(self, url):
+        r = requests.get(url)
+
+        img_temp = NamedTemporaryFile(delete=True)
+        img_temp.write(r.content)
+        img_temp.flush()
+
+        av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
+        self.avatar.save(av_name, File(img_temp), save=True)
+
 
     def save(self, *args, **kwargs):
         html = requests.get(self.link).text
         soup = BeautifulSoup(html)
         self.name = soup.find('span', attrs={'class': 'full-name'}).text
         avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
-        s = StringIO()
-        r = requests.get(avatar_link, stream=False)
-        s.write(r.content)
-        s.size = s.tell()
-        av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
-        self.avatar.save(av_name, ContentFile(s), save=False)
-
+        self.save_image_from_url(avatar_link)
         self.desc = soup.find('p', attrs={'class': 'headline-title'}).text
         super(SummaryLinkedInBlock, self).save(*args, **kwargs)
 
