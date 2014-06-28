@@ -189,7 +189,7 @@ class SummaryImageBlock(SummaryBlock):
         return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
     def render_to_pdf(self, r):
-        img_link = u'http://{}{}'.format(Site.object.get_current().domain, self.image.url)
+        img_link = u'http://{}{}'.format(Site.objects.get_current().domain, self.image.url)
         return img_link
 
     def __unicode__(self):
