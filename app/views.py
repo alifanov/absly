@@ -824,7 +824,7 @@ def render_to_pdf(template_src, context_dict):
     context = Context(context_dict)
     html  = template.render(context)
     result = StringIO()
-    pdf = pisa.pisaDocument(StringIO(html), result, show_error_as_pdf=True, encoding='UTF-8')
+    pdf = pisa.pisaDocument(StringIO(html.encode('utf-8')), result, show_error_as_pdf=True)
     if not pdf.err:
         return result.getvalue()
     return False
