@@ -8,7 +8,7 @@ import arrow, logging
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.sites.models import get_current_site
 
 from app.models import *
 from app.forms import *
