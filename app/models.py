@@ -18,6 +18,7 @@ from django.contrib.auth.models import User
 from oauth2client.django_orm import FlowField
 from oauth2client.django_orm import CredentialsField
 from polymorphic import PolymorphicModel
+from reportlab.lib.utils import ImageReader
 
 # Create your models here.
 class CredentialsModel(models.Model):
@@ -189,7 +190,7 @@ class SummaryImageBlock(SummaryBlock):
         return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
     def render_to_pdf(self, p, x, y):
-        p.drawImage(self.image.path, x, y)
+        p.drawImage(ImageReader(self.image.path), x, y)
 
     def __unicode__(self):
         return u'Image #{} for {}'.format(self.pk, self.item.name)
