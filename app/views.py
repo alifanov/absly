@@ -811,8 +811,10 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkBlockForm
         return NotImplementedError(block.__class__.__name__)
 
-class SummaryPDFView(View):
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase import ttfonts
 
+class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
         user = User.objects.get(pk=self.kwargs.get('pk'))
         m = hashlib.md5()
@@ -820,6 +822,8 @@ class SummaryPDFView(View):
         if m.hexdigest() == self.kwargs.get('md5'):
             response = HttpResponse(content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
+            font_object = ttfonts.TTFont('Arial', 'arial.ttf')
+            pdfmetrics.registerFont(font_object)
             p = canvas.Canvas(response)
             for i, item in enumerate(user.summary_items.all()):
                 p.drawString(100, 100*i, item.name)
