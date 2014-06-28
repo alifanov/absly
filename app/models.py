@@ -5,7 +5,7 @@ from django.core import files
 from urlparse import urlparse
 import requests
 import tempfile
-
+from django.contrib.sites.models import Site
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -185,7 +185,8 @@ class SummaryImageBlock(SummaryBlock):
     image = models.ImageField(upload_to=u'upload/', verbose_name=u'Image')
 
     def render(self):
-        return u'<img src="{}" class="es-img" />'.format(self.image.url)
+        img_link = u'http://{}{}'.format(Site.object.get_current().domain, self.image.url)
+        return img_link
 
     def render_to_pdf(self, r):
         return self.image.url

@@ -813,7 +813,6 @@ class SummaryUpdateBlockView(UpdateView):
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase import ttfonts
-from reportlab.lib.units import inch
 
 class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
