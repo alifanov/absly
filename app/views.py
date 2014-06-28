@@ -612,7 +612,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
         s = get_current_site(self.request)
         m = hashlib.md5()
         m.update(self.request.user.email)
-        ctx['social_link'] = u'{}://{}{}'.format(s.scheme, s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
+        ctx['social_link'] = u'http://{}{}'.format(s.domain, u'/{}/{}/'.format(m.hexdigit(), self.request.user.pk))
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
