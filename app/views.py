@@ -622,7 +622,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
             'md5': m.hexdigest(),
             'pk': self.request.user.pk
         })
-        ctx['pdf_link'] = u'http://{}{}'.format(s.domain, path)
+        ctx['pdf_link'] = u'http://{}{}'.format(s.domain, pdf_path)
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
