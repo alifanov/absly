@@ -16,6 +16,7 @@ class SummaryTextBlockForm(ModelForm):
 
     class Meta:
         model = SummaryTextBlock
+        exclude=('user',)
 
 class SummaryImageBlockForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -24,6 +25,7 @@ class SummaryImageBlockForm(ModelForm):
 
     class Meta:
         model = SummaryImageBlock
+        exclude=('user',)
 
 class SummaryLinkBlockForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -38,6 +40,7 @@ class SummaryLinkBlockForm(ModelForm):
 
     class Meta:
         model = SummaryLinkBlock
+        exclude=('user',)
 
 class SummaryLinkedInBlockForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -49,4 +52,4 @@ class SummaryLinkedInBlockForm(ModelForm):
 
     class Meta:
         model = SummaryLinkedInBlock
-        exclude=['title', 'avatar', 'name', 'desc']
+        exclude=['title', 'avatar', 'name', 'desc', 'user']

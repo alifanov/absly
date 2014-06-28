@@ -743,6 +743,12 @@ class SummaryBlockView(CreateView):
     template_name = 'summary/forms/edit.html'
     success_url = '/summary/'
 
+    def form_valid(self, form):
+        block = form.save()
+        block.user = self.request.user
+        block.save()
+        return self.get(self.request)
+
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
             'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
@@ -790,3 +796,5 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkBlockForm
         return NotImplementedError(block.__class__.__name__)
 
+class SummaryPubView(TemplateView):
+    template_name = 'summary/public.html'
