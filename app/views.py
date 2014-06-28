@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.sites.models import get_current_site
+from reportlab.pdfgen import canvas
 
 from app.models import *
 from app.forms import *
@@ -804,6 +805,26 @@ class SummaryUpdateBlockView(UpdateView):
         if block.__class__.__name__ == 'SummaryLinkBlock':
             return SummaryLinkBlockForm
         return NotImplementedError(block.__class__.__name__)
+
+class SummaryPDFView(View):
+
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(pk=self.kwargs.get('pk'))
+        m = hashlib.md5()
+        m.update(user.email)
+        if m.hexdigest() == self.kwargs.get('pk'):
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
+            p = canvas.Canvas(response)
+            for i, item in enumerate(user.summary_items.all()):
+                p.drawString(100, 100*i, item.name)
+                for ii, block in enumerate(item.blocks.all()):
+                    p.drawString(100, 100*(i+ii), block.render_to_pdf())
+            p.showPage()
+            p.save()
+            return response
+        else:
+            raise Http404
 
 class SummaryPubView(ListView):
     template_name = 'summary/public.html'
