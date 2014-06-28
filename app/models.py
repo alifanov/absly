@@ -206,7 +206,7 @@ from django.core.files.temp import NamedTemporaryFile
 
 
 class SummaryLinkedInBlock(SummaryLinkBlock):
-    avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
+    avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar', blank=True)
     name = models.CharField(max_length=256, verbose_name=u'Name')
     desc = models.TextField(verbose_name='Description')
 
@@ -226,9 +226,9 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         soup = BeautifulSoup(html)
         self.name = soup.find('span', attrs={'class': 'full-name'}).text
         avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
-        self.save_image_from_url(avatar_link)
         self.desc = soup.find('p', attrs={'class': 'headline-title'}).text
         super(SummaryLinkedInBlock, self).save(*args, **kwargs)
+        self.save_image_from_url(avatar_link)
 
     def __unicode__(self):
         return 'LinkedIn for {}'.format(self.name)
