@@ -754,7 +754,7 @@ class SummaryBlockView(CreateView):
             'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
         })
         csrf_token = request.COOKIES['csrftoken']
-        data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
+        data = render_to_string(self.template_name, {'form': form, 'backurl': request.get_full_path(), 'csrf_token_value': csrf_token})
         return HttpResponse(json.dumps({'data': data}), content_type='application/json')
 
 class SummaryTextBlockView(SummaryBlockView):
