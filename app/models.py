@@ -163,8 +163,8 @@ class SummaryBlock(PolymorphicModel):
     def render(self):
         return self.item.name
 
-    def render_to_pdf(self, r):
-        return self.item.name
+    def render_to_pdf(self, p, x, y):
+        p.drawString(x, y, self.item.name)
 
 class SummaryTextBlock(SummaryBlock):
     text = models.TextField(verbose_name=u'Текст')
@@ -172,8 +172,8 @@ class SummaryTextBlock(SummaryBlock):
     def render(self):
         return self.text
 
-    def render_to_pdf(self, r):
-        return self.text
+    def render_to_pdf(self, p, x, y):
+        p.drawString(x, y, self.text)
 
     def __unicode__(self):
         return u'TextBlock for {}'.format(self.item.name)
@@ -188,9 +188,8 @@ class SummaryImageBlock(SummaryBlock):
     def render(self):
         return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
-    def render_to_pdf(self, r):
-        img_link = u'http://{}{}'.format(Site.objects.get_current().domain, self.image.url)
-        return img_link
+    def render_to_pdf(self, p, x, y):
+        p.drawImage(self.image.path, x, y)
 
     def __unicode__(self):
         return u'Image #{} for {}'.format(self.pk, self.item.name)
@@ -206,8 +205,8 @@ class SummaryLinkBlock(SummaryBlock):
     def render(self):
         return u'<a href="{}">{}</a>'.format(self.link, self.title)
 
-    def render_to_pdf(self, r):
-        return self.link
+    def render_to_pdf(self, p, x, y):
+        p.drawString(x, y, self.link)
 
     def __unicode__(self):
         return u'Link for {}'.format(self.item.name)
@@ -226,8 +225,8 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     def render(self):
         return u'<div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div>'.format(self.avatar.url, self.name, self.desc)
 
-    def render_to_pdf(self, r):
-        return self.name
+    def render_to_pdf(self, p, x, y):
+        p.drawImage(self.avatar.path, x, y)
 
     def save_image_from_url(self, url):
         r = requests.get(url)

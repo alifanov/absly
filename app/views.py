@@ -832,7 +832,7 @@ class SummaryPDFView(View):
                 p.drawString(100, n, item.name)
                 for ii, block in enumerate(item.blocks.all()):
                     n += 20
-                    p.drawString(120, n, block.render_to_pdf(request))
+                    block.render_to_pdf(p, 120, n)
             p.showPage()
             p.save()
             return response
