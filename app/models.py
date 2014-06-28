@@ -5,6 +5,13 @@ from django.core import files
 from urlparse import urlparse
 import requests
 import tempfile
+
+from bs4 import BeautifulSoup
+import requests
+from StringIO import StringIO
+import time
+from django.core.files.base import ContentFile
+
 from sorl.thumbnail import get_thumbnail
 from django.contrib.auth.models import User
 from oauth2client.django_orm import FlowField
@@ -194,12 +201,6 @@ class SummaryLinkBlock(SummaryBlock):
         verbose_name = u'Link'
         verbose_name_plural = u'Links'
 
-from bs4 import BeautifulSoup
-import requests
-from StringIO import StringIO
-import time
-from django.core.files.base import ContentFile
-
 class SummaryLinkedInBlock(SummaryLinkBlock):
     avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
     name = models.CharField(max_length=256, verbose_name=u'Name')
@@ -213,10 +214,10 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         s = StringIO()
         s.write(requests.get(avatar_link).content)
         s.size = s.tell()
-        av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'')
+        av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
         self.avatar.save(av_name, ContentFile(s), save=False)
 
-        self.desc = soup.find('p', attrs={'class': 'headline-title'})
+        self.desc = soup.find('p', attrs={'class': 'headline-title'}).text
         super(SummaryLinkedInBlock, self).save(*args, **kwargs)
 
     def __unicode__(self):
