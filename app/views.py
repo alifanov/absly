@@ -825,15 +825,14 @@ class SummaryPDFView(View):
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
             font_object = ttfonts.TTFont('Arial', 'arial.ttf')
             pdfmetrics.registerFont(font_object)
-            p = canvas.Canvas(response)
-            p.translate(inch,inch)
+            p = canvas.Canvas(response, bottomup=0)
             p.setFont('Arial', 10)
             n = 0
             for i, item in enumerate(user.summary_items.order_by('pk')):
-                n += 0.2
+                n += 20
                 p.drawString(100, n, item.name)
                 for ii, block in enumerate(item.blocks.all()):
-                    n += 0.2
+                    n += 20
                     p.drawString(120, n, block.render_to_pdf(request))
             p.showPage()
             p.save()
