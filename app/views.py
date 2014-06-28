@@ -825,7 +825,7 @@ class SummaryPDFView(View):
             font_object = ttfonts.TTFont('Arial', 'arial.ttf')
             pdfmetrics.registerFont(font_object)
             p = canvas.Canvas(response)
-            p.setFont('Arial', 40)
+            p.setFont('Arial', 20)
             for i, item in enumerate(user.summary_items.all()):
                 p.drawString(100, 100*i, item.name)
                 for ii, block in enumerate(item.blocks.all()):
