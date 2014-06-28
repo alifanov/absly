@@ -817,7 +817,7 @@ class SummaryPDFView(View):
         user = User.objects.get(pk=self.kwargs.get('pk'))
         m = hashlib.md5()
         m.update(user.email)
-        if m.hexdigest() == self.kwargs.get('pk'):
+        if m.hexdigest() == self.kwargs.get('md5'):
             response = HttpResponse(content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
             p = canvas.Canvas(response)
