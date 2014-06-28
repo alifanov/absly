@@ -208,7 +208,6 @@ $(function(){
                 location.reload()
             }
         });
-        alert(123);
         return false;
     });
 
