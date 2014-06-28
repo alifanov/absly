@@ -813,6 +813,7 @@ class SummaryUpdateBlockView(UpdateView):
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase import ttfonts
+from reportlab.lib.units import inch
 
 class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
@@ -825,14 +826,15 @@ class SummaryPDFView(View):
             font_object = ttfonts.TTFont('Arial', 'arial.ttf')
             pdfmetrics.registerFont(font_object)
             p = canvas.Canvas(response)
+            p.translate(inch,inch)
             p.setFont('Arial', 10)
             n = 0
             for i, item in enumerate(user.summary_items.order_by('pk')):
                 n += 20
-                p.drawString(100, n, item.name)
+                p.drawString(100, -n, item.name)
                 for ii, block in enumerate(item.blocks.all()):
                     n += 20
-                    p.drawString(120, n, block.render_to_pdf(request))
+                    p.drawString(120, -n, block.render_to_pdf(request))
             p.showPage()
             p.save()
             return response
