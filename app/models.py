@@ -218,7 +218,7 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         img_temp.flush()
 
         av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
-        self.avatar.save(av_name, File(img_temp), save=True)
+        self.avatar.save(av_name, File(img_temp), save=False)
 
 
     def save(self, *args, **kwargs):
@@ -228,8 +228,7 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
         self.desc = soup.find('p', attrs={'class': 'headline-title'}).text
         super(SummaryLinkedInBlock, self).save(*args, **kwargs)
-        if not self.avatar:
-            self.save_image_from_url(avatar_link)
+        self.save_image_from_url(avatar_link)
 
     def __unicode__(self):
         return 'LinkedIn for {}'.format(self.name)
