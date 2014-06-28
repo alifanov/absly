@@ -194,10 +194,30 @@ class SummaryLinkBlock(SummaryBlock):
         verbose_name = u'Link'
         verbose_name_plural = u'Links'
 
+from bs4 import BeautifulSoup
+import requests
+from StringIO import StringIO
+import time
+from django.core.files.base import ContentFile
+
 class SummaryLinkedInBlock(SummaryLinkBlock):
     avatar = models.ImageField(upload_to='upload/', verbose_name=u'Avatar')
     name = models.CharField(max_length=256, verbose_name=u'Name')
     desc = models.TextField(verbose_name='Description')
+
+    def save(self, *args, **kwargs):
+        html = requests.get(self.link).text
+        soup = BeautifulSoup(html)
+        self.name = soup.find('span', attrs={'class': 'full-name'}).text
+        avatar_link = soup.find('img', attrs={'class': 'photo'})['src']
+        s = StringIO()
+        s.write(requests.get(avatar_link).content)
+        s.size = s.tell()
+        av_name = u'avatar_linkedin_{}'.format(time.time()).replace(u'.', u'')
+        self.avatar.save(av_name, ContentFile(s), save=False)
+
+        self.desc = soup.find('p', attrs={'class': 'headline-title'})
+        super(SummaryLinkedInBlock, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return 'LinkedIn for {}'.format(self.name)
