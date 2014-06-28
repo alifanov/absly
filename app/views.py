@@ -813,6 +813,21 @@ class SummaryUpdateBlockView(UpdateView):
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase import ttfonts
+from StringIO import StringIO
+import pisa
+from django.template.loader import get_template
+from django.template import Context
+from django.conf import settings
+
+def render_to_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html  = template.render(context)
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode('utf-8')), result, show_error_as_pdf=True, encoding='UTF-8')
+    if not pdf.err:
+        return result.getvalue()
+    return False
 
 class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
@@ -820,21 +835,12 @@ class SummaryPDFView(View):
         m = hashlib.md5()
         m.update(user.email)
         if m.hexdigest() == self.kwargs.get('md5'):
-            response = HttpResponse(content_type='application/pdf')
+            pdf = render_to_pdf('summary/public.html', {
+                'STATIC_URL': settings.STATIC_URL,
+                'items': request.user.summary_items.order_by('pk')
+            })
+            response = HttpResponse(str(pdf), content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
-            font_object = ttfonts.TTFont('Arial', 'arial.ttf')
-            pdfmetrics.registerFont(font_object)
-            p = canvas.Canvas(response, bottomup=0)
-            p.setFont('Arial', 10)
-            n = 0
-            for i, item in enumerate(user.summary_items.order_by('pk')):
-                n += 20
-                p.drawString(100, n, item.name)
-                for ii, block in enumerate(item.blocks.all()):
-                    n += 20
-                    block.render_to_pdf(p, 120, n)
-            p.showPage()
-            p.save()
             return response
         else:
             raise Http404
