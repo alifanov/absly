@@ -268,19 +268,10 @@
         {% else %}
             <li>
         {% endif %}
-                <a href="{% url 'summary' %}" style="display: inline-table;">
-                    <i class="icon-sitemap"></i>
-                    <span>Summary</span>
-                </a>
-                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
-                    <i class=" icon-chevron-down"></i>
-                </a>
-            <ul class="submenu {% if active == 'summary' %}active{% endif %}">
-                {% for sg in summary_groups %}
-                <li><a href="{% url 'summary-group' pk=sg.pk %}">{{ sg.name }}</a></li>
-                {% endfor %}
-            </ul>
-
+            <a href="{% url 'summary' %}">
+                <i class="icon-sitemap"></i>
+                <span>Summary</span>
+            </a>
         </li>
     </ul>
 </div>
