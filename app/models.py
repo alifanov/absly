@@ -190,7 +190,7 @@ class SummaryImageBlock(SummaryBlock):
         return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
     def render_to_pdf(self, p, x, y):
-        p.drawImage(ImageReader(self.image.path), x, -y)
+        p.drawImage(ImageReader(self.image.path), x, y, height=-100)
 
     def __unicode__(self):
         return u'Image #{} for {}'.format(self.pk, self.item.name)
