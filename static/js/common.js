@@ -205,8 +205,8 @@ $(function(){
             url: '/ga/config/account/',
             data: $(".ga-config-profile-form").serializeArray(),
             success: function(resp){
-                $(".ga-webopts").html(resp.data);
-                $(".ga-profile").html();
+                $(".ga-webprops").html(resp.data);
+                $(".ga-profile").html('');
             }
         });
     });
