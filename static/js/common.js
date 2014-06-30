@@ -199,10 +199,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
-    if($("#ga_account").length){
-        $("#ga_account").change();
-    }
-
     $("#ga_account").change(function(){
         $.ajax({
             type: "POST",
@@ -215,6 +211,10 @@ $(function(){
             }
         });
     });
+
+    if($("#ga_account").length){
+        $("#ga_account").change();
+    }
 
     $(document).on('change', '#ga_webprops', function(){
         $.ajax({
