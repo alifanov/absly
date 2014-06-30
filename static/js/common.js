@@ -206,6 +206,7 @@ $(function(){
             data: $(".ga-config-profile-form").serializeArray(),
             success: function(resp){
                 $(".ga-webprops").html(resp.data);
+                $("#ga_webprops").change();
                 $(".ga-profile").html('');
             }
         });
