@@ -294,7 +294,7 @@ class GAWeboptsView(View):
             user=request.user
         )
         if account:
-            ga_profile.account_id = int(account)
+            ga_profile.account_id = account
             ga_profile.save()
             storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
             self.credential = storage.get()
@@ -325,7 +325,7 @@ class GAProfileView(View):
             user=request.user
         )
         if webprops:
-            ga_profile.webproperty_id = int(webprops)
+            ga_profile.webproperty_id = webprops
             ga_profile.save()
             storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
             self.credential = storage.get()
