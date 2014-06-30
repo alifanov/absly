@@ -356,7 +356,7 @@ class GAProfileCompletedView(View):
 
     def post(self, request, *args, **kwargs):
         profile = request.POST.get('profile')
-        ga_profile = GAProfile.objects.get_or_create(
+        ga_profile,created = GAProfile.objects.get_or_create(
             user=request.user
         )
         if profile:
