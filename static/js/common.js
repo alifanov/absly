@@ -232,7 +232,7 @@ $(function(){
             data: $(".ga-config-profile-form").serializeArray(),
             success: function(resp){
                 $(".ga-profile").html(resp.data);
-                $(".ga-profile").change();
+                $("#ga_profile").change();
             }
         });
     });
