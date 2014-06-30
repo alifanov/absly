@@ -211,7 +211,7 @@ $(function(){
         });
     });
 
-    $("#ga_webprops").change(function(){
+    $(document).on('change', '#ga_webprops', function(){
         $.ajax({
             type: "POST",
             url: '/ga/config/webprops/',
