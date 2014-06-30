@@ -2,7 +2,7 @@
 # Create your views here.
 from app.models import News, NewsGroup, GAProfile
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.shortcuts import redirect
 import arrow, logging
 from django.utils.decorators import method_decorator
@@ -285,6 +285,37 @@ class GAFunnelView(TemplateView):
                 ctx['revenue_value'] = ctx['revenue_value'][0][0]
 
         return ctx
+
+class GAWeboptsView(View):
+
+    def post(self, request, *args, **kwargs):
+        account = request.POST.get('account')
+        ga_profile = GAProfile.objects.get_or_create(
+            user=request.user
+        )
+        if account:
+            ga_profile.account_id = int(account)
+            ga_profile.save()
+            storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
+            self.credential = storage.get()
+            if self.credential is None or self.credential.invalid == True:
+                return HttpResponseForbidden
+            else:
+                http = httplib2.Http()
+                http = self.credential.authorize(http)
+                service = build("analytics", "v3", http=http)
+                wps = service.management().webproperties().list(accountId=account).execute()
+                webprops_config = []
+                for wp in wps.get('items'):
+                    webprops_config.append((wp.get('id'), wp.get('name')))
+                data = {
+                    'data': render_to_string('widgets/ga/account.html', {
+                        'items': webprops_config,
+                        'item_name': 'webprops',
+                        'selected_item': ga_profile.webproperty_id
+                    })
+                }
+                return HttpResponse(json.dumps(data), content_type='application/json')
 
 class GAConfigView(TemplateView):
     credentials = None

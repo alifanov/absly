@@ -199,6 +199,18 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
+    $("#ga_account").change(function(){
+        $.ajax({
+            type: "POST",
+            url: '/ga/config/account/',
+            data: $(".ga-config-profile-form").serializeArray(),
+            success: function(resp){
+                $(".ga-webopts").html(resp.data);
+                $(".ga-profile").html();
+            }
+        });
+    });
+
     $(document).on('submit', "form.summary-block-add", function(){
         $.ajax({
             type: "POST",

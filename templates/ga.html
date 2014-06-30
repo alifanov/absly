@@ -5,38 +5,21 @@
     {% if auth_url %}
         <a href="#">Подключить Google Analytics</a>
     {% else %}
-        <form method="GET" action="">
+        <form method="GET" action="" class="ga-config-profile-form">
             {% csrf_token %}
-        <div class="row">
-            <div class="col-xs-4">
-                            <select name="account" id="ga_account">
-                {% for acc in accounts %}
-                    <option {% if account == acc.0 %}selected="selected"{% endif %} value="{{ acc.0 }}">{{ acc.1 }}</option>
-                {% endfor %}
-            </select>
-            </div>
-            <div class="col-xs-4">
-            {% if webprops %}
-                <select name="webprop" id="ga_webprop">
-                    {% for wp in webprops %}
-                        <option {% if webprop == wp.0 %}selected="selected"{% endif %} value="{{ wp.0 }}">{{ wp.1 }}</option>
+            <div class="row">
+                <div class="col-xs-4">
+                <select name="account" id="ga_account">
+                    {% for acc in accounts %}
+                        <option {% if account == acc.0 %}selected="selected"{% endif %} value="{{ acc.0 }}">{{ acc.1 }}</option>
                     {% endfor %}
                 </select>
-            {% endif %}
+                </div>
+                <div class="col-xs-4 ga-webprops">
+                </div>
+                <div class="col-xs-4 ga-profile">
+                </div>
             </div>
-            <div class="col-xs-4">
-            {% if profiles %}
-                <select name="profile" id="ga_profile">
-                    {% for wp in profiles %}
-                        <option {% if profile == wp.0 %}selected="selected"{% endif %} value="{{ wp.0 }}">{{ wp.1 }}</option>
-                    {% endfor %}
-                </select>
-            {% else %}
-                <span>{{ profiles_error }}</span>
-            {% endif %}
-            </div>
-        </div>
-            <button type="submit" class="btn">Выбрать</button>
         </form>
     {% endif %}
     </div>

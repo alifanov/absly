@@ -1,0 +1,5 @@
+<select name="{{ item_name }}" id="ga_{{ item_name }}">
+    {% for item in items %}
+        <option {% if selected_item == item.0 %}selected="selected"{% endif %} value="{{ item.0 }}">{{ item.1 }}</option>
+    {% endfor %}
+</select>

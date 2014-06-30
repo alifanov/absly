@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^oauth2callback/$', auth_return, name='oauth2-callback'),
     url(r'^ga-config/$', GAConfigView.as_view(), name='ga-config-view'),
+    url(r'^ga/config/account/$', GAWeboptsView.as_view(), name='ga-config-account'),
     url(r'^ga-funnel/$', GAFunnelView.as_view(), name='ga-funnel-view'),
 
 
