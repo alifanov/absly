@@ -216,6 +216,15 @@ $(function(){
         $("#ga_account").change();
     }
 
+
+    $(document).on('change', '#ga_profile', function(){
+        $.ajax({
+            type: "POST",
+            url: '/ga/config/profile/',
+            data: $(".ga-config-profile-form").serializeArray()
+        });
+    });
+
     $(document).on('change', '#ga_webprops', function(){
         $.ajax({
             type: "POST",
@@ -224,17 +233,6 @@ $(function(){
             success: function(resp){
                 $(".ga-profile").html(resp.data);
                 $(".ga-profile").change();
-            }
-        });
-    });
-
-    $(document).on('change', '#ga_profile', function(){
-        $.ajax({
-            type: "POST",
-            url: '/ga/config/profile/',
-            data: $(".ga-config-profile-form").serializeArray(),
-            success: function(resp){
-//                $(".ga-profile").html(resp.data);
             }
         });
     });
