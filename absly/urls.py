@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^ga-config/$', GAConfigView.as_view(), name='ga-config-view'),
     url(r'^ga/config/account/$', GAWeboptsView.as_view(), name='ga-config-account'),
     url(r'^ga/config/webprops/$', GAProfileView.as_view(), name='ga-config-webprops'),
+    url(r'^ga/config/profile/$', GAProfileCompletedView.as_view(), name='ga-config-profile'),
     url(r'^ga-funnel/$', GAFunnelView.as_view(), name='ga-funnel-view'),
 
 

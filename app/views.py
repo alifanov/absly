@@ -350,6 +350,20 @@ class GAProfileView(View):
                     })
                 }
                 return HttpResponse(json.dumps(data), content_type='application/json')
+        return HttpResponseForbidden()
+
+class GAProfileCompletedView(View):
+
+    def post(self, request, *args, **kwargs):
+        profile = request.POST.get('profile')
+        ga_profile = GAProfile.objects.get_or_create(
+            user=request.user
+        )
+        if profile:
+            ga_profile.profile_id = profile
+            ga_profile.save()
+            return HttpResponse("OK")
+        return HttpResponseForbidden
 
 class GAConfigView(TemplateView):
     credentials = None
