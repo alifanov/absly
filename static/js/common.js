@@ -200,6 +200,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 $(function(){
 
     if($("#ga_account").length){
+        alert(1);
         $("#ga_account").change();
     }
 
