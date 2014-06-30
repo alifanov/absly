@@ -317,6 +317,40 @@ class GAWeboptsView(View):
                 }
                 return HttpResponse(json.dumps(data), content_type='application/json')
 
+class GAProfileView(View):
+
+    def post(self, request, *args, **kwargs):
+        webprops = request.POST.get('webprops')
+        ga_profile,created = GAProfile.objects.get_or_create(
+            user=request.user
+        )
+        if webprops:
+            ga_profile.webproperty_id = int(webprops)
+            ga_profile.save()
+            storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
+            self.credential = storage.get()
+            if self.credential is None or self.credential.invalid == True:
+                return HttpResponseForbidden
+            else:
+                http = httplib2.Http()
+                http = self.credential.authorize(http)
+                service = build("analytics", "v3", http=http)
+                profiles = service.management().profiles().list(
+                    accountId=ga_profile.account_id,
+                    webPropertyId=ga_profile.webproperty_id
+                ).execute()
+                webprops_config = []
+                for wp in profiles.get('items'):
+                    webprops_config.append((wp.get('id'), wp.get('name')))
+                data = {
+                    'data': render_to_string('widgets/ga/account.html', {
+                        'items': webprops_config,
+                        'item_name': 'profile',
+                        'selected_item': ga_profile.webproperty_id
+                    })
+                }
+                return HttpResponse(json.dumps(data), content_type='application/json')
+
 class GAConfigView(TemplateView):
     credentials = None
     template_name = 'ga.html'

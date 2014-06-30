@@ -211,6 +211,17 @@ $(function(){
         });
     });
 
+    $("#ga_webprops").change(function(){
+        $.ajax({
+            type: "POST",
+            url: '/ga/config/webprops/',
+            data: $(".ga-config-profile-form").serializeArray(),
+            success: function(resp){
+                $(".ga-profile").html(resp.data);
+            }
+        });
+    });
+
     $(document).on('submit', "form.summary-block-add", function(){
         $.ajax({
             type: "POST",
