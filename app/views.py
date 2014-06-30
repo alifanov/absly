@@ -363,7 +363,7 @@ class GAProfileCompletedView(View):
             ga_profile.profile_id = profile
             ga_profile.save()
             return HttpResponse("OK")
-        return HttpResponseForbidden
+        return HttpResponseForbidden()
 
 class GAConfigView(TemplateView):
     credentials = None
