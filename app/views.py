@@ -290,7 +290,7 @@ class GAWeboptsView(View):
 
     def post(self, request, *args, **kwargs):
         account = request.POST.get('account')
-        ga_profile = GAProfile.objects.get_or_create(
+        ga_profile,created = GAProfile.objects.get_or_create(
             user=request.user
         )
         if account:
