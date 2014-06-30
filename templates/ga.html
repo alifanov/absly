@@ -9,11 +9,14 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-xs-4">
-                <select name="account" id="ga_account">
-                    {% for acc in accounts %}
-                        <option {% if account == acc.0 %}selected="selected"{% endif %} value="{{ acc.0 }}">{{ acc.1 }}</option>
-                    {% endfor %}
-                </select>
+                    {% with item_name='account' items=accounts selected_item=account %}
+                        {% include 'widgets/ga/account.html'  %}
+                    {% endwith %}
+{#                <select name="account" id="ga_account">#}
+{#                    {% for acc in accounts %}#}
+{#                        <option {% if account == acc.0 %}selected="selected"{% endif %} value="{{ acc.0 }}">{{ acc.1 }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
                 </div>
                 <div class="col-xs-4 ga-webprops">
                 </div>

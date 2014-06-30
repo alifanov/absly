@@ -361,11 +361,13 @@ class GAConfigView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(GAConfigView, self).get_context_data(**kwargs)
+        ga_profile, created = GAProfile.objects.get_or_create(
+            user=self.request.user
+        )
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
-            FLOW.params['state'] = xsrfutil.generate_token(settings.SECRET_KEY,
-                                                       self.request.user)
+            FLOW.params['state'] = xsrfutil.generate_token(settings.SECRET_KEY, self.request.user)
             authorize_url = FLOW.step1_get_authorize_url()
             ctx['auth_url'] = authorize_url
         else:
@@ -379,6 +381,8 @@ class GAConfigView(TemplateView):
             for acc in accounts.get('items'):
                 accounts_config.append((acc.get('id'), acc.get('name')))
             ctx['accounts'] = accounts_config
+            if ga_profile.account_id:
+                ctx['account'] = ga_profile.account_id
             # if self.request.GET.get('account'):
             #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
             #     webprops_config = []
