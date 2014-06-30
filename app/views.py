@@ -345,42 +345,42 @@ class GAConfigView(TemplateView):
             for acc in accounts.get('items'):
                 accounts_config.append((acc.get('id'), acc.get('name')))
             ctx['accounts'] = accounts_config
-            if self.request.GET.get('account'):
-                wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
-                webprops_config = []
-                for wp in wps.get('items'):
-                    webprops_config.append((wp.get('id'), wp.get('name')))
-                ctx['webprops'] = webprops_config
-                ctx['account'] = self.request.GET.get('account')
-            if self.request.GET.get('webprop'):
-                profiles = service.management().profiles().list(
-                    accountId=self.request.GET.get('account'),
-                    webPropertyId=self.request.GET.get('webprop')
-                ).execute()
-                if profiles.get('totalResults') > 0:
-                    profiles_config = []
-                    for pro in profiles.get('items'):
-                        profiles_config.append((pro.get('id'), pro.get('name')))
-                    ctx['profiles'] = profiles_config
-                else:
-                    ctx['profiles_error'] = u'Нет данных'
-                    ctx['webprop'] = self.request.GET.get('webprop')
-            if self.request.GET.get('profile'):
-                ga_profile = None
-                if GAProfile.objects.filter(user=self.request.user).exists():
-                    ga_profile = GAProfile.objects.get(user=self.request.user)
-                    ga_profile.account_id = self.request.GET.get('account')
-                    ga_profile.webproperty_id = self.request.GET.get('webprop')
-                    ga_profile.profile_id = self.request.GET.get('profile')
-                else:
-                    ga_profile = GAProfile(
-                        user=self.request.user,
-                        account_id = self.request.GET.get('account'),
-                        webproperty_id = self.request.GET.get('webprop'),
-                        profile_id = self.request.GET.get('profile'),
-                    )
-                ga_profile.save()
-                ctx['account'] = self.request.GET.get('account')
+            # if self.request.GET.get('account'):
+            #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
+            #     webprops_config = []
+            #     for wp in wps.get('items'):
+            #         webprops_config.append((wp.get('id'), wp.get('name')))
+            #     ctx['webprops'] = webprops_config
+            #     ctx['account'] = self.request.GET.get('account')
+            # if self.request.GET.get('webprop'):
+            #     profiles = service.management().profiles().list(
+            #         accountId=self.request.GET.get('account'),
+            #         webPropertyId=self.request.GET.get('webprop')
+            #     ).execute()
+            #     if profiles.get('totalResults') > 0:
+            #         profiles_config = []
+            #         for pro in profiles.get('items'):
+            #             profiles_config.append((pro.get('id'), pro.get('name')))
+            #         ctx['profiles'] = profiles_config
+            #     else:
+            #         ctx['profiles_error'] = u'Нет данных'
+            #         ctx['webprop'] = self.request.GET.get('webprop')
+            # if self.request.GET.get('profile'):
+            #     ga_profile = None
+            #     if GAProfile.objects.filter(user=self.request.user).exists():
+            #         ga_profile = GAProfile.objects.get(user=self.request.user)
+            #         ga_profile.account_id = self.request.GET.get('account')
+            #         ga_profile.webproperty_id = self.request.GET.get('webprop')
+            #         ga_profile.profile_id = self.request.GET.get('profile')
+            #     else:
+            #         ga_profile = GAProfile(
+            #             user=self.request.user,
+            #             account_id = self.request.GET.get('account'),
+            #             webproperty_id = self.request.GET.get('webprop'),
+            #             profile_id = self.request.GET.get('profile'),
+            #         )
+            #     ga_profile.save()
+            #     ctx['account'] = self.request.GET.get('account')
 
             # data = profile_config
             # data = service.data().ga().get(
