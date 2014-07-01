@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
     <div class="container metrics ga-config">
         <h1>Воронка Google Analytics</h1>
+    <form method="POST">{% csrf_token %}
         <table class="table ga-funnel-table-view">
             <thead>
                 <th>Level</th>
@@ -22,7 +25,8 @@
                     {% if activation_value %}
                         {{ activation_value|default:"0" }}
                     {% else %}
-                        <input name="activation_value" class="form-control" value="0" />
+                        {{ funnel_data_form.activation_value|add_class:"form-control" }}
+{#                        <input name="activation_value" class="form-control" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
@@ -69,6 +73,7 @@
                 </td>
             </tr>
         </table>
+    </form>
         <div id="funnel">
 
         </div>
