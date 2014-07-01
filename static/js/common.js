@@ -197,7 +197,25 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
     }
 }]);
 
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
 $(function(){
+
+    $("#id_user_sum").keyup(function(){
+        delay(function(){
+        $.ajax({
+            url: '/ga/config/funnel/',
+            type: "POST",
+            data: $("#ga-funnel-config-form").serializeArray()
+        });
+        }, 1000);
+    });
 
     $(".ga-funnel-page select").change(function(){
         if($(this).val() != ''){
