@@ -41,6 +41,16 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://absly.progernachas.ru/oauth2callback')
 
+class StatisticsMixin(object):
+    def get_context_data(self, **kwargs):
+        ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
+        ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
+            user=self.request.user
+        )
+        if ga_funnel_config.user_sum and ga_funnel_config.revenue_value:
+            ctx['money_sum'] = ga_funnel_config.revenue_value*ga_funnel_config.user_sum
+        return ctx
+
 @login_required
 def auth_return(request):
   if not xsrfutil.validate_token(settings.SECRET_KEY, request.REQUEST['state'],
@@ -51,7 +61,7 @@ def auth_return(request):
   storage.put(credential)
   return HttpResponseRedirect("/ga/")
 
-class GAFunnelView(TemplateView):
+class GAFunnelView(StatisticsMixin, TemplateView):
     credentials = None
     template_name = 'ga-funnel.html'
     ga_funnel_config = None
