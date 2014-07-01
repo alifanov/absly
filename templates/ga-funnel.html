@@ -163,7 +163,7 @@
                 $(".ga-referral").css({
                     color: colors[0]
                 });
-                console.log(colors[0]);
+                console.log(Raphael.hsb(colors[0]));
 
                 r = Raphael("ga_revenue", w1, h);
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
