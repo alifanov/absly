@@ -2,6 +2,73 @@
 
 {% block content %}
     <div class="container metrics ga-config">
+        <h1>Воронка Google Analytics</h1>
+        <table class="table">
+            <thead>
+                <th>Level</th>
+                <th>Value</th>
+                <th>Funnel</th>
+            </thead>
+            <tr>
+                <td>Acquisition</td>
+                <td>{{ ga_users|default:"0" }}</td>
+                <td>
+                    <div id="ga_acquisition"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Activation</td>
+                <td>
+                    {% if activation_value %}
+                        {{ activation_value|default:"0" }}
+                    {% else %}
+                        <input name="activation_value" />
+                    {% endif %}
+                </td>
+                <td>
+                    <div id="ga_activation"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Retention</td>
+                <td>
+                    {% if retention_value %}
+                        {{ retention_value|default:"0" }}
+                    {% else %}
+                        <input name="retention_value" />
+                    {% endif %}
+                </td>
+                <td>
+                    <div id="ga_retention"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Referral</td>
+                <td>
+                    {% if referral_value %}
+                        {{ referral_value|default:"0" }}
+                    {% else %}
+                        <input name="referral_value" />
+                    {% endif %}
+                </td>
+                <td>
+                    <div id="ga_referral"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Revenue</td>
+                <td>
+                    {% if revenue_value %}
+                        {{ revenue_value|default:"0" }}
+                    {% else %}
+                        <input name="revenue_value" />
+                    {% endif %}
+                </td>
+                <td>
+                    <div id="ga_revenue"></div>
+                </td>
+            </tr>
+        </table>
         <div id="funnel">
 
         </div>
