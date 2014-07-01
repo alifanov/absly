@@ -107,6 +107,9 @@
                 $(".ga-acquisition").css({
                     color: Raphael.getRGB(colors[0]).hex
                 });
+                $(".ga-revenue input").css({
+                    "border": "solid 1px "+Raphael.getRGB(colors[0]).hex
+                });
 
                 var top_offset = Math.floor((w1-w2)/2);
                 var r = Raphael('ga_activation', w1, h);
@@ -125,6 +128,9 @@
                 $(".ga-activation").css({
                     color: Raphael.getRGB(colors[1]).hex
                 });
+                $(".ga-revenue input").css({
+                    "border": "solid 1px "+Raphael.getRGB(colors[1]).hex
+                });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
                 var r = Raphael('ga_retention', w1, h);
@@ -142,6 +148,9 @@
                 });
                 $(".ga-retention").css({
                     color: Raphael.getRGB(colors[2]).hex
+                });
+                $(".ga-revenue input").css({
+                    "border": "solid 1px "+Raphael.getRGB(colors[2]).hex
                 });
 
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
@@ -169,6 +178,12 @@
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
                     "fill": colors[4],
                     "stroke": colors[4]
+                });
+                $(".ga-revenue").css({
+                    color: Raphael.getRGB(colors[4]).hex
+                });
+                $(".ga-revenue input").css({
+                    "border": "solid 1px "+Raphael.getRGB(colors[4]).hex
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
 {#                    {{ ga_users|default:"0" }},#}
