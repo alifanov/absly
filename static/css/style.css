@@ -439,3 +439,7 @@ li.active a.canvas-element-item-link {
 .table.ga-funnel-table-view > tbody > tr > td {
     padding: 0px;
 }
+
+.ga-values {
+    text-align: right;
+}

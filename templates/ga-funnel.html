@@ -11,14 +11,14 @@
             </thead>
             <tr>
                 <td>Acquisition</td>
-                <td>{{ ga_users|default:"0" }}</td>
+                <td class="ga-values ga-acquisition">{{ ga_users|default:"0" }}</td>
                 <td>
                     <div id="ga_acquisition" style="min-height: 50px;"></div>
                 </td>
             </tr>
             <tr>
                 <td>Activation</td>
-                <td>
+                <td class="ga-values ga-activation">
                     {% if activation_value %}
                         {{ activation_value|default:"0" }}
                     {% else %}
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td>Retention</td>
-                <td>
+                <td class="ga-values ga-retention">
                     {% if retention_value %}
                         {{ retention_value|default:"0" }}
                     {% else %}
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>Referral</td>
-                <td>
+                <td class="ga-values ga-referral">
                     {% if referral_value %}
                         {{ referral_value|default:"0" }}
                     {% else %}
@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td>Revenue</td>
-                <td>
+                <td class="ga-values ga-revenue">
                     {% if revenue_value %}
                         {{ revenue_value|default:"0" }}
                     {% else %}
@@ -104,8 +104,10 @@
                     "fill": colors[0],
                     "stroke": colors[0]
                 });
+                $(".ga-acquisition").css({
+                    color: colors[0]
+                });
 
-{#                var w2 = $("#ga_activation").width();#}
                 var top_offset = Math.floor((w1-w2)/2);
                 var r = Raphael('ga_activation', w1, h);
                 var a1_value = {{ activation_value|default:"0" }};
@@ -119,6 +121,9 @@
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[1],
                     "stroke": colors[1]
+                });
+                $(".ga-activation").css({
+                    color: colors[0]
                 });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
@@ -135,6 +140,9 @@
                     "fill": colors[2],
                     "stroke": colors[2]
                 });
+                $(".ga-retention").css({
+                    color: colors[0]
+                });
 
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 var r = Raphael('ga_referral', w1, h);
@@ -149,6 +157,9 @@
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[3],
                     "stroke": colors[3]
+                });
+                $(".ga-referral").css({
+                    color: colors[0]
                 });
 
                 r = Raphael("ga_revenue", w1, h);
