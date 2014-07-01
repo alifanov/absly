@@ -68,6 +68,11 @@ class GAFunnelConfig(models.Model):
     revenue_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
     revenue_event_label = models.CharField(max_length=256, verbose_name=u'Метка события', blank=True)
 
+    activation_value = models.IntegerField(default=0, verbose_name=u'Кол-во пользователей [Activation]')
+    retention_value = models.IntegerField(default=0, verbose_name=u'Кол-во пользователей [Retention]')
+    referral_value = models.IntegerField(default=0, verbose_name=u'Кол-во пользователей [Referral]')
+    revenue_value = models.IntegerField(default=0, verbose_name=u'Кол-во пользователей [Revenue]')
+
     def __unicode__(self):
         return u'{}'.format(self.pk)
 

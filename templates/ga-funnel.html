@@ -22,7 +22,7 @@
                     {% if activation_value %}
                         {{ activation_value|default:"0" }}
                     {% else %}
-                        <input name="activation_value" class="form-control" />
+                        <input name="activation_value" class="form-control" value="0" />
                     {% endif %}
                 </td>
                 <td>
@@ -35,7 +35,7 @@
                     {% if retention_value %}
                         {{ retention_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="retention_value" />
+                        <input class="form-control" name="retention_value" value="0" />
                     {% endif %}
                 </td>
                 <td>
@@ -48,7 +48,7 @@
                     {% if referral_value %}
                         {{ referral_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="referral_value" />
+                        <input class="form-control" name="referral_value" value="0" />
                     {% endif %}
                 </td>
                 <td>
@@ -61,7 +61,7 @@
                     {% if revenue_value %}
                         {{ revenue_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="revenue_value" />
+                        <input class="form-control" name="revenue_value" value="0" />
                     {% endif %}
                 </td>
                 <td>
