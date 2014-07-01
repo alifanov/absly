@@ -398,7 +398,7 @@ class GAConfigView(TemplateView):
         ga_profile, created = GAProfile.objects.get_or_create(
             user=self.request.user
         )
-        ga_funnel_config = GAFunnelConfig.objects.get_or_create(
+        ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
         ctx['funnel_config_form'] = FunnelConfgiForm(instance=ga_funnel_config)
