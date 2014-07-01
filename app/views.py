@@ -460,7 +460,7 @@ class GAConfigView(TemplateView):
                 max_results=25
             ).execute()
             ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
-            fcf = FunnelConfgiForm(instance=self.funnel_config)
+            fcf = FunnelConfgiForm(instance=ga_funnel_config)
             vars = [(c,c) for c in ctx['ga_pages']]
             vars.insert(0, (u'', '-----'))
             field = forms.ChoiceField(
