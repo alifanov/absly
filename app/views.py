@@ -287,6 +287,8 @@ class GAFunnelView(TemplateView):
                 ctx['revenue_value'] = ctx['revenue_value'][0][0]
 
         return ctx
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 class GAFunnelConfigAjaxView(View):
     def post(self, request, *args, **kwargs):
@@ -295,9 +297,10 @@ class GAFunnelConfigAjaxView(View):
         )
         date_range = request.POST.get('date_range')
         if date_range:
-            now = datetime.now()
+            now = date.today()
             end_date = now.strftime('%Y-%m-%d')
-            start_date = (now - timedelta(month=int(date_range))).strftime('%Y-%m-%d')
+            start_date = now + relativedelta(months=u'-{}'.format(date_range))
+            start_date = start_date.strftime('%Y-%m-%d')
             ga_funnel_config.start_date = start_date
             ga_funnel_config.end_date = end_date
             return HttpResponse("OK")
