@@ -76,19 +76,19 @@
         <script type="text/javascript">
             $(function(){
                 var colors = (function () {
-            var hues = [.6, .2, .05, .1333, .75, 0],
-                colors = [];
+                        var hues = [.6, .2, .05, .1333, .75, 0],
+                            colors = [];
 
-            for (var i = 0; i < 10; i++) {
-                if (i < hues.length) {
-                    colors.push('hsb(' + hues[i] + ',.75, .75)');
-                } else {
-                    colors.push('hsb(' + hues[i - hues.length] + ', 1, .5)');
-                }
-            }
+                        for (var i = 0; i < 10; i++) {
+                            if (i < hues.length) {
+                                colors.push('hsb(' + hues[i] + ',.75, .75)');
+                            } else {
+                                colors.push('hsb(' + hues[i - hues.length] + ', 1, .5)');
+                            }
+                        }
 
-            return colors;
-    })();
+                        return colors;
+                })();
                 var w1 = $("#ga_acquisition").width();
                 var h = $("#ga_acquisition").parent().height();
                 var r = Raphael('ga_acquisition', w1, h);
@@ -151,7 +151,7 @@
                     "stroke": colors[3]
                 });
 
-                r = Raphael("ga_revenu", w1, h);
+                r = Raphael("ga_revenue", w1, h);
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
                     "fill": colors[4],
                     "stroke": colors[4]
