@@ -4,6 +4,7 @@ from app.models import *
 class FunnelConfgiForm(ModelForm):
     class Meta:
         model = GAFunnelConfig
+        exclude=('start_date', 'end_date')
 
 class SummaryItemForm(ModelForm):
     class Meta:
