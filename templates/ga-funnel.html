@@ -75,6 +75,20 @@
         {% if ga_users %}
         <script type="text/javascript">
             $(function(){
+                var colors = (function () {
+            var hues = [.6, .2, .05, .1333, .75, 0],
+                colors = [];
+
+            for (var i = 0; i < 10; i++) {
+                if (i < hues.length) {
+                    colors.push('hsb(' + hues[i] + ',.75, .75)');
+                } else {
+                    colors.push('hsb(' + hues[i - hues.length] + ', 1, .5)');
+                }
+            }
+
+            return colors;
+    })();
                 var w = $("#ga_acquisition").width();
                 var h = $("#ga_acquisition").parent().height();
                 var r = Raphael('ga_acquisition', w, h);
@@ -85,7 +99,7 @@
                 console.log(w2, bottom_offset);
                 console.log("M0,0L" + w + ",0T" + (w - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0");
                 r.path("M0,0L" + w + ",0T" + (w - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
-                    "fill": r.colors[0]
+                    "fill": colors[0]
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
 {#                    {{ ga_users|default:"0" }},#}
