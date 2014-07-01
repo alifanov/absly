@@ -78,10 +78,10 @@
                 var w = $("#ga_acquisition").width();
                 var h = $("#ga_acquisition").parent().height();
                 var r = Raphael('ga_acquisition', w, h);
-                var a1_value = Math.floor({{ ga_users|default:"0" }}/w);
-                var a2_value = Math.floor({{ activation_value|default:"0" }}/2);
-                var bottom_offset = Math.floor((a1_value - a2_value)/2);
-                console.log(bottom_offset);
+                var a1_value = {{ ga_users|default:"0" }};
+                var a2_value = {{ activation_value|default:"0" }};
+                var w2 = Math.floor(w*a1_value/a2_value);
+                var bottom_offset = Math.floor((w - w2)/2);
                 console.log(bottom_offset);
                 r.path("M0,0L" + w + ",0T" + a2_value - bottom_offset + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
                     "fill": "#0aa"
