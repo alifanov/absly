@@ -104,7 +104,7 @@
 {#                var w2 = $("#ga_activation").width();#}
                 var h = $("#ga_activation").parent().height();
                 var top_offset = Math.floor((w1-w2)/2);
-                var r = Raphael('ga_activation', w2, h);
+                var r = Raphael('ga_activation', w, h);
                 var a1_value = {{ activation_value|default:"0" }};
                 var a2_value = {{ retention_value|default:"0" }};
                 var w22 = Math.floor(w2*a2_value/a1_value);
