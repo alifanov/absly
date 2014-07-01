@@ -150,6 +150,7 @@
                 var a2_value = {{ revenue_value|default:"0" }};
                 var w5 = Math.floor(w4*a2_value/a1_value);
                 var bottom_offset = Math.floor((w4 - w5)/2);
+                console.log(top_offset)
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[3],
                     "stroke-width": "0"
