@@ -54,17 +54,14 @@ def auth_return(request):
 class GAFunnelView(TemplateView):
     credentials = None
     template_name = 'ga-funnel.html'
-    funnel_config = None
+    ga_funnel_config = None
+    ga_profile = None
+    service = None
 
     def post(self, request, *args, **kwargs):
         self.funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        rp = request.POST.copy()
-        rp['user'] = self.request.user.pk
-        form = FunnelConfgiForm(rp, instance=self.funnel_config)
-        if form.is_valid():
-            form.save()
         return self.get(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
@@ -79,112 +76,35 @@ class GAFunnelView(TemplateView):
         else:
             return super(GAFunnelView, self).get(request, *args, **kwargs)
 
+    def get_ga_data(self, **kwargs):
+        kwargs['ids'] = 'ga:{}'.format(self.ga_profile.profile_id)
+        kwargs['start_date'] = self.ga_funnel_config.start_date
+        kwargs['end_date'] = self.ga_funnel_config.end_date
+        return self.service.data().ga().get(**kwargs).execute()
+
     def get_context_data(self, **kwargs):
         ctx = super(GAFunnelView, self).get_context_data(**kwargs)
         http = httplib2.Http()
         http = self.credential.authorize(http)
-        service = build("analytics", "v3", http=http)
+        self.service = build("analytics", "v3", http=http)
 
-        ga_profile = GAProfile.objects.get(user=self.request.user)
-        ga_users = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.profile_id),
-            start_date='2014-06-01',
-            end_date='2014-06-24',
-            metrics='ga:users'
-        ).execute()
+        ga_profile,created = GAProfile.objects.get_or_create(user=self.request.user)
+        ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(user=self.request.user)
+        ga_users = self.get_ga_data(metrics='ga:users')
         if ga_users.get('rows'):
             ctx['ga_users'] = ga_users.get('rows')[0][0]
 
-        ga_pages = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.profile_id),
-            start_date='2014-06-01',
-            end_date='2014-06-24',
-            metrics='ga:sessions',
-            dimensions='ga:pagePath',
-            max_results=125
-        ).execute()
-        ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
-
-        ga_events_categories = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.profile_id),
-            start_date='2014-06-01',
-            end_date='2014-06-24',
-            metrics='ga:sessions',
-            dimensions='ga:eventCategory',
-            max_results=25
-        ).execute()
-        ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
-
-        ga_events_actions = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.profile_id),
-            start_date='2014-06-01',
-            end_date='2014-06-24',
-            metrics='ga:sessions',
-            dimensions='ga:eventAction',
-            max_results=25
-        ).execute()
-        ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
-
-        ga_events_labels = service.data().ga().get(
-            ids='ga:{}'.format(ga_profile.profile_id),
-            start_date='2014-06-01',
-            end_date='2014-06-24',
-            metrics='ga:sessions',
-            dimensions='ga:eventLabel',
-            max_results=25
-        ).execute()
-        ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
-        fcf = FunnelConfgiForm(instance=self.funnel_config)
-        vars = [(c,c) for c in ctx['ga_pages']]
-        vars.insert(0, (u'', '-----'))
-        field = forms.ChoiceField(
-            widget=forms.Select, choices=vars
-        )
-        fcf.fields['activation_page'] = field
-        fcf.fields['retention_page'] = field
-        fcf.fields['referral_page'] = field
-        fcf.fields['revenue_page'] = field
-
-        choices = [(c,c) for c in ctx['ga_events_categories']]
-        choices.insert(0, (u'', '----'))
-        field = forms.ChoiceField(
-            widget=forms.Select, choices=choices
-        )
-        fcf.fields['activation_event_category'] = field
-        fcf.fields['retention_event_category'] = field
-        fcf.fields['referral_event_category'] = field
-        fcf.fields['revenue_event_category'] = field
-
-        choices = [(c,c) for c in ctx['ga_events_actions']]
-        choices.insert(0, (u'', '----'))
-        field = forms.ChoiceField(
-            widget=forms.Select, choices=choices
-        )
-        fcf.fields['activation_event_action'] = field
-        fcf.fields['retention_event_action'] = field
-        fcf.fields['referral_event_action'] = field
-        fcf.fields['revenue_event_action'] = field
-
-        choices = [(c,c) for c in ctx['ga_events_labels']]
-        choices.insert(0, (u'', '----'))
-        field = forms.ChoiceField(
-            widget=forms.Select, choices=choices
-        )
-        fcf.fields['activation_event_label'] = field
-        fcf.fields['retention_event_label'] = field
-        fcf.fields['referral_event_label'] = field
-        fcf.fields['revenue_event_label'] = field
+        fcf = FunnelConfgiForm(instance=self.ga_funnel_config)
         ctx['funnel_config_form'] = fcf
 
+        ga_activation_value = self.get_ga_data(metrics='ga:users')
+
         if self.funnel_config.activation_page:
-            ctx['activation_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters='ga:pagePath=={}'.format(self.funnel_config.activation_page),
-                max_results=25
-            ).execute().get('rows')[0][0]
+            ctx['activation_value'] = self.get_ga_data(
+                metrics='ga:users', max_results=1,
+                filters='ga:pagePath=={}'.format(self.funnel_config.activation_page)
+            ).get('rows')[0][0]
+
         if self.funnel_config.activation_event_category:
             ff = u''
             if self.funnel_config.activation_event_category:
@@ -193,24 +113,14 @@ class GAFunnelView(TemplateView):
                 ff += u';ga:eventAction=={}'.format(self.funnel_config.activation_event_action)
             if self.funnel_config.activation_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.funnel_config.activation_event_label)
-            ctx['activation_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters=ff,
-                max_results=25
-            ).execute().get('rows')[0][0]
+            ctx['activation_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
 
         if self.funnel_config.retention_page:
-            ctx['retention_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters='ga:pagePath=={}'.format(self.funnel_config.retention_page),
-                max_results=25
-            ).execute().get('rows')[0][0]
+            ctx['retention_value'] = self.get_ga_data(
+                metrics='ga:users', max_results=1,
+                filters='ga:pagePath=={}'.format(self.funnel_config.retention_page)
+            ).get('rows')[0][0]
+
         if self.funnel_config.retention_event_category:
             ff = u''
             if self.funnel_config.retention_event_category:
@@ -219,25 +129,14 @@ class GAFunnelView(TemplateView):
                 ff += u';ga:eventAction=={}'.format(self.funnel_config.retention_event_action)
             if self.funnel_config.retention_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.funnel_config.retention_event_label)
-            ctx['retention_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters=ff,
-                max_results=25
-            ).execute().get('rows')[0][0]
-
+            ctx['retention_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
 
         if self.funnel_config.referral_page:
-            ctx['referral_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters='ga:pagePath=={}'.format(self.funnel_config.referral_page),
-                max_results=25
-            ).execute().get('rows')[0][0]
+            ctx['referral_value'] = self.get_ga_data(
+                metrics='ga:users', max_results=1,
+                filters='ga:pagePath=={}'.format(self.funnel_config.referral_page)
+            ).get('rows')[0][0]
+
         if self.funnel_config.referral_event_category:
             ff = u''
             if self.funnel_config.referral_event_category:
@@ -246,27 +145,15 @@ class GAFunnelView(TemplateView):
                 ff += u';ga:eventAction=={}'.format(self.funnel_config.referral_event_action)
             if self.funnel_config.referral_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.funnel_config.referral_event_label)
-            ctx['referral_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters=ff,
-                max_results=25
-            ).execute().get('rows')
-            if ctx['referral_value']:
-                ctx['referral_value'] = ctx['referral_value'][0][0]
+            ctx['referral_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
 
 
         if self.funnel_config.revenue_page:
-            ctx['revenue_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters='ga:pagePath=={}'.format(self.funnel_config.revenue_page),
-                max_results=25
-            ).execute().get('rows')[0][0]
+            ctx['revenue_value'] = self.get_ga_data(
+                metrics='ga:users', max_results=1,
+                filters='ga:pagePath=={}'.format(self.funnel_config.referral_page)
+            ).get('rows')[0][0]
+
         if self.funnel_config.revenue_event_category:
             ff = u''
             if self.funnel_config.revenue_event_category:
@@ -275,16 +162,7 @@ class GAFunnelView(TemplateView):
                 ff += u';ga:eventAction=={}'.format(self.funnel_config.revenue_event_action)
             if self.funnel_config.revenue_event_label:
                 ff += u';,ga:eventLabel=={}'.format(self.funnel_config.revenue_event_label)
-            ctx['revenue_value'] = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date='2014-06-01',
-                end_date='2014-06-24',
-                metrics='ga:users',
-                filters=ff,
-                max_results=25
-            ).execute().get('rows')
-            if ctx['revenue_value']:
-                ctx['revenue_value'] = ctx['revenue_value'][0][0]
+            ctx['revenue_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
 
         return ctx
 from datetime import date

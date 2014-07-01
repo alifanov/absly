@@ -9,11 +9,11 @@
             $(function(){
                 var r = Raphael('funnel', 600, 600);
                 r.hbarchart(0, 0, 600, 600, [
-                    $("#acquisition").val(),
-                    $("#activation").val(),
-                    $("#retention").val(),
-                    $("#referral").val(),
-                    $("#revenue").val()
+                    {{ ga_users|default:"0" }},
+                    {{ activation_value|default:"0" }},
+                    {{ retention_value|default:"0" }},
+                    {{ referral_value|default:"0" }},
+                    {{ revenue_value|default:"0" }}
                 ], {});
             });
         </script>
