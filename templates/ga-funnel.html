@@ -99,10 +99,14 @@
                 r.path("M0,0L" + w1 + ",0T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
                     "fill": colors[0],
                     "stroke-width": "0"
-                }).glow();
+                }).glow({
+                    width: 5
+                });
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[0],
                     "stroke": colors[0]
+                }).glow({
+                    width: 5
                 });
 
 {#                var w2 = $("#ga_activation").width();#}
