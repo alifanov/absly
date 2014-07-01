@@ -151,7 +151,8 @@
                     "stroke": colors[3]
                 });
 
-                r.path("M0,"+h/2+"L"+w1/2+","+h/2+"L"+w1/2+",0").attr({
+                r = Raphael("ga_revenu", w1, h);
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
                     "fill": colors[4],
                     "stroke": colors[4]
                 });
