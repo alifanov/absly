@@ -201,10 +201,10 @@ $(function(){
 
     $(".ga-funnel-page").change(function(){
         if($(this).val() != ''){
-            $(this).parents().find('tr').find('.ga-funnel-events').hide();
+            $(this).parents('tr').find('.ga-funnel-events').addClass('hidden');
         }
         else{
-            $(this).parents().find('tr').find('.ga-funnel-events').show();
+            $(this).parents('tr').find('.ga-funnel-events').removeClass('hidden');
         }
     });
 
