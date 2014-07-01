@@ -199,6 +199,24 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
+    $(".ga-funnel-page").change(function(){
+        if($(this).val() != ''){
+            $(this).parents().find('tr').find('.ga-funnel-events').hide();
+        }
+        else{
+            $(this).parents().find('tr').find('.ga-funnel-events').show();
+        }
+    });
+
+    $(".ga-funnel-events-category").change(function(){
+        if($(this).val() != ''){
+            $(this).parents().find('tr').find('.ga-funnel-page').hide();
+        }
+        else{
+            $(this).parents().find('tr').find('.ga-funnel-page').show();
+        }
+    });
+
     $("#date_range").change(function(){
         $.ajax({
             type: "POST",

@@ -60,20 +60,25 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                        <div class="{% if funnel_config_form.activation_event_category.value %}hidden{% endif %}">
+                        <div class="ga-funnel-page {% if funnel_config_form.activation_event_category.value %}hidden{% endif %}">
                             {{ funnel_config_form.activation_page }}
                         </div>
                     </td>
                     <td>|</td>
-                {% if not funnel_config_form.activation_page.value %}
                 <td>
+                    <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.activation_page.value %}hidden{% endif %}">
                         {{ funnel_config_form.activation_event_category }}
+                    </div>
                 </td>
                 <td>
+                    <div class="ga-funnel-events {% if funnel_config_form.activation_page.value %}hidden{% endif %}">
                         {{ funnel_config_form.activation_event_action }}
+                    </div>
                 </td>
                 <td>
+                    <div class="ga-funnel-events {% if funnel_config_form.activation_page.value %}hidden{% endif %}">
                         {{ funnel_config_form.activation_event_label }}
+                    </div>
                 </td>
                 {% else %}
                     <td></td>
