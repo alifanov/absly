@@ -94,88 +94,79 @@
                 var r = Raphael('ga_acquisition', w1, h);
                 var a1_value = {{ ga_users|default:"0" }};
                 var a2_value = {{ activation_value|default:"0" }};
-                if(a2_value > 0){
-                    var w2 = Math.floor(w1*a2_value/a1_value);
-                    var bottom_offset = Math.floor((w1 - w2)/2);
-                    r.path("M0,0L" + w1 + ",0T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
-                        "fill": colors[0],
-                        "stroke-width": "0"
-                    });
-                    r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
-                        "fill": colors[0],
-                        "stroke": colors[0]
-                    });
-                    $(".ga-acquisition").css({
-                        color: colors[0]
-                    });
-                }
+                var w2 = Math.floor(w1*a2_value/a1_value);
+                var bottom_offset = Math.floor((w1 - w2)/2);
+                r.path("M0,0L" + w1 + ",0T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
+                    "fill": colors[0],
+                    "stroke-width": "0"
+                });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[0],
+                    "stroke": colors[0]
+                });
+                $(".ga-acquisition").css({
+                    color: colors[0]
+                });
 
                 var top_offset = Math.floor((w1-w2)/2);
                 var r = Raphael('ga_activation', w1, h);
                 var a1_value = {{ activation_value|default:"0" }};
                 var a2_value = {{ retention_value|default:"0" }};
-                if(a2_value > 0){
-                    var w3 = Math.floor(w2*a2_value/a1_value);
-                    var bottom_offset = Math.floor((w2 - w3)/2);
-                    r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
-                        "fill": colors[1],
-                        "stroke-width": "0"
-                    });
-                    r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
-                        "fill": colors[1],
-                        "stroke": colors[1]
-                    });
-                    $(".ga-activation").css({
-                        color: colors[0]
-                    });
-                }
+                var w3 = Math.floor(w2*a2_value/a1_value);
+                var bottom_offset = Math.floor((w2 - w3)/2);
+                r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
+                    "fill": colors[1],
+                    "stroke-width": "0"
+                });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[1],
+                    "stroke": colors[1]
+                });
+                $(".ga-activation").css({
+                    color: colors[0]
+                });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
                 var r = Raphael('ga_retention', w1, h);
                 var a1_value = {{ retention_value|default:"0" }};
                 var a2_value = {{ referral_value|default:"0" }};
-                if (a2_value > 0){
-                    var w4 = Math.floor(w3*a2_value/a1_value);
-                    var bottom_offset = Math.floor((w3 - w4)/2);
-                    r.path("M" +  top_offset +  ",0L" + (top_offset+w3) + ",0T" + ( top_offset + w3 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
-                        "fill": colors[2],
-                        "stroke-width": "0"
-                    });
-                    r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
-                        "fill": colors[2],
-                        "stroke": colors[2]
-                    });
-                    $(".ga-retention").css({
-                        color: colors[0]
-                    });
-
-                }
+                var w4 = Math.floor(w3*a2_value/a1_value);
+                var bottom_offset = Math.floor((w3 - w4)/2);
+                r.path("M" +  top_offset +  ",0L" + (top_offset+w3) + ",0T" + ( top_offset + w3 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
+                    "fill": colors[2],
+                    "stroke-width": "0"
+                });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[2],
+                    "stroke": colors[2]
+                });
+                $(".ga-retention").css({
+                    color: colors[0]
+                });
 
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 var r = Raphael('ga_referral', w1, h);
                 var a1_value = {{ referral_value|default:"0" }};
                 var a2_value = {{ revenue_value|default:"0" }};
-                if (a2_value > 0){
-                    var w5 = Math.floor(w4*a2_value/a1_value);
-                    var bottom_offset = Math.floor((w4 - w5)/2);
-                    r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
-                        "fill": colors[3],
-                        "stroke-width": "0"
-                    });
-                    r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
-                        "fill": colors[3],
-                        "stroke": colors[3]
-                    });
-                    $(".ga-referral").css({
-                        color: colors[0]
-                    });
+                var w5 = Math.floor(w4*a2_value/a1_value);
+                var bottom_offset = Math.floor((w4 - w5)/2);
+                r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
+                    "fill": colors[3],
+                    "stroke-width": "0"
+                });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[3],
+                    "stroke": colors[3]
+                });
+                $(".ga-referral").css({
+                    color: colors[0]
+                });
 
-                    r = Raphael("ga_revenue", w1, h);
-                    r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
-                        "fill": colors[4],
-                        "stroke": colors[4]
-                    });
-                }
+                r = Raphael("ga_revenue", w1, h);
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
+                    "fill": colors[4],
+                    "stroke": colors[4]
+                });
 {#                r.hbarchart(0, 0, 600, 600, [#}
 {#                    {{ ga_users|default:"0" }},#}
 {#                    {{ activation_value|default:"0" }},#}
