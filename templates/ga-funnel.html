@@ -9,7 +9,7 @@
             $(function(){
                 var r = Raphael('funnel', 600, 600);
                 var a1_value = {{ ga_users|default:"0" }};
-                r.path("M10,10L100,10T80,20L20,20T10,10").attr({
+                r.path("M10,10L100,10T90,20L20,20T10,10").attr({
                     "fill": "#055"
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
