@@ -299,7 +299,7 @@ class GAFunnelConfigAjaxView(View):
         if date_range:
             now = date.today()
             end_date = now.strftime('%Y-%m-%d')
-            start_date = now + relativedelta(months='-{}'.format(date_range))
+            start_date = now + relativedelta(months=-int(date_range))
             start_date = start_date.strftime('%Y-%m-%d')
             ga_funnel_config.start_date = start_date
             ga_funnel_config.end_date = end_date
