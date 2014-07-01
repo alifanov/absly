@@ -210,10 +210,10 @@ $(function(){
 
     $(".ga-funnel-events-category").change(function(){
         if($(this).val() != ''){
-            $(this).parents().find('tr').find('.ga-funnel-page').hide();
+            $(this).parents('tr').find('.ga-funnel-page').addClass('hidden');
         }
         else{
-            $(this).parents().find('tr').find('.ga-funnel-page').show();
+            $(this).parents('tr').find('.ga-funnel-page').removeClass('hidden');
         }
     });
 
