@@ -9,7 +9,7 @@
             $(function(){
                 var r = Raphael('funnel', 600, 600);
                 var a1_value = {{ ga_users|default:"0" }};
-                r.path("M0,0L0,10L10,10L10,0L0,0").attr({
+                r.path("M0,0L0,100L100,100L100,0L0,0").attr({
                     "fill": "#000",
                     "stroke": "#00f",
                     "stroke-width": "5"
