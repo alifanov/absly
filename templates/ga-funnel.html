@@ -100,6 +100,10 @@
                     "fill": colors[0],
                     "stroke-width": "0"
                 });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[0],
+                    "stroke": colors[0]
+                });
 
 {#                var w2 = $("#ga_activation").width();#}
                 var top_offset = Math.floor((w1-w2)/2);
@@ -112,6 +116,10 @@
                     "fill": colors[1],
                     "stroke-width": "0"
                 });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[1],
+                    "stroke": colors[1]
+                });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
                 var r = Raphael('ga_retention', w1, h);
@@ -123,6 +131,11 @@
                     "fill": colors[2],
                     "stroke-width": "0"
                 });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[2],
+                    "stroke": colors[2]
+                });
+
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 var r = Raphael('ga_referral', w1, h);
                 var a1_value = {{ referral_value|default:"0" }};
@@ -132,6 +145,10 @@
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[3],
                     "stroke-width": "0"
+                });
+                r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
+                    "fill": colors[3],
+                    "stroke": colors[3]
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
 {#                    {{ ga_users|default:"0" }},#}
