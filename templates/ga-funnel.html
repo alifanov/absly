@@ -2,165 +2,20 @@
 
 {% block content %}
     <div class="container metrics ga-config">
-    <form method="POST" action="">
-        <table class="table">
-            <thead>
-                <th width="10%">Stage</th>
-                <th width="10%">Value</th>
-                <th width="19%">URL</th>
-                <th width="4%"></th>
-                <th width="19%">Event Category</th>
-                <th width="19%">Event Action</th>
-                <th width="19%">Event Label</th>
-            </thead>
-            <tr>
-                <td>Acquisition</td>
-                <td>
-                    <input class="form-control" id="acquisition" type="text" value="{{ ga_users|default:"0" }}" />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Activation</td>
-                <td>
-                    <input class="form-control" id="activation" type="text" value="{{ activation_value|default:"0" }}" />
-                </td>
-                {% if not funnel_config_form.activation_event_category.value %}
-                    <td>
-                        {{ funnel_config_form.activation_page }}
-                    </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                    <td>|</td>
-                {% if not funnel_config_form.activation_page.value %}
-                <td>
-                        {{ funnel_config_form.activation_event_category }}
-                </td>
-                <td>
-                        {{ funnel_config_form.activation_event_action }}
-                </td>
-                <td>
-                        {{ funnel_config_form.activation_event_label }}
-                </td>
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
-            </tr>
-            <tr>
-                <td>Retention</td>
-                <td>
-                    <input class="form-control" id="retention" type="text" value="{{ retention_value|default:"0" }}" />
-                </td>
-                {% if not funnel_config_form.retention_event_category.value %}
-                    <td>
-                        {{ funnel_config_form.retention_page }}
-                    </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                    <td>|</td>
-                {% if not funnel_config_form.retention_page.value %}
-                    <td>
-                            {{ funnel_config_form.retention_event_category }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.retention_event_action }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.retention_event_label }}
-                    </td>
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
-            </tr>
-            <tr>
-                <td>Referral</td>
-                <td>
-                    <input class="form-control" id="referral" type="text" value="{{ referral_value|default:"0" }}" />
-                </td>
-                {% if not funnel_config_form.referral_event_category.value %}
-                    <td>
-                        {{ funnel_config_form.referral_page }}
-                    </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                    <td>|</td>
-                {% if not funnel_config_form.referral_page.value %}
-                    <td>
-                            {{ funnel_config_form.referral_event_category }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.referral_event_action }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.referral_event_label }}
-                    </td>
+        <div id="funnel">
 
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
-            </tr>
-            <tr>
-                <td>Revenue</td>
-                <td>
-                    <input class="form-control" id="revenue" type="text" value="{{ revenue_value|default:"0" }}" />
-                </td>
-                {% if not funnel_config_form.revenue_event_category.value %}
-                    <td>
-                        {{ funnel_config_form.revenue_page }}
-                    </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                    <td>|</td>
-                {% if not funnel_config_form.revenue_page.value %}
-                    <td>
-                            {{ funnel_config_form.revenue_event_category }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.revenue_event_action }}
-                    </td>
-                    <td>
-                            {{ funnel_config_form.revenue_event_label }}
-                    </td>
-
-                    </td>
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
-            </tr>
-        </table>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
-    {% csrf_token %}
-    </form>
-    <div id="funnel">
-
-    </div>
-    <script type="text/javascript">
-        $(function(){
-            var r = Raphael('funnel', 600, 600);
-            r.hbarchart(0, 0, 600, 600, [
-                $("#acquisition").val(),
-                $("#activation").val(),
-                $("#retention").val(),
-                $("#referral").val(),
-                $("#revenue").val()
-            ], {});
-        });
-    </script>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                var r = Raphael('funnel', 600, 600);
+                r.hbarchart(0, 0, 600, 600, [
+                    $("#acquisition").val(),
+                    $("#activation").val(),
+                    $("#retention").val(),
+                    $("#referral").val(),
+                    $("#revenue").val()
+                ], {});
+            });
+        </script>
     </div>
 {% endblock %}
