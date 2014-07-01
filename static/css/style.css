@@ -436,6 +436,6 @@ li.active a.canvas-element-item-link {
     display: none;
 }
 
-.ga-funnel-table-view td {
+.table.ga-funnel-table-view > tr > td {
     padding: 0;
 }
