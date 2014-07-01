@@ -161,9 +161,8 @@
                     "stroke": colors[3]
                 });
                 $(".ga-referral").css({
-                    color: colors[0]
+                    color: Raphael.getRGB(colors[0]).hex
                 });
-                console.log(Raphael.getRGB(colors[0]).hex);
 
                 r = Raphael("ga_revenue", w1, h);
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2+"M"+w1/2+","+h/2+"L"+w1/2+",0").attr({
