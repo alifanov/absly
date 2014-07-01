@@ -401,7 +401,6 @@ class GAConfigView(TemplateView):
         ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        ctx['funnel_config_form'] = FunnelConfgiForm(instance=ga_funnel_config)
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
