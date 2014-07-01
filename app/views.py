@@ -17,6 +17,8 @@ from django import forms
 import json, os, hashlib
 import httplib2
 
+from datetime import datetime, timedelta
+
 from apiclient.discovery import build
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -285,6 +287,20 @@ class GAFunnelView(TemplateView):
                 ctx['revenue_value'] = ctx['revenue_value'][0][0]
 
         return ctx
+
+class GAFunnelConfigAjaxView(View):
+    def post(self, request, *args, **kwargs):
+        ga_funnel_config = GAFunnelConfig.objects.get(
+            user=request.user
+        )
+        date_range = request.POST.get('date_range')
+        if date_range:
+            now = datetime.now()
+            end_date = now.strftime('%Y-%m-%d')
+            start_date = (now - timedelta(month=int(date_range))).strftime('%Y-%m-%d')
+            ga_funnel_config.start_date = start_date
+            ga_funnel_config.end_date = end_date
+            return HttpResponse("OK")
 
 class GAWeboptsView(View):
 

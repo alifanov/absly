@@ -199,6 +199,19 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
+    $("#date_range").change(function(){
+        $.ajax({
+            type: "POST",
+            url: '/ga/config/funnel/',
+            data: $("#date_range_form").serializeArray()
+        });
+        return false;
+    });
+
+    if($("#date_range").length){
+        $("#date_range").change();
+    }
+
     $("#ga_account").change(function(){
         $.ajax({
             type: "POST",
