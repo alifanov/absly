@@ -426,86 +426,86 @@ class GAConfigView(TemplateView):
             if ga_profile.account_id and ga_funnel_config.start_date and ga_funnel_config.end_date:
                 ctx['account'] = ga_profile.account_id
 
-            ga_pages = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date=ga_funnel_config.start_date,
-                end_date=ga_funnel_config.end_date,
-                metrics='ga:users',
-                dimensions='ga:pagePath',
-                max_results=125
-            ).execute()
-            ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
+                ga_pages = service.data().ga().get(
+                    ids='ga:{}'.format(ga_profile.profile_id),
+                    start_date=ga_funnel_config.start_date,
+                    end_date=ga_funnel_config.end_date,
+                    metrics='ga:users',
+                    dimensions='ga:pagePath',
+                    max_results=125
+                ).execute()
+                ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
-            ga_events_categories = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date=ga_funnel_config.start_date,
-                end_date=ga_funnel_config.end_date,
-                metrics='ga:users',
-                dimensions='ga:eventCategory',
-                max_results=25
-            ).execute()
-            ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
+                ga_events_categories = service.data().ga().get(
+                    ids='ga:{}'.format(ga_profile.profile_id),
+                    start_date=ga_funnel_config.start_date,
+                    end_date=ga_funnel_config.end_date,
+                    metrics='ga:users',
+                    dimensions='ga:eventCategory',
+                    max_results=25
+                ).execute()
+                ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
 
-            ga_events_actions = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date=ga_funnel_config.start_date,
-                end_date=ga_funnel_config.end_date,
-                metrics='ga:users',
-                dimensions='ga:eventAction',
-                max_results=25
-            ).execute()
-            ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
+                ga_events_actions = service.data().ga().get(
+                    ids='ga:{}'.format(ga_profile.profile_id),
+                    start_date=ga_funnel_config.start_date,
+                    end_date=ga_funnel_config.end_date,
+                    metrics='ga:users',
+                    dimensions='ga:eventAction',
+                    max_results=25
+                ).execute()
+                ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
 
-            ga_events_labels = service.data().ga().get(
-                ids='ga:{}'.format(ga_profile.profile_id),
-                start_date=ga_funnel_config.start_date,
-                end_date=ga_funnel_config.end_date,
-                metrics='ga:users',
-                dimensions='ga:eventLabel',
-                max_results=25
-            ).execute()
-            ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
-            fcf = FunnelConfgiForm(instance=ga_funnel_config)
-            vars = [(c,c) for c in ctx['ga_pages']]
-            vars.insert(0, (u'', '-----'))
-            field = forms.ChoiceField(
-                widget=forms.Select, choices=vars
-            )
-            fcf.fields['activation_page'] = field
-            fcf.fields['retention_page'] = field
-            fcf.fields['referral_page'] = field
-            fcf.fields['revenue_page'] = field
+                ga_events_labels = service.data().ga().get(
+                    ids='ga:{}'.format(ga_profile.profile_id),
+                    start_date=ga_funnel_config.start_date,
+                    end_date=ga_funnel_config.end_date,
+                    metrics='ga:users',
+                    dimensions='ga:eventLabel',
+                    max_results=25
+                ).execute()
+                ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
+                fcf = FunnelConfgiForm(instance=ga_funnel_config)
+                vars = [(c,c) for c in ctx['ga_pages']]
+                vars.insert(0, (u'', '-----'))
+                field = forms.ChoiceField(
+                    widget=forms.Select, choices=vars
+                )
+                fcf.fields['activation_page'] = field
+                fcf.fields['retention_page'] = field
+                fcf.fields['referral_page'] = field
+                fcf.fields['revenue_page'] = field
 
-            choices = [(c,c) for c in ctx['ga_events_categories']]
-            choices.insert(0, (u'', '----'))
-            field = forms.ChoiceField(
-                widget=forms.Select, choices=choices
-            )
-            fcf.fields['activation_event_category'] = field
-            fcf.fields['retention_event_category'] = field
-            fcf.fields['referral_event_category'] = field
-            fcf.fields['revenue_event_category'] = field
+                choices = [(c,c) for c in ctx['ga_events_categories']]
+                choices.insert(0, (u'', '----'))
+                field = forms.ChoiceField(
+                    widget=forms.Select, choices=choices
+                )
+                fcf.fields['activation_event_category'] = field
+                fcf.fields['retention_event_category'] = field
+                fcf.fields['referral_event_category'] = field
+                fcf.fields['revenue_event_category'] = field
 
-            choices = [(c,c) for c in ctx['ga_events_actions']]
-            choices.insert(0, (u'', '----'))
-            field = forms.ChoiceField(
-                widget=forms.Select, choices=choices
-            )
-            fcf.fields['activation_event_action'] = field
-            fcf.fields['retention_event_action'] = field
-            fcf.fields['referral_event_action'] = field
-            fcf.fields['revenue_event_action'] = field
+                choices = [(c,c) for c in ctx['ga_events_actions']]
+                choices.insert(0, (u'', '----'))
+                field = forms.ChoiceField(
+                    widget=forms.Select, choices=choices
+                )
+                fcf.fields['activation_event_action'] = field
+                fcf.fields['retention_event_action'] = field
+                fcf.fields['referral_event_action'] = field
+                fcf.fields['revenue_event_action'] = field
 
-            choices = [(c,c) for c in ctx['ga_events_labels']]
-            choices.insert(0, (u'', '----'))
-            field = forms.ChoiceField(
-                widget=forms.Select, choices=choices
-            )
-            fcf.fields['activation_event_label'] = field
-            fcf.fields['retention_event_label'] = field
-            fcf.fields['referral_event_label'] = field
-            fcf.fields['revenue_event_label'] = field
-            ctx['funnel_config_form'] = fcf
+                choices = [(c,c) for c in ctx['ga_events_labels']]
+                choices.insert(0, (u'', '----'))
+                field = forms.ChoiceField(
+                    widget=forms.Select, choices=choices
+                )
+                fcf.fields['activation_event_label'] = field
+                fcf.fields['retention_event_label'] = field
+                fcf.fields['referral_event_label'] = field
+                fcf.fields['revenue_event_label'] = field
+                ctx['funnel_config_form'] = fcf
             # if self.request.GET.get('account'):
             #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
             #     webprops_config = []
