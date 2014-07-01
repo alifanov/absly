@@ -63,7 +63,8 @@ class GAFunnelView(TemplateView):
             user=self.request.user
         )
         funnel_data_form = FunnelDataForm(request.POST, instance=self.ga_funnel_config)
-        funnel_data_form.save()
+        if funnel_data_form.is_valid():
+            funnel_data_form.save()
         # if request.POST.get('activation_value'):
         #     self.ga_funnel_config.activation_value = request.POST.get('activation_value')
         # if request.POST.get('retention_value'):
