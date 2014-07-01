@@ -86,7 +86,7 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                        <div class="{% if funnel_config_form.retention_event_category.value %}hidden{% endif %}">
+                        <div class="ga-funnel-page {% if funnel_config_form.retention_event_category.value %}hidden{% endif %}">
                             {{ funnel_config_form.retention_page }}
                         </div>
                     </td>
@@ -112,7 +112,7 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                        <div class="{% if funnel_config_form.referral_event_category.value %}hidden{% endif %}">
+                        <div class="ga-funnel-page {% if funnel_config_form.referral_event_category.value %}hidden{% endif %}">
                             {{ funnel_config_form.referral_page }}
                         </div>
                     </td>
@@ -139,7 +139,7 @@
                 </a> </td>
                 </td>
                     <td>
-                        <div class="{% if funnel_config_form.revenue_event_category.value %}hidden{% endif %}">
+                        <div class="ga-funnel-page {% if funnel_config_form.revenue_event_category.value %}hidden{% endif %}">
                             {{ funnel_config_form.revenue_page }}
                         </div>
                     </td>
