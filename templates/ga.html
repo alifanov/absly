@@ -91,21 +91,21 @@
                         </div>
                     </td>
                     <td>|</td>
-                {% if not funnel_config_form.retention_page.value %}
                     <td>
+                        <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.retention_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.retention_event_category }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.retention_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.retention_event_action }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.retention_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.retention_event_label }}
+                        </div>
                     </td>
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
             </tr>
             <tr>
                 <td>Referral <a href="#">
@@ -117,22 +117,21 @@
                         </div>
                     </td>
                     <td>|</td>
-                {% if not funnel_config_form.referral_page.value %}
                     <td>
+                        <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.referral_event_category }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.referral_event_action }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.referral_event_label }}
+                        </div>
                     </td>
-
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
             </tr>
             <tr>
                 <td>Revenue <a href="#">
@@ -145,23 +144,21 @@
                         </div>
                     </td>
                     <td>|</td>
-                {% if not funnel_config_form.revenue_page.value %}
                     <td>
+                        <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.revenue_event_category }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.revenue_event_action }}
+                        </div>
                     </td>
                     <td>
+                        <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
                             {{ funnel_config_form.revenue_event_label }}
+                        </div>
                     </td>
-
-                    </td>
-                {% else %}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {% endif %}
             </tr>
         </table>
     <button type="submit" class="btn btn-primary">Сохранить</button>
