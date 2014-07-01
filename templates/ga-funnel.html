@@ -92,8 +92,8 @@
                 var w1 = $("#ga_acquisition").width();
                 var h = $("#ga_acquisition").parent().height();
                 var r = Raphael('ga_acquisition', w1, h);
-                var a1_value = {{ ga_users|default:"0" }};
-                var a2_value = {{ activation_value|default:"0" }};
+                var a1_value = {{ ga_users|default:"1" }};
+                var a2_value = {{ activation_value|default:"1" }};
                 var w2 = Math.floor(w1*a2_value/a1_value);
                 var bottom_offset = Math.floor((w1 - w2)/2);
                 r.path("M0,0L" + w1 + ",0T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
@@ -110,8 +110,8 @@
 
                 var top_offset = Math.floor((w1-w2)/2);
                 var r = Raphael('ga_activation', w1, h);
-                var a1_value = {{ activation_value|default:"0" }};
-                var a2_value = {{ retention_value|default:"0" }};
+                var a1_value = {{ activation_value|default:"1" }};
+                var a2_value = {{ retention_value|default:"1" }};
                 var w3 = Math.floor(w2*a2_value/a1_value);
                 var bottom_offset = Math.floor((w2 - w3)/2);
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
@@ -128,8 +128,8 @@
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
                 var r = Raphael('ga_retention', w1, h);
-                var a1_value = {{ retention_value|default:"0" }};
-                var a2_value = {{ referral_value|default:"0" }};
+                var a1_value = {{ retention_value|default:"1" }};
+                var a2_value = {{ referral_value|default:"1" }};
                 var w4 = Math.floor(w3*a2_value/a1_value);
                 var bottom_offset = Math.floor((w3 - w4)/2);
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w3) + ",0T" + ( top_offset + w3 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
@@ -144,12 +144,12 @@
                     color: colors[0]
                 });
 
-                console.log(top_offset);
+                console.log(top_offset, w3, w4);
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 console.log(top_offset);
                 var r = Raphael('ga_referral', w1, h);
-                var a1_value = {{ referral_value|default:"0" }};
-                var a2_value = {{ revenue_value|default:"0" }};
+                var a1_value = {{ referral_value|default:"1" }};
+                var a2_value = {{ revenue_value|default:"1" }};
                 var w5 = Math.floor(w4*a2_value/a1_value);
                 var bottom_offset = Math.floor((w4 - w5)/2);
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
