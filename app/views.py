@@ -305,10 +305,10 @@ class GAFunnelConfigAjaxView(View):
             ga_funnel_config.end_date = end_date
             ga_funnel_config.save()
             return HttpResponse("OK")
-        fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
-        if fcf.is_valid():
-            fcf.save()
-            return HttpResponse("OK")
+        # fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
+        # if fcf.is_valid():
+        #     fcf.save()
+        #     return HttpResponse("OK")
         return HttpResponseForbidden()
 
 class GAWeboptsView(View):
@@ -406,11 +406,11 @@ class GAConfigView(TemplateView):
         ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        # if created:
-            # ga_funnel_config.end_date = date.today().strftime('%Y-%m-%d')
-            # ga_funnel_config.start_date = date.today() + relativedelta(months=-1)
-            # ga_funnel_config.start_date = ga_funnel_config.start_date.strftime('%Y-%m-%d')
-            # ga_funnel_config.save()
+        if created:
+            ga_funnel_config.end_date = date.today().strftime('%Y-%m-%d')
+            ga_funnel_config.start_date = date.today() + relativedelta(months=-1)
+            ga_funnel_config.start_date = ga_funnel_config.start_date.strftime('%Y-%m-%d')
+            ga_funnel_config.save()
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
