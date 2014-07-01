@@ -199,7 +199,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
 
 $(function(){
 
-    $(".ga-funnel-page").change(function(){
+    $(".ga-funnel-page select").change(function(){
         if($(this).val() != ''){
             $(this).parents('tr').find('.ga-funnel-events').addClass('hidden');
         }
@@ -208,7 +208,7 @@ $(function(){
         }
     });
 
-    $(".ga-funnel-events-category").change(function(){
+    $(".ga-funnel-events-category select").change(function(){
         if($(this).val() != ''){
             $(this).parents('tr').find('.ga-funnel-page').addClass('hidden');
         }
