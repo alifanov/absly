@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
     <div class="container metrics ga-config">
     <h1>Настройка Google Analytics</h1>
@@ -166,9 +168,17 @@
                     </td>
             </tr>
         </table>
-    {% csrf_token %}
-    </form>
+        <hr/>
         <h2>4. Настройте стоимость вашего платящего пользователя</h2>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        {{ funnel_config_form.user_sum|attr:"placeholder:Прибыль с платящего пользователя"|add_class:"form-control" }}
+                    </div>
+                </div>
+            </div>
+        {% csrf_token %}
+        </form>
     {% endif %}
     </div>
 {% endblock %}
