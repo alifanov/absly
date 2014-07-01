@@ -96,7 +96,7 @@
                 var a2_value = {{ activation_value|default:"0" }};
                 var w2 = Math.floor(w1*a2_value/a1_value);
                 var bottom_offset = Math.floor((w1 - w2)/2);
-                r.path("M0,3L" + w1 + ",3T" + (w1 - bottom_offset) + "," + (h+3) + "L" + bottom_offset + "," + (h+3) + "T0,3").attr({
+                r.path("M0,3L" + w1 + ",3T" + (w1 - bottom_offset) + "," + (h+6) + "L" + bottom_offset + "," + (h+6) + "T0,3").attr({
                     "fill": colors[0],
                     "stroke-width": "0"
                 }).glow({
