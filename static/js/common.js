@@ -206,6 +206,11 @@ $(function(){
         else{
             $(this).parents('tr').find('.ga-funnel-events').removeClass('hidden');
         }
+        $.ajax({
+            url: '/ga/config/funnel/',
+            type: "POST",
+            data: $("#ga-funnel-config-form").serializeArray()
+        });
     });
 
     $(".ga-funnel-events-category select").change(function(){
