@@ -99,7 +99,8 @@
                 console.log(w2, bottom_offset);
                 console.log("M0,0L" + w + ",0T" + (w - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0");
                 r.path("M0,0L" + w + ",0T" + (w - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
-                    "fill": colors[0]
+                    "fill": colors[0],
+                    "stroke-width": "0"
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
 {#                    {{ ga_users|default:"0" }},#}
