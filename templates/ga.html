@@ -6,6 +6,7 @@
     {% if auth_url %}
         <a href="#">Подключить Google Analytics</a>
     {% else %}
+        <hr/>
         <h2>1.  Выберите ваш профиль</h2>
         <form method="GET" action="" class="ga-config-profile-form">
             {% csrf_token %}
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </form>
+        <hr/>
         <h2>2. Настройте период отслеживания</h2>
         <p>
             Выберите промежуток времени за который будут собираться данные
@@ -42,6 +44,7 @@
                 </div>
             </div>
         </form>
+        <hr/>
         <h2>3. Настройте этапы воронки</h2>
     <form method="POST" action="" id="ga-funnel-config-form">
         <table class="table ga-funnel-table">
