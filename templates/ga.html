@@ -59,9 +59,6 @@
                 <td>Activation <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                <td>
-                    <input class="form-control" id="activation" type="text" value="{{ activation_value|default:"0" }}" />
-                </td>
                 {% if not funnel_config_form.activation_event_category.value %}
                     <td>
                         {{ funnel_config_form.activation_page }}
@@ -90,9 +87,6 @@
                 <td>Retention <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                <td>
-                    <input class="form-control" id="retention" type="text" value="{{ retention_value|default:"0" }}" />
-                </td>
                 {% if not funnel_config_form.retention_event_category.value %}
                     <td>
                         {{ funnel_config_form.retention_page }}
@@ -121,9 +115,6 @@
                 <td>Referral <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                <td>
-                    <input class="form-control" id="referral" type="text" value="{{ referral_value|default:"0" }}" />
-                </td>
                 {% if not funnel_config_form.referral_event_category.value %}
                     <td>
                         {{ funnel_config_form.referral_page }}
@@ -153,8 +144,6 @@
                 <td>Revenue <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                <td>
-                    <input class="form-control" id="revenue" type="text" value="{{ revenue_value|default:"0" }}" />
                 </td>
                 {% if not funnel_config_form.revenue_event_category.value %}
                     <td>
