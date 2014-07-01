@@ -96,11 +96,9 @@
                 var a2_value = {{ activation_value|default:"0" }};
                 var w2 = Math.floor(w1*a2_value/a1_value);
                 var bottom_offset = Math.floor((w1 - w2)/2);
-                r.path("M0,3L" + w1 + ",3T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,3").attr({
+                r.path("M0,0L" + w1 + ",0T" + (w1 - bottom_offset) + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
                     "fill": colors[0],
                     "stroke-width": "0"
-                }).glow({
-                    width: 3
                 });
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[0],
@@ -117,8 +115,6 @@
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[1],
                     "stroke-width": "0"
-                }).glow({
-                    width: 3
                 });
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[1],
@@ -134,8 +130,6 @@
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w3) + ",0T" + ( top_offset + w3 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[2],
                     "stroke-width": "0"
-                }).glow({
-                    width: 3
                 });
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[2],
@@ -151,8 +145,6 @@
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[3],
                     "stroke-width": "0"
-                }).glow({
-                    width: 3
                 });
                 r.path("M0,"+h/2+"L"+w1/2+","+h/2).attr({
                     "fill": colors[3],
