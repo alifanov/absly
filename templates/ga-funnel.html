@@ -109,8 +109,8 @@
                 var a2_value = {{ retention_value|default:"0" }};
                 var w22 = Math.floor(w2*a2_value/a1_value);
                 var bottom_offset = Math.floor((w2 - w22)/2);
-                r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
-                    "fill": colors[0],
+                r.path("M" +  top_offset +  ",0L" + (top_offset+w2) + ",0T" + ( top_offset + w2) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
+                    "fill": colors[1],
                     "stroke-width": "0"
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
