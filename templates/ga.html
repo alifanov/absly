@@ -27,7 +27,8 @@
         </p>
         <form method="POST" id="date_range_form">{% csrf_token %}
             <div class="form-group">
-                <div class="">
+                <div class="row">
+                    <div class="col-xs-4">
                     <select name="date_range" id="date_range">
                         <option value="1">1 месяц</option>
                         <option value="2">2 месяца</option>
@@ -37,6 +38,7 @@
                         <option value="6">6 месяцев</option>
                         <option value="24">24 месяца</option>
                     </select>
+                    </div>
                 </div>
             </div>
         </form>
