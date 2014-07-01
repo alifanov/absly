@@ -431,3 +431,7 @@ li.active a.canvas-element-item-link {
 .es-share-btn {
     margin-right: 20px;
 }
+
+.ga-funnel-table .hidden{
+    display: none;
+}
