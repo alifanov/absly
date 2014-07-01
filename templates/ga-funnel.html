@@ -144,13 +144,13 @@
                     color: colors[0]
                 });
 
+                console.log(top_offset);
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 var r = Raphael('ga_referral', w1, h);
                 var a1_value = {{ referral_value|default:"0" }};
                 var a2_value = {{ revenue_value|default:"0" }};
                 var w5 = Math.floor(w4*a2_value/a1_value);
                 var bottom_offset = Math.floor((w4 - w5)/2);
-                console.log(top_offset)
                 r.path("M" +  top_offset +  ",0L" + (top_offset+w4) + ",0T" + ( top_offset + w4 - bottom_offset) + "," + h + "L" + (top_offset + bottom_offset) + "," + h + "T" + top_offset + ",0").attr({
                     "fill": colors[3],
                     "stroke-width": "0"
