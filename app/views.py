@@ -62,20 +62,15 @@ class GAFunnelView(TemplateView):
         self.ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        funnel_data_form = FunnelDataForm(request.POST, instance=self.ga_funnel_config)
-        if funnel_data_form.is_valid():
-            funnel_data_form.save()
-        else:
-            raise ValueError(funnel_data_form.errors)
-        # if request.POST.get('activation_value'):
-        #     self.ga_funnel_config.activation_value = request.POST.get('activation_value')
-        # if request.POST.get('retention_value'):
-        #     self.ga_funnel_config.retention_value = request.POST.get('retention_value')
-        # if request.POST.get('referral_value'):
-        #     self.ga_funnel_config.referral_value = request.POST.get('referral_value')
-        # if request.POST.get('revenue_value'):
-        #     self.ga_funnel_config.revenue_value = request.POST.get('revenue_value')
-        # self.ga_funnel_config.save()
+        if request.POST.get('activation_value'):
+            self.ga_funnel_config.activation_value = request.POST.get('activation_value')
+        if request.POST.get('retention_value'):
+            self.ga_funnel_config.retention_value = request.POST.get('retention_value')
+        if request.POST.get('referral_value'):
+            self.ga_funnel_config.referral_value = request.POST.get('referral_value')
+        if request.POST.get('revenue_value'):
+            self.ga_funnel_config.revenue_value = request.POST.get('revenue_value')
+        self.ga_funnel_config.save()
         return self.get(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
