@@ -306,7 +306,7 @@ class GAFunnelConfigAjaxView(View):
             ga_funnel_config.save()
             return HttpResponse("OK")
         fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
-        if fcf.form_valid():
+        if fcf.is_valid():
             fcf.save()
             return HttpResponse("OK")
         return HttpResponseForbidden()
