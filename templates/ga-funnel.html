@@ -80,7 +80,7 @@
                 var r = Raphael('ga_acquisition', w, h);
                 var a1_value = {{ ga_users|default:"0" }};
                 var a2_value = {{ activation_value|default:"0" }};
-                var bottom_offset = (a1_value - a2_value)/2;
+                var bottom_offset = Math.floor((a1_value - a2_value)/2);
                 r.path("M0,0L" + w + ",0T" + a2_value - bottom_offset + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
                     "fill": "#0aa"
                 });
