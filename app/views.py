@@ -303,6 +303,7 @@ class GAFunnelConfigAjaxView(View):
             start_date = start_date.strftime('%Y-%m-%d')
             ga_funnel_config.start_date = start_date
             ga_funnel_config.end_date = end_date
+            ga_funnel_config.save()
             return HttpResponse("OK")
 
 class GAWeboptsView(View):
