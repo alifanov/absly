@@ -8,13 +8,19 @@
         <script type="text/javascript">
             $(function(){
                 var r = Raphael('funnel', 600, 600);
-                r.hbarchart(0, 0, 600, 600, [
-                    {{ ga_users|default:"0" }},
-                    {{ activation_value|default:"0" }},
-                    {{ retention_value|default:"0" }},
-                    {{ referral_value|default:"0" }},
-                    {{ revenue_value|default:"0" }}
-                ], {});
+                var a1_value = {{ ga_users|default:"0" }};
+                r.path("M0,0L0,10L10,10L10,0L0,0").attr({
+                    "fill": "#000",
+                    "stroke": "#00f",
+                    "stroke-width": "5"
+                });
+{#                r.hbarchart(0, 0, 600, 600, [#}
+{#                    {{ ga_users|default:"0" }},#}
+{#                    {{ activation_value|default:"0" }},#}
+{#                    {{ retention_value|default:"0" }},#}
+{#                    {{ referral_value|default:"0" }},#}
+{#                    {{ revenue_value|default:"0" }}#}
+{#                ], {});#}
             });
         </script>
     </div>
