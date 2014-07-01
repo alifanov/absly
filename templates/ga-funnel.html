@@ -83,7 +83,7 @@
                 var w2 = Math.floor(w*a2_value/a1_value);
                 var bottom_offset = Math.floor((w - w2)/2);
                 console.log(bottom_offset);
-                r.path("M0,0L" + w + ",0T" + a2_value - bottom_offset + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
+                r.path("M0,0L" + w + ",0T" + w2 - bottom_offset + "," + h + "L" + bottom_offset + "," + h + "T0,0").attr({
                     "fill": "#0aa"
                 });
 {#                r.hbarchart(0, 0, 600, 600, [#}
