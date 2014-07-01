@@ -46,6 +46,8 @@ class GAFunnelConfig(models.Model):
     start_date = models.CharField(max_length=100, verbose_name=u'Начало периода', blank=True)
     end_date = models.CharField(max_length=100, verbose_name=u'Конец периода', blank=True)
 
+    user_sum = models.FloatField(default=0.0, verbose_name=u'Стоимость пользователя')
+
     activation_page = models.CharField(max_length=256, verbose_name=u'Страница активации', blank=True)
     activation_event_category = models.CharField(max_length=256, verbose_name=u'Категория события', blank=True)
     activation_event_action = models.CharField(max_length=256, verbose_name=u'Действие события', blank=True)
