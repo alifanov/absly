@@ -240,6 +240,7 @@
             </a>
         </li>
         {% if active == 'metrics' %}
+
         <li>
             <div class="pointer">
                 <div class="arrow"></div>
@@ -248,17 +249,26 @@
         {% else %}
             <li>
         {% endif %}
-            <a href="{% url 'metrics' %}" style="display: inline-table;">
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-signal"></i>
                 <span>Metrics</span>
+                <i class="icon-chevron-down"></i>
             </a>
-                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
-                    <i class=" icon-chevron-down"></i>
-                </a>
             <ul class="submenu {% if active == 'metrics' %}active{% endif %}">
                 <li><a href="{% url 'ga-config-view' %}">Настройка GA</a></li>
                 <li><a href="{% url 'ga-funnel-view' %}">Воронка</a></li>
             </ul>
+{#            <a href="{% url 'metrics' %}" style="display: inline-table;">#}
+{#                <i class="icon-signal"></i>#}
+{#                <span>Metrics</span>#}
+{#            </a>#}
+{#                <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">#}
+{#                    <i class=" icon-chevron-down"></i>#}
+{#                </a>#}
+{#            <ul class="submenu {% if active == 'metrics' %}active{% endif %}">#}
+{#                <li><a href="{% url 'ga-config-view' %}">Настройка GA</a></li>#}
+{#                <li><a href="{% url 'ga-funnel-view' %}">Воронка</a></li>#}
+{#            </ul>#}
         </li>
         {% if active == 'summary' %}
         <li>
