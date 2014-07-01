@@ -220,6 +220,11 @@ $(function(){
         else{
             $(this).parents('tr').find('.ga-funnel-page').removeClass('hidden');
         }
+        $.ajax({
+            url: '/ga/config/funnel/',
+            type: "POST",
+            data: $("#ga-funnel-config-form").serializeArray()
+        });
     });
 
     $("#date_range").change(function(){
