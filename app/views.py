@@ -88,8 +88,8 @@ class GAFunnelView(TemplateView):
         http = self.credential.authorize(http)
         self.service = build("analytics", "v3", http=http)
 
-        ga_profile,created = GAProfile.objects.get_or_create(user=self.request.user)
-        ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(user=self.request.user)
+        self.ga_profile,created = GAProfile.objects.get_or_create(user=self.request.user)
+        self.ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(user=self.request.user)
         ga_users = self.get_ga_data(metrics='ga:users')
         if ga_users.get('rows'):
             ctx['ga_users'] = ga_users.get('rows')[0][0]
