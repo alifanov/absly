@@ -72,8 +72,12 @@
         <div id="funnel">
 
         </div>
+        {% if ga_users %}
         <script type="text/javascript">
             $(function(){
+                var w = $("#ga_acquisition").width();
+                var h = $("ga_acquisition").parent().height();
+                alert(w, h);
                 var r = Raphael('funnel', 600, 600);
                 var a1_value = {{ ga_users|default:"0" }};
                 r.path("M10,10L100,10T90,20L20,20T10,10").attr({
@@ -88,5 +92,6 @@
 {#                ], {});#}
             });
         </script>
+    {% endif %}
     </div>
 {% endblock %}
