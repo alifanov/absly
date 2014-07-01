@@ -59,13 +59,11 @@
                 <td>Activation <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                {% if not funnel_config_form.activation_event_category.value %}
                     <td>
-                        {{ funnel_config_form.activation_page }}
+                        <div class="{% if funnel_config_form.activation_event_category.value %}hidden{% endif %}">
+                            {{ funnel_config_form.activation_page }}
+                        </div>
                     </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
                     <td>|</td>
                 {% if not funnel_config_form.activation_page.value %}
                 <td>
@@ -87,13 +85,11 @@
                 <td>Retention <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                {% if not funnel_config_form.retention_event_category.value %}
                     <td>
-                        {{ funnel_config_form.retention_page }}
+                        <div class="{% if funnel_config_form.retention_event_category.value %}hidden{% endif %}">
+                            {{ funnel_config_form.retention_page }}
+                        </div>
                     </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
                     <td>|</td>
                 {% if not funnel_config_form.retention_page.value %}
                     <td>
@@ -115,13 +111,11 @@
                 <td>Referral <a href="#">
                     <span class="icon-question-sign"></span>
                 </a> </td>
-                {% if not funnel_config_form.referral_event_category.value %}
                     <td>
-                        {{ funnel_config_form.referral_page }}
+                        <div class="{% if funnel_config_form.referral_event_category.value %}hidden{% endif %}">
+                            {{ funnel_config_form.referral_page }}
+                        </div>
                     </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
                     <td>|</td>
                 {% if not funnel_config_form.referral_page.value %}
                     <td>
@@ -145,13 +139,11 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                 </td>
-                {% if not funnel_config_form.revenue_event_category.value %}
                     <td>
-                        {{ funnel_config_form.revenue_page }}
+                        <div class="{% if funnel_config_form.revenue_event_category.value %}hidden{% endif %}">
+                            {{ funnel_config_form.revenue_page }}
+                        </div>
                     </td>
-                {% else %}
-                    <td></td>
-                {% endif %}
                     <td>|</td>
                 {% if not funnel_config_form.revenue_page.value %}
                     <td>
