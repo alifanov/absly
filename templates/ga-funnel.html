@@ -39,7 +39,8 @@
                     {% if retention_value %}
                         {{ retention_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="retention_value" value="0" />
+                        {{ funnel_data_form.retention_value|add_class:"form-control" }}
+{#                        <input class="form-control" name="retention_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
@@ -52,7 +53,8 @@
                     {% if referral_value %}
                         {{ referral_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="referral_value" value="0" />
+                        {{ funnel_data_form.referral_value|add_class:"form-control" }}
+{#                        <input class="form-control" name="referral_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
@@ -65,7 +67,8 @@
                     {% if revenue_value %}
                         {{ revenue_value|default:"0" }}
                     {% else %}
-                        <input class="form-control" name="revenue_value" value="0" />
+                        {{ funnel_data_form.revenue_value|add_class:"form-control" }}
+{#                        <input class="form-control" name="revenue_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
