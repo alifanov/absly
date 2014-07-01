@@ -435,3 +435,7 @@ li.active a.canvas-element-item-link {
 .ga-funnel-table .hidden{
     display: none;
 }
+
+.ga-funnel-table-view td {
+    padding: 0;
+}
