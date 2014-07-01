@@ -105,7 +105,7 @@
                     "stroke": colors[0]
                 });
                 $(".ga-acquisition").css({
-                    color: colors[0]
+                    color: Raphael.getRGB(colors[0]).hex
                 });
 
                 var top_offset = Math.floor((w1-w2)/2);
@@ -123,7 +123,7 @@
                     "stroke": colors[1]
                 });
                 $(".ga-activation").css({
-                    color: colors[0]
+                    color: Raphael.getRGB(colors[1]).hex
                 });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
@@ -141,12 +141,10 @@
                     "stroke": colors[2]
                 });
                 $(".ga-retention").css({
-                    color: colors[0]
+                    color: Raphael.getRGB(colors[2]).hex
                 });
 
-                console.log(top_offset, w3, w4);
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
-                console.log(top_offset);
                 var r = Raphael('ga_referral', w1, h);
                 var a1_value = {{ referral_value|default:"1" }};
                 var a2_value = {{ revenue_value|default:"1" }};
@@ -161,7 +159,7 @@
                     "stroke": colors[3]
                 });
                 $(".ga-referral").css({
-                    color: Raphael.getRGB(colors[0]).hex
+                    color: Raphael.getRGB(colors[3]).hex
                 });
 
                 r = Raphael("ga_revenue", w1, h);

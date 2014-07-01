@@ -440,6 +440,7 @@ li.active a.canvas-element-item-link {
     padding: 0px;
 }
 
-.ga-values {
+.ga-values,
+.ga-values input{
     text-align: right;
 }
