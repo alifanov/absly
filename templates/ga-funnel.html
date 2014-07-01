@@ -114,7 +114,7 @@
                 });
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
-                var r = Raphael('ga_activation', w1, h);
+                var r = Raphael('ga_retention', w1, h);
                 var a1_value = {{ retention_value|default:"0" }};
                 var a2_value = {{ referral_value|default:"0" }};
                 var w4 = Math.floor(w3*a2_value/a1_value);
@@ -124,7 +124,7 @@
                     "stroke-width": "0"
                 });
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
-                var r = Raphael('ga_activation', w1, h);
+                var r = Raphael('ga_referral', w1, h);
                 var a1_value = {{ referral_value|default:"0" }};
                 var a2_value = {{ revenue_value|default:"0" }};
                 var w5 = Math.floor(w4*a2_value/a1_value);
