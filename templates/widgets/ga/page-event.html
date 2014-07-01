@@ -1,0 +1,26 @@
+<tr>
+    <td>{{ stage_name }}</td>
+    {% if not field.value %}
+        <td>
+            {{ field.page }}
+        </td>
+    {% else %}
+        <td></td>
+    {% endif %}
+        <td>|</td>
+    {% if not field.value %}
+    <td>
+            {{ field.event_category }}
+    </td>
+    <td>
+            {{ field.event_action }}
+    </td>
+    <td>
+            {{ field.event_label }}
+    </td>
+    {% else %}
+        <td></td>
+        <td></td>
+        <td></td>
+    {% endif %}
+</tr>

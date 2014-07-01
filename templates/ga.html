@@ -40,14 +40,11 @@
                 </div>
             </div>
         </form>
-        <p>Acquisition всегда высчитывается из количества уникальных пользователей и не настраивается отдельно. Как
-            настроить остальные пункты в Google Analytics и на вашем сайте вы можете прочитать по этой ссылке</p>
     <form method="POST" action="">
         <table class="table">
             <thead>
-                <th width="10%">Stage</th>
-                <th width="10%">Value</th>
-                <th width="19%">URL</th>
+                <th width="20%">Stage</th>
+                <th width="18%">URL</th>
                 <th width="4%"></th>
                 <th width="19%">Event Category</th>
                 <th width="19%">Event Action</th>
@@ -55,14 +52,8 @@
             </thead>
             <tr>
                 <td>Acquisition</td>
-                <td>
-                    <input class="form-control" id="acquisition" type="text" value="{{ ga_users|default:"0" }}" />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="6">Acquisition всегда высчитывается из количества уникальных пользователей и не настраивается отдельно. Как
+            настроить остальные пункты в Google Analytics и на вашем сайте вы можете прочитать по этой ссылке</td>
             </tr>
             <tr>
                 <td>Activation</td>
