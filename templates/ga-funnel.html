@@ -122,8 +122,8 @@
 
                 var top_offset = Math.floor((w1-w2)/2);
                 var r = Raphael('ga_activation', w1, h);
-                var a1_value = {{ activation_value|default:"1" }};
-                var a2_value = {{ retention_value|default:"1" }};
+                a1_value = a2_value;
+                a2_value = {{ retention_value|default:"1" }};
                 if(a2_value == 1){
                     a2_value = $(".ga-retention input").val();
                 }
@@ -146,8 +146,8 @@
 
                 var top_offset = Math.floor((w2-w3)/2) + top_offset;
                 var r = Raphael('ga_retention', w1, h);
-                var a1_value = {{ retention_value|default:"1" }};
-                var a2_value = {{ referral_value|default:"1" }};
+                a1_value = a2_value;
+                a2_value = {{ referral_value|default:"1" }};
                 if(a2_value == 1){
                     a2_value = $(".ga-referral input").val();
                 }
@@ -170,8 +170,8 @@
 
                 var top_offset = Math.floor((w3-w4)/2) + top_offset;
                 var r = Raphael('ga_referral', w1, h);
-                var a1_value = {{ referral_value|default:"1" }};
-                var a2_value = {{ revenue_value|default:"1" }};
+                a1_value = a2_value;
+                a2_value = {{ revenue_value|default:"1" }};
                 if(a2_value == 1){
                     a2_value = $(".ga-revenue input").val();
                 }
