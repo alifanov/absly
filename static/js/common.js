@@ -57,6 +57,56 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             name: ''
         };
     });
+    $scope.updateBlock = function(block){
+        if(block == $scope.partners){
+            $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
+                $scope.partners = data;
+                $scope.initSegments($scope.partners.items);
+            });
+        }
+        if(block == $scope.values){
+            $http({method: "GET", url: '/values/json/'}).success(function(data, status, header, config){
+                $scope.propositions = data;
+                $scope.initSegments($scope.propositions.items);
+            });
+        }
+        if(block == $scope.activities){
+            $http({method: "GET", url: '/activities/json/'}).success(function(data, status, header, config){
+                $scope.activities = data;
+                $scope.initSegments($scope.activities.items);
+            });
+        }
+        if(block == $scope.costs){
+            $http({method: "GET", url: '/costs/json/'}).success(function(data, status, header, config){
+                $scope.costs = data;
+                $scope.initSegments($scope.costs.items);
+            });
+        }
+        if(block == $scope.resources){
+            $http({method: "GET", url: '/resources/json/'}).success(function(data, status, header, config){
+                $scope.resources = data;
+                $scope.initSegments($scope.resources.items);
+            });
+        }
+        if(block == $scope.channels){
+            $http({method: "GET", url: '/channels/json/'}).success(function(data, status, header, config){
+                $scope.channels = data;
+                $scope.initSegments($scope.channels.items);
+            });
+        }
+        if(block == $scope.relationship){
+            $http({method: "GET", url: '/relations/json/'}).success(function(data, status, header, config){
+                $scope.relationship = data;
+                $scope.initSegments($scope.relationship.items);
+            });
+        }
+        if(block == $scope.revenuestreams){
+            $http({method: "GET", url: '/revenue/json/'}).success(function(data, status, header, config){
+                $scope.revenuestreams = data;
+                $scope.initSegments($scope.revenuestreams.items);
+            });
+        }
+    };
     $http({method: "GET", url: '/partners/json/'}).success(function(data, status, header, config){
         $scope.partners = data;
         $scope.initSegments($scope.partners.items);
@@ -69,27 +119,22 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         $scope.activities = data;
         $scope.initSegments($scope.activities.items);
     });
-
     $http({method: "GET", url: '/costs/json/'}).success(function(data, status, header, config){
         $scope.costs = data;
         $scope.initSegments($scope.costs.items);
     });
-
     $http({method: "GET", url: '/resources/json/'}).success(function(data, status, header, config){
         $scope.resources = data;
         $scope.initSegments($scope.resources.items);
     });
-
     $http({method: "GET", url: '/channels/json/'}).success(function(data, status, header, config){
         $scope.channels = data;
         $scope.initSegments($scope.channels.items);
     });
-
     $http({method: "GET", url: '/relations/json/'}).success(function(data, status, header, config){
         $scope.relationship = data;
         $scope.initSegments($scope.relationship.items);
     });
-
     $http({method: "GET", url: '/revenue/json/'}).success(function(data, status, header, config){
         $scope.revenuestreams = data;
         $scope.initSegments($scope.revenuestreams.items);
@@ -165,6 +210,7 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             addedElement.segment = $scope.newElement.segment;
             $scope.activeBlock.items.push(addedElement);
             $scope.newElement.name = '';
+            $scope.updateBlock($scope.activeBlock);
         }
         $("#add-element-modal-id").modal('hide');
         $scope.saveDataToServer();
