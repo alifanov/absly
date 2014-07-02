@@ -712,9 +712,10 @@ class CanvasElementGetForm(View):
         return HttpResponseForbidden()
 
     def post(self, request, *args, **kwargs):
-        form = CanvasElementForm(request.POST)
         if request.POST.get('element'):
             form = CanvasElementForm(request.POST, instance=CanvasBlockItem.objects.get(pk=request.POST.get('element')))
+        else:
+            form = CanvasElementForm(request.POST)
         if form.is_valid():
             el = form.save()
             data = {
