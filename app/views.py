@@ -717,7 +717,7 @@ class CanvasLogFormView(View):
             log = form.save()
             return HttpResponse(json.dumps({
                 'pk': log.element.pk,
-                'data': render_to_string('bm-canvas/element.html', {'it': el})
+                'data': render_to_string('bm-canvas/element.html', {'it': log.element})
             }), content_type='application/json')
         else:
             raise ValueError(form.errors)
