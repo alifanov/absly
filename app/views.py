@@ -408,6 +408,18 @@ class GAConfigView(TemplateView):
                 fcf.fields['revenue_event_label'] = field
                 ctx['funnel_config_form'] = fcf
                 ctx['funnel_data_form'] = FunnelDataForm(instance=ga_funnel_config)
+                ctx['funnel_data_form'].fields['date_range'] = forms.CharField(
+                    widget=forms.Select, choices=[
+                        (1, u'1 месяц'),
+                        (2, u'2 месяца'),
+                        (3, u'3 месяца'),
+                        (4, u'4 месяца'),
+                        (5, u'5 месяцев'),
+                        (6, u'6 месяцев'),
+                        (12, u'12 месяцев'),
+                        (24, u'24 месяца'),
+                    ]
+                )
             # if self.request.GET.get('account'):
             #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
             #     webprops_config = []
