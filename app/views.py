@@ -709,7 +709,7 @@ class CanvasElementGetForm(View):
                 'block': el.block.pk,
                 'data': render_to_string('bm-canvas/element.html', {'it': el})
             }
-            return HttpResponse(json.dumps(data), content_type='application/data')
+            return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
 
 class CanvasView(LeftMenuMixin, TemplateView):
