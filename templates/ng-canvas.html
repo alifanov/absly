@@ -40,7 +40,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Add element</h4>
                     </div>
-                    <form method="post">
+                    <form method="post" ng-submit="addNewElement()">
                         <div class="modal-body">
                             {% verbatim %}
                             <div ng-repeat="level in newElement.levels track by $index" class="canvas-log-element" ng-show="level.log != ''">
