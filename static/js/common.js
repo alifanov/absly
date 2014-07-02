@@ -245,7 +245,7 @@ $(function(){
         });
     });
 
-    $("#date_range").change(function(){
+    $("#id_date_range").change(function(){
         $.ajax({
             type: "POST",
             url: '/ga/config/funnel/',
@@ -254,8 +254,8 @@ $(function(){
         return false;
     });
 
-    if($("#date_range").length){
-        $("#date_range").change();
+    if($("#id_date_range").length){
+        $("#id_date_range").change();
     }
 
     $("#ga_account").change(function(){

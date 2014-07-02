@@ -191,6 +191,9 @@ class GAFunnelConfigAjaxView(View):
         # if date_range:
         #     return HttpResponse("OK")
         fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
+        fdf = FunnelDataForm(request.POST, instance=ga_funnel_config)
+        if fdf.is_valid():
+            fdf.save()
         if fcf.is_valid():
             fcf.save()
             now = date.today()
@@ -404,6 +407,7 @@ class GAConfigView(TemplateView):
                 fcf.fields['referral_event_label'] = field
                 fcf.fields['revenue_event_label'] = field
                 ctx['funnel_config_form'] = fcf
+                ctx['funnel_data_form'] = FunnelDataForm(instance=ga_funnel_config)
             # if self.request.GET.get('account'):
             #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
             #     webprops_config = []

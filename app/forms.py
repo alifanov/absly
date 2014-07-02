@@ -6,6 +6,11 @@ class FunnelConfgiForm(ModelForm):
         model = GAFunnelConfig
         exclude=('start_date', 'end_date', 'user')
 
+class FunnelDateForm(ModelForm):
+    class Meta:
+        model = GAFunnelConfig
+        fields = ('date_range')
+
 class FunnelDataForm(ModelForm):
     class Meta:
         model = GAFunnelConfig
