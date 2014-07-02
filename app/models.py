@@ -104,7 +104,7 @@ ITEM_LEVEL_CHOICE = (
 class CanvasBlockItem(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название элемента')
     slug = models.CharField(max_length=200, verbose_name=u'Slug', blank=True)
-    level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', blank=True)
+    level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', default='0')
     block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='elements')
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
@@ -114,7 +114,7 @@ class CanvasBlockItem(models.Model):
     updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
 
     def is_segment(self):
-        return self.block.slug == 'customer-segments'
+        return not self.segment
 
     def __unicode__(self):
         return u'{} -> {}'.format(self.block.name, self.name)

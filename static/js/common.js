@@ -8,6 +8,13 @@ var delay = (function(){
 
 $(function(){
 
+    $(document).on('submit', "#edit-canvas-element-form-id", function(){
+        $.ajax({
+            type: "POST",
+
+        });
+    });
+
     $(document).on('click', "a.add-canvas-block-item", function(){
         $.ajax({
             type: "GET",
