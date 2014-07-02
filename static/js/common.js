@@ -210,6 +210,14 @@ var delay = (function(){
 
 $(function(){
 
+    $(document).on("keypress", 'form#add-element-modal-id input[type="text"]', function (e) {
+        var code = e.keyCode || e.which;
+        if (code == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
     $("#id_user_sum").keyup(function(){
         delay(function(){
         $.ajax({
