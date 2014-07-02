@@ -33,6 +33,9 @@ $(function(){
                 if($("#edit-canvas-element-form-id .edit-btn").text() == 'Add'){
                     $("#block-"+resp.block).append(resp.data);
                 }
+                else{
+                    $("#element-"+resp.pk).html($(resp.data).html());
+                }
                 $("#add-element-modal-id").modal('hide');
             }
         });

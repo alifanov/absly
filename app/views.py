@@ -722,6 +722,7 @@ class CanvasElementGetForm(View):
                 'block': el.block.pk,
                 'data': render_to_string('bm-canvas/element.html', {'it': el})
             }
+            if request.POST.get('element'): data['pk'] = form.instance.pk
             return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
 
