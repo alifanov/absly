@@ -194,6 +194,8 @@ class GAFunnelConfigAjaxView(View):
         fdf = FunnelDataForm(request.POST, instance=ga_funnel_config)
         if fdf.is_valid():
             fdf.save()
+        else:
+            raise ValueError(fdf.errors)
         if fcf.is_valid():
             fcf.save()
             now = date.today()
