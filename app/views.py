@@ -691,7 +691,9 @@ class CanvasElementGetForm(View):
     def get(self, request, *args, **kwargs):
         block = CanvasBlock.objects.get(pk=request.GET.get('block'))
         if block:
-            form = CanvasElementForm()
+            form = CanvasElementForm(initial={
+                'block':block
+            })
             data = {
                 'data': render_to_string('bm-canvas/form.html', {'form': form})
             }

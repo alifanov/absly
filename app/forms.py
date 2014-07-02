@@ -4,7 +4,7 @@ from app.models import *
 class CanvasElementForm(ModelForm):
     class Meta:
         model = CanvasBlockItem
-        fields = ('name', 'segment')
+        fields = ('name', 'segment', 'block')
 
 class FunnelConfgiForm(ModelForm):
     class Meta:

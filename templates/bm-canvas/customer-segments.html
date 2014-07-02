@@ -1,7 +1,7 @@
 <div class="canvas-element-title">
     {{ cse.name }}
 </div>
-<ul class="canvas-block-items">
+<ul class="canvas-block-items" id="block-{{ cse.pk }}">
     {% for it in cse.elements.all %}
     <li>
         <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>

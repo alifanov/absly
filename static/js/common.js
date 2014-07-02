@@ -11,7 +11,12 @@ $(function(){
     $(document).on('submit', "#edit-canvas-element-form-id", function(){
         $.ajax({
             type: "POST",
-
+            url: "/canvas/block/new/form/",
+            data: $("#edit-canvas-element-form-id").serializeArray(),
+            success: function(resp){
+                $("$block-"+resp.block).append(resp.data);
+                $("#add-element-modal-id").modal('hide');
+            }
         });
     });
 
