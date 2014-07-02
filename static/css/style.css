@@ -316,6 +316,7 @@ ul.main-objects li {
     background: #F7F7F7;
     margin-bottom: 5px;
     padding: 5px;
+    max-width: 211px;
 }
 
 .canvas-block-items li .canvas-element-item-edit
