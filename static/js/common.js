@@ -210,10 +210,10 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             addedElement.segment = $scope.newElement.segment;
             $scope.activeBlock.items.push(addedElement);
             $scope.newElement.name = '';
-            $scope.updateBlock($scope.activeBlock);
         }
         $("#add-element-modal-id").modal('hide');
         $scope.saveDataToServer();
+        $scope.updateBlock($scope.activeBlock);
     };
 
     $scope.remove=function(item){
