@@ -7,7 +7,9 @@
             Element successfully added
         </div>
         <div class="modal-form-body">
-            {% csrf_token %}
+            {% if form.instance.pk %}
+                <input name="element" type="hidden" value="{{ form.instance.pk }}" />
+            {% endif %}
             {{ form.block }}
             <div class="form-group">
                 {{ form.customer_segment|add_class:"form-control" }}
