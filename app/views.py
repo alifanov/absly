@@ -407,7 +407,7 @@ class GAConfigView(TemplateView):
                 fcf.fields['referral_event_label'] = field
                 fcf.fields['revenue_event_label'] = field
                 ctx['funnel_config_form'] = fcf
-                ctx['funnel_data_form'] = FunnelDataForm(instance=ga_funnel_config)
+                ctx['funnel_date_form'] = FunnelDateForm(instance=ga_funnel_config)
                 ctx['funnel_date_form'].fields['date_range'] = forms.ChoiceField(
                     widget=forms.Select, choices=[
                         (1, u'1 месяц'),
