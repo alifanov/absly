@@ -690,7 +690,9 @@ class DashboardView(LeftMenuMixin, TemplateView):
 class CanvasLogFormView(View):
     def get(self, request, *args, **kwargs):
         element = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
-        form = CanvasLogForm()
+        form = CanvasLogForm(initial={
+            'element': element
+        })
         d = {
             'data': render_to_string('bm-canvas/log.html', {
                 'log_form': form
@@ -698,7 +700,7 @@ class CanvasLogFormView(View):
         }
         return HttpResponse(json.dumps(d), content_type='application/json')
 
-class CanvasElementGetForm(View):
+class CanvasElementGetFormView(View):
     def get(self, request, *args, **kwargs):
         if request.GET.get('block'):
             block = CanvasBlock.objects.get(pk=request.GET.get('block'))
