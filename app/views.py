@@ -694,8 +694,8 @@ class CanvasLogFormView(View):
         old_value = new_value-1
         form = CanvasLogForm(initial={
             'element': element,
-            'old_value': '{}'.format(old_value),
-            'new_value': '{}'.format(new_value)
+            'old_value': old_value,
+            'new_value': new_value
         })
         form.fields['old_value'].widget = forms.HiddenInput()
         form.fields['new_value'].widget = forms.HiddenInput()
