@@ -95,16 +95,16 @@ class CanvasBlock(models.Model):
 
 
 ITEM_LEVEL_CHOICE = (
-    ('0', u'Гипотеза'),
-    ('1', u'Исследование'),
-    ('2', u'Проверено фактами'),
-    ('3', u'Проверено деньгами')
+    (0, u'Гипотеза'),
+    (1, u'Исследование'),
+    (2, u'Проверено фактами'),
+    (3, u'Проверено деньгами')
 )
 
 class CanvasBlockItem(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название элемента')
     slug = models.CharField(max_length=200, verbose_name=u'Slug', blank=True)
-    level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', default='0')
+    level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', default=0)
     block = models.ForeignKey(CanvasBlock, verbose_name=u'Блок БМ', related_name='elements')
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
@@ -127,8 +127,8 @@ class CanvasBlockItem(models.Model):
         verbose_name_plural = u'Элементы блока БМ'
 
 class CanvasLogEntry(models.Model):
-    old_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Старое значение', default='0')
-    new_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Новое значение', default='0')
+    old_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Старое значение', default=0)
+    new_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Новое значение', default=0)
     text = models.TextField(blank=True, verbose_name=u'Текст')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БМ', related_name='logs')
