@@ -213,7 +213,6 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         }
         $("#add-element-modal-id").modal('hide');
         $scope.saveDataToServer();
-        $scope.updateBlock($scope.activeBlock);
     };
 
     $scope.remove=function(item){
