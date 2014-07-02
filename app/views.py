@@ -191,11 +191,9 @@ class GAFunnelConfigAjaxView(View):
         # if date_range:
         #     return HttpResponse("OK")
         fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
-        fdf = FunnelDataForm(request.POST, instance=ga_funnel_config)
+        fdf = FunnelDateForm(request.POST, instance=ga_funnel_config)
         if fdf.is_valid():
             fdf.save()
-        else:
-            raise ValueError(fdf.errors)
         if fcf.is_valid():
             fcf.save()
             now = date.today()
@@ -410,7 +408,7 @@ class GAConfigView(TemplateView):
                 fcf.fields['revenue_event_label'] = field
                 ctx['funnel_config_form'] = fcf
                 ctx['funnel_data_form'] = FunnelDataForm(instance=ga_funnel_config)
-                ctx['funnel_data_form'].fields['date_range'] = forms.ChoiceField(
+                ctx['funnel_date_form'].fields['date_range'] = forms.ChoiceField(
                     widget=forms.Select, choices=[
                         (1, u'1 месяц'),
                         (2, u'2 месяца'),
