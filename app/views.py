@@ -687,6 +687,13 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'canvas'
         return ctx
 
+class CanvasElementGetForm(View):
+    def get(self, request, *args, **kwargs):
+        block = CanvasBlock.objects.get(pk=request.GET.get('block'))
+        if block:
+            form = CanvasElementForm()
+            return render_to_string('bm-canvas/form.html', {'form': form})
+        return HttpResponseForbidden()
 
 class CanvasView(LeftMenuMixin, TemplateView):
     template_name = 'canvas.html'

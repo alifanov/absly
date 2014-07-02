@@ -9,6 +9,17 @@ var delay = (function(){
 $(function(){
 
     $(document).on("a.add-canvas-block-item", 'click', function(){
+        $.ajax({
+            type: "GET",
+            url:"/canvas/block/new/form/",
+            data: {
+                'block': $(this).attr('rel')
+            },
+            success: function(resp)
+            {
+                $("#add-element-modal-id .canvas-modal-body").html(resp.data);
+            }
+        });
         $("#add-element-modal-id").modal('show');
         return false;
     });

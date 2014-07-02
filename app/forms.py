@@ -1,6 +1,11 @@
 from django.forms import ModelForm, HiddenInput, TextInput
 from app.models import *
 
+class CanvasElementForm(ModelForm):
+    class Meta:
+        model = CanvasBlockItem
+        fields = ('name', 'segment')
+
 class FunnelConfgiForm(ModelForm):
     class Meta:
         model = GAFunnelConfig
