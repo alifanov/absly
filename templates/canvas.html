@@ -5,124 +5,53 @@
         <table height="100%" class="table table-bordered">
             <tr style="height: 200px">
                 <td width="20%" rowspan="2">
-                    <div class="canvas-element-title">
-                        Key Partners
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=kp %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
                 <td width="20%">
-                    <div class="canvas-element-title">
-                        Key Activities
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=ka %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
                 <td width="20%" colspan="2" rowspan="2">
                     {% with block=vp %}
                         {% include 'bm-canvas/block.html' %}
                     {% endwith %}
-{#                    <div class="canvas-element-title">#}
-{#                        {{ vp.name }}#}
-{#                    </div>#}
-{#                    <ul class="canvas-block-items">#}
-{#                        <li class="venture-funds">#}
-{#                            <a href="#">CEO Tools</a>#}
-{#                            <a href="#" class="canvas-element-item-del">#}
-{#                                <span class="icon-remove pull-right"></span>#}
-{#                            </a>#}
-{#                            <div class="definition-level">#}
-{#                                <a href="#" rel="0" class="done"></a>#}
-{#                                <a href="#" rel="1"></a>#}
-{#                                <a href="#" rel="2"></a>#}
-{#                                <a href="#" rel="3"></a>#}
-{#                            </div>#}
-{#                        </li>#}
-{#                        <li class="ceo-of-startups">#}
-{#                            <a href="#" >Recomndation system</a>#}
-{#                            <a href="#" class="canvas-element-item-del">#}
-{#                                <span class="icon-remove pull-right"></span>#}
-{#                            </a>#}
-{#                            <div class="definition-level">#}
-{#                                <a href="#" rel="0" class="done"></a>#}
-{#                                <a href="#" rel="1"></a>#}
-{#                                <a href="#" rel="2"></a>#}
-{#                                <a href="#" rel="3"></a>#}
-{#                            </div>#}
-{#                        </li>#}
-{#                        <li class="ceo-of-startups">#}
-{#                            <a href="#">Control panel</a>#}
-{#                            <a href="#" class="canvas-element-item-del">#}
-{#                                <span class="icon-remove pull-right"></span>#}
-{#                            </a>#}
-{#                            <div class="definition-level">#}
-{#                                <a href="#" rel="0" class="done"></a>#}
-{#                                <a href="#" rel="1"></a>#}
-{#                                <a href="#" rel="2"></a>#}
-{#                                <a href="#" rel="3"></a>#}
-{#                            </div>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                    <a class="add-canvas-block-item" href="#">#}
-{#                        <div class="icon-plus "></div>#}
-{#                    </a>#}
-
                 </td>
                 <td width="20%">
-                    <div class="canvas-element-title">
-                        Customer Relationship
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=cr %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
                 <td width="20%" rowspan="2" class="segments">
-                    {% include 'bm-canvas/customer-segments.html' %}
+                    {% with block=cs %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
             </tr>
             <tr style="height: 200px">
                 <td>
-                    <div class="canvas-element-title">
-                        Key Resources
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=cr %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
                 <td>
-                    <div class="canvas-element-title">
-                        Channles
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=ch %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
             </tr>
             <tr style="height: 100px">
                 <td colspan="3" width="50%">
-                    <div class="canvas-element-title">
-                        Cost Structure
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=cos %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
                 <td colspan="3" width="50%">
-                    <div class="canvas-element-title">
-                        Revenue Streams
-                    </div>
-                    <ul class="canvas-block-items"></ul>
-                    <div class="form-group" style="display: none;">
-                        <input type="text" class="form-control" />
-                    </div>
+                    {% with block=rs %}
+                        {% include 'bm-canvas/block.html' %}
+                    {% endwith %}
                 </td>
             </tr>
         </table>
