@@ -48,6 +48,12 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
             $scope.newElement = {
             segment: $scope.segments.items[0],
             level: 0,
+            levels: [
+                {'name': 'Гипотеза', 'log': ''},
+                {'name': 'Проверено фактами', 'log': ''},
+                {'name': 'Проверено действиями', 'log': ''},
+                {'name': 'Проверено деньгами', 'log': ''}
+            ],
             name: ''
         };
     });
