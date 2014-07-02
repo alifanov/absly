@@ -55,10 +55,11 @@ $(function(){
     var saveElement = function(){
         var d = $("#edit-canvas-element-form-id").serializeArray();
         if($(this).hasClass('del-btn')){
-            d.push({
-                name: 'delete',
-                value: '1'
-            });
+            console.log($(this));
+//            d.push({
+//                name: 'delete',
+//                value: '1'
+//            });
         }
         $.ajax({
             type: "POST",
