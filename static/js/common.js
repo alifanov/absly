@@ -30,7 +30,9 @@ $(function(){
             url: "/canvas/block/new/form/",
             data: $("#edit-canvas-element-form-id").serializeArray(),
             success: function(resp){
-                $("#block-"+resp.block).append(resp.data);
+                if($("#edit-canvas-element-form-id .edit-btn").text() == 'Add'){
+                    $("#block-"+resp.block).append(resp.data);
+                }
                 $("#add-element-modal-id").modal('hide');
             }
         });
