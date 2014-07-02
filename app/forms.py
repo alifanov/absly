@@ -9,7 +9,7 @@ class FunnelConfgiForm(ModelForm):
 class FunnelDateForm(ModelForm):
     class Meta:
         model = GAFunnelConfig
-        fields = ('date_range')
+        fields = ('date_range',)
 
 class FunnelDataForm(ModelForm):
     class Meta:
