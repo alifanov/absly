@@ -694,8 +694,9 @@ class CanvasElementGetForm(View):
             form = CanvasElementForm(initial={
                 'block':block
             })
+            csrf_token = request.COOKIES['csrftoken']
             data = {
-                'data': render_to_string('bm-canvas/form.html', {'form': form})
+                'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value'})
             }
             return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()

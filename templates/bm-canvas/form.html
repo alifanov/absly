@@ -1,6 +1,7 @@
 {% load widget_tweaks %}
 
-<form method="post" id="edit-canvas-element-form-id">{% csrf_token %}
+<form method="post" id="edit-canvas-element-form-id">
+    <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     <div class="modal-body">
         <div style="display: none;" class="alert-success">
             Element successfully added
