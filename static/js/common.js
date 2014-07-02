@@ -18,6 +18,7 @@ $(function(){
                 $("#add-element-modal-id").modal('hide');
             }
         });
+        return false;
     });
 
     $(document).on('click', "a.add-canvas-block-item", function(){
