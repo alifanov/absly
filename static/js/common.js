@@ -7,6 +7,19 @@ var delay = (function(){
 })();
 
 $(function(){
+    $(document).on('submit', '#canvas-log-modal-form', function(){
+        $.ajax({
+            url: "/canvas/change/level/log/",
+            type: "POST",
+            data: $(this).serializeArray(),
+            success: function(resp){
+                $("#element-"+resp.pk).html($(resp.data).html());
+            }
+        });
+        $("#change-level-id").modal('hide');
+        return false;
+    });
+
     $(document).on('click', '.definition-level a', function(){
         $.ajax({
             url: "/canvas/change/level/log/",

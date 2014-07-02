@@ -709,6 +709,17 @@ class CanvasLogFormView(View):
         }
         return HttpResponse(json.dumps(d), content_type='application/json')
 
+    def post(self,request, *args, **kwargs):
+        form = CanvasLogForm(request.POST)
+        if form.is_valid():
+            log = form.save()
+            return HttpResponse(json.dumps({
+                'pk': log.element.pk,
+                'data': render_to_string('bm-canvas/element.html', {'it': el})
+            }), content_type='application/json')
+        else:
+            raise ValueError(form.errors)
+
 class CanvasElementGetFormView(View):
     def get(self, request, *args, **kwargs):
         if request.GET.get('block'):
