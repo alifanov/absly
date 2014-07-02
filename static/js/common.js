@@ -24,7 +24,7 @@ $(function(){
         return false;
     });
 
-    $(document).on('submit', "#edit-canvas-element-form-id", function(){
+    var saveElement = function(){
         $.ajax({
             type: "POST",
             url: "/canvas/block/new/form/",
@@ -43,7 +43,10 @@ $(function(){
             }
         });
         return false;
-    });
+    };
+
+    $(document).on('submit', "#edit-canvas-element-form-id", saveElement);
+    $(document).on('click', "#edit-canvas-element-form-id .del-btn", saveElement);
 
     $(document).on('click', "a.add-canvas-block-item", function(){
         $.ajax({
