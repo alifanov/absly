@@ -687,11 +687,10 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'canvas'
         return ctx
 
-class CanvasLogForm(View):
+class CanvasLogFormView(View):
     def get(self, request, *args, **kwargs):
         element = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
         form = CanvasLogForm()
-        raise ValueError(form.fields)
         d = {
             'data': render_to_string('bm-canvas/log.html', {
                 'log_form': form
