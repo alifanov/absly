@@ -444,3 +444,8 @@ li.active a.canvas-element-item-link {
 .ga-values input{
     text-align: right;
 }
+
+.canvas-log-element {
+    background: #fefefe;
+    margin-bottom: 10px;
+}

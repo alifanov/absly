@@ -43,7 +43,7 @@
                     <form method="post">
                         <div class="modal-body">
                             {% verbatim %}
-                            <div ng-repeat="level in newElement.levels track by $index">
+                            <div ng-repeat="level in newElement.levels track by $index" class="canvas-log-element">
                                 <div ng-show="level.log != ''">{{ newElement.levels[$index-1].name }} -> {{ newElement.levels[$index].name }}</div>
                                 <div>{{ level.log }}</div>
                             </div>
