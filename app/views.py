@@ -700,11 +700,13 @@ class CanvasLogFormView(View):
         form.fields['old_value'].widget = forms.HiddenInput()
         form.fields['new_value'].widget = forms.HiddenInput()
         form.fields['element'].widget = forms.HiddenInput()
+        csrf_token = request.COOKIES['csrftoken']
         d = {
             'data': render_to_string('bm-canvas/log.html', {
                 'prev_status': ITEM_LEVEL_CHOICE[old_value][1],
                 'next_status': ITEM_LEVEL_CHOICE[new_value][1],
-                'log_form': form
+                'log_form': form,
+                'csrf_token_value': csrf_token
             })
         }
         return HttpResponse(json.dumps(d), content_type='application/json')
