@@ -785,7 +785,7 @@ class CanvasView(LeftMenuMixin, TemplateView):
         ctx['cse'] = CanvasBlock.objects.get(slug='customer-segments')
         ctx['vp'] = CanvasBlock.objects.get(slug='value-proposition')
         ctx['cr'] = CanvasBlock.objects.get(slug='customer-relationship')
-        ctx['cos'] = CanvasBlock.objects.get(slug='costs-structure')
+        ctx['cos'] = CanvasBlock.objects.get(slug='cost-structure')
         ctx['rs'] = CanvasBlock.objects.get(slug='revenue-streams')
         ctx['ch'] = CanvasBlock.objects.get(slug='channels')
         ctx['kr'] = CanvasBlock.objects.get(slug='key-resources')
