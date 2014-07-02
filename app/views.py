@@ -417,7 +417,7 @@ class GAConfigView(TemplateView):
                         (5, u'5 месяцев'),
                         (6, u'6 месяцев'),
                         (12, u'12 месяцев'),
-                        (24, u'24 месяца'),
+                        (24, u'24 месяца')
                     ]
                 )
             # if self.request.GET.get('account'):
