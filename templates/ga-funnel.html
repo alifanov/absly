@@ -14,7 +14,9 @@
             </thead>
             <tr>
                 <td>Acquisition</td>
-                <td class="ga-values ga-acquisition">{{ ga_users|default:"0" }}</td>
+                <td class="ga-values ga-acquisition">
+                    <input class="form-control" value="{{ ga_users }}" />
+                </td>
                 <td>
                     <div id="ga_acquisition" style="min-height: 50px;"></div>
                 </td>
@@ -36,10 +38,9 @@
                 <td>Retention</td>
                 <td class="ga-values ga-retention">
                     {% if retention_value %}
-                        {{ retention_value|default:"0" }}
+                        <input class="form-control" disabled value="{{ retention_value }}" />
                     {% else %}
                         {{ funnel_data_form.retention_value|add_class:"form-control" }}
-{#                        <input class="form-control" name="retention_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
@@ -50,10 +51,9 @@
                 <td>Referral</td>
                 <td class="ga-values ga-referral">
                     {% if referral_value %}
-                        {{ referral_value|default:"0" }}
+                        <input class="form-control" disabled value="{{ referral_value }}" />
                     {% else %}
                         {{ funnel_data_form.referral_value|add_class:"form-control" }}
-{#                        <input class="form-control" name="referral_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
@@ -64,10 +64,9 @@
                 <td>Revenue</td>
                 <td class="ga-values ga-revenue">
                     {% if revenue_value %}
-                        {{ revenue_value|default:"0" }}
+                        <input class="form-control" disabled value="{{ revenue_value }}" />
                     {% else %}
                         {{ funnel_data_form.revenue_value|add_class:"form-control" }}
-{#                        <input class="form-control" name="revenue_value" value="0" />#}
                     {% endif %}
                 </td>
                 <td>
