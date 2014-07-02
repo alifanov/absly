@@ -9,7 +9,7 @@
         <div class="modal-form-body">
             {% for log in form.instance.get_logs %}
                 <div class="canvas-log-element">
-                    <div>{{ log.get_old_value_display }} -> {{ log.get_new_value_display }}</div>
+                    <div>[{{ log.created }}] {{ log.get_old_value_display }} -> {{ log.get_new_value_display }}</div>
                     <div>{{ log.text }}</div>
                 </div>
             {% endfor %}
