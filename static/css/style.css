@@ -455,3 +455,9 @@ li.active a.canvas-element-item-link {
 #add-element-modal-id select{
     width: 100%;
 }
+
+#canvas-log-modal-form textarea {
+    width: 100%;
+    height: 110px;
+    resize: none;
+}

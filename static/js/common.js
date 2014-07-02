@@ -7,6 +7,10 @@ var delay = (function(){
 })();
 
 $(function(){
+    $(document).on('click', '.definition-level a', function(){
+        $("#change-level-id").modal('show');
+        return false;
+    });
 
     $(document).on('click', 'a.canvas-element-item-edit', function(){
         $.ajax({
