@@ -1,0 +1,11 @@
+<div class="canvas-element-title">
+    {{ block.name }}
+</div>
+<ul class="canvas-block-items" id="block-{{ block.pk }}">
+    {% for it in block.elements.all %}
+        {% include 'bm-canvas/element.html' %}
+    {% endfor %}
+</ul>
+<a class="add-canvas-block-item by-customers" href="#" rel="{{ block.pk }}">
+    <div class="icon-plus "></div>
+</a>
