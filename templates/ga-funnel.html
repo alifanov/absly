@@ -23,7 +23,7 @@
                 <td>Activation</td>
                 <td class="ga-values ga-activation">
                     {% if activation_value %}
-                        <input class="form-control" value="{{ activation_value }}" />
+                        <input class="form-control" disabled value="{{ activation_value }}" />
                     {% else %}
                         {{ funnel_data_form.activation_value|add_class:"form-control" }}
                     {% endif %}
