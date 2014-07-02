@@ -8,6 +8,22 @@ var delay = (function(){
 
 $(function(){
 
+    $(document).on('click', 'a.canvas-element-item-edit', function(){
+        $.ajax({
+            type: "GET",
+            url:"/canvas/block/new/form/",
+            data: {
+                'element': $(this).attr('rel')
+            },
+            success: function(resp)
+            {
+                $("#add-element-modal-id .canvas-modal-body").html(resp.data);
+            }
+        });
+        $("#add-element-modal-id").modal('show');
+        return false;
+    });
+
     $(document).on('submit', "#edit-canvas-element-form-id", function(){
         $.ajax({
             type: "POST",

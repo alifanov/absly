@@ -689,16 +689,26 @@ class DashboardView(LeftMenuMixin, TemplateView):
 
 class CanvasElementGetForm(View):
     def get(self, request, *args, **kwargs):
-        block = CanvasBlock.objects.get(pk=request.GET.get('block'))
-        if block:
-            form = CanvasElementForm(initial={
-                'block':block
-            })
-            csrf_token = request.COOKIES['csrftoken']
-            data = {
-                'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
-            }
-            return HttpResponse(json.dumps(data), content_type='application/json')
+        if request.GET.get('block'):
+            block = CanvasBlock.objects.get(pk=request.GET.get('block'))
+            if block:
+                form = CanvasElementForm(initial={
+                    'block':block
+                })
+                csrf_token = request.COOKIES['csrftoken']
+                data = {
+                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
+                }
+                return HttpResponse(json.dumps(data), content_type='application/json')
+        if request.GET.get('element'):
+            el = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
+            if el:
+                form = CanvasElementForm(instance=el)
+                csrf_token = request.COOKIES['csrftoken']
+                data = {
+                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
+                }
+                return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
 
     def post(self, request, *args, **kwargs):
