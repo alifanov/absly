@@ -4,7 +4,7 @@ from app.models import *
 class CanvasLogForm(ModelForm):
     class Meta:
         model = CanvasLogEntry
-        # exclude = ('created',)
+        exclude = ('created',)
 
 class CanvasElementForm(ModelForm):
     class Meta:

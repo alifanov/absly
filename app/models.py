@@ -109,6 +109,9 @@ class CanvasBlockItem(models.Model):
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
 
+    def get_logs(self):
+        return self.logs.order_by('created')
+
     # updated_to_1_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено фактами', blank=True)
     # updated_to_2_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено действиями', blank=True)
     # updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
@@ -128,7 +131,7 @@ class CanvasLogEntry(models.Model):
     new_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Новое значение', default='0')
     text = models.TextField(blank=True, verbose_name=u'Текст')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
-    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БМ')
+    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БМ', related_name='logs')
 
     def __unicode__(self):
         return u'Canvas Log Entry #{}'.format(self.pk)

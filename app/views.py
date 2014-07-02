@@ -690,9 +690,17 @@ class DashboardView(LeftMenuMixin, TemplateView):
 class CanvasLogFormView(View):
     def get(self, request, *args, **kwargs):
         element = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
+        new_value = request.GET.get('new')
+        old_value = ITEM_LEVEL_CHOICE.index(new_value)
+        old_value = ITEM_LEVEL_CHOICE[old_value-1]
         form = CanvasLogForm(initial={
-            'element': element
+            'element': element,
+            'old_value': old_value,
+            'new_value': new_value
         })
+        form.fields['old_value'].widget = forms.HiddenInput()
+        form.fields['new_value'].widget = forms.HiddenInput()
+        form.fields['element'].widget = forms.HiddenInput()
         d = {
             'data': render_to_string('bm-canvas/log.html', {
                 'log_form': form

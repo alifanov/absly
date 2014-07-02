@@ -12,7 +12,8 @@ $(function(){
             url: "/canvas/change/level/log/",
             type: "GET",
             data: {
-                'element': $(this).parent().parent().attr('id').split('-')[1]
+                'element': $(this).parent().parent().attr('id').split('-')[1],
+                'new': $(this).attr('rel')
             },
             success: function(resp){
                 $("#change-level-id .modal-content").html(resp.data);
