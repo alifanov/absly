@@ -5,8 +5,8 @@
     {% for it in cse.elements.all %}
     <li>
         <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }}</a>
-        <a href="#" class="canvas-element-item-del">
-            <span class="icon-remove pull-right"></span>
+        <a href="#" class="canvas-element-item-edit" rel="{{ it.pk }}">
+            <span class="icon-edit pull-right"></span>
         </a>
         <div class="definition-level">
             <a href="#" rel="0" {% if it.level == '0' %}class="done"{% endif %}></a>
