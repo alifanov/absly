@@ -26,7 +26,9 @@ urlpatterns = patterns('',
     url(r'^ng-canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
     url(r'^canvas/element/add/$', CreateElementAjaxView.as_view(), name='canvas-create'),
+
     url(r'^canvas/block/new/form/', CanvasElementGetForm.as_view(), name='canvas-get-new-form'),
+    url(r'^canvas/change/level/log/', CanvasLogForm.as_view(), name='canvas-get-log-form'),
 
     url(r'^parse/json/$', ParseCanvasDataView.as_view(), name='parse-json'),
 

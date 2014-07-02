@@ -8,7 +8,17 @@ var delay = (function(){
 
 $(function(){
     $(document).on('click', '.definition-level a', function(){
-        $("#change-level-id").modal('show');
+        $.ajax({
+            url: "/canvas/change/level/log/",
+            type: "GET",
+            data: {
+                'element': $(this).parent().parent().attr('id').split('-')[1]
+            },
+            success: function(resp){
+                $("#change-level-id .modal-content").html(resp.data);
+                $("#change-level-id").modal('show');
+            }
+        });
         return false;
     });
 

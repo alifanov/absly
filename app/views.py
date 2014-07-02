@@ -687,6 +687,13 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'canvas'
         return ctx
 
+class CanvasLogForm(View):
+    def get(self, request, *args, **kwargs):
+        d = {
+            'data': render_to_string('bm-canvas/log.html', {})
+        }
+        return HttpResponse(json.dumps(d), content_type='application/json')
+
 class CanvasElementGetForm(View):
     def get(self, request, *args, **kwargs):
         if request.GET.get('block'):
