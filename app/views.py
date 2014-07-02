@@ -692,9 +692,10 @@ class CanvasElementGetForm(View):
         block = CanvasBlock.objects.get(pk=request.GET.get('block'))
         if block:
             form = CanvasElementForm()
-            return HttpResponse({
+            data = {
                 'data': render_to_string('bm-canvas/form.html', {'form': form})
-            }, content_type='application/json')
+            }
+            return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
 
 class CanvasView(LeftMenuMixin, TemplateView):
