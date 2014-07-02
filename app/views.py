@@ -49,6 +49,7 @@ class StatisticsMixin(object):
         )
         if ga_funnel_config.user_sum and ga_funnel_config.revenue_value:
             ctx['money_sum'] = ga_funnel_config.revenue_value*ga_funnel_config.user_sum
+            ctx['money_time'] = ga_funnel_config.date_range
         return ctx
 
 @login_required
@@ -186,19 +187,20 @@ class GAFunnelConfigAjaxView(View):
         ga_funnel_config = GAFunnelConfig.objects.get(
             user=request.user
         )
-        date_range = request.POST.get('date_range')
-        if date_range:
-            now = date.today()
-            end_date = now.strftime('%Y-%m-%d')
-            start_date = now + relativedelta(months=-int(date_range))
-            start_date = start_date.strftime('%Y-%m-%d')
-            ga_funnel_config.start_date = start_date
-            ga_funnel_config.end_date = end_date
-            ga_funnel_config.save()
-            return HttpResponse("OK")
+        # date_range = request.POST.get('date_range')
+        # if date_range:
+        #     return HttpResponse("OK")
         fcf = FunnelConfgiForm(request.POST, instance=ga_funnel_config)
         if fcf.is_valid():
             fcf.save()
+            now = date.today()
+            end_date = now.strftime('%Y-%m-%d')
+            start_date = now + relativedelta(months=-ga_funnel_config.date_range)
+            start_date = start_date.strftime('%Y-%m-%d')
+            ga_funnel_config.date_range = ga_funnel_config.date_range
+            ga_funnel_config.start_date = start_date
+            ga_funnel_config.end_date = end_date
+            ga_funnel_config.save()
             return HttpResponse("OK")
         return HttpResponseForbidden()
 

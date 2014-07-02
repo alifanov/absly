@@ -43,6 +43,8 @@ class GAProfile(models.Model):
 
 class GAFunnelConfig(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='funnel_configs', null=True, blank=True)
+
+    date_range = models.IntegerField(default=1, verbose_name=u'Период отслеживания')
     start_date = models.CharField(max_length=100, verbose_name=u'Начало периода', blank=True)
     end_date = models.CharField(max_length=100, verbose_name=u'Конец периода', blank=True)
 
