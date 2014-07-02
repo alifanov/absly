@@ -5,6 +5,7 @@
     <h4 class="modal-title">Change Level: {{ prev_status }} -> {{ next_status }}</h4>
 </div>
 <form method="post" id="canvas-log-modal-form">
+    <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     <div class="modal-body">
         <div style="display: none;" class="alert-success">
             Level successfully upgraded
