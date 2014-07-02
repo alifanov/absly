@@ -25,10 +25,17 @@ $(function(){
     });
 
     var saveElement = function(){
+        var d = $("#edit-canvas-element-form-id").serializeArray();
+        if($(this).hasClass('del-btn')){
+            d.push({
+                name: 'delete',
+                value: '1'
+            });
+        }
         $.ajax({
             type: "POST",
             url: "/canvas/block/new/form/",
-            data: $("#edit-canvas-element-form-id").serializeArray(),
+            data: d,
             success: function(resp){
                 if(resp.deleted){
                     $("#element-"+resp.deleted).remove();
