@@ -701,9 +701,9 @@ class CanvasLogFormView(View):
         form.fields['new_value'].widget = forms.HiddenInput()
         form.fields['element'].widget = forms.HiddenInput()
         d = {
-            'prev_status': ITEM_LEVEL_CHOICE[old_value][1],
-            'next_status': ITEM_LEVEL_CHOICE[new_value][1],
             'data': render_to_string('bm-canvas/log.html', {
+                'prev_status': ITEM_LEVEL_CHOICE[old_value][1],
+                'next_status': ITEM_LEVEL_CHOICE[new_value][1],
                 'log_form': form
             })
         }
