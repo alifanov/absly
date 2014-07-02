@@ -8,6 +8,11 @@ var delay = (function(){
 
 $(function(){
 
+    $(document).on("a.add-canvas-block-item", 'click', function(){
+        $("#add-element-modal-id").modal('show');
+        return false;
+    });
+
     $(document).on("keypress", 'form#add-element-modal-id input[type="text"]', function (e) {
         var code = e.keyCode || e.which;
         if (code == 13) {
