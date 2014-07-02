@@ -8,7 +8,7 @@ var delay = (function(){
 
 $(function(){
 
-    $(document).on("a.add-canvas-block-item", 'click', function(){
+    $(document).on('click', "a.add-canvas-block-item", function(){
         $.ajax({
             type: "GET",
             url:"/canvas/block/new/form/",
