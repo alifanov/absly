@@ -35,7 +35,7 @@
     </div>
     <div class="modal-footer">
         {% if form.instance.pk %}
-            <button type="button" class="btn btn-danger" name="delete" value="1">Delete</button>
+            <button type="button" class="pull-left btn btn-danger" name="delete" value="1">Delete</button>
         {% endif %}
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary edit-btn">{% if form.instance.pk %}Save{% else %}Add{% endif %}</button>
