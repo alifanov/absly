@@ -715,6 +715,8 @@ class CanvasLogFormView(View):
         form = CanvasLogForm(request.POST)
         if form.is_valid():
             log = form.save()
+            log.element.level = log.new_value
+            log.element.save()
             return HttpResponse(json.dumps({
                 'pk': log.element.pk,
                 'data': render_to_string('bm-canvas/element.html', {'it': log.element})
