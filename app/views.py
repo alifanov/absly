@@ -732,6 +732,8 @@ class CanvasElementGetFormView(View):
                 form = CanvasElementForm(initial={
                     'block':block
                 })
+                if block.is_segment:
+                    form.fields['segment'].widget = forms.HiddenInput()
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
                     'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
