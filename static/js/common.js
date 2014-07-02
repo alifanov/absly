@@ -25,6 +25,9 @@ app.controller('customerSegmentsCtrl', ['$scope', 'Block', 'Element', '$http', f
         angular.forEach($scope.activeBlock.questions, function(q, index){
             $scope.newElement.params[q.q] = '';
         });
+        angular.forEach($scope.activeBlock.levels, function(q, index){
+            q.log = "";
+        });
         return false;
     };
 
