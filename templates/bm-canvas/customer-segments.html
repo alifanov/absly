@@ -3,18 +3,7 @@
 </div>
 <ul class="canvas-block-items" id="block-{{ cse.pk }}">
     {% for it in cse.elements.all %}
-    <li>
-        <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }}</a>
-        <a href="#" class="canvas-element-item-edit" rel="{{ it.pk }}">
-            <span class="icon-edit pull-right"></span>
-        </a>
-        <div class="definition-level">
-            <a href="#" rel="0" {% if it.level == '0' %}class="done"{% endif %}></a>
-            <a href="#" rel="1" {% if it.level == '1' %}class="done"{% endif %}></a>
-            <a href="#" rel="2" {% if it.level == '2' %}class="done"{% endif %}></a>
-            <a href="#" rel="3" {% if it.level == '3' %}class="done"{% endif %}></a>
-        </div>
-    </li>
+        {% include 'bm-canvas/element.html' %}
     {% endfor %}
 </ul>
 <a class="add-canvas-block-item by-customers" href="#" rel="{{ cse.pk }}">
