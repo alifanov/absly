@@ -451,7 +451,7 @@ li.active a.canvas-element-item-link {
     padding: 5px;
 }
 
-#add-element-modal-id input[type='text'],
+#add-element-modal-id label,
 #add-element-modal-id select{
     width: 100%;
 }
