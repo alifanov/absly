@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title">Change Level: {{ prev_status }} -> {{ next_status }}</h4>
@@ -8,7 +10,7 @@
             Level successfully upgraded
         </div>
         <div class="modal-form-body">
-            {{ log_form.log }}
+            {{ log_form.text }}
         </div>
     </div>
     <div class="modal-footer">

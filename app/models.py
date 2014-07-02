@@ -109,9 +109,9 @@ class CanvasBlockItem(models.Model):
 
     segment = models.ForeignKey('self', verbose_name=u'Сегмент клиентов', null=True, blank=True)
 
-    updated_to_1_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено фактами', blank=True)
-    updated_to_2_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено действиями', blank=True)
-    updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
+    # updated_to_1_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено фактами', blank=True)
+    # updated_to_2_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено действиями', blank=True)
+    # updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
 
     def is_segment(self):
         return not self.segment
@@ -122,6 +122,21 @@ class CanvasBlockItem(models.Model):
     class Meta:
         verbose_name = u'Элемент блока БМ'
         verbose_name_plural = u'Элементы блока БМ'
+
+class CanvasLogEntry(models.Model):
+    old_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Старое значение', default='0')
+    new_value = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Новое значение', default='0')
+    text = models.TextField(blank=True, verbose_name=u'Текст')
+    created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
+    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент БМ')
+
+    def __unicode__(self):
+        return u'Canvas Log Entry #{}'.format(self.pk)
+
+    class Meta:
+        verbose_name = u'Лог'
+        verbose_name_plural = u'Логи'
+
 
 class CanvasBlockItemParameter(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Параметр элемента БМ')
