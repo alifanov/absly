@@ -691,8 +691,7 @@ class CanvasLogFormView(View):
     def get(self, request, *args, **kwargs):
         element = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
         new_value = request.GET.get('new')
-        old_value = ITEM_LEVEL_CHOICE.index(new_value)
-        old_value = ITEM_LEVEL_CHOICE[old_value-1]
+        old_value = '{}'.format(int(new_value) - 1)
         form = CanvasLogForm(initial={
             'element': element,
             'old_value': old_value,
