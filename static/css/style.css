@@ -318,12 +318,12 @@ ul.main-objects li {
     padding: 5px;
 }
 
-.canvas-block-items li .canvas-element-item-del
+.canvas-block-items li .canvas-element-item-edit
 {
     display: none;
 }
 
-.canvas-block-items li:hover a.canvas-element-item-del {
+.canvas-block-items li:hover a.canvas-element-item-edit {
     display: inline;
 }
 
