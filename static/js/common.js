@@ -30,6 +30,9 @@ $(function(){
             url: "/canvas/block/new/form/",
             data: $("#edit-canvas-element-form-id").serializeArray(),
             success: function(resp){
+                if(resp.deleted){
+                    $("#element-"+resp.deleted).remove();
+                }
                 if($("#edit-canvas-element-form-id .edit-btn").text() == 'Add'){
                     $("#block-"+resp.block).append(resp.data);
                 }

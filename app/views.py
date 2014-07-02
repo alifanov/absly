@@ -713,6 +713,12 @@ class CanvasElementGetForm(View):
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('element'):
+            if request.POST.get('delete'):
+                el = CanvasBlockItem.objects.get(request.POST.get('element'))
+                el.delete()
+                return HttpResponse(json.dumps({
+                    'deleted': el.pk
+                }), content_type='application/json')
             form = CanvasElementForm(request.POST, instance=CanvasBlockItem.objects.get(pk=request.POST.get('element')))
         else:
             form = CanvasElementForm(request.POST)
