@@ -448,4 +448,10 @@ li.active a.canvas-element-item-link {
 .canvas-log-element {
     background: #fafafa;
     margin-bottom: 10px;
+    padding: 5px;
+}
+
+#add-element-modal-id input[type='text'],
+#add-element-modal-id select{
+    width: 100%;
 }
