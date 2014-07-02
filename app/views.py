@@ -701,6 +701,17 @@ class CanvasElementGetForm(View):
             return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
 
+    def post(self, request, *args, **kwargs):
+        form = CanvasElementForm(request.POST)
+        if form.is_valid():
+            el = form.save()
+            data = {
+                'block': el.block.pk,
+                'data': render_to_string('bm-canvas/element.html', {'it': el})
+            }
+            return HttpResponse(json.dumps(data), content_type='application/data')
+        return HttpResponseForbidden()
+
 class CanvasView(LeftMenuMixin, TemplateView):
     template_name = 'canvas.html'
 
