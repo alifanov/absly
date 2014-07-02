@@ -79,28 +79,7 @@
                     </div>
                 </td>
                 <td width="20%" rowspan="2" class="segments">
-                    <div class="canvas-element-title">
-                        {{ cse.name }}
-                    </div>
-                    <ul class="canvas-block-items">
-                        {% for it in cse.elements.all %}
-                        <li>
-                            <a href="#" rel="{{ it.slug }}" class="canvas-element-item-link"> {{ it.name }} (3)</a>
-                            <a href="#" class="canvas-element-item-del">
-                                <span class="icon-remove pull-right"></span>
-                            </a>
-                            <div class="definition-level">
-                                <a href="#" rel="0" {% if it.level == 0 %}class="done"{% endif %}></a>
-                                <a href="#" rel="1" {% if it.level == 1 %}class="done"{% endif %}></a>
-                                <a href="#" rel="2" {% if it.level == 2 %}class="done"{% endif %}></a>
-                                <a href="#" rel="3" {% if it.level == 3 %}class="done"{% endif %}></a>
-                            </div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    <a class="add-canvas-block-item" href="#" rel="{{ cse.pk }}" data-toggle="modal" data-target="#add-element-modal-id">
-                        <div class="icon-plus "></div>
-                    </a>
+                    {% include 'bm-canvas/customer-segments.html' %}
                 </td>
             </tr>
             <tr style="height: 200px">
