@@ -2,6 +2,9 @@ from django.forms import ModelForm, HiddenInput, TextInput
 from app.models import *
 
 class CanvasLogForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CanvasLogForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = CanvasLogEntry
         # exclude = ('created',)
