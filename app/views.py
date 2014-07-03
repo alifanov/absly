@@ -53,7 +53,7 @@ class StatisticsMixin(object):
                 ls += 3.0*block.get_certainly_level()/22.0
             else:
                 ls += 2.0*block.get_certainly_level()/22.0
-        return ls
+        return round(ls)
 
     def get_context_data(self, **kwargs):
         ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
