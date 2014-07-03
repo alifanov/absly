@@ -17,7 +17,9 @@
             {% if form.instance.pk %}
                 <input name="element" type="hidden" value="{{ form.instance.pk }}" />
             {% endif %}
-            {{ form.params }}
+            {{ form.param_0 }}
+            {{ form.param_2 }}
+            {{ form.param_1 }}
             {{ form.block }}
             <div class="form-group">
                 {{ form.segment|add_class:"form-control" }}
