@@ -93,7 +93,7 @@ class CanvasBlock(models.Model):
         els = 0.0
         M = self.elements.count()
         N = 3
-        lvl = sum([el.level for el in self.elements.all()])*100.0/M/N
+        lvl = sum([int(el.level) for el in self.elements.all()])*100.0/M/N
         return lvl
 
     class Meta:
