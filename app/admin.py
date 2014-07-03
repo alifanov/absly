@@ -18,6 +18,7 @@ class CanvasBlockAdmin(admin.ModelAdmin):
 
 class CanvasBlockItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
+    list_display = ['block', 'name', 'user']
 
 admin.site.register(GAFunnelConfig)
 admin.site.register(CredentialsModel)
