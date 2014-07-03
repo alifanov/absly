@@ -1,4 +1,4 @@
-from django.forms import ModelForm, HiddenInput, TextInput
+from django.forms import ModelForm, HiddenInput, TextInput, ModelChoiceField
 from app.models import *
 
 class CanvasLogForm(ModelForm):
@@ -7,6 +7,10 @@ class CanvasLogForm(ModelForm):
         exclude = ('created',)
 
 class CanvasElementForm(ModelForm):
+    def add_params(self, block):
+        for p in block.params.all():
+            self.fields['param_{}'.format(p.pk)] = ModelChoiceField(queryset=p.params_values.all())
+
     class Meta:
         model = CanvasBlockItem
         fields = ('name', 'segment', 'block')
