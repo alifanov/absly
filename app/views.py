@@ -46,8 +46,8 @@ FLOW = flow_from_clientsecrets(
 class StatisticsMixin(object):
     def calc_certainly_level(self):
         ls = 0.0
-        # if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
-        #     return ls
+        if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
+            return ls
         for block in CanvasBlock.objects.all():
             if block.name in [u'Customer Segments', u'Value Proposition', u'Channels', u'Revenue Streams']:
                 ls += 3.0*block.get_certainly_level()/22.0
