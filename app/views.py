@@ -49,12 +49,11 @@ class StatisticsMixin(object):
         # if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
         #     return ls
         for block in CanvasBlock.objects.all():
-            els = 0.0
             if block.name in [u'Customer Segments', u'Value Proposition', u'Channels', u'Revenue Streams']:
-                els += 3.0*block.get_certainly_level()/22.0
+                ls += 3.0*block.get_certainly_level()/22.0
             else:
-                els += 2.0*block.get_certainly_level()/22.0
-        return els
+                ls += 2.0*block.get_certainly_level()/22.0
+        return ls
 
     def get_context_data(self, **kwargs):
         ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
