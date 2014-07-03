@@ -89,6 +89,13 @@ class CanvasBlock(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_certainly_level(self):
+        els = 0.0
+        M = self.elements.count()
+        N = 3
+        lvl = sum([el.level for el in self.elements.all()])*100.0/M/N
+        return lvl
+
     class Meta:
         verbose_name = u'Блок шаблона бизнес-модели'
         verbose_name_plural = u'Блоки шаблона бизнес-модели'
@@ -111,6 +118,7 @@ class CanvasBlockItem(models.Model):
 
     def get_logs(self):
         return self.logs.order_by('created')
+
     def is_segment(self):
         return not self.segment
 

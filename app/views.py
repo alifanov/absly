@@ -1,6 +1,8 @@
 #coding: utf-8
 # Create your views here.
 from app.models import News, NewsGroup, GAProfile
+from datetime import date
+from dateutil.relativedelta import relativedelta
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
 from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.shortcuts import redirect
@@ -42,6 +44,18 @@ FLOW = flow_from_clientsecrets(
     redirect_uri='http://absly.progernachas.ru/oauth2callback')
 
 class StatisticsMixin(object):
+    def calc_certainly_level(self):
+        ls = 0.0
+        if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
+            return ls
+        for block in CanvasBlock.objects.all():
+            els = 0.0
+            if block.name in [u'Customer Segments', u'Value Proposition', u'Channels', u'Revenue Streams']:
+                els += 3.0*block.get_certainly_level()/22.0
+            else:
+                els += 2.0*block.get_certainly_level()/22.0
+        return els
+
     def get_context_data(self, **kwargs):
         ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
         ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
@@ -50,6 +64,7 @@ class StatisticsMixin(object):
         if ga_funnel_config.user_sum and ga_funnel_config.revenue_value:
             ctx['money_sum'] = ga_funnel_config.revenue_value*ga_funnel_config.user_sum
             ctx['money_time'] = ga_funnel_config.date_range
+        ctx['certainly_level'] = self.calc_certainly_level()
         return ctx
 
 @login_required
@@ -179,8 +194,6 @@ class GAFunnelView(StatisticsMixin, TemplateView):
 
         ctx['funnel_data_form'] = FunnelDataForm(instance=self.ga_funnel_config)
         return ctx
-from datetime import date
-from dateutil.relativedelta import relativedelta
 
 class GAFunnelConfigAjaxView(View):
     def post(self, request, *args, **kwargs):
@@ -287,7 +300,7 @@ class GAProfileCompletedView(View):
             return HttpResponse("OK")
         return HttpResponseForbidden()
 
-class GAConfigView(TemplateView):
+class GAConfigView(StatisticsMixin, TemplateView):
     credentials = None
     template_name = 'ga.html'
 
@@ -669,7 +682,7 @@ class RevenueStreamsJSONView(CanvasBlockItenJSONMixin, View):
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
 
-class LeftMenuMixin(object):
+class LeftMenuMixin(StatisticsMixin):
     def get_context_data(self, **kwargs):
         ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
         ctx['news_groups'] = NewsGroup.objects.all()
