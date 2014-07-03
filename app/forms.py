@@ -9,7 +9,7 @@ class CanvasLogForm(ModelForm):
 class CanvasElementForm(ModelForm):
     def add_params(self, block):
         for i, p in enumerate(block.params.all()):
-            self.fields['param_{}'.format(i)] = ModelChoiceField(queryset=p.values.all().distinct())
+            self.fields['param_{}'.format(i)] = ModelChoiceField(queryset=p.values.all().distinct(), label=p.name)
 
     def __init__(self, *args, **kwargs):
         super(CanvasElementForm, self).__init__(*args, **kwargs)
