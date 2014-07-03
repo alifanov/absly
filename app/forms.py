@@ -21,7 +21,7 @@ class CanvasElementForm(ModelForm):
 
     class Meta:
         model = CanvasBlockItem
-        fields = ('name', 'segment', 'block')
+        fields = ('name', 'segment', 'block', 'user')
 
 class FunnelConfgiForm(ModelForm):
     class Meta:

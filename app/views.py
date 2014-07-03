@@ -710,7 +710,7 @@ class DashboardView(LeftMenuMixin, TemplateView):
 
 class CanvasLogFormView(View):
     def get(self, request, *args, **kwargs):
-        element = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
+        element = CanvasBlockItem.objects.get(pk=request.GET.get('element'), user=request.user)
         new_value = int(request.GET.get('new'))
         old_value = new_value-1
         form = CanvasLogForm(initial={
@@ -761,7 +761,7 @@ class CanvasElementGetFormView(View):
                 }
                 return HttpResponse(json.dumps(data), content_type='application/json')
         if request.GET.get('element'):
-            el = CanvasBlockItem.objects.get(pk=request.GET.get('element'))
+            el = CanvasBlockItem.objects.get(pk=request.GET.get('element'), user=request.user)
             if el:
                 form = CanvasElementForm(instance=el)
                 form.fields['block'].widget = forms.HiddenInput()
@@ -776,7 +776,7 @@ class CanvasElementGetFormView(View):
     def post(self, request, *args, **kwargs):
         if request.POST.get('element'):
             if request.POST.get('delete'):
-                el = CanvasBlockItem.objects.get(pk=request.POST.get('element'))
+                el = CanvasBlockItem.objects.get(pk=request.POST.get('element'), user=request.user)
                 el_pk=el.pk
                 el.delete()
                 return HttpResponse(json.dumps({
@@ -787,6 +787,8 @@ class CanvasElementGetFormView(View):
             form = CanvasElementForm(request.POST)
         if form.is_valid():
             el = form.save()
+            el.user = request.user
+            el.save()
             if request.POST.get('param_0'):
                 p = request.POST['param_0']
                 v = CanvasBlockItemParameterValue.objects.get(pk=p)

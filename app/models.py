@@ -109,6 +109,7 @@ ITEM_LEVEL_CHOICE = (
 )
 
 class CanvasBlockItem(models.Model):
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', null=True, blank=True)
     name = models.CharField(max_length=100, verbose_name=u'Название элемента')
     slug = models.CharField(max_length=200, verbose_name=u'Slug', blank=True)
     level = models.CharField(max_length=1, choices=ITEM_LEVEL_CHOICE, verbose_name=u'Уровень определенности', default='0')
