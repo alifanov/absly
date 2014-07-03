@@ -26,6 +26,7 @@ $(function(){
             data: $(this).serializeArray(),
             success: function(resp){
                 $("#element-"+resp.pk).html($(resp.data).html());
+                updateTopStatistics();
             }
         });
         $("#change-level-id").modal('hide');
@@ -87,6 +88,7 @@ $(function(){
                     $("#element-"+resp.pk).html($(resp.data).html());
                 }
                 $("#add-element-modal-id").modal('hide');
+                updateTopStatistics();
             }
         });
         return false;
