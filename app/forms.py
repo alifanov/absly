@@ -11,7 +11,8 @@ class CanvasElementForm(ModelForm):
         for i, p in enumerate(block.params.all()):
             initial = None
             if element:
-                initial = element.params_values.filter(parameter=p)[0]
+                initial = element.params_values.filter(parameter=p)
+                if initial.count(): initial = initial[0]
             self.fields['param_{}'.format(i)] = ModelChoiceField(queryset=p.values.all().distinct(), label=p.name, initial=initial)
 
     def __init__(self, *args, **kwargs):
