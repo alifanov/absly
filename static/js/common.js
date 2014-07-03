@@ -6,6 +6,18 @@ var delay = (function(){
   };
 })();
 
+function updateTopStatistics(){
+    $.ajax({
+        url: "/update/top/statistics/",
+        type: "GET",
+        success: function(resp){
+            $("#main-stats .certainly-level .number").text(resp.certainly_level +'%');
+            $("#main-stats .money .number").text('$'+resp.money_sum);
+            $("#main-stats .money .date").text('Last '+resp.money_time + ' months');
+        }
+    });
+}
+
 $(function(){
     $(document).on('submit', '#canvas-log-modal-form', function(){
         $.ajax({

@@ -66,6 +66,11 @@ class StatisticsMixin(object):
         ctx['certainly_level'] = self.calc_certainly_level()
         return ctx
 
+class UpdateTopStatisticsView(StatisticsMixin, View):
+    def get(self, request, *args, **kwargs):
+        ctx = self.get_context_data()
+        return HttpResponse(json.dumps(ctx), content_type='application/json')
+
 @login_required
 def auth_return(request):
   if not xsrfutil.validate_token(settings.SECRET_KEY, request.REQUEST['state'],

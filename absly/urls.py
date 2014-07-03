@@ -30,6 +30,8 @@ urlpatterns = patterns('',
     url(r'^canvas/block/new/form/', CanvasElementGetFormView.as_view(), name='canvas-get-new-form'),
     url(r'^canvas/change/level/log/', CanvasLogFormView.as_view(), name='canvas-get-log-form'),
 
+    url(r'^update/top/statistics/', UpdateTopStatisticsView.as_view(), name='update-top-statistics-view'),
+
     url(r'^parse/json/$', ParseCanvasDataView.as_view(), name='parse-json'),
 
     url(r'^partners/json/$', PartnersJSONView.as_view(), name='partners-json'),

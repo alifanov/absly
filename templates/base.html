@@ -352,21 +352,21 @@
     <!-- upper main stats -->
     <div id="main-stats">
         <div class="row stats-row">
-            <div class="col-md-3 col-sm-3 stat">
+            <div class="col-md-3 col-sm-3 stat certainly-level">
                 <div class="data">
                     <span class="number">{{ certainly_level }}%</span>
                     certainty level
                 </div>
 {#                <span class="date">Today</span>#}
             </div>
-            <div class="col-md-3 col-sm-3 stat">
+            <div class="col-md-3 col-sm-3 stat funding-level">
                 <div class="data">
                     <span class="number">78%</span>
                     funding ready
                 </div>
                 <span class="date">Last Week</span>
             </div>
-            <div class="col-md-3 col-sm-3 stat">
+            <div class="col-md-3 col-sm-3 stat money">
                 <div class="data">
                     <span class="number">${{ money_sum|default:"0" }}</span>
                     cashflow
@@ -374,7 +374,7 @@
                 <span class="date">Last {{ money_time }} months</span>
             </div>
 
-            <div class="col-md-3 col-sm-3 stat last">
+            <div class="col-md-3 col-sm-3 stat last status">
                 <div class="data">
                     <span class="number">Promising newbie</span>
                     status
