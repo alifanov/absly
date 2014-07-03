@@ -71,6 +71,10 @@ class UpdateTopStatisticsView(StatisticsMixin, View):
         ctx = self.get_context_data()
         return HttpResponse(json.dumps(ctx), content_type='application/json')
 
+    def get_context_data(self, **kwargs):
+        ctx = super(UpdateTopStatisticsView, self).get_context_data(**kwargs)
+        return ctx
+
 @login_required
 def auth_return(request):
   if not xsrfutil.validate_token(settings.SECRET_KEY, request.REQUEST['state'],
