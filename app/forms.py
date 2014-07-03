@@ -9,7 +9,8 @@ class CanvasLogForm(ModelForm):
 class CanvasElementForm(ModelForm):
     def add_params(self, block):
         for p in block.params.all():
-            self.fields['param_{}'.format(p.pk)] = ModelChoiceField(queryset=p.values.all())
+            self.fields['params'] = []
+            self.fields['params'].append(ModelChoiceField(queryset=p.values.all()))
 
     class Meta:
         model = CanvasBlockItem
