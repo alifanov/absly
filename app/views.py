@@ -56,7 +56,7 @@ class StatisticsMixin(object):
         return round(ls)
 
     def get_context_data(self, **kwargs):
-        ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
+        ctx = {}
         ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
