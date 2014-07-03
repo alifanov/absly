@@ -770,6 +770,14 @@ class CanvasElementGetFormView(View):
                 p = request.POST['param_0']
                 v = CanvasBlockItemParameterValue.objects.get(pk=p)
                 v.elements.add(el)
+            if request.POST.get('param_1'):
+                p = request.POST['param_1']
+                v = CanvasBlockItemParameterValue.objects.get(pk=p)
+                v.elements.add(el)
+            if request.POST.get('param_2'):
+                p = request.POST['param_2']
+                v = CanvasBlockItemParameterValue.objects.get(pk=p)
+                v.elements.add(el)
             data = {
                 'block': el.block.pk,
                 'data': render_to_string('bm-canvas/element.html', {'it': el})
