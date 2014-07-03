@@ -12,6 +12,10 @@ class CanvasElementForm(ModelForm):
             self.fields['params'] = []
             self.fields['params'].append(ModelChoiceField(queryset=p.values.all()))
 
+    def __init__(self, *args, **kwargs):
+        super(CanvasElementForm, self).__init__(*args, **kwargs)
+        self.fields['segment'].queryset = CanvasBlock.objects.filter(segment__isnull=True)
+
     class Meta:
         model = CanvasBlockItem
         fields = ('name', 'segment', 'block')
