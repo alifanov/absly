@@ -50,9 +50,9 @@ class StatisticsMixin(object):
             return ls
         for block in CanvasBlock.objects.all():
             if block.name in [u'Customer Segments', u'Value Proposition', u'Channels', u'Revenue Streams']:
-                ls += 3.0*block.get_certainly_level()/22.0
+                ls += 3.0*block.get_certainly_level(self.request.user)/22.0
             else:
-                ls += 2.0*block.get_certainly_level()/22.0
+                ls += 2.0*block.get_certainly_level(self.request.user)/22.0
         return round(ls)
 
     def get_context_data(self, **kwargs):
