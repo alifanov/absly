@@ -115,7 +115,7 @@ class CanvasBlockItem(models.Model):
         return not self.segment
 
     def __unicode__(self):
-        return u'{} -> {}'.format(self.block.name, self.name)
+        return self.name
 
     class Meta:
         verbose_name = u'Элемент блока БМ'

@@ -7,9 +7,12 @@ class CanvasLogForm(ModelForm):
         exclude = ('created',)
 
 class CanvasElementForm(ModelForm):
-    def add_params(self, block):
+    def add_params(self, block, element):
         for i, p in enumerate(block.params.all()):
-            self.fields['param_{}'.format(i)] = ModelChoiceField(queryset=p.values.all().distinct(), label=p.name)
+            initial = None
+            if element:
+                initial = element.params_values.filter(parameter=p)[0]
+            self.fields['param_{}'.format(i)] = ModelChoiceField(queryset=p.values.all().distinct(), label=p.name, initial=initial)
 
     def __init__(self, *args, **kwargs):
         super(CanvasElementForm, self).__init__(*args, **kwargs)

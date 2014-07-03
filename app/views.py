@@ -744,7 +744,7 @@ class CanvasElementGetFormView(View):
             if el:
                 form = CanvasElementForm(instance=el)
                 form.fields['block'].widget = forms.HiddenInput()
-                form.add_params(el.block)
+                form.add_params(el.block, el)
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
                     'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
@@ -766,6 +766,10 @@ class CanvasElementGetFormView(View):
             form = CanvasElementForm(request.POST)
         if form.is_valid():
             el = form.save()
+            if form.cleaned_data['param_0']:
+                p = form.cleaned_data['param_0']
+                v = CanvasBlockItemParameterValue.objects.get(pk=p)
+                v.elements.add(el)
             data = {
                 'block': el.block.pk,
                 'data': render_to_string('bm-canvas/element.html', {'it': el})
