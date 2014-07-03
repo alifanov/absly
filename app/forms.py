@@ -7,7 +7,7 @@ class CanvasLogForm(ModelForm):
         exclude = ('created',)
 
 class CanvasElementForm(ModelForm):
-    def add_params(self, block, element):
+    def add_params(self, block, element=None):
         for i, p in enumerate(block.params.all()):
             initial = None
             if element:
