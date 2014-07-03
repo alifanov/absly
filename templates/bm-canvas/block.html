@@ -1,8 +1,10 @@
+{% load canvas_filters %}
+
 <div class="canvas-element-title">
     {{ block.name }}
 </div>
 <ul class="canvas-block-items" id="block-{{ block.pk }}">
-    {% for it in block.elements.all %}
+    {% for it in block.elements.all|by_user:request.user %}
         {% include 'bm-canvas/element.html' %}
     {% endfor %}
 </ul>
