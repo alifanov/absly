@@ -766,6 +766,7 @@ class CanvasElementGetFormView(View):
             form = CanvasElementForm(request.POST)
         if form.is_valid():
             el = form.save()
+            raise ValueError(form.cleaned_data)
             if form.cleaned_data['param_0']:
                 p = form.cleaned_data['param_0']
                 v = CanvasBlockItemParameterValue.objects.get(pk=p)
