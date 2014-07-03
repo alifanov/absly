@@ -14,7 +14,7 @@ class CanvasElementForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CanvasElementForm, self).__init__(*args, **kwargs)
-        self.fields['segment'].queryset = CanvasBlockItem.objects.filter(segment__isnull=True)
+        self.fields['segment'].queryset = CanvasBlockItem.objects.filter(block__name=u'Customer Segments')
 
     class Meta:
         model = CanvasBlockItem
