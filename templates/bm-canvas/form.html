@@ -17,9 +17,21 @@
             {% if form.instance.pk %}
                 <input name="element" type="hidden" value="{{ form.instance.pk }}" />
             {% endif %}
-            {{ form.param_0 }}
-            {{ form.param_2 }}
-            {{ form.param_1 }}
+            {% if form.param_0 %}
+                <div class="form-group">
+                    {{ form.param_0|add_class:"form-control" }}
+                </div>
+            {% endif %}
+            {% if form.param_1 %}
+                <div class="form-group">
+                    {{ form.param_1|add_class:"form-control" }}
+                </div>
+            {% endif %}
+            {% if form.param_2 %}
+                <div class="form-group">
+                    {{ form.param_2|add_class:"form-control" }}
+                </div>
+            {% endif %}
             {{ form.block }}
             <div class="form-group">
                 {{ form.segment|add_class:"form-control" }}

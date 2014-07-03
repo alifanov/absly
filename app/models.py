@@ -111,11 +111,6 @@ class CanvasBlockItem(models.Model):
 
     def get_logs(self):
         return self.logs.order_by('created')
-
-    # updated_to_1_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено фактами', blank=True)
-    # updated_to_2_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено действиями', blank=True)
-    # updated_to_3_log = models.TextField(verbose_name=u'Лог при прогрессе статуса на Проверено деньгами', blank=True)
-
     def is_segment(self):
         return not self.segment
 
@@ -159,7 +154,7 @@ class CanvasBlockItemParameterValue(models.Model):
     elements = models.ManyToManyField(CanvasBlockItem, verbose_name=u'Элементы', related_name='params_values', null=True, blank=True    )
 
     def __unicode__(self):
-        return u'{} -> {}'.format(self.parameter.name, self.name)
+        return self.name
 
     class Meta:
         verbose_name = u'Значение параметра'
