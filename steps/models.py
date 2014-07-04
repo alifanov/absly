@@ -23,7 +23,7 @@ class Step(models.Model):
     def get_deadline_last(self):
         if self.deadline:
             return (self.deadline - datetime.now()).days
-        return u''
+        return self.deadline - datetime.now()
 
     def is_clear_deadline(self):
         if self.deadline and self.get_deadline_last() < 7:
