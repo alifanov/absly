@@ -479,9 +479,11 @@ li.active a.canvas-element-item-link {
 .steps-recomendations h2 span.bg-primary {
     background: #3893D3;
     color: white;
+    border: 1px solid #ccc;
 }
 
 .steps-recomendations h2 span.bg-step {
     background: #f1f1f1;
     color: #555;
+    border: 1px solid #ccc;
 }
