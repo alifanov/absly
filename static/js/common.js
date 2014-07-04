@@ -24,7 +24,7 @@ $(function(){
             url: $(this).attr('action'),
             type: "POST",
             success:function(resp){
-                %("#edit-recomendation-modal-id").modal('hide');
+                $("#edit-recomendation-modal-id").modal('hide');
             }
         });
         return false;
