@@ -466,3 +466,9 @@ li.active a.canvas-element-item-link {
 .steps-recomendations .steps-recomendations-item a {
     text-decoration: none;
 }
+
+.steps-recomendations h2 span {
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 19px;
+}
