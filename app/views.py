@@ -899,18 +899,6 @@ class MetricsView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'metrics'
         return ctx
 
-class StepsView(LeftMenuMixin, TemplateView):
-    template_name = 'steps.html'
-
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(StepsView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        ctx = super(StepsView, self).get_context_data(**kwargs)
-        ctx['active'] = 'steps'
-        return ctx
-
 class StrategyView(LeftMenuMixin, TemplateView):
     template_name = 'strategy.html'
 
