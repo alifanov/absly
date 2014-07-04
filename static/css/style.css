@@ -483,7 +483,13 @@ li.active a.canvas-element-item-link {
     border: 1px solid #ccc;
 }
 
-.steps-recomendations h2 .bg-step {
+.steps-recomendations h2 span.bg-step {
+    background: #f1f1f1;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+.bg-step {
     background: #f1f1f1;
     color: #555;
     border: 1px solid #ccc;
