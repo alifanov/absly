@@ -489,7 +489,7 @@ li.active a.canvas-element-item-link {
     border: 1px solid #ccc;
 }
 
-.bg-step {
+.steps-recomendations-item .bg-step {
     background: #f1f1f1;
     color: #555;
     border: 1px solid #ccc;
