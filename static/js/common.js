@@ -19,6 +19,17 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $(document).on('submit', '#recomendation-view-modal-form', function(){
+        $.ajax({
+            url: $(this).attr('action'),
+            type: "POST",
+            success:function(resp){
+                %("#edit-recomendation-modal-id").modal('hide');
+            }
+        });
+        return false;
+    });
+
     $(".recomendation-link").click(function(){
         $.ajax({
             url: "/steps/recomendation/",
