@@ -19,6 +19,18 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $(".recomendation-link").click(function(){
+        $.ajax({
+            url: "/steps/recomendation/",
+            type: "GET",
+            success: function(resp){
+                $("#edit-recomendation-modal-id .modal-content").html(resp.data);
+                $("#edit-recomendation-modal-id").modal('show');
+            }
+        });
+        return false;
+    });
+
     $(document).on('submit', '#canvas-log-modal-form', function(){
         $.ajax({
             url: "/canvas/change/level/log/",

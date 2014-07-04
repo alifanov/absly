@@ -9,7 +9,7 @@
                 <h3><span class="icon-group"></span> Customer</h3>
                 {% for cr in customer_recomendations %}
                     <div class="steps-recomendations-item bg-primary">
-                        <a rel="{{ cr.pk }}" href="#"> <i class="icon-info-sign"></i> <i class="icon-plus"></i> {{ cr.title }}</a>
+                        <a class="recomendation-link" rel="{{ cr.pk }}" href="#"> <i class="icon-info-sign"></i> <i class="icon-plus"></i> {{ cr.title }}</a>
                     </div>
                 {% endfor %}
             </div>
@@ -17,7 +17,7 @@
                 <h3><span class="icon-wrench"></span> Product</h3>
                 {% for pr in product_recomendations %}
                     <div class="steps-recomendations-item bg-primary">
-                        <a rel="{{ pr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ pr.title }}</a>
+                        <a class="recomendation-link" rel="{{ pr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ pr.title }}</a>
                     </div>
                 {% endfor %}
             </div>
@@ -25,7 +25,7 @@
                 <h3><span class="icon-money"></span> Fundrising</h3>
                 {% for fr in fundrising_recomendations %}
                     <div class="steps-recomendations-item bg-primary">
-                        <a rel="{{ fr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ fr.title }}</a>
+                        <a class="recomendation-link" rel="{{ fr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ fr.title }}</a>
                     </div>
                 {% endfor %}
             </div>
@@ -207,6 +207,14 @@
         </div>
     </div>
 </div>
+
+    <div class="modal fade" id="edit-recomendation-modal-id">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <div class="modal fade" id="addNewModal">
         <div class="modal-dialog">
