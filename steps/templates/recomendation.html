@@ -1,20 +1,37 @@
-<!-- Nav tabs -->
-<ul class="nav nav-stacked nav-tabs" role="tablist">
-  <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
-  <li><a href="#discussion" role="tab" data-toggle="tab">Discussion</a></li>
-</ul>
+{% load widget_tweaks %}
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="general">
-      <form method="POST">
-      <h3>{{ r.title }}</h3>
-      <div class="recomendation-desc">
-          {{ r.desc }}
-      </div>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-success">Start doing</button>
-      </form>
-  </div>
-  <div class="tab-pane" id="discussion">...</div>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{ r.title }}</h4>
 </div>
+<form method="post" id="recomendation-view-modal-form">
+    <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
+    <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-stacked nav-tabs" role="tablist">
+          <li class="active"><a href="#general" role="tab" data-toggle="tab">General</a></li>
+          <li><a href="#discussion" role="tab" data-toggle="tab">Discussion</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="general">
+              <form method="POST">
+              <h3>{{ r.title }}</h3>
+              <div class="recomendation-desc">
+                  {{ r.desc }}
+              </div>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button class="btn btn-success">Start doing</button>
+              </form>
+          </div>
+          <div class="tab-pane" id="discussion">...</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success">Start doing</button>
+    </div>
+</form>
+
+
