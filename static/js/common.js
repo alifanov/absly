@@ -23,6 +23,7 @@ $(function(){
         $.ajax({
             url: $(this).attr('action'),
             type: "POST",
+            data: $(this).serializeArray(),
             success:function(resp){
                 $("#edit-recomendation-modal-id").modal('hide');
             }
