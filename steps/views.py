@@ -13,9 +13,9 @@ class StepsView(LeftMenuMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(StepsView, self).get_context_data(**kwargs)
-        ctx['customer_recomendations'] = self.request.user.recomendations.filter(type=STEP_TYPE[0]).order_by('-created')
-        ctx['product_recomendations'] = self.request.user.recomendations.filter(type=STEP_TYPE[1]).order_by('-created')
-        ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type=STEP_TYPE[2]).order_by('-created')
+        ctx['customer_recomendations'] = self.request.user.recomendations.filter(type='C').order_by('-created')
+        ctx['product_recomendations'] = self.request.user.recomendations.filter(type='P').order_by('-created')
+        ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type='F').order_by('-created')
         ctx['active'] = 'steps'
         return ctx
 
