@@ -43,5 +43,6 @@ class RecomendationView(View):
         if r:
             r = request.user.recomendations.filter(pk=r)[0]
             step = r.create_step(request.user)
+            r.users.remove(request.user)
             data = {'data': render_to_string('step-item.html', {'step': step})}
             return HttpResponse(json.dumps(data), content_type='application/json')
