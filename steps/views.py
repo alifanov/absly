@@ -1,7 +1,10 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from app.views import LeftMenuMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
+from django.http import HttpResponse
+import json
+from django.template.loader import render_to_string
 from steps.models import *
 
 class StepsView(LeftMenuMixin, TemplateView):
@@ -19,3 +22,12 @@ class StepsView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'steps'
         return ctx
 
+class RecomendationView(View):
+    def get(self, request, *args, **kwargs):
+        r = request.GET.get('r')
+        if r:
+            r = Recomentdation.objects.get(pk=r)
+            data = {
+                'data': render_to_string('recomendation.html', {'r': r})
+            }
+            return HttpResponse(json.dumps(data), content_type='application/json')

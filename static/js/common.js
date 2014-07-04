@@ -23,6 +23,9 @@ $(function(){
         $.ajax({
             url: "/steps/recomendation/",
             type: "GET",
+            data: {
+                'r': $(this).attr('rel')
+            },
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#edit-recomendation-modal-id").modal('show');
