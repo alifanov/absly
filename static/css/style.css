@@ -491,10 +491,10 @@ li.active a.canvas-element-item-link {
 
 #recomendation-view-modal-form .tabs li a {
     color: #3893D3;
-    border-bottom: 1px dashed #3893D3;
+    text-decoration: underline;
 }
 
 #recomendation-view-modal-form .tabs li.active a {
     color: #333;
-    border-bottom: 0;
+    text-decoration: none;
 }
