@@ -2,7 +2,7 @@
     <a href="#" rel="{{ step.pk }}"><span class="icon-check-empty"></span></a> {{ step.title }}
         {% if step.subtasks %}
             <ul class="steps-in-progress-tasks">
-                {% for task in step.subtasks %}
+                {% for task in step.subtasks.all %}
                     <li>
                         <label>
                             <input type="checkbox" checked="checked" /> {{ task.title }}
