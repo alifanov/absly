@@ -1,5 +1,5 @@
 <div class="steps-recomendations-item">
-    <a href="#" rel="{{ step.pk }}"><span class="icon-check-empty"></span></a> {{ step.title }}
+    <a class="bg-step" href="#" rel="{{ step.pk }}"> {{ step.title }} <span>{{ step.get_deadline_last }}</span> </a>
         {% if step.subtasks %}
             <ul class="steps-in-progress-tasks">
                 {% for task in step.subtasks.all %}
