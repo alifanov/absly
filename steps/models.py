@@ -39,6 +39,19 @@ class Recomentdation(models.Model):
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Время создания')
 
+    def create_step(self, user):
+        s = Step.objects.create(
+            user=user,
+            title=self.title,
+            desc=self.desc,
+            type=self.type,
+            element=self.element,
+            target_custom=self.target_custom,
+            target_metrics=self.target_metrics,
+            target_metrics_limit=self.target_metrics_limit
+        )
+        return s
+
     def __unicode__(self):
         return self.title
 

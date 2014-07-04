@@ -497,4 +497,5 @@ li.active a.canvas-element-item-link {
 #recomendation-view-modal-form .tabs li.active a {
     color: #333;
     text-decoration: none;
+    font-weight: bold;
 }

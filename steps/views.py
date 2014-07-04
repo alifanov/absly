@@ -26,8 +26,16 @@ class RecomendationView(View):
     def get(self, request, *args, **kwargs):
         r = request.GET.get('r')
         if r:
-            r = Recomentdation.objects.get(pk=r)
+            r = request.user.recomendations.filter(pk=r)[0]
             data = {
                 'data': render_to_string('recomendation.html', {'r': r})
             }
+            return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def post(self, request, *args, **kwargs):
+        r = request.POST.get('r')
+        if r:
+            r = request.user.recomendations.filter(pk=r)[0]
+            step = r.create_step()
+            data = {'data': render_to_string('step-item.html', {'step': step})}
             return HttpResponse(json.dumps(data), content_type='application/json')
