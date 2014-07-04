@@ -19,6 +19,11 @@ class StepsView(LeftMenuMixin, TemplateView):
         ctx['customer_recomendations'] = self.request.user.recomendations.filter(type='C').order_by('-created')
         ctx['product_recomendations'] = self.request.user.recomendations.filter(type='P').order_by('-created')
         ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type='F').order_by('-created')
+
+        ctx['customer_steps'] = self.request.user.steps.filter(type='C').order_by('deadline')
+        ctx['product_steps'] = self.request.user.steps.filter(type='P').order_by('deadline')
+        ctx['fundrising_steps'] = self.request.user.steps.filter(type='F').order_by('deadline')
+
         ctx['active'] = 'steps'
         return ctx
 

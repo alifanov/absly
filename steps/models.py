@@ -9,7 +9,7 @@ STEP_TYPE = (
     (u'F', u'Fundrising')
 )
 class Step(models.Model):
-    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='steps')
     title = models.CharField(max_length=256, verbose_name=u'Название')
     desc = models.TextField(verbose_name=u'Описание', blank=True)
     deadline = models.DateTimeField(verbose_name=u'DeadLine', blank=True, null=True)
