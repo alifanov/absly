@@ -462,3 +462,7 @@ li.active a.canvas-element-item-link {
     height: 110px;
     resize: none;
 }
+
+.steps-recomendations .steps-recomendations-item a {
+    text-decoration: none;
+}
