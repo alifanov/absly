@@ -12,7 +12,7 @@ class Step(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Пользователь')
     title = models.CharField(max_length=256, verbose_name=u'Название')
     desc = models.TextField(verbose_name=u'Описание', blank=True)
-    deadline = models.DateTimeField(verbose_name=u'DeadLine', blank=True)
+    deadline = models.DateTimeField(verbose_name=u'DeadLine', blank=True, null=True)
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     status = models.BooleanField(default=False, verbose_name=u'Выполнена')
