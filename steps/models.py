@@ -37,6 +37,7 @@ class Recomentdation(models.Model):
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
+    created = models.DateTimeField(auto_now_add=True, verbose_name=u'Время создания')
 
     def __unicode__(self):
         return self.title
