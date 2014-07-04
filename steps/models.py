@@ -21,7 +21,7 @@ class Step(models.Model):
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
 
     def get_deadline_last(self):
-        if self.deadline:
+        if self.deadline is not None:
             return (self.deadline - datetime.now()).days
         return self.deadline - datetime.now()
 
