@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'app',
+    'steps',
     'south',
     'sorl.thumbnail',
     'widget_tweaks',
