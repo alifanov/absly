@@ -27,8 +27,9 @@ class RecomendationView(View):
         r = request.GET.get('r')
         if r:
             r = request.user.recomendations.filter(pk=r)[0]
+            csrf_token = request.COOKIES['csrftoken']
             data = {
-                'data': render_to_string('recomendation.html', {'r': r})
+                'data': render_to_string('recomendation.html', {'r': r, 'csrf_token_value': csrf_token})
             }
             return HttpResponse(json.dumps(data), content_type='application/json')
 
