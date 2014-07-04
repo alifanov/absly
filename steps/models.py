@@ -3,6 +3,8 @@ from django.db import models
 from app.models import CanvasBlockItem
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.utils.timezone import utc
+
 STEP_TYPE = (
     (u'C', u'Customer'),
     (u'P', u'Product'),
@@ -22,7 +24,8 @@ class Step(models.Model):
 
     def get_deadline_last(self):
         if self.deadline is not None:
-            return (self.deadline - datetime.now()).days
+            now = datetime.utcnow().replace(tzinfo=utc)
+            return (self.deadline - now).days
         return u''
 
     def is_clear_deadline(self):
