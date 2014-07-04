@@ -34,7 +34,7 @@ class RecomendationView(View):
             return HttpResponse(json.dumps(data), content_type='application/json')
 
     def post(self, request, *args, **kwargs):
-        r = request.POST.get('r')
+        r = request.GET.get('r')
         if r:
             r = request.user.recomendations.filter(pk=r)[0]
             step = r.create_step()
