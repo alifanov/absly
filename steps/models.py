@@ -20,8 +20,13 @@ class Step(models.Model):
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
 
+    def get_deadline_last(self):
+        if self.deadline:
+            return (self.deadline - datetime.now()).days
+        return u''
+
     def is_clear_deadline(self):
-        if self.deadline and (self.deadline - datetime.now()).days < 7:
+        if self.deadline and self.get_deadline_last() < 7:
             return True
         return False
 

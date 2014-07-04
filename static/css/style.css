@@ -497,6 +497,10 @@ li.active a.canvas-element-item-link {
     box-shadow: 0px 1px #eee;
 }
 
+.steps-recomendations-item span.red {
+    color: red;
+}
+
 #recomendation-view-modal-form .tabs li a {
     color: #3893D3;
     text-decoration: underline;
