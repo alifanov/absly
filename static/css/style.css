@@ -467,8 +467,21 @@ li.active a.canvas-element-item-link {
     text-decoration: none;
 }
 
+.steps-recomendations h2 {
+    font-size: 19px;
+}
+
 .steps-recomendations h2 span {
     padding: 3px;
     border-radius: 5px;
-    font-size: 19px;
+}
+
+.steps-recomendations h2 span.bg-primary {
+    background: #3893D3;
+    color: white;
+}
+
+.steps-recomendations h2 span.bg-steps {
+    background: #f1f1f1;
+    color: #888;
 }
