@@ -2,7 +2,7 @@
 from django.db import models
 from app.models import CanvasBlockItem
 from django.contrib.auth.models import User
-
+from datetime import datetime
 STEP_TYPE = (
     (u'C', u'Customer'),
     (u'P', u'Product'),
@@ -19,6 +19,11 @@ class Step(models.Model):
     target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
+
+    def is_clear_deadline(self):
+        if self.deadline and (self.deadline - datetime.now()).days < 7:
+            return True
+        return False
 
     def __unicode__(self):
         return self.title
