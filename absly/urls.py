@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import *
+from steps.views import *
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
@@ -63,9 +64,10 @@ urlpatterns = patterns('',
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
     url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view(), name='summary-item-update'),
 
+    url(r'^steps/$', StepsView.as_view(), name='steps'),
+
     url(r'^metrics/$', MetricsView.as_view(), name='metrics'),
     url(r'^strategy/$', StrategyView.as_view(), name='strategy'),
-    url(r'^steps/$', StepsView.as_view(), name='steps'),
     url(r'^communicate/$', EventsListView.as_view(), name='events'),
     url(r'^communicate/(?P<pk>\d+)/$', EventsGroupListView.as_view(), name='communicate-group'),
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
