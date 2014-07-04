@@ -488,3 +488,13 @@ li.active a.canvas-element-item-link {
     color: #555;
     border: 1px solid #ccc;
 }
+
+#recomendation-view-modal-form .tabs li a {
+    color: #3893D3;
+    border-bottom: 1px dashed #3893D3;
+}
+
+#recomendation-view-modal-form .tabs li.active a {
+    color: #333;
+    border-bottom: 0;
+}
