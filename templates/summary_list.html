@@ -27,8 +27,8 @@
             <h2>{{ sg.name }}</h2>
             {% for si in sg.items.all|by_user:request.user %}
                 <div class="es-data">
-                    <a href="#{{ si.name }}"></a>
-                    <h2>{{ si.name }}</h2>
+                    <a name="{{ si.name }}"></a>
+                    <h3>{{ si.name }}</h3>
                         {% for block in si.blocks.all %}
                             <div class="es-block">
                                 {{ block.render }}
