@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <h3><span class="icon-group"></span> Customer</h3>
-                {% for cs in customer_steps %}
+                {% for cs in customer_done %}
                     {% with step=cs %}
                         {% include 'step-done-item.html' %}
                     {% endwith %}
@@ -132,7 +132,7 @@
             </div>
             <div class="col-lg-4">
                 <h3><span class="icon-wrench"></span> Product</h3>
-                {% for cs in product_steps %}
+                {% for cs in product_done %}
                     {% with step=cs %}
                         {% include 'step-done-item.html' %}
                     {% endwith %}
@@ -141,7 +141,7 @@
             </div>
             <div class="col-lg-4">
                 <h3><span class="icon-money"></span> Fundrising</h3>
-                {% for cs in fundrising_steps %}
+                {% for cs in fundrising_done %}
                     {% with step=cs %}
                         {% include 'step-done-item.html' %}
                     {% endwith %}
