@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, View
 from app.views import LeftMenuMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 import json
 from django.template.loader import render_to_string
 from steps.models import *
@@ -36,6 +36,16 @@ class StepAddView(View):
             'data': render_to_string('step-form.html', {'step_form': form, 'csrf_token_value': csrf_token})
         }
         return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def post(self, request, *args, **kwargs):
+        form = StepForm(request.POST, initial={
+            'user': request.user
+        })
+        if form.is_valid():
+            form.save()
+            return HttpResponse('OK')
+        else:
+            return HttpResponseForbidden()
 
 class RecomendationView(View):
     def get(self, request, *args, **kwargs):
