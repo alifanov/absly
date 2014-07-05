@@ -36,7 +36,7 @@ $(function(){
 
     $(document).on('click', '.step-delete', function(){
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "/steps/done/" + $(this).val() + "/",
             data: $("#step-edit-modal-form").serializeArray(),
             success: function(){
@@ -48,7 +48,7 @@ $(function(){
     });
     $(document).on('click', '.step-done', function(){
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "/steps/done/"+$(this).val()+"/",
             success: function(){
                 $("#edit-recomendation-modal-id").modal('hide');
