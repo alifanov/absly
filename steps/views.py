@@ -38,11 +38,11 @@ class StepAddView(View):
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def post(self, request, *args, **kwargs):
-        form = StepForm(request.POST, initial={
-            'user': request.user
-        })
+        form = StepForm(request.POST)
         if form.is_valid():
-            form.save()
+            step = form.save()
+            step.user=request.user
+            step.save()
             return HttpResponse('OK')
         else:
             return HttpResponseForbidden(u'{}'.format(form.errors))
