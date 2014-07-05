@@ -124,58 +124,28 @@
         <div class="row">
             <div class="col-lg-4">
                 <h3><span class="icon-group"></span> Customer</h3>
-                <div class="steps-done-item">
-                    <span class="icon-ok pull-right"></span>
-                     <a href="#">
-                        <span class="icon-sort-down"></span>
-                    </a>
-                    Research market
-                    <div class="steps-done-item-desc">
-                        <hr />
-                        <b>13:23 10.04.2014</b> I did it. I'm a God.
-                    </div>
-                </div>
-                <div class="steps-done-item">
-                    <span class="icon-ok pull-right"></span>
-                    <a href="#">
-                    <span class="icon-sort-down"></span>
-                </a>
-                    Review concurents
-                    <div class="steps-done-item-desc">
-                        <hr />
-                        <b>13:23 10.04.2014</b> I did it. I'm a God.
-                    </div>
-                </div>
+                {% for cs in customer_steps %}
+                    {% with step=cs %}
+                        {% include 'step-done-item.html' %}
+                    {% endwith %}
+                {% endfor %}
             </div>
             <div class="col-lg-4">
                 <h3><span class="icon-wrench"></span> Product</h3>
-                <div class="steps-done-item">
-                    <span class="icon-ok pull-right"></span>
-                    <a href="#">
-                    <span class="icon-sort-down"></span>
-                </a>
-                    Research market
-                    <div class="steps-done-item-desc">
-                        <hr />
-                        <b>13:23 10.04.2014</b> I did it. I'm a God.
-                    </div>
-                </div>
+                {% for cs in product_steps %}
+                    {% with step=cs %}
+                        {% include 'step-done-item.html' %}
+                    {% endwith %}
+                {% endfor %}
 
             </div>
             <div class="col-lg-4">
                 <h3><span class="icon-money"></span> Fundrising</h3>
-                <div class="steps-done-item">
-                    <span class="icon-ok pull-right"></span>
-                     <a href="#">
-                    <span class="icon-sort-down"></span>
-                </a>
-                    Research market
-                    <div class="steps-done-item-desc">
-                        <hr />
-                        <b>13:23 10.04.2014</b> I did it. I'm a God.
-                    </div>
-                </div>
-
+                {% for cs in fundrising_steps %}
+                    {% with step=cs %}
+                        {% include 'step-done-item.html' %}
+                    {% endwith %}
+                {% endfor %}
             </div>
         </div>
     </div>

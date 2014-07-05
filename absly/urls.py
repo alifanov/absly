@@ -65,6 +65,8 @@ urlpatterns = patterns('',
     url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view(), name='summary-item-update'),
 
     url(r'^steps/$', StepsView.as_view(), name='steps'),
+    url(r'^steps/del/(?P<pk>\d+)/$', StepDelView.as_view(), name='step-del-view'),
+    url(r'^steps/done/(?P<pk>\d+)/$', StepDoneView.as_view(), name='step-done-view'),
     url(r'^steps/add/$', StepAddView.as_view(), name='step-add-view'),
     url(r'^steps/edit/(?P<pk>\d+)/$', StepEditView.as_view(), name='step-edit-view'),
     url(r'^steps/recomendation/$', RecomendationView.as_view(), name='steps-recomendation'),

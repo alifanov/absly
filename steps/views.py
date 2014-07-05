@@ -21,12 +21,29 @@ class StepsView(LeftMenuMixin, TemplateView):
         ctx['product_recomendations'] = self.request.user.recomendations.filter(type='P').order_by('-created')
         ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type='F').order_by('-created')
 
-        ctx['customer_steps'] = self.request.user.steps.filter(type='C').order_by('deadline')
-        ctx['product_steps'] = self.request.user.steps.filter(type='P').order_by('deadline')
-        ctx['fundrising_steps'] = self.request.user.steps.filter(type='F').order_by('deadline')
+        ctx['customer_steps'] = self.request.user.steps.filter(type='C', status=False).order_by('deadline')
+        ctx['product_steps'] = self.request.user.steps.filter(type='P', status=False).order_by('deadline')
+        ctx['fundrising_steps'] = self.request.user.steps.filter(type='F', status=False).order_by('deadline')
+
+        ctx['customer_done'] = self.request.user.steps.filter(type='C', status=True).order_by('deadline')
+        ctx['product_done'] = self.request.user.steps.filter(type='P', status=True).order_by('deadline')
+        ctx['fundrising_done'] = self.request.user.steps.filter(type='F', status=True).order_by('deadline')
 
         ctx['active'] = 'steps'
         return ctx
+
+class StepDoneView(View):
+    def get(self, request, *args, **kwargs):
+        step = Step.objects.filter(user=request.user, pk=self.kwargs.get('pk'))
+        step.status = True
+        step.save()
+        return HttpResponse('OK')
+
+class StepDelView(View):
+    def get(self, request, *args, **kwargs):
+        step = Step.objects.filter(user=request.user, pk=self.kwargs.get('pk'))
+        step.delete()
+        return HttpResponse('OK')
 
 class StepAddView(View):
     def get(self, request, *args, **kwargs):

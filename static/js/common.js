@@ -34,6 +34,29 @@ $(function(){
         return false;
     });
 
+    $(document).on('click', '.step-delete', function(){
+        $.ajax({
+            type: "POST",
+            url: "/steps/done/" + $(this).val() + "/",
+            data: $("#step-edit-modal-form").serializeArray(),
+            success: function(){
+                $("#edit-recomendation-modal-id").modal('hide');
+                location.reload();
+            }
+        });
+        return false;
+    });
+    $(document).on('click', '.step-done', function(){
+        $.ajax({
+            type: "POST",
+            url: "/steps/done/"+$(this).val()+"/",
+            success: function(){
+                $("#edit-recomendation-modal-id").modal('hide');
+                location.reload();
+            }
+        });
+        return false;
+    });
     $(document).on('click', '.step-save', function(){
         $.ajax({
             type: "POST",
