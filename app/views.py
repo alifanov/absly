@@ -56,7 +56,7 @@ class StatisticsMixin(object):
         return round(ls)
 
     def get_context_data(self, **kwargs):
-        ctx = {}
+        ctx = super(StatisticsMixin, self).get_context_data(**kwargs)
         ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
@@ -830,7 +830,7 @@ class CanvasView(LeftMenuMixin, TemplateView):
         ctx['kp'] = CanvasBlock.objects.get(slug='key-partners')
         return ctx
 
-class ExecutiveSummaryView(ListView):
+class ExecutiveSummaryView(LeftMenuMixin, ListView):
     template_name = 'summary_list.html'
     model = SummaryItem
     context_object_name = 'summary_items'
