@@ -25,8 +25,8 @@ $(function(){
             url: "/steps/add/",
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
-                $("#datetimepicker1").datetimepicker();
                 $("#edit-recomendation-modal-id").modal('show');
+                $("#datetimepicker1").datetimepicker();
             }
         });
         return false;
