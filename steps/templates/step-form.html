@@ -17,7 +17,9 @@
       </div>
       <div class="form-group">
           <label>3. Add deadline for step</label>
-          {{ step_form.deadline|add_class:"form-control" }}
+          <div id="datetimepicker1" class="date">
+              {{ step_form.deadline|add_class:"form-control"|attr:"date-format:dd/MM/yyyy hh:mm:ss" }}
+          </div>
       </div>
       <div class="form-group">
           <label>4. Choose BM Canvas element</label>
