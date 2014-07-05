@@ -34,6 +34,19 @@ $(function(){
         return false;
     });
 
+    $(document).on('click', '.step-save', function(){
+        $.ajax({
+            type: "POST",
+            url: $("#step-edit-modal-form").attr('action'),
+            data: $("#step-edit-modal-form").serializeArray(),
+            success: function(){
+                $("#edit-recomendation-modal-id").modal('hide');
+                location.reload();
+            }
+        });
+        return false;
+    });
+
     $(".step-edit-link").click(function(){
         $.ajax({
             type: "GET",
