@@ -169,6 +169,15 @@ class CanvasBlockItemParameterValue(models.Model):
         verbose_name = u'Значение параметра'
         verbose_name_plural = u'Значения параметров'
 
+class SummaryGroup(models.Model):
+    name = models.CharField(max_length=256, verbose_name=u'Название')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = u'Группы блоков Executive Summary'
+        verbose_name = u'Группа блоков Executive Summary'
 
 class SummaryItem(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='summary_items')
