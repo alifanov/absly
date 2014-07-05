@@ -53,7 +53,7 @@ class StepEditView(View):
         form = StepForm(instance=step)
         csrf_token = request.COOKIES['csrftoken']
         data = {
-            'data': render_to_string('step-edit-form.html', {'step_form': form, 'csrf_token_value': csrf_token})
+            'data': render_to_string('step-edit-form.html', {'step_form': form, 'csrf_token_value': csrf_token, 'step': step})
         }
         return HttpResponse(json.dumps(data), content_type='application/json')
 
