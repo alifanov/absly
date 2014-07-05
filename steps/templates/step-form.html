@@ -19,6 +19,10 @@
           <label>3. Add deadline for step</label>
           <div id="datetimepicker1" class="date">
               {{ step_form.deadline|add_class:"form-control"|attr:"date-format:dd/MM/yyyy hh:mm:ss" }}
+              <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                  </i>
+                </span>
           </div>
       </div>
       <div class="form-group">
