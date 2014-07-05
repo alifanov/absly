@@ -502,11 +502,13 @@ li.active a.canvas-element-item-link {
     font-weight: bold;
 }
 
+#step-edit-modal-form .tabs li a,
 #recomendation-view-modal-form .tabs li a {
     color: #3893D3;
     text-decoration: underline;
 }
 
+#step-edit-modal-form .tabs li.active a,
 #recomendation-view-modal-form .tabs li.active a {
     color: #333;
     text-decoration: none;

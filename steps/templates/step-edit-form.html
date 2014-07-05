@@ -2,7 +2,7 @@
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title">{{ step.title }}</h4>
+    <h4 class="modal-title">{{ step_form.instance.title }}</h4>
 </div>
 <form method="post" id="step-edit-modal-form" action="/steps/edit/{{ step.pk }}/">
     <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
