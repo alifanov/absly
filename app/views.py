@@ -830,7 +830,7 @@ class CanvasView(LeftMenuMixin, TemplateView):
         ctx['kp'] = CanvasBlock.objects.get(slug='key-partners')
         return ctx
 
-class ExecutiveSummaryView(LeftMenuMixin, ListView):
+class ExecutiveSummaryView(ListView):
     template_name = 'summary_list.html'
     model = SummaryItem
     context_object_name = 'summary_items'
