@@ -192,6 +192,7 @@ class SummaryItem(models.Model):
     add_image = models.BooleanField(verbose_name=u'Can add image field', default=False)
     add_link = models.BooleanField(verbose_name=u'Can add link field', default=False)
     add_linkedin = models.BooleanField(verbose_name=u'Can add linkedIn field', default=False)
+    add_angellist = models.BooleanField(verbose_name=u'Can add AngelList field', default=False)
 
     def is_empty_text(self):
         return True and self.text.strip()

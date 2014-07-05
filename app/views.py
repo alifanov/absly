@@ -1012,6 +1012,10 @@ class SummaryLinkedInBlockView(SummaryBlockView):
     model = SummaryLinkedInBlock
     form_class = SummaryLinkedInBlockForm
 
+class SummaryAngelListBlockView(SummaryBlockView):
+    model = SummaryAngelListBlock
+    form_class = SummaryAngelListBlockForm
+
 class SummaryUpdateBlockView(UpdateView):
     template_name = 'summary/forms/edit.html'
     model = SummaryBlock
