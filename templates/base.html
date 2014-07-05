@@ -274,6 +274,11 @@
                 <i class="icon-sitemap"></i>
                 <span>Summary</span>
             </a>
+            <ul class="submenu {% if active == 'summary' %}active{% endif %}">
+                {% for sg in summary_groups %}
+                    <li><a href="{% url 'summary' %}#{{ sg.name }}">{{ sg.name }}</a></li>
+                {% endfor %}
+            </ul>
         </li>
     </ul>
 </div>
