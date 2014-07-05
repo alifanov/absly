@@ -180,7 +180,7 @@ class SummaryGroup(models.Model):
         verbose_name = u'Группа блоков Executive Summary'
 
 class SummaryItem(models.Model):
-    group = models.ForeignKey(SummaryGroup, verbose_name=u'Группа блоков')
+    group = models.ForeignKey(SummaryGroup, verbose_name=u'Группа блоков', related_name='items')
 
     user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='summary_items')
     parent = models.ForeignKey('self', verbose_name=u'Parent Item', null=True, blank=True, related_name='childs')

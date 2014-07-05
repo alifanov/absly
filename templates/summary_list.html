@@ -1,83 +1,104 @@
 {% extends 'base.html' %}
 
+{% load canvas_filters %}
+
 {% block content %}
     <div class="container summary">
         <h1>Executive Summary
             <a target="_blank" href="{{ pdf_link }}" class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</a>
-            <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>
+{#            <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>#}
         </h1>
-        {% for si in summary_items %}
-        <div class="es-data">
-            <h2>{{ si.name }}</h2>
-                {% for block in si.blocks.all %}
-                    <div class="es-block">
-                        {{ block.render }}
-                        <div class="es-edit-block">
-                            <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
-                        </div>
-                    </div>
-                {% endfor %}
-                <div class="es-addon-btns">
-                    {% if sic.add_linkedin %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
-                    {% endif %}
-                    {% if si.add_text %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
-                    {% endif %}
-                    {% if si.add_image %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
-                    {% endif %}
-                    {% if si.add_link %}
-                        <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
-                    {% endif %}
+        <div class="row">
+            {% for sg in summary_group %}
+                <div class="col-xs-2">
+                    <a href="#{{ sg.name }}">{{ sg.name }}</a>
+                    <ul>
+                        {% for si in sg.item.all|by_user:request.user %}
+                            <li>
+                                <a href="#{{ si.name }}">{{ si.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-
-                {% for sic in si.childs.all %}
-                    <h4>{{ sic.name }}</h4>
-                    {% for block in sic.blocks.all %}
-                        <div class="es-block">
-                            {{ block.render|safe }}
-                            <div class="es-edit-block">
-                                <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                        <div class="es-addon-btns">
-                            {% if sic.add_linkedin %}
-                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
-                            {% endif %}
-                            {% if sic.add_text %}
-                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
-                            {% endif %}
-                            {% if sic.add_image %}
-                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
-                            {% endif %}
-                            {% if sic.add_link %}
-                                <button value="{{ sic.pk }}" class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
-                            {% endif %}
-                        </div>
-                {% endfor %}
-
-            {% for sge in sg.items.all %}
-                <div class="es-item">
-                    <h4 class="{% if sge.is_empty_text %}text-success{% else %}text-danger{% endif %}">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>
-                    <div class="es-item-text {% if sge.is_empty_text %}done{% else %}empty{% endif %}">
-                        <form method="POST" action="{% url 'summary-item-update' pk=sge.pk %}">
-                            {% csrf_token %}
-                            <textarea name="text" id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
-                            <div class="es-item-text-view">{{ sge.text }}</div>
-                        </form>
-                    </div>
-                    <div class="es-item-btns">
-                        <div class="view-settings">Who can view: <a href="#">{% if sge.public %}Everyone{% else %}Only me{% endif %}</a></div>
-                        <button class="btn btn-primary" style="display: none;"> Save</button>
-                    </div>
-                </div>
-                {% if not forloop.last %}
-                    <hr />
-                {% endif %}
             {% endfor %}
         </div>
+        {% for sg in summary_groups %}
+            <a name="{{ sg.name }}"></a>
+            <h2>{{ sg.name }}</h2>
+            {% for si in sg.items.all|by_user:request.user %}
+                <div class="es-data">
+                    <a href="#{{ si.name }}"></a>
+                    <h2>{{ si.name }}</h2>
+                        {% for block in si.blocks.all %}
+                            <div class="es-block">
+                                {{ block.render }}
+                                <div class="es-edit-block">
+                                    <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="es-addon-btns">
+                            {% if sic.add_linkedin %}
+                                <button value="{{ si.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
+                            {% endif %}
+                            {% if si.add_text %}
+                                <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                            {% endif %}
+                            {% if si.add_image %}
+                                <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
+                            {% endif %}
+                            {% if si.add_link %}
+                                <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
+                            {% endif %}
+                        </div>
+
+                        {% for sic in si.childs.all %}
+                            <h4>{{ sic.name }}</h4>
+                            {% for block in sic.blocks.all %}
+                                <div class="es-block">
+                                    {{ block.render|safe }}
+                                    <div class="es-edit-block">
+                                        <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                                <div class="es-addon-btns">
+                                    {% if sic.add_linkedin %}
+                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
+                                    {% endif %}
+                                    {% if sic.add_text %}
+                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
+                                    {% endif %}
+                                    {% if sic.add_image %}
+                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
+                                    {% endif %}
+                                    {% if sic.add_link %}
+                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
+                                    {% endif %}
+                                </div>
+                        {% endfor %}
+
+                    {% for sge in sg.items.all %}
+                        <div class="es-item">
+                            <h4 class="{% if sge.is_empty_text %}text-success{% else %}text-danger{% endif %}">{{ sge.name }} <span class="{% if sge.public %}icon-eye-open{% else %}icon-eye-closed{% endif %}"></span></h4>
+                            <div class="es-item-text {% if sge.is_empty_text %}done{% else %}empty{% endif %}">
+                                <form method="POST" action="{% url 'summary-item-update' pk=sge.pk %}">
+                                    {% csrf_token %}
+                                    <textarea name="text" id="es0-text-area" class="es-item-text-area" style="display: none;"></textarea>
+                                    <div class="es-item-text-view">{{ sge.text }}</div>
+                                </form>
+                            </div>
+                            <div class="es-item-btns">
+                                <div class="view-settings">Who can view: <a href="#">{% if sge.public %}Everyone{% else %}Only me{% endif %}</a></div>
+                                <button class="btn btn-primary" style="display: none;"> Save</button>
+                            </div>
+                        </div>
+                        {% if not forloop.last %}
+                            <hr />
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
         {% endfor %}
     </div>
 
