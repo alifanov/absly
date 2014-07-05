@@ -269,7 +269,8 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     desc = models.TextField(verbose_name='Description')
 
     def render(self):
-        return u'<div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div>'.format(self.avatar.url, self.name, self.desc)
+        return u'<a href="{}"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
+            .format(self.link, self.avatar.url, self.name, self.desc)
 
     def render_to_pdf(self, p, x, y):
         p.drawImage(self.avatar.path, x, y)
