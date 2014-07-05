@@ -6,6 +6,7 @@ from django.http import HttpResponse
 import json
 from django.template.loader import render_to_string
 from steps.models import *
+from steps.forms import *
 
 class StepsView(LeftMenuMixin, TemplateView):
     template_name = 'steps.html'
@@ -26,6 +27,15 @@ class StepsView(LeftMenuMixin, TemplateView):
 
         ctx['active'] = 'steps'
         return ctx
+
+class StepAddView(View):
+    def get(self, request, *args, **kwargs):
+        form = StepForm()
+        csrf_token = request.COOKIES['csrftoken']
+        data = {
+            'data': render_to_string('step-form.html', {'step_form': form, 'csrf_token_value': csrf_token})
+        }
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
 class RecomendationView(View):
     def get(self, request, *args, **kwargs):

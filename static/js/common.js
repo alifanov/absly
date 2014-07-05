@@ -19,6 +19,18 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $("#add-new-step-link").click(function(){
+        $.ajax({
+            type: "GET",
+            url: "/steps/add/",
+            success: function(resp){
+                $("#edit-recomendation-modal-id .modal-content").html(resp.data);
+                $("#edit-recomendation-modal-id").modal('show');
+            }
+        });
+        return false;
+    });
+
     $(document).on('submit', '#recomendation-view-modal-form', function(){
         $.ajax({
             url: $(this).attr('action'),
