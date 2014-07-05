@@ -34,7 +34,7 @@ $(function(){
         return false;
     });
 
-    $("#step-edit-link").click(function(){
+    $(".step-edit-link").click(function(){
         $.ajax({
             type: "GET",
             url: "/steps/edit/"+$(this).attr('rel')+'/',
