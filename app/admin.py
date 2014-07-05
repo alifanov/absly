@@ -20,6 +20,9 @@ class CanvasBlockItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
     list_display = ['name', 'block', 'user']
 
+class SummaryItemAdmin(admin.ModelAdmin):
+    list_display = ['name', 'parent', 'group']
+
 admin.site.register(GAFunnelConfig)
 admin.site.register(CredentialsModel)
 admin.site.register(SummaryTextBlock)
@@ -30,7 +33,7 @@ admin.site.register(News)
 admin.site.register(NewsGroup)
 admin.site.register(GAProfile)
 admin.site.register(SummaryGroup)
-admin.site.register(SummaryItem)
+admin.site.register(SummaryItem, SummaryItemAdmin)
 admin.site.register(CanvasBlock, CanvasBlockAdmin)
 admin.site.register(CanvasBlockItem, CanvasBlockItemAdmin)
 admin.site.register(CanvasBlockItemParameter, CBPAdminModel)
