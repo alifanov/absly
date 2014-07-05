@@ -25,7 +25,9 @@ $(function(){
             url: "/steps/add/",
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
-                $("#id_deadline").datepicker();
+                $("#id_deadline").datepicker({
+                    format: 'yyyy-mm-dd'
+                });
                 $("#edit-recomendation-modal-id").modal('show');
                 }
         });
