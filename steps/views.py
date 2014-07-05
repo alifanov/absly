@@ -47,6 +47,25 @@ class StepAddView(View):
         else:
             return HttpResponseForbidden(u'{}'.format(form.errors))
 
+class StepEditView(View):
+    def get(self, request, *args, **kwargs):
+        step = Step.objects.get(pk=self.kwargs.get('pk'))
+        form = StepForm(instance=step)
+        csrf_token = request.COOKIES['csrftoken']
+        data = {
+            'data': render_to_string('step-edit-form.html', {'step_form': form, 'csrf_token_value': csrf_token})
+        }
+        return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def post(self, request, *args, **kwargs):
+        step = Step.objects.get(pk=self.kwargs.get('pk'))
+        form = StepForm(request.POST, instance=step)
+        if form.is_valid():
+            step = form.save()
+            return HttpResponse('OK')
+        else:
+            return HttpResponseForbidden(u'{}'.format(form.errors))
+
 class RecomendationView(View):
     def get(self, request, *args, **kwargs):
         r = request.GET.get('r')

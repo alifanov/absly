@@ -66,6 +66,7 @@ urlpatterns = patterns('',
 
     url(r'^steps/$', StepsView.as_view(), name='steps'),
     url(r'^steps/add/$', StepAddView.as_view(), name='step-add-view'),
+    url(r'^steps/(?P<pk>\d+)/$', StepEditView.as_view(), name='step-edit-view'),
     url(r'^steps/recomendation/$', RecomendationView.as_view(), name='steps-recomendation'),
 
     url(r'^metrics/$', MetricsView.as_view(), name='metrics'),

@@ -34,6 +34,21 @@ $(function(){
         return false;
     });
 
+    $("#step-edit-link").click(function(){
+        $.ajax({
+            type: "GET",
+            url: "/steps/edit/"+$(this).attr('rel')+'/',
+            success: function(resp){
+                $("#edit-recomendation-modal-id .modal-content").html(resp.data);
+                $("#id_deadline").datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+                $("#edit-recomendation-modal-id").modal('show');
+                }
+        });
+        return false;
+    });
+
     $(document).on('submit', '#step-view-modal-form', function(){
         $.ajax({
             url: $(this).attr('action'),
