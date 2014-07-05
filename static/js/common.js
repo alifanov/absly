@@ -26,8 +26,7 @@ $(function(){
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#edit-recomendation-modal-id").modal('show');
-                $("#datetimepicker1").datetimepicker();
-            }
+                }
         });
         return false;
     });

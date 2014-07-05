@@ -161,7 +161,8 @@ INSTALLED_APPS = (
     'djrill',
     'rest_framework',
     'polymorphic',
-    'django.contrib.contenttypes'
+    'django.contrib.contenttypes',
+    'bootstrap3_datetime'
 )
 DEFAULT_FROM_EMAIL = 'info@absly.progernachas.ru'
 ACCOUNT_ACTIVATION_DAYS = 3
