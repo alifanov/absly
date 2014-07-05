@@ -37,7 +37,7 @@ $(function(){
     $(document).on('click', '.step-delete', function(){
         $.ajax({
             type: "GET",
-            url: "/steps/done/" + $(this).val() + "/",
+            url: "/steps/del/" + $(this).val() + "/",
             data: $("#step-edit-modal-form").serializeArray(),
             success: function(){
                 $("#edit-recomendation-modal-id").modal('hide');
