@@ -833,8 +833,8 @@ class CanvasView(LeftMenuMixin, TemplateView):
 
 class ExecutiveSummaryView(LeftMenuMixin, ListView):
     template_name = 'summary_list.html'
-    model = SummaryItem
-    context_object_name = 'summary_items'
+    model = SummaryGroup
+    context_object_name = 'summary_groups'
 
     def get_queryset(self):
         return self.request.user.summary_items.filter(parent__isnull=True).all()
