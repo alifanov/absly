@@ -34,14 +34,14 @@ class StepsView(LeftMenuMixin, TemplateView):
 
 class StepDoneView(View):
     def get(self, request, *args, **kwargs):
-        step = Step.objects.filter(user=request.user, pk=self.kwargs.get('pk'))
+        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'))
         step.status = True
         step.save()
         return HttpResponse('OK')
 
 class StepDelView(View):
     def get(self, request, *args, **kwargs):
-        step = Step.objects.filter(user=request.user, pk=self.kwargs.get('pk'))
+        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'))
         step.delete()
         return HttpResponse('OK')
 
