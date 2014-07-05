@@ -31,6 +31,18 @@ $(function(){
         return false;
     });
 
+    $(document).on('submit', '#step-view-modal-form', function(){
+        $.ajax({
+            url: $(this).attr('action'),
+            type: "POST",
+            data: $(this).serializeArray(),
+            success:function(resp){
+                $("#edit-recomendation-modal-id").modal('hide');
+            }
+        });
+        return false;
+    });
+
     $(document).on('submit', '#recomendation-view-modal-form', function(){
         $.ajax({
             url: $(this).attr('action'),
@@ -38,6 +50,7 @@ $(function(){
             data: $(this).serializeArray(),
             success:function(resp){
                 $("#edit-recomendation-modal-id").modal('hide');
+                location.reload();
             }
         });
         return false;
