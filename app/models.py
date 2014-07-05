@@ -6,6 +6,7 @@ from urlparse import urlparse
 import requests
 import tempfile
 from django.contrib.sites.models import Site
+from django.template.loader import render_to_string
 
 from bs4 import BeautifulSoup
 import requests
@@ -302,6 +303,50 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     class Meta:
         verbose_name = 'LinkedIn link'
         verbose_name_plural = 'LinkedIn links'
+
+class SummaryAngelListBlock(SummaryLinkBlock):
+    photo = models.ImageField(upload_to='upload/', verbose_name=u'Photo', blank=True)
+    name = models.CharField(max_length=256, verbose_name=u'Name')
+    desc = models.TextField(verbose_name='Description')
+    startup_id = models.CharField(max_length=256, verbose_name=u'Startup ID for API access')
+
+    def render(self):
+        return render_to_string('summary/angel-list-widget.html', {
+            'block': self
+        })
+
+    def render_to_pdf(self, p, x, y):
+        p.drawImage(self.avatar.path, x, y)
+
+    def save_image_from_url(self, url):
+        r = requests.get(url)
+
+        img_temp = NamedTemporaryFile(delete=True)
+        img_temp.write(r.content)
+        img_temp.flush()
+
+        av_name = u'photo_al_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
+        self.photo.save(av_name, File(img_temp), save=False)
+
+
+    def save(self, *args, **kwargs):
+        if not u'http' in self.link: self.link = u'http://'+self.link
+        html = requests.get(self.link).text
+        soup = BeautifulSoup(html)
+        self.startup_id = soup.find('div', attrs={'class': 'startups-show-sections'})['data-id']
+        startup_data = requests.get('https://api.angel.co/1/startups/{}'.format(self.startup_id)).json()
+        self.name = startup_data['name']
+        self.desc = startup_data['product_desc']
+        avatar_link = startup_data['logo_url']
+        self.save_image_from_url(avatar_link)
+        super(SummaryAngelListBlock, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return 'AngelList block for {}'.format(self.name)
+
+    class Meta:
+        verbose_name = 'AngelList block'
+        verbose_name_plural = 'AngelList blocks'
 
 class NewsGroup(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название группы')
