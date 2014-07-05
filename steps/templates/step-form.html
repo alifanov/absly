@@ -4,7 +4,6 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title">Add new step</h4>
 </div>
-{{ form.media }}
 <form method="post" id="step-view-modal-form" action="/steps/add/">
     <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     <div class="modal-body">
