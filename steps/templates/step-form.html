@@ -18,6 +18,13 @@
       <div class="form-group">
           <label>3. Add deadline for step</label>
           {{ step_form.deadline|add_class:"form-control" }}
+          <div id="datetimepicker1" class="input-append date">
+          {{ step_form.deadline|add_class:"form-control"|attr:"date-format:dd/MM/yyyy hh:mm:ss" }}
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+      </div>
       </div>
       <div class="form-group">
           <label>4. Choose BM Canvas element</label>
