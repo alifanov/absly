@@ -45,7 +45,7 @@ class StepAddView(View):
             form.save()
             return HttpResponse('OK')
         else:
-            return HttpResponseForbidden()
+            return HttpResponseForbidden(u'{}'.format(form.errors))
 
 class RecomendationView(View):
     def get(self, request, *args, **kwargs):
