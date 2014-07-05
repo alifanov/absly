@@ -6,6 +6,7 @@
             <a target="_blank" href="{{ pdf_link }}" class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</a>
             <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>
         </h1>
+        {{ summary_items }}
         {% for si in summary_items %}
         <div class="es-data">
             <h2>{{ si.name }}</h2>
