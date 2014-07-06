@@ -19,6 +19,8 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $(".knob").knob();
+
     $(window).scroll(function(){
 		if ($(this).scrollTop() > 100) {
 			$('.scrollToTop').fadeIn();
