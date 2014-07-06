@@ -1062,7 +1062,7 @@ def render_to_pdf(template_src, context_dict):
         return result.getvalue()
     return False
 
-class SummaryPDFView(PDFTemplateView):
+class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
         user = User.objects.get(pk=self.kwargs.get('pk'))
         m = hashlib.md5()
