@@ -1070,7 +1070,8 @@ class SummaryPDFView(View):
         if m.hexdigest() == self.kwargs.get('md5'):
             pdf = render_to_pdf('summary/pdf.html', {
                 'STATIC_URL': settings.STATIC_URL,
-                'items': request.user.summary_items.order_by('pk')
+                'items': request.user.summary_items.order_by('pk'),
+                'FONTS_DIR': "/usr/share/fonts/truetype/msttcorefonts/"
             })
             response = HttpResponse(str(pdf), content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
