@@ -379,7 +379,7 @@ class SummaryCrunchBaseBlock(SummaryLinkBlock):
         html = requests.get(self.link).text
         soup = BeautifulSoup(html)
         self.name = soup.find('h1').text
-        avatar_link = soup.find('div', attrs={'class': 'entity-info-card-primary-image'})['src']
+        avatar_link = soup.find('img', attrs={'class': 'entity-info-card-primary-image'})['src']
         self.save_image_from_url(avatar_link)
         self.desc = soup.find('div', attrs={'id': 'description'})
         super(SummaryCrunchBaseBlock, self).save(*args, **kwargs)
