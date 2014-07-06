@@ -1043,54 +1043,40 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkBlockForm
         return NotImplementedError(block.__class__.__name__)
 
-# from reportlab.pdfbase import pdfmetrics
-# from reportlab.pdfbase import ttfonts
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase import ttfonts
 from StringIO import StringIO
-# import ho.pisa as pisa
+import ho.pisa as pisa
 from django.template.loader import get_template
 from django.template import Context
 from django.conf import settings
 
-# def render_to_pdf(template_src, context_dict):
-#     pisa.showLogging()
-#     template = get_template(template_src)
-#     context = Context(context_dict)
-#     html = template.render(context)
-#     result = StringIO()
-#     pdf = pisa.CreatePDF(StringIO(html.encode('utf-8')), result, show_error_as_pdf=True, encoding='UTF-8')
-#     if not pdf.err:
-#         return result.getvalue()
-#     return False
-from wkhtmltopdf.views import PDFTemplateView
-class SummaryPDFView(PDFTemplateView):
-    template_name = 'summary/pdf.html'
-    header_template = None
-    footer_template = None
-    filename = 'es.pdf'
+def render_to_pdf(template_src, context_dict):
+    pisa.showLogging()
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html = template.render(context)
+    result = StringIO()
+    pdf = pisa.CreatePDF(StringIO(html.encode('utf-8')), result, show_error_as_pdf=True, encoding='UTF-8')
+    if not pdf.err:
+        return result.getvalue()
+    return False
 
-    def get_context_data(self, **kwargs):
-        ctx = super(SummaryPDFView, self).get_context_data(**kwargs)
+class SummaryPDFView(PDFTemplateView):
+    def get(self, request, *args, **kwargs):
         user = User.objects.get(pk=self.kwargs.get('pk'))
         m = hashlib.md5()
         m.update(user.email)
         if m.hexdigest() == self.kwargs.get('md5'):
-            ctx['items'] = self.request.user.summary_items.order_by('pk')
-        return ctx
-
-    # def get(self, request, *args, **kwargs):
-    #     user = User.objects.get(pk=self.kwargs.get('pk'))
-    #     m = hashlib.md5()
-    #     m.update(user.email)
-    #     if m.hexdigest() == self.kwargs.get('md5'):
-    #         pdf = render_to_pdf('summary/pdf.html', {
-    #             'STATIC_URL': settings.STATIC_URL,
-    #             'items': request.user.summary_items.order_by('pk')
-    #         })
-    #         response = HttpResponse(str(pdf), content_type='application/pdf')
-    #         response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
-    #         return response
-    #     else:
-    #         raise Http404
+            pdf = render_to_pdf('summary/pdf.html', {
+                'STATIC_URL': settings.STATIC_URL,
+                'items': request.user.summary_items.order_by('pk')
+            })
+            response = HttpResponse(str(pdf), content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
+            return response
+        else:
+            raise Http404
 
 class SummaryPubView(ListView):
     template_name = 'summary/public.html'
