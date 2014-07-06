@@ -3,7 +3,7 @@
         <div class="al-title">CrunchBase Link</div>
     </a>
     <div class="al-body">
-        <img src="{{ block.photo.url }}" class="al-photo" />
+        <img src="{% if not is_pdf %}{{ block.photo.url }}{% else %}{{ block.photo.path }}{% endif %}" class="al-photo" />
         <div class="al-desc">
             <div class="al-prj-title">{{ block.name }}</div>
             <div class="al-prj-desc">{{ block.desc }}</div>

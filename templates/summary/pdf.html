@@ -21,7 +21,7 @@
                 <h2>{{ item.name }}</h2>
                 {% for block in item.blocks.all %}
                     <div>
-                        {{ block.render|safe }}
+                        {{ block.render_to_pdf|safe }}
                     </div>
                 {% endfor %}
             </div>

@@ -222,7 +222,7 @@ class SummaryTextBlock(SummaryBlock):
         return self.text
 
     def render_to_pdf(self, p, x, y):
-        p.drawString(x, y, self.text)
+        return self.render()
 
     def __unicode__(self):
         return u'TextBlock for {}'.format(self.item.name)
@@ -237,8 +237,8 @@ class SummaryImageBlock(SummaryBlock):
     def render(self):
         return u'<img src="{}" class="es-img" />'.format(self.image.url)
 
-    def render_to_pdf(self, p, x, y):
-        p.drawImage(self.image.path, x, y, height=100)
+    def render_to_pdf(self):
+        return u'<img src="{}" class="es-img" />'.format(self.image.path)
 
     def __unicode__(self):
         return u'Image #{} for {}'.format(self.pk, self.item.name)
@@ -254,8 +254,8 @@ class SummaryLinkBlock(SummaryBlock):
     def render(self):
         return u'<a href="{}">{}</a>'.format(self.link, self.title)
 
-    def render_to_pdf(self, p, x, y):
-        p.drawString(x, y, self.link)
+    def render_to_pdf(self):
+        return self.render()
 
     def __unicode__(self):
         return u'Link for {}'.format(self.item.name)
@@ -275,8 +275,9 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
         return u'<a href="{}"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
             .format(self.link, self.avatar.url, self.name, self.desc)
 
-    def render_to_pdf(self, p, x, y):
-        p.drawImage(self.avatar.path, x, y)
+    def render_to_pdf(self):
+        return u'<a href="{}"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
+            .format(self.link, self.avatar.path, self.name, self.desc)
 
     def save_image_from_url(self, url):
         r = requests.get(url)
@@ -317,8 +318,11 @@ class SummaryAngelListBlock(SummaryLinkBlock):
             'block': self
         })
 
-    def render_to_pdf(self, p, x, y):
-        p.drawImage(self.avatar.path, x, y)
+    def render_to_pdf(self):
+        return render_to_string('summary/angel-list-widget.html', {
+            'block': self,
+            'is_pdf': True
+        })
 
     def save_image_from_url(self, url):
         r = requests.get(url)
@@ -360,8 +364,11 @@ class SummaryCrunchBaseBlock(SummaryLinkBlock):
             'block': self
         })
 
-    def render_to_pdf(self, p, x, y):
-        p.drawImage(self.avatar.path, x, y)
+    def render_to_pdf(self):
+        return render_to_string('summary/cb-widget.html', {
+            'block': self,
+            'is_pdf': True
+        })
 
     def save_image_from_url(self, url):
         r = requests.get(url)
