@@ -381,7 +381,7 @@ class SummaryCrunchBaseBlock(SummaryLinkBlock):
         self.name = soup.find('h1').text
         avatar_link = soup.find('img', attrs={'class': 'entity-info-card-primary-image'})['src']
         self.save_image_from_url(avatar_link)
-        self.desc = soup.find('div', attrs={'id': 'description'})
+        self.desc = soup.find('div', attrs={'id': 'description'}).text
         super(SummaryCrunchBaseBlock, self).save(*args, **kwargs)
 
     def __unicode__(self):
