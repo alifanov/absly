@@ -63,7 +63,7 @@ class StatisticsMixin(object):
         if ga_funnel_config.user_sum and ga_funnel_config.revenue_value:
             ctx['money_sum'] = ga_funnel_config.revenue_value*ga_funnel_config.user_sum
             ctx['money_time'] = ga_funnel_config.date_range
-        ctx['certainly_level'] = round(self.calc_certainly_level(), 0)
+        ctx['certainly_level'] = int(self.calc_certainly_level())
         return ctx
 
 class UpdateTopStatisticsView(StatisticsMixin, View):
