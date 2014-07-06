@@ -193,6 +193,7 @@ class SummaryItem(models.Model):
     add_link = models.BooleanField(verbose_name=u'Can add link field', default=False)
     add_linkedin = models.BooleanField(verbose_name=u'Can add linkedIn field', default=False)
     add_angellist = models.BooleanField(verbose_name=u'Can add AngelList field', default=False)
+    add_cb = models.BooleanField(verbose_name=u'Can add CrunchBase field', default=False)
 
     def is_empty_text(self):
         return True and self.text.strip()
@@ -348,6 +349,47 @@ class SummaryAngelListBlock(SummaryLinkBlock):
     class Meta:
         verbose_name = 'AngelList block'
         verbose_name_plural = 'AngelList blocks'
+
+class SummaryCrunchBaseBlock(SummaryLinkBlock):
+    photo = models.ImageField(upload_to='upload/', verbose_name=u'Photo', blank=True)
+    name = models.CharField(max_length=256, verbose_name=u'Name')
+    desc = models.TextField(verbose_name='Description')
+
+    def render(self):
+        return render_to_string('summary/cb-widget.html', {
+            'block': self
+        })
+
+    def render_to_pdf(self, p, x, y):
+        p.drawImage(self.avatar.path, x, y)
+
+    def save_image_from_url(self, url):
+        r = requests.get(url)
+
+        img_temp = NamedTemporaryFile(delete=True)
+        img_temp.write(r.content)
+        img_temp.flush()
+
+        av_name = u'photo_cb_{}'.format(time.time()).replace(u'.', u'') + u'.jpg'
+        self.photo.save(av_name, File(img_temp), save=False)
+
+
+    def save(self, *args, **kwargs):
+        if not u'http' in self.link: self.link = u'http://'+self.link
+        html = requests.get(self.link).text
+        soup = BeautifulSoup(html)
+        self.name = soup.find('h1').text
+        avatar_link = soup.find('div', attrs={'class': 'entity-info-card-primary-image'})['src']
+        self.save_image_from_url(avatar_link)
+        self.desc = soup.find('div', attrs={'id': 'description'})
+        super(SummaryCrunchBaseBlock, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return 'CrunchBase block for {}'.format(self.name)
+
+    class Meta:
+        verbose_name = 'CrunchBase block'
+        verbose_name_plural = 'CrunchBase blocks'
 
 class NewsGroup(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название группы')

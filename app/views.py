@@ -1016,6 +1016,10 @@ class SummaryAngelListBlockView(SummaryBlockView):
     model = SummaryAngelListBlock
     form_class = SummaryAngelListBlockForm
 
+class SummaryCrunchBaseBlockView(SummaryBlockView):
+    model = SummaryCrunchBaseBlock
+    form_class = SummaryCrunchBaseBlockForm
+
 class SummaryUpdateBlockView(UpdateView):
     template_name = 'summary/forms/edit.html'
     model = SummaryBlock

@@ -98,3 +98,15 @@ class SummaryAngelListBlockForm(ModelForm):
     class Meta:
         model = SummaryAngelListBlock
         exclude=['title', 'photo', 'name', 'desc', 'user', 'startup_id']
+
+class SummaryCrunchBaseBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryCrunchBaseBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+        self.fields['link'].widget = TextInput(attrs={
+            'placeholder': 'Insert link'
+        })
+
+    class Meta:
+        model = SummaryCrunchBaseBlock
+        exclude=['title', 'photo', 'name', 'desc', 'user']

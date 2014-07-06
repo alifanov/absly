@@ -340,6 +340,19 @@ $(function(){
     });
 
 
+    $(".summary-add-cb").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            data: {
+                'id': _this.val()
+            },
+            url: '/summary/cb/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+            }
+        })
+    });
     $(".summary-add-angellist").click(function(){
         var _this = $(this);
         $.ajax({
