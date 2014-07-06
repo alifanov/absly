@@ -1063,7 +1063,7 @@ from django.conf import settings
 #     return False
 from wkhtmltopdf.views import PDFTemplateView
 class SummaryPDFView(PDFTemplateView):
-    template_name = 'summary'
+    template_name = 'summary/pdf.html'
     filename = 'es.pdf'
 
     def get_context_data(self, **kwargs):
