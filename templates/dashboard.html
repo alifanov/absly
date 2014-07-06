@@ -22,19 +22,11 @@
                     <div class="panel panel-default events-item">
                         <div class="panel-body">
                             <div class="media">
-                                <a href="#" class="pull-left">
-                                    {% thumbnail n.photo "100x100" crop="center" as im %}
-                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="media-object" />
-                                    {% endthumbnail %}
-                                </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">{{ n.title }}
-                                        <a href="#" class="remove-news-btn" rel="{{ n.pk }}"><span class="pull-right icon-remove"></span></a>
-                                    </h4>
+                                    <a href="{% url 'communicate' %}">
+                                        <h4 class="media-heading">{{ n.title }}</h4>
+                                    </a>
                                     <div class="events-item-info">
-                                        <p>
-                                            {{ n.description }}
-                                        </p>
                                         <span class="events-item-date pull-right">{{ n.created|time:"H:i" }} {{ n.created|date:"d.m.Y" }}</span>
                                         <a href="{{ n.link }}" target="_blank">Подробнее</a>
                                     </div>
