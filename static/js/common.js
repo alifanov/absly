@@ -19,7 +19,9 @@ function updateTopStatistics(){
 }
 
 $(function(){
-    $(".knob").knob();
+    $(".knob").knob({
+        readOnly: true
+    });
 
     $(window).scroll(function(){
 		if ($(this).scrollTop() > 100) {
