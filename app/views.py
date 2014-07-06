@@ -1052,6 +1052,7 @@ from django.template import Context
 from django.conf import settings
 
 def render_to_pdf(template_src, context_dict):
+    pisa.showLogging()
     template = get_template(template_src)
     context = Context(context_dict)
     html = template.render(context)
