@@ -38,6 +38,9 @@
                             </div>
                         {% endfor %}
                         <div class="es-addon-btns">
+                            {% if si.add_cb %}
+                                <button value="{{ si.pk }}" class="btn btn-default summary-add-cb" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add CrunchBase</button>
+                            {% endif %}
                             {% if si.add_angellist %}
                                 <button value="{{ si.pk }}" class="btn btn-default summary-add-angellist" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add AngelList</button>
                             {% endif %}
@@ -66,6 +69,9 @@
                                 </div>
                             {% endfor %}
                                 <div class="es-addon-btns">
+                                    {% if sic.add_cb %}
+                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-cb" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add CrunchBase</button>
+                                    {% endif %}
                                     {% if sic.add_angellist %}
                                         <button value="{{ sic.pk }}" class="btn btn-default summary-add-angellist" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add AngelList</button>
                                     {% endif %}
