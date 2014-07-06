@@ -1064,14 +1064,15 @@ def render_to_pdf(template_src, context_dict):
 
 class SummaryPDFView(View):
     def get(self, request, *args, **kwargs):
-        user = User.objects.get(pk=self.kwargs.get('pk'))
+        user = request.user
         m = hashlib.md5()
         m.update(user.email)
         if m.hexdigest() == self.kwargs.get('md5'):
             pdf = render_to_pdf('summary/pdf.html', {
                 'STATIC_URL': settings.STATIC_URL,
-                'items': request.user.summary_items.order_by('pk'),
-                'FONTS_DIR': "/usr/share/fonts/truetype/msttcorefonts/"
+                'summary_groups': SummaryGroup.objects.all(),
+                'FONTS_DIR': "/usr/share/fonts/truetype/msttcorefonts/",
+                'request': request
             })
             response = HttpResponse(str(pdf), content_type='application/pdf')
             response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
