@@ -1068,7 +1068,7 @@ class SummaryPDFView(View):
         m.update(user.email)
         if m.hexdigest() == self.kwargs.get('md5'):
             pdf = render_to_pdf('summary/public.html', {
-                'STATIC_URL': settings.STATIC_URL,
+                # 'STATIC_URL': settings.STATIC_URL,
                 'items': request.user.summary_items.order_by('pk')
             })
             response = HttpResponse(str(pdf), content_type='application/pdf')
