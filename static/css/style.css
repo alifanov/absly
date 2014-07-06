@@ -545,7 +545,7 @@ li.active a.canvas-element-item-link {
 	color: #444;
 	text-decoration: none;
 	position:fixed;
-	top:75px;
+	bottom:175px;
 	right:40px;
 	display:none;
 	background: url('/static/img/arrow-up.png') no-repeat 0px 20px;
