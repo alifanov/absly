@@ -6,8 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6">
-                <h2>Certainley Level</h2>
-                <input type="text" value="{{ certainly_level }}" data-min="0" data-max="100" class="knob" />
+                <h2>Lat steps</h2>
+                {% for cs in steps %}
+                    {% with step=cs %}
+                        {% include 'step-item.html' %}
+                    {% endwith %}
+                {% endfor %}
             </div>
             <div class="col-xs-6">
                 <h2>Funding Ready</h2>
@@ -38,12 +42,8 @@
                 </div>
             </div>
             <div class="col-xs-6">
-                <h2>Lat steps</h2>
-                {% for cs in steps %}
-                    {% with step=cs %}
-                        {% include 'step-item.html' %}
-                    {% endwith %}
-                {% endfor %}
+                <h2>Certainley Level</h2>
+                <input type="text" value="{{ certainly_level }}" data-min="0" data-max="100" class="knob" />
             </div>
         </div>
     </div>
