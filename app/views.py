@@ -15,6 +15,7 @@ from reportlab.pdfgen import canvas
 
 from app.models import *
 from app.forms import *
+from steps.models import Step
 from django import forms
 import json, os, hashlib
 import httplib2
@@ -706,7 +707,9 @@ class DashboardView(LeftMenuMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(DashboardView, self).get_context_data(**kwargs)
-        ctx['active'] = 'canvas'
+        ctx['active'] = 'dashboard'
+        ctx['news'] = News.objects.order_by('-created')
+        ctx['steps'] = Step.objects.filter(user=self.request.user, status=False).order_by('-deadline')
         return ctx
 
 class CanvasLogFormView(View):

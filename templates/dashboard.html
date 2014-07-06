@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -10,6 +12,46 @@
             <div class="col-xs-6">
                 <h2>Funding Ready</h2>
                 <input type="text" value="80" data-min="0" data-max="100" class="knob" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <h2>Last News</h2>
+                <div class="events">
+                    {% for n in news %}
+                    <div class="panel panel-default events-item">
+                        <div class="panel-body">
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    {% thumbnail n.photo "100x100" crop="center" as im %}
+                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="media-object" />
+                                    {% endthumbnail %}
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{ n.title }}
+                                        <a href="#" class="remove-news-btn" rel="{{ n.pk }}"><span class="pull-right icon-remove"></span></a>
+                                    </h4>
+                                    <div class="events-item-info">
+                                        <p>
+                                            {{ n.description }}
+                                        </p>
+                                        <span class="events-item-date pull-right">{{ n.created|time:"H:i" }} {{ n.created|date:"d.m.Y" }}</span>
+                                        <a href="{{ n.link }}" target="_blank">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <h2>Lat steps</h2>
+                {% for cs in product_steps %}
+                    {% with step=cs %}
+                        {% include 'step-item.html' %}
+                    {% endwith %}
+                {% endfor %}
             </div>
         </div>
     </div>
