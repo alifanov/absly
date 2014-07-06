@@ -1064,8 +1064,6 @@ from django.conf import settings
 from wkhtmltopdf.views import PDFTemplateView
 class SummaryPDFView(PDFTemplateView):
     template_name = 'summary/pdf.html'
-    header_template = 'summary/header_pdf.html'
-    footer_template = 'summary/footer_pdf.html'
     filename = 'es.pdf'
 
     def get_context_data(self, **kwargs):
