@@ -28,62 +28,16 @@
                         {% for block in si.blocks.all %}
                             <div class="es-block">
                                 {{ block.render|safe }}
-                                <div class="es-edit-block">
-                                    <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
-                                </div>
                             </div>
                         {% endfor %}
-                        <div class="es-addon-btns">
-                            {% if si.add_cb %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-cb" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add CrunchBase</button>
-                            {% endif %}
-                            {% if si.add_angellist %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-angellist" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add AngelList</button>
-                            {% endif %}
-                            {% if si.add_linkedin %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
-                            {% endif %}
-                            {% if si.add_text %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
-                            {% endif %}
-                            {% if si.add_image %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
-                            {% endif %}
-                            {% if si.add_link %}
-                                <button value="{{ si.pk }}" class="btn btn-default summary-add-link" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
-                            {% endif %}
-                        </div>
 
                         {% for sic in si.childs.all %}
                             <h4>{{ sic.name }}</h4>
                             {% for block in sic.blocks.all %}
                                 <div class="es-block">
                                     {{ block.render|safe }}
-                                    <div class="es-edit-block">
-                                        <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
-                                    </div>
                                 </div>
                             {% endfor %}
-                                <div class="es-addon-btns">
-                                    {% if sic.add_cb %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-cb" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add CrunchBase</button>
-                                    {% endif %}
-                                    {% if sic.add_angellist %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-angellist" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add AngelList</button>
-                                    {% endif %}
-                                    {% if sic.add_linkedin %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-linkedin" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add LinkedIn</button>
-                                    {% endif %}
-                                    {% if sic.add_text %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-text" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add text</button>
-                                    {% endif %}
-                                    {% if sic.add_image %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-image" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add image</button>
-                                    {% endif %}
-                                    {% if sic.add_link %}
-                                        <button value="{{ sic.pk }}" class="btn btn-default summary-add-link"  data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add link</button>
-                                    {% endif %}
-                                </div>
                         {% endfor %}
 
                 </div>
