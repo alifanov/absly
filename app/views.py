@@ -1072,7 +1072,7 @@ class SummaryPDFView(PDFTemplateView):
         m = hashlib.md5()
         m.update(user.email)
         if m.hexdigest() == self.kwargs.get('md5'):
-            ctx['items'] = request.user.summary_items.order_by('pk')
+            ctx['items'] = self.request.user.summary_items.order_by('pk')
         return ctx
 
     # def get(self, request, *args, **kwargs):
