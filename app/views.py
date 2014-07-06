@@ -1054,9 +1054,9 @@ from django.conf import settings
 def render_to_pdf(template_src, context_dict):
     template = get_template(template_src)
     context = Context(context_dict)
-    html  = template.render(context)
+    html = template.render(context)
     result = StringIO()
-    pdf = pisa.pisaDocument(StringIO(html), result, show_error_as_pdf=True, encoding='UTF-8')
+    pdf = pisa.pisaDocument(StringIO(html), result, show_error_as_pdf=True)
     if not pdf.err:
         return result.getvalue()
     return False
