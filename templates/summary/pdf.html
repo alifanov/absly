@@ -27,7 +27,7 @@
                     <h3>{{ si.name }}</h3>
                         {% for block in si.blocks.all %}
                             <div class="es-block">
-                                {{ block.render|safe }}
+                                {{ block.render_to_pdf|safe }}
                             </div>
                         {% endfor %}
 
@@ -35,7 +35,7 @@
                             <h4>{{ sic.name }}</h4>
                             {% for block in sic.blocks.all %}
                                 <div class="es-block">
-                                    {{ block.render|safe }}
+                                    {{ block.render_to_pdf|safe }}
                                 </div>
                             {% endfor %}
                         {% endfor %}
