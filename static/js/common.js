@@ -20,6 +20,9 @@ function updateTopStatistics(){
 
 $(function(){
     $("input:checkbox, input:radio").uniform();
+    $(".select2").select2({
+        placeholder: "Кто ваши потребители ?"
+    });
 
     $("#inlineCheckbox1").click(function(){
         if($(this).is(":checked")){
