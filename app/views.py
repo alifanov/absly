@@ -44,6 +44,9 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://absly.progernachas.ru/oauth2callback')
 
+class CreateProjectView(TemplateView):
+    template_name = 'project/create.html'
+
 class StatisticsMixin(object):
     def calc_certainly_level(self):
         ls = 0.0

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+    <div class="container create-project">
+        <form method="POST" action="">
+            <div class="form-group">
+                <label>Are you first time founder ?
+                    <input type="checkbox" name="is_first" class="form-control" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="is_first" class="form-control" required="required" placeholder="Введите название проекта" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <textarea placeholder="Опишите свой проект" required="required"></textarea>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="is_first" class="form-control" placeholder="Введите сайт проекта" />
+                </label>
+            </div>
+            <div class="addon-create-project" style="display: none">
+                <div class="form-group">
+                    <textarea placeholder="Опишите какую проблему решаете"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Ваша целевая аудитория
+                    </label>
+                    <input type="text" placeholder="Введите название ЦА" />
+                    <select>
+                        <option checked="checked">Кто ваши потребители ?</option>
+                        <option >Люди</option>
+                        <option >Бизнес</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Создать проект</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

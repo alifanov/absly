@@ -80,6 +80,8 @@ urlpatterns = patterns('',
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
     # url(r'^absly/', include('absly.foo.urls')),
 
+    url(r'^new/$', CreateProjectView.as_view(), name='new-project'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
