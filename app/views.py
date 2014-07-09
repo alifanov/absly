@@ -55,10 +55,11 @@ class CreateProjectView(TemplateView):
             prj.user=request.user
             prj.save()
             fs = self.formset(request.POST)
-            customers = fs.save()
-            for customer in customers:
-                customer.project = prj
-                customer.save()
+            if fs.is_valid():
+                customers = fs.save()
+                for customer in customers:
+                    customer.project = prj
+                    customer.save()
         return HttpResponseRedirect('/')
 
     def get_context_data(self, **kwargs):
