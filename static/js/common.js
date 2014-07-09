@@ -24,7 +24,7 @@ $(function(){
         placeholder: "Кто ваши потребители ?"
     });
 
-    $("#inlineCheckbox1").click(function(){
+    $("#id_is_first").click(function(){
         if($(this).is(":checked")){
             $(".addon-create-project").slideDown();
         }
