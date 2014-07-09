@@ -60,6 +60,7 @@ class CreateProjectView(TemplateView):
                 for customer in customers:
                     customer.project = prj
                     customer.save()
+            prj.fill_data()
         return HttpResponseRedirect('/')
 
     def get_context_data(self, **kwargs):

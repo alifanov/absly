@@ -30,6 +30,39 @@ class Project(models.Model):
     site = models.CharField(max_length=256, verbose_name=u'Сайт проекта', blank=True)
     problem = models.TextField(verbose_name=u'Проблема', blank=True)
 
+    def fill_data(self):
+        summary_main = SummaryItem.objects.get(name=u'Название')
+        summary_name = SummaryTextBlock.objects.create(
+            item=summary_main,
+            user=self.user,
+            text=self.name
+        )
+        summary_site = SummaryLinkBlock.objects.create(
+            item=summary_main,
+            user=self.user,
+            link=self.site
+        )
+        summary_desc = SummaryTextBlock.objects.create(
+            item=summary_main,
+            user=self.user,
+            text=self.desc
+        )
+        summary_main = SummaryItem.objects.get(name=u'Проблема')
+        summary_problem = SummaryTextBlock.objects.create(
+            item=summary_main,
+            user=self.user,
+            text=self.desc
+        )
+        block = CanvasBlock.objects.get(name=u'Customer Segments')
+        for customer in self.customers:
+            new_el = CanvasBlockItem.objects.create(
+                user=self.user,
+                name=customer.name,
+                block=block
+            )
+            pv = CanvasBlockItemParameterValue.objects.get(name=customer.get_type_display())
+            pv.elements.add(new_el)
+
     class Meta:
         verbose_name = u'Проект'
         verbose_name_plural = u'Проекты'
