@@ -26,10 +26,10 @@ $(function(){
 
     $("#id_is_first").click(function(){
         if($(this).is(":checked")){
-            $(".addon-create-project").slideDown();
+            $(".addon-create-project").slideUp();
         }
         else{
-            $(".addon-create-project").slideUp();
+            $(".addon-create-project").slideDown();
         }
     });
 

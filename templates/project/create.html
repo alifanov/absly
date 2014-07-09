@@ -27,7 +27,7 @@
             <div class="addon-create-project" style="display: none">
                 <h3>Уточните информацию о проекте</h3>
                 <div class="form-group field-box">
-                    <textarea placeholder="Опишите какую проблему решаете" class="form-control"></textarea>
+                    {{ project_form.problem|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Опишите какую проблему решаете" }}
                 </div>
                 <div class="form-group field-box">
                     <label>
