@@ -60,6 +60,8 @@ class CreateProjectView(TemplateView):
                 for customer in customers:
                     customer.project = prj
                     customer.save()
+            else:
+                raise ValueError(fs.errors)
         return HttpResponseRedirect('/')
 
     def get_context_data(self, **kwargs):
