@@ -46,11 +46,21 @@ FLOW = flow_from_clientsecrets(
 
 class CreateProjectView(TemplateView):
     template_name = 'project/create.html'
+    formset = forms.models.modelformset_factory(Customer, max_num=5, extra=4)
+
+    def post(self, request, *args, **kwargs):
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            prj = form.save()
+            fs = self.formset(request.POST)
+            customers = fs.save()
+            customers.update(project=prj)
+        return HttpResponseRedirect('/')
 
     def get_context_data(self, **kwargs):
         ctx = super(CreateProjectView, self).get_context_data(**kwargs)
         ctx['project_form'] = ProjectForm()
-        ctx['project_customers_formset'] = forms.models.modelformset_factory(Customer, max_num=5, extra=4)
+        ctx['project_customers_formset'] = self.formset
         return ctx
 
 class StatisticsMixin(object):
