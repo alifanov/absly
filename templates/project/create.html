@@ -2,7 +2,7 @@
 
 {% block body_content %}
     <div class="container create-project">
-        <h1>Создайти свой проект</h1>
+        <h1>Создайте свой проект</h1>
         <p>
             ABSLY позволит тебе продуктивно управлять стартапом. Для этого сервису необходима информация о твоем проекте.
         </p>
@@ -11,15 +11,7 @@
         </p>
         <form method="POST" action="">
             <div class="form-group field-box">
-                <label>Are you first time founder ?</label>
-                <label class="checkbox-inline">
-                  <div class="checker" id="uniform-inlineCheckbox1">
-                      <span>
-                          <input type="checkbox" value="1" id="inlineCheckbox1">
-                      </span>
-                  </div>
-                </label>
-
+                {{ project_form.is_first }} {{ project_form.is_first.label_tag }}
             </div>
             <div class="form-group field-box">
                 <input type="text" name="is_first" class="form-control" required="required" placeholder="Введите название проекта" />

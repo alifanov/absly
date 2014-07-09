@@ -1,6 +1,11 @@
 from django.forms import ModelForm, HiddenInput, TextInput, ModelChoiceField
 from app.models import *
 
+class ProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        exclude = ('user', 'customers')
+
 class CanvasLogForm(ModelForm):
     class Meta:
         model = CanvasLogEntry

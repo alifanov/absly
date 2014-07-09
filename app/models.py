@@ -22,6 +22,40 @@ from polymorphic import PolymorphicModel
 from reportlab.lib.utils import ImageReader
 
 # Create your models here.
+class Project(models.Model):
+    is_first = models.BooleanField(default=True, verbose_name=u'First-Time Founder')
+    user = models.ForeignKey(User, verbose_name=u'Автор проекта', blank=True, null=True)
+    name = models.CharField(max_length=256, verbose_name=u'Название проекта')
+    desc = models.TextField(verbose_name=u'Описание проекта')
+    site = models.CharField(max_length=256, verbose_name=u'Сайт проекта', blank=True)
+    problem = models.TextField(verbose_name=u'Проблема', blank=True)
+
+    class Meta:
+        verbose_name = u'Проект'
+        verbose_name_plural = u'Проекты'
+
+    def __unicode__(self):
+        return self.name
+
+CUSTOMER_TYPE = (
+    (u'B', u'Бизнес'),
+    (u'C', u'Люди'),
+    (u'G', u'Государство')
+)
+
+class Customer(models.Model):
+    name = models.CharField(max_length=256, verbose_name=u'Название')
+    type = models.CharField(max_length=1, choices=CUSTOMER_TYPE, verbose_name=u'Тип ЦА')
+    project = models.ForeignKey(Project, verbose_name=u'Проект', related_name='customers', null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'ЦА'
+        verbose_name_plural = u'ЦА'
+
+
 class CredentialsModel(models.Model):
     id = models.ForeignKey(User, primary_key=True)
     credential = CredentialsField()

@@ -47,6 +47,11 @@ FLOW = flow_from_clientsecrets(
 class CreateProjectView(TemplateView):
     template_name = 'project/create.html'
 
+    def get_context_data(self, **kwargs):
+        ctx = super(CreateProjectView, self).get_context_data(**kwargs)
+        ctx['project_form'] = ProjectForm()
+        return ctx
+
 class StatisticsMixin(object):
     def calc_certainly_level(self):
         ls = 0.0
