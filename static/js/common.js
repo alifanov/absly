@@ -23,10 +23,10 @@ $(function(){
 
     $("#inlineCheckbox1").click(function(){
         if($(this).is(":checked")){
-            $(".addon-create-project").show();
+            $(".addon-create-project").slideDown();
         }
         else{
-            $(".addon-create-project").hide();
+            $(".addon-create-project").slideUp();
         }
     });
 
