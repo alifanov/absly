@@ -21,6 +21,7 @@ function updateTopStatistics(){
 $(function(){
     $(".create-customer-btn").click(function(){
         $(this).parents().find('.create-customer-group:visible').next().show();
+        $(this).hide();
         return false;
     });
 
