@@ -54,7 +54,7 @@ class Project(models.Model):
             text=self.desc
         )
         block = CanvasBlock.objects.get(name=u'Customer Segments')
-        for customer in self.customers:
+        for customer in self.customers.all():
             new_el = CanvasBlockItem.objects.create(
                 user=self.user,
                 name=customer.name,
