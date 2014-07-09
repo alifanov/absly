@@ -19,6 +19,11 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $(".create-customer-btn").click(function(){
+        $(this).parents().find('.create-customer-group:visible').next().show();
+        return false;
+    });
+
     $("input:checkbox, input:radio").uniform();
     $(".select-customer").select2({
         placeholder: "Кто ваши потребители ?"

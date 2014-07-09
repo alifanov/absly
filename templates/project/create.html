@@ -35,18 +35,18 @@
                     </label>
                     {{ project_customers_formset.management_form }}
                     {% for form in project_customers_formset %}
-                        <div class="row">
-                            <div class="col-xs-6">
+                        <div class="row form-group create-customer-group" {% if not forloop.first %}style="display: none;"{% endif %}>
+                            <div class="col-xs-5">
                                 {{ form.name|add_class:"form-control"|attr:"placeholder:Введите название ЦА" }}
-{#                                <input type="text" placeholder="Введите название ЦА" class="form-control" />#}
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-5">
                                 {{ form.type|add_class:"select-customer" }}
-{#                                <select class="select-customer">#}
-{#                                    <option >Люди</option>#}
-{#                                    <option >Бизнес</option>#}
-{#                                </select>#}
                             </div>
+                            {% if not forloop.last %}
+                                <div class="col-xs-1 col-xs-offset-1">
+                                    <button class="btn btn-default create-customer-btn"><i class="icon-plus-sign"></i></button>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
