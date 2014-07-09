@@ -46,7 +46,7 @@ FLOW = flow_from_clientsecrets(
 
 class CreateProjectView(TemplateView):
     template_name = 'project/create.html'
-    formset = forms.models.modelformset_factory(Customer, max_num=5, extra=4)
+    formset = forms.models.modelformset_factory(Customer, max_num=5, extra=4, exclude=['project',])
 
     def post(self, request, *args, **kwargs):
         form = ProjectForm(request.POST)
