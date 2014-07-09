@@ -19,6 +19,8 @@ function updateTopStatistics(){
 }
 
 $(function(){
+    $("input:checkbox, input:radio").uniform();
+
     $(".knob").knob({
         readOnly: true
     });
