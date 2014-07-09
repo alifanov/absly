@@ -52,6 +52,8 @@ class CreateProjectView(TemplateView):
         form = ProjectForm(request.POST)
         if form.is_valid():
             prj = form.save()
+            prj.user=request.user
+            prj.save()
             fs = self.formset(request.POST)
             customers = fs.save()
             for customer in customers:
