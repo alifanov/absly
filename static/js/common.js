@@ -21,6 +21,15 @@ function updateTopStatistics(){
 $(function(){
     $("input:checkbox, input:radio").uniform();
 
+    $("#inlineCheckbox1").click(function(){
+        if($(this).is(":checked")){
+            $(".addon-create-project").show();
+        }
+        else{
+            $(".addon-create-project").hide();
+        }
+    });
+
     $(".knob").knob({
         readOnly: true
     });
