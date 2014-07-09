@@ -12,6 +12,14 @@
             Твои данные в безопасности. Только ты определяешь, что доступно посторонним.
         </p>
         <form method="POST" action="">
+            {% for error in project_form.nonfield_errors %}
+                <div class="alert-danger alert">{{ error }}</div>
+            {% endfor %}
+            {% for field in project_form.fields %}
+                {% if field.errors %}
+                    <div class="alert-danger alert">{{ field.errors }}</div>
+                {% endif %}
+            {% endfor %}
             <div class="form-group field-box">
                 {{ project_form.is_first }} {{ project_form.is_first.label_tag }}
             </div>
