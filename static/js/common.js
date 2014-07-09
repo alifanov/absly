@@ -20,7 +20,7 @@ function updateTopStatistics(){
 
 $(function(){
     $("input:checkbox, input:radio").uniform();
-    $(".select2").select2({
+    $(".select-customer").select2({
         placeholder: "Кто ваши потребители ?"
     });
 
