@@ -50,8 +50,7 @@ class CreateProjectView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super(CreateProjectView, self).get_context_data(**kwargs)
         ctx['project_form'] = ProjectForm()
-        ctx['project_customers_formset'] = forms.models.modelformset_factory(Project, max_num=5, extra=4,
-             widgets={'type': forms.Select()})
+        ctx['project_customers_formset'] = forms.models.modelformset_factory(Customer, max_num=5, extra=4)
         return ctx
 
 class StatisticsMixin(object):
