@@ -557,3 +557,7 @@ li.active a.canvas-element-item-link {
 .create-project {
     width: 600px;
 }
+
+.create-project p {
+    text-align: center;
+}
