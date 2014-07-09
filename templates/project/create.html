@@ -16,13 +16,13 @@
                 {{ project_form.is_first }} {{ project_form.is_first.label_tag }}
             </div>
             <div class="form-group field-box">
-                {{ project_form.name|class:"form-control"|attr:"required:required"|attr:"placeholder:Введите название проекта" }}
+                {{ project_form.name|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Введите название проекта" }}
             </div>
             <div class="form-group field-box">
-                {{ project_form.desc|class:"form-control"|attr:"required:required"|attr:"placeholder:Опишите свой проект" }}
+                {{ project_form.desc|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Опишите свой проект" }}
             </div>
             <div class="form-group field-box">
-                {{ project_form.site|class:"form-control"|attr:"required:required"|attr:"placeholder:Введите сайт проекта" }}
+                {{ project_form.site|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Введите сайт проекта" }}
             </div>
             <div class="addon-create-project" style="display: none">
                 <h3>Уточните информацию о проекте</h3>
