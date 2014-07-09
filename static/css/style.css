@@ -553,3 +553,7 @@ li.active a.canvas-element-item-link {
 .scrollToTop:hover{
 	text-decoration:none;
 }
+
+.create-project {
+    width: 600px;
+}
