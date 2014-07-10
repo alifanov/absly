@@ -10,7 +10,7 @@ from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, Can
 from django.contrib import admin
 admin.autodiscover()
 
-analytics.init('kt58pb0ynb', flush_at=1, log=True, log_level=logging.DEBUG)
+analytics.init('kt58pb0ynb', flush_at=1)
 
 urlpatterns = patterns('',
     # Examples:
