@@ -194,11 +194,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'analytics': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        }
+        # 'analytics': {
+        #     'handlers': ['console'],
+        #     'level': 'DEBUG',
+        #     'propagate': True,
+        # }
     }
 }
 
