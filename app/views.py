@@ -72,6 +72,7 @@ class CreateProjectView(TemplateView):
 class EmptyProjectCheckMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+
         if not Project.objects.filter(user=self.request.user).exists():
             return HttpResponseRedirect('/new/')
         return super(EmptyProjectCheckMixin, self).dispatch(*args, **kwargs)

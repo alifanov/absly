@@ -3,14 +3,14 @@ from django.views.generic import TemplateView
 from app.views import *
 from steps.views import *
 
-import analytics
+import analytics, logging
 
 from app.api import CanvasBlockList, CanvasBlockDetail, CanvasBlockItemList, CanvasBlockItemDetail
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-analytics.init('kt58pb0ynb')
+analytics.init('kt58pb0ynb', flush_at=1, log=True, log_level=logging.DEBUG)
 
 urlpatterns = patterns('',
     # Examples:
