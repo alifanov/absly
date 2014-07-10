@@ -565,3 +565,11 @@ li.active a.canvas-element-item-link {
 .select2-container {
     width: 100%;
 }
+
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
+}
