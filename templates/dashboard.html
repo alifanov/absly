@@ -46,7 +46,69 @@
                 </div>
             </div>
             <div class="col-xs-6">
+                <div id="statsChart"></div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(function(){
+            var acquisition = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61]];
+            var activation = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
+            var retention = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
+            var referral = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
+            var revenue = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
+            var plot = $.plot($("#statsChart"),
+                [ { data: acquisition, label: "Acquisition"},
+                 { data: activation, label: "Activation" },
+                    {
+                        data: retention, label: "Retention"
+                    },
+                    {
+                        data: referral, label: "Referral"
+                    },
+                    {
+                        data: revenue, label: "Revenue"
+                    }], {
+                    series: {
+                        lines: { show: true,
+                                lineWidth: 1,
+                                fill: true,
+                                fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.13 } ] }
+                             },
+                        points: { show: true,
+                                 lineWidth: 2,
+                                 radius: 3
+                             },
+                        shadowSize: 0,
+                        stack: true
+                    },
+                    grid: { hoverable: true,
+                           clickable: true,
+                           tickColor: "#f9f9f9",
+                           borderWidth: 0
+                        },
+                    legend: {
+                            // show: false
+                            labelBoxBorderColor: "#fff"
+                        },
+                    colors: ["#a7b5c5", "#30a0eb"],
+                    xaxis: {
+                        ticks: [[1, "MON"], [2, "TUE"], [3, "WED"], [4,"THU"], [5,"FRI"], [6,"SAT"],
+                               [7,"SAN"]],
+                        font: {
+                            size: 12,
+                            family: "Open Sans, Arial",
+                            variant: "small-caps",
+                            color: "#697695"
+                        }
+                    },
+                    yaxis: {
+                        ticks:3,
+                        tickDecimals: 0,
+                        font: {size:12, color: "#9da3a9"}
+                    }
+                 });
+
+        });
+    </script>
 {% endblock %}
