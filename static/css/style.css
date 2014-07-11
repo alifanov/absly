@@ -573,3 +573,7 @@ li.active a.canvas-element-item-link {
 .modal-open {
  overflow: auto;
 }
+
+.dashboard .events-item .media-heading {
+    font-size: 13px;
+}
