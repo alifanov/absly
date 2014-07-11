@@ -743,7 +743,7 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx = super(DashboardView, self).get_context_data(**kwargs)
         ctx['active'] = 'dashboard'
         ctx['news'] = News.objects.order_by('-created')
-        ctx['steps'] = Step.objects.filter(user=self.request.user, status=False).order_by('-deadline')
+        ctx['steps'] = Step.objects.filter(user=self.request.user, status=False).order_by('deadline')
         return ctx
 
 class CanvasLogFormView(View):
