@@ -58,7 +58,10 @@
             var referral = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
             var revenue = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
             var plot = $.plot($("#statsChart"),
-                [ { data: acquisition, label: "Acquisition"},
+                [
+                    {
+                        data: revenue, label: "Revenue"
+                    },
                  { data: activation, label: "Activation" },
                     {
                         data: retention, label: "Retention"
@@ -66,9 +69,8 @@
                     {
                         data: referral, label: "Referral"
                     },
-                    {
-                        data: revenue, label: "Revenue"
-                    }], {
+                { data: acquisition, label: "Acquisition"}
+                ], {
                     series: {
                         lines: { show: true,
                                 lineWidth: 1,
