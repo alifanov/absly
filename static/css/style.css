@@ -577,3 +577,7 @@ li.active a.canvas-element-item-link {
 .dashboard .events-item .media-heading {
     font-size: 13px;
 }
+
+.white-block h1 {
+    text-align: center;
+}
