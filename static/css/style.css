@@ -590,3 +590,7 @@ li.active a.canvas-element-item-link {
 .reset-password-page h1 {
     text-align: center;
 }
+
+.forgot {
+    display: block;
+}
