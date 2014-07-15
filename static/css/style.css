@@ -593,4 +593,5 @@ li.active a.canvas-element-item-link {
 
 .forgot {
     display: block;
+    text-align: right;
 }
