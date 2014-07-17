@@ -22,8 +22,8 @@ class Step(models.Model):
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
     target_metrics_current = models.IntegerField(default=0, verbose_name=u'Текущее значение по цели')
-    done_log = models.TextField(verbose_name=u'Комментарий к завершению шага')
-    delete_log = models.TextField(verbose_name=u'Комментарий к удалению шага')
+    done_log = models.TextField(verbose_name=u'Комментарий к завершению шага', blank=True)
+    delete_log = models.TextField(verbose_name=u'Комментарий к удалению шага', blank=True)
     removed = models.BooleanField(default=False, verbose_name=u'Удален')
 
     def get_deadline_last(self):
