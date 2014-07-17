@@ -26,11 +26,18 @@ function resort_steps(){
     });
     $(".steps-wrapper").html(order_steps);
     $(".steps-wrapper .row span.icon-sort-up").removeClass('icon-sort-up');
+    var sort_order = {};
     $(".steps-wrapper .row").each(function(i,v){
+        sort_order[$(v).attr('data-steps-group')] = $(v).attr('data-sort');
         if($(v).attr('data-sort') != '0'){
             $(v).find('a.sort-step span').addClass('icon-sort-up');
         }
-    })
+    });
+    $.ajax({
+        type: "GET",
+        url: '/steps/sort/',
+        data: sort_order
+    });
 }
 
 
