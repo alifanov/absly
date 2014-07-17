@@ -25,6 +25,12 @@ function resort_steps(){
           return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
     });
     $(".steps-wrapper").html(order_steps);
+    $(".step-wrapper .row span.icon-sort-up").removeClass('icon-sort-up');
+    $(".row").each(function(i,v){
+        if($(v).attr('data-sort') != '0'){
+            $(v).find('a.sort-step span').addClass('icon-sort-up');
+        }
+    })
 }
 
 
@@ -33,11 +39,11 @@ $(function(){
 
     $(document).on('click', '.sort-step', function(){
         var row = $(this).parent().parent();
-        if(row.find('span.icon-sort-down')){
-            if (row.next('.row').length){
-                row.attr('data-sort', parseInt(row.attr('data-sort'))+1);
-                var n_row = row.next('.row');
-                n_row.attr('data-sort', parseInt(n_row.attr('data-sort'))-1);
+        if(row.find('span.icon-sort-up')){
+            if (row.prev('.row').length){
+                row.attr('data-sort', parseInt(row.attr('data-sort'))-1);
+                var n_row = row.prev('.row');
+                n_row.attr('data-sort', parseInt(n_row.attr('data-sort'))+1);
                 resort_steps();
             }
         }
