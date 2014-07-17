@@ -44,6 +44,13 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://absly.progernachas.ru/oauth2callback')
 
+class StepsSortView(View):
+    def get(self, request, *args, **kwargs):
+        request.session['steps-sort-customer'] = request.GET.get('customer')
+        request.session['steps-sort-product'] = request.GET.get('product')
+        request.session['steps-sort-fundrising'] = request.GET.get('fundrising')
+        return HttpResponse("OK")
+
 class CreateProjectView(TemplateView):
     template_name = 'project/create.html'
     formset = forms.models.modelformset_factory(Customer, max_num=5, extra=4, exclude=['project',])
