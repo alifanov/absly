@@ -24,7 +24,7 @@ $(function(){
           var bName = parseInt($(b).attr('data-sort'));
           return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
     });
-    $(".steps-wrapper").replaceWith(order_steps);
+//    $(".steps-wrapper").replaceWith(order_steps);
     $(".create-customer-btn").click(function(){
         $(this).parents().find('.create-customer-group:visible').next().show();
         $(this).hide();
