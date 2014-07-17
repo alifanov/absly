@@ -125,18 +125,25 @@ $(function(){
         });
         return false;
     });
+
+    $(document).on('click', '.done-log-btn', function(){
+        if($("#id_done_log").val() != ''){
+            $.ajax({
+                type: "GET",
+                url: "/steps/done/"+$(this).val()+"/",
+                success: function(){
+                    $("#edit-recomendation-modal-id").modal('hide');
+                    location.reload();
+                }
+            });
+        }
+        return false;
+    });
+
     $(document).on('click', '.step-done', function(){
         $(".step-edit-form .modal-footer").hide();
         $(".step-edit-form .modal-body .row").slideUp();
         $(".step-edit-form .modal-body .step-done-log").slideDown();
-//        $.ajax({
-//            type: "GET",
-//            url: "/steps/done/"+$(this).val()+"/",
-//            success: function(){
-//                $("#edit-recomendation-modal-id").modal('hide');
-//                location.reload();
-//            }
-//        });
         return false;
     });
     $(document).on('click', '.step-save', function(){
