@@ -164,6 +164,9 @@ class CanvasBlock(models.Model):
         lvl = sum([int(el.level) for el in self.elements.filter(user=user)])*100.0/M/N
         return lvl
 
+    def is_segment(self):
+        return self.name == u'Customer Segments'
+
     class Meta:
         verbose_name = u'Блок шаблона бизнес-модели'
         verbose_name_plural = u'Блоки шаблона бизнес-модели'
