@@ -126,8 +126,8 @@ $(function(){
         return false;
     });
     $(document).on('click', '.step-done', function(){
-        $(".step-edit-form .modal-footer").hide();
-        $(".step-edit-form .modal-body .row").slideUp();
+//        $(".step-edit-form .modal-footer").hide();
+//        $(".step-edit-form .modal-body .row").slideUp();
         $(".step-edit-form .modal-body .step-done-log").slideDown();
 //        $.ajax({
 //            type: "GET",
