@@ -88,7 +88,7 @@ $(function(){
 		return false;
 	});
 
-    $("#add-new-step-link").click(function(){
+    $(".steps-wrapper .add-step").click(function(){
         $.ajax({
             type: "GET",
             url: "/steps/add/",
