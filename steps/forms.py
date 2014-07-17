@@ -10,4 +10,4 @@ class StepForm(forms.ModelForm):
 class StepEditForm(forms.ModelForm):
     class Meta:
         model = Step
-        exclude = ('user','done_log')
+        exclude = ('user',)
