@@ -35,7 +35,7 @@ class StepsView(LeftMenuMixin, TemplateView):
 
 class StepDoneView(View):
     def get(self, request, *args, **kwargs):
-        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'))
+        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'), removed=False)
         step.status = True
         step.done_log = request.GET.get('comment')
         step.save()
@@ -43,8 +43,10 @@ class StepDoneView(View):
 
 class StepDelView(View):
     def get(self, request, *args, **kwargs):
-        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'))
-        step.delete()
+        step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'), removed=False)
+        step.removed = True
+        step.delete_log = request.GET.get('comment')
+        step.save()
         return HttpResponse('OK')
 
 class StepAddView(View):
@@ -78,7 +80,7 @@ class StepAddView(View):
 
 class StepEditView(View):
     def get(self, request, *args, **kwargs):
-        step = Step.objects.get(pk=self.kwargs.get('pk'))
+        step = Step.objects.get(pk=self.kwargs.get('pk'), removed=False)
         form = StepEditForm(instance=step)
         csrf_token = request.COOKIES['csrftoken']
         data = {
@@ -87,7 +89,7 @@ class StepEditView(View):
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     def post(self, request, *args, **kwargs):
-        step = Step.objects.get(pk=self.kwargs.get('pk'))
+        step = Step.objects.get(pk=self.kwargs.get('pk'), removed=False)
         form = StepEditForm(request.POST, instance=step)
         if form.is_valid():
             step = form.save()

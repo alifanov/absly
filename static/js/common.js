@@ -113,16 +113,27 @@ $(function(){
         return false;
     });
 
+    $(document).on('click', '.delete-log-btn', function(){
+        if($("#id_delete_log").val() != ''){
+            $.ajax({
+                type: "GET",
+                url: "/steps/del/"+$(this).val()+"/",
+                data: {
+                    'comment': $("#id_delete_log").val()
+                },
+                success: function(){
+                    $("#edit-recomendation-modal-id").modal('hide');
+                    location.reload();
+                }
+            });
+        }
+        return false;
+    });
+
     $(document).on('click', '.step-delete', function(){
-        $.ajax({
-            type: "GET",
-            url: "/steps/del/" + $(this).val() + "/",
-            data: $("#step-edit-modal-form").serializeArray(),
-            success: function(){
-                $("#edit-recomendation-modal-id").modal('hide');
-                location.reload();
-            }
-        });
+        $(".step-edit-form .modal-footer").hide();
+        $(".step-edit-form .modal-body .row").slideUp();
+        $(".step-edit-form .modal-body .step-delete-log").slideDown();
         return false;
     });
 
