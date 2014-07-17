@@ -36,7 +36,7 @@
                 </div>
             {% endif %}
             {{ form.block }}
-            {% if block.is_segment %}
+            {% if not block.is_segment %}
             <div class="form-group">
                 {{ form.segment|add_class:"form-control" }}
             </div>
