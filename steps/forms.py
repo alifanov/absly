@@ -9,4 +9,4 @@ class StepForm(forms.ModelForm):
     #
     class Meta:
         model = Step
-        exclude = ('user',)
+        exclude = ('user','target_metrics_current')
