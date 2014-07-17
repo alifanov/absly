@@ -207,20 +207,19 @@
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
                 </div>
-                {% else %}
+        {% else %}
             <li>
         {% endif %}
-        <a href="{% url 'events' %}" style="display: inline-table;">
-                <i class="icon-comments-alt"></i>
-            <span>Communications</span>
-        </a>
-        <a href="#" class="dropdown-toggle" style="display: inline-table;display: inline-table;height: 52px;">
+        <a href="#" class="dropdown-toggle">
+            <i class="icon-comments-alt"></i>
+            <span>Talk</span>
             <i class="icon-chevron-down"></i>
-            </a>
+        </a>
         <ul class="submenu {% if active == 'events' %}active{% endif %}">
-            {% for sg in news_groups %}
-                <li><a href="{% url 'communicate-group' pk=sg.pk %}">{{ sg.name }}</a></li>
-            {% endfor %}
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">System</a></li>
+            <li><a href="#">Invstor requests</a></li>
         </ul>
         {% if active == 'steps' %}
         <li>
