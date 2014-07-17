@@ -131,6 +131,9 @@ $(function(){
             $.ajax({
                 type: "GET",
                 url: "/steps/done/"+$(this).val()+"/",
+                data: {
+                    'comment': $("#id_done_log").val()
+                },
                 success: function(){
                     $("#edit-recomendation-modal-id").modal('hide');
                     location.reload();

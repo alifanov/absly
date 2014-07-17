@@ -37,6 +37,7 @@ class StepDoneView(View):
     def get(self, request, *args, **kwargs):
         step = Step.objects.get(user=request.user, pk=self.kwargs.get('pk'))
         step.status = True
+        step.done_log = request.GET.get('comment')
         step.save()
         return HttpResponse('OK')
 
