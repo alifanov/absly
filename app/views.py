@@ -802,7 +802,8 @@ class CanvasElementGetFormView(View):
                 form.add_params(block)
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
-                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
+                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token,
+                                                                     'block': block})
                 }
                 return HttpResponse(json.dumps(data), content_type='application/json')
         if request.GET.get('element'):
@@ -813,7 +814,8 @@ class CanvasElementGetFormView(View):
                 form.add_params(el.block, el)
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
-                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token})
+                    'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token,
+                                                                     'block': block})
                 }
                 return HttpResponse(json.dumps(data), content_type='application/json')
         return HttpResponseForbidden()
