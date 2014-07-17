@@ -595,3 +595,7 @@ li.active a.canvas-element-item-link {
     display: block;
     text-align: right;
 }
+
+.steps-recomendations .add-step {
+    margin-bottom: 10px;
+}
