@@ -1,4 +1,4 @@
 from django.views.generic import TemplateView
-
-class InvestorsRequestsView(TemplateView):
+from app.views import StatisticsMixin
+class InvestorsRequestsView(StatisticsMixin, TemplateView):
     template_name = 'investors-requests.html'
