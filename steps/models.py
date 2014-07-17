@@ -18,7 +18,7 @@ class Step(models.Model):
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     status = models.BooleanField(default=False, verbose_name=u'Выполнена')
-    target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
+    # target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
 
