@@ -26,7 +26,7 @@ var order_steps = $(".steps-recomendations .steps-wrapper .row").sort(function(a
 
 $(function(){
 //    console.log(order_steps);
-//    $(".steps-wrapper").html(order_steps);
+    $(".steps-wrapper").html(order_steps);
     $(".create-customer-btn").click(function(){
         $(this).parents().find('.create-customer-group:visible').next().show();
         $(this).hide();
