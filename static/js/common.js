@@ -25,8 +25,8 @@ function resort_steps(){
           return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
     });
     $(".steps-wrapper").html(order_steps);
-    $(".step-wrapper .row span.icon-sort-up").removeClass('icon-sort-up');
-    $(".row").each(function(i,v){
+    $(".steps-wrapper .row span.icon-sort-up").removeClass('icon-sort-up');
+    $(".steps-wrapper .row").each(function(i,v){
         if($(v).attr('data-sort') != '0'){
             $(v).find('a.sort-step span').addClass('icon-sort-up');
         }
