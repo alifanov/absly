@@ -499,6 +499,10 @@ li.active a.canvas-element-item-link {
     box-shadow: 0px 1px #eee;
 }
 
+.steps-recomendations .recos .steps-recomendations-item span {
+    width: auto;
+}
+
 .steps-recomendations-item span{
     display: inline-block;
     width: 20%;
