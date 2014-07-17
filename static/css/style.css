@@ -465,6 +465,8 @@ li.active a.canvas-element-item-link {
 
 .steps-recomendations .steps-recomendations-item a {
     text-decoration: none;
+    display: inline-block;
+    width: 78%;
 }
 
 .steps-recomendations h2 {
@@ -495,6 +497,11 @@ li.active a.canvas-element-item-link {
     color: #555;
     border: 1px solid #ccc;
     box-shadow: 0px 1px #eee;
+}
+
+.steps-recomendations-item span{
+    display: inline-block;
+    width: 20%;
 }
 
 .steps-recomendations-item span.red {
