@@ -155,6 +155,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'app',
     'steps',
+    'talk',
     'south',
     'sorl.thumbnail',
     'widget_tweaks',

@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from app.views import *
 from steps.views import *
+from talk.views import *
 
 import analytics, logging
 
