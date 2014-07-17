@@ -38,6 +38,7 @@ $(function(){
                 row.attr('data-sort', parseInt(row.attr('data-sort'))+1);
                 var n_row = row.next('.row');
                 n_row.attr('data-sort', parseInt(n_row.attr('data-sort'))-1);
+                resort_steps();
             }
         }
         return false;
