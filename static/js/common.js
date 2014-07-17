@@ -20,8 +20,8 @@ function updateTopStatistics(){
 
 $(function(){
     $(".steps-recommendations .row").sort(function(a,b){
-          var aName = parseInt(a.attr('data-sort'));
-          var bName = parseInt(b.attr('data-sort'));
+          var aName = parseInt($(a).attr('data-sort'));
+          var bName = parseInt($(b).attr('data-sort'));
           return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
     });
     $(".create-customer-btn").click(function(){
