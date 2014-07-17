@@ -78,7 +78,7 @@ class StepAddView(View):
 class StepEditView(View):
     def get(self, request, *args, **kwargs):
         step = Step.objects.get(pk=self.kwargs.get('pk'))
-        form = StepForm(instance=step)
+        form = StepEditForm(instance=step)
         csrf_token = request.COOKIES['csrftoken']
         data = {
             'data': render_to_string('step-edit-form.html', {'step_form': form, 'csrf_token_value': csrf_token, 'step': step})
@@ -87,7 +87,7 @@ class StepEditView(View):
 
     def post(self, request, *args, **kwargs):
         step = Step.objects.get(pk=self.kwargs.get('pk'))
-        form = StepForm(request.POST, instance=step)
+        form = StepEditForm(request.POST, instance=step)
         if form.is_valid():
             step = form.save()
             return HttpResponse('OK')
