@@ -42,6 +42,10 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
+                <button class="btn btn-success" id="add-new-step-link">
+                <span class="icon-plus"></span>
+                Add new item</button>
+
                 {% for cs in customer_steps %}
                     {% with step=cs %}
                         {% include 'step-item.html' %}
@@ -66,6 +70,10 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
+                <button class="btn btn-success" id="add-new-step-link">
+                <span class="icon-plus"></span>
+                Add new item</button>
+
                 {% for cs in fundrising_steps %}
                     {% with step=cs %}
                         {% include 'step-item.html' %}
@@ -82,32 +90,6 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h3><span class="icon-group"></span> Customer</h3>
-                {% for cr in customer_recomendations %}
-                    <div class="steps-recomendations-item bg-primary">
-                        <a class="recomendation-link" rel="{{ cr.pk }}" href="#"> <i class="icon-info-sign"></i> <i class="icon-plus"></i> {{ cr.title }}</a>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-lg-4">
-                <h3><span class="icon-wrench"></span> Product</h3>
-                {% for pr in product_recomendations %}
-                    <div class="steps-recomendations-item bg-primary">
-                        <a class="recomendation-link" rel="{{ pr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ pr.title }}</a>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-lg-4">
-                <h3><span class="icon-money"></span> Fundrising</h3>
-                {% for fr in fundrising_recomendations %}
-                    <div class="steps-recomendations-item bg-primary">
-                        <a class="recomendation-link" rel="{{ fr.pk }}" href="#"> <i class="icon-info-sign"></i> <span class="icon-plus"></span> {{ fr.title }}</a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
     </div>
 </div>
 
