@@ -17,7 +17,7 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
-                <button class="btn btn-success btn-block add-step" id="add-new-step-link">
+                <button class="btn btn-success btn-block add-step" id="add-new-step-link" value="C">
                 <span class="icon-plus"></span>
                 Add new item</button>
 
@@ -47,11 +47,11 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
-                <button class="btn btn-success btn-block add-step" id="add-new-step-link">
+                <button class="btn btn-success btn-block add-step" id="add-new-step-link" value="P">
                 <span class="icon-plus"></span>
                 Add new item</button>
 
-                {% for cs in customer_steps %}
+                {% for cs in product_steps %}
                     {% with step=cs %}
                         {% include 'step-item.html' %}
                     {% endwith %}
@@ -77,7 +77,7 @@
                 {% endfor %}
             </div>
             <div class="col-xs-4">
-                <button class="btn btn-success btn-block add-step" id="add-new-step-link">
+                <button class="btn btn-success btn-block add-step" id="add-new-step-link" value="F">
                 <span class="icon-plus"></span>
                 Add new item</button>
 

@@ -48,7 +48,12 @@ class StepDelView(View):
 
 class StepAddView(View):
     def get(self, request, *args, **kwargs):
-        form = StepForm()
+        direction = request.GET.get('dir')
+        form = StepForm(
+            initial={
+                'type': direction
+            }
+        )
         csrf_token = request.COOKIES['csrftoken']
         blocks = []
         for b in CanvasBlock.objects.all():

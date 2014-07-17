@@ -99,6 +99,9 @@ $(function(){
         $.ajax({
             type: "GET",
             url: "/steps/add/",
+            data: {
+                'dir': $(this).attr('value')
+            },
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#id_deadline").datepicker({
