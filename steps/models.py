@@ -29,7 +29,7 @@ class Step(models.Model):
     def get_deadline_last(self):
         if self.deadline is not None:
             now = datetime.utcnow().replace(tzinfo=utc)
-            return (self.deadline - now).days
+            return (self.deadline - now).days + 1
         return u''
 
     def is_clear_deadline(self):
