@@ -18,17 +18,17 @@ class StepsView(LeftMenuMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(StepsView, self).get_context_data(**kwargs)
-        ctx['customer_recomendations'] = self.request.user.recomendations.filter(type='C').order_by('-created')
-        ctx['product_recomendations'] = self.request.user.recomendations.filter(type='P').order_by('-created')
-        ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type='F').order_by('-created')
+        ctx['customer_recomendations'] = self.request.user.recomendations.filter(type='C', removed=False).order_by('-created')
+        ctx['product_recomendations'] = self.request.user.recomendations.filter(type='P', removed=False).order_by('-created')
+        ctx['fundrising_recomendations'] = self.request.user.recomendations.filter(type='F', removed=False).order_by('-created')
 
-        ctx['customer_steps'] = self.request.user.steps.filter(type='C', status=False).order_by('deadline')
-        ctx['product_steps'] = self.request.user.steps.filter(type='P', status=False).order_by('deadline')
-        ctx['fundrising_steps'] = self.request.user.steps.filter(type='F', status=False).order_by('deadline')
+        ctx['customer_steps'] = self.request.user.steps.filter(type='C', status=False, removed=False).order_by('deadline')
+        ctx['product_steps'] = self.request.user.steps.filter(type='P', status=False, removed=False).order_by('deadline')
+        ctx['fundrising_steps'] = self.request.user.steps.filter(type='F', status=False, removed=False).order_by('deadline')
 
-        ctx['customer_done'] = self.request.user.steps.filter(type='C', status=True).order_by('deadline')
-        ctx['product_done'] = self.request.user.steps.filter(type='P', status=True).order_by('deadline')
-        ctx['fundrising_done'] = self.request.user.steps.filter(type='F', status=True).order_by('deadline')
+        ctx['customer_done'] = self.request.user.steps.filter(type='C', status=True, removed=False).order_by('deadline')
+        ctx['product_done'] = self.request.user.steps.filter(type='P', status=True, removed=False).order_by('deadline')
+        ctx['fundrising_done'] = self.request.user.steps.filter(type='F', status=True, removed=False).order_by('deadline')
 
         ctx['active'] = 'steps'
         return ctx
