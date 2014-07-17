@@ -18,15 +18,31 @@ function updateTopStatistics(){
     });
 }
 
-var order_steps = $(".steps-recomendations .steps-wrapper .row").sort(function(a,b){
-      var aName = parseInt($(a).attr('data-sort'));
-      var bName = parseInt($(b).attr('data-sort'));
-      return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
-});
+function resort_steps(){
+    var order_steps = $(".steps-recomendations .steps-wrapper .row").sort(function(a,b){
+          var aName = parseInt($(a).attr('data-sort'));
+          var bName = parseInt($(b).attr('data-sort'));
+          return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+    });
+    $(".steps-wrapper").html(order_steps);
+}
+
 
 $(function(){
-//    console.log(order_steps);
-    $(".steps-wrapper").html(order_steps);
+    resort_steps();
+
+    $(document).on('click', '.sort-step', function(){
+        var row = $(this).parent().parent();
+        if(row.find('span.icon-sort-down')){
+            if (row.next('.row').length){
+                row.attr('data-sort', parseInt(row.attr('data-sort'))+1);
+                var n_row = row.next('.row');
+                n_row.attr('data-sort', parseInt(n_row.attr('data-sort'))-1);
+            }
+        }
+        return false;
+    });
+
     $(".create-customer-btn").click(function(){
         $(this).parents().find('.create-customer-group:visible').next().show();
         $(this).hide();
