@@ -18,7 +18,7 @@ function updateTopStatistics(){
     });
 }
 
-var order_steps = $(".steps-recommendations .row").sort(function(a,b){
+var order_steps = $(".steps-recommendations .steps-wrapper .row").sort(function(a,b){
       var aName = parseInt($(a).attr('data-sort'));
       var bName = parseInt($(b).attr('data-sort'));
       return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
