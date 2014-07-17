@@ -86,6 +86,10 @@ urlpatterns = patterns('',
     url(r'^events/delete/(?P<pk>\d+)/$', EventDeleteView.as_view(), name='event_delete'),
     # url(r'^absly/', include('absly.foo.urls')),
 
+    # talk
+    url(r'^talk/requests/$', InvestorsRequestsView.as_view(), name='investors-requests'),
+
+
     url(r'^new/$', CreateProjectView.as_view(), name='new-project'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
