@@ -4,7 +4,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title">{{ step_form.instance.title }}</h4>
 </div>
-<form method="post" id="step-edit-modal-form" action="/steps/edit/{{ step.pk }}/">
+<form method="post" id="step-edit-modal-form" action="/steps/edit/{{ step.pk }}/" class="step-edit-form">
     <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     <div class="modal-body">
         <div class="row">
@@ -62,6 +62,9 @@
                   </div>
                 </div>
             </div>
+        </div>
+        <div class="step-done-log">
+            {{ step_form.done_log|add_class:"form-control"|attr:"placeholder:Почему вы завершили шаг ?" }}
         </div>
     </div>
     <div class="modal-footer">

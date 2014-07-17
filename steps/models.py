@@ -22,6 +22,7 @@ class Step(models.Model):
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
     target_metrics_current = models.IntegerField(default=0, verbose_name=u'Текущее значение по цели')
+    done_log = models.TextField(verbose_name=u'Комментарий к заврешению шага')
 
     def get_deadline_last(self):
         if self.deadline is not None:
