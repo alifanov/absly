@@ -30,14 +30,14 @@
                   </optgroup>
               {% endfor %}
           </select>
-          {{ step_form.element|add_class:"form-control" }}
+{#          {{ step_form.element|add_class:"form-control" }}#}
       </div>
       <div class="form-group">
           <label>5. Choose direction</label>
-          {{ step_form.type|add_class:"form-control" }}
+          {{ step_form.type|add_class:"hidden" }}
       </div>
         <div class="form-group">
-            <label>6. Set target for step</label>
+            <label>5. Set target for step</label>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li class="active"><a href="#metrics_target" role="tab" data-toggle="tab">Metrics target</a></li>
