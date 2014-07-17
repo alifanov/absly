@@ -46,9 +46,9 @@ FLOW = flow_from_clientsecrets(
 
 class StepsSortView(View):
     def get(self, request, *args, **kwargs):
-        request.session['steps-sort-customer'] = request.GET.get('customer')
-        request.session['steps-sort-product'] = request.GET.get('product')
-        request.session['steps-sort-fundrising'] = request.GET.get('fundrising')
+        request.session['steps_sort_customer'] = request.GET.get('customer')
+        request.session['steps_sort_product'] = request.GET.get('product')
+        request.session['steps_sort_fundrising'] = request.GET.get('fundrising')
         return HttpResponse("OK")
 
 class CreateProjectView(TemplateView):
