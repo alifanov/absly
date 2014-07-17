@@ -64,7 +64,9 @@
             </div>
         </div>
         <div class="step-done-log" style="display: none;">
-            {{ step_form.done_log|add_class:"form-control"|attr:"placeholder:Почему вы завершили шаг ?" }}
+            <div class="form-group">
+                {{ step_form.done_log|add_class:"form-control"|attr:"placeholder:Почему вы завершили шаг ?" }}
+            </div>
             <button type="submit" class="btn btn-primary btn-block done-log-btn" value="{{ step.pk }}">Done</button>
         </div>
     </div>
