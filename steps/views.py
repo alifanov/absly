@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 import json
 from django.template.loader import render_to_string
 from steps.models import *
+from app.models import CanvasBlock
 from steps.forms import *
 
 class StepsView(LeftMenuMixin, TemplateView):
@@ -49,8 +50,13 @@ class StepAddView(View):
     def get(self, request, *args, **kwargs):
         form = StepForm()
         csrf_token = request.COOKIES['csrftoken']
+        blocks = []
+        for b in CanvasBlock.objects.all():
+            blocks.append(
+                (b.name, b.elements.filter(user=request.user))
+            )
         data = {
-            'data': render_to_string('step-form.html', {'step_form': form, 'csrf_token_value': csrf_token})
+            'data': render_to_string('step-form.html', {'step_form': form, 'csrf_token_value': csrf_token, 'blocks': blocks})
         }
         return HttpResponse(json.dumps(data), content_type='application/json')
 
