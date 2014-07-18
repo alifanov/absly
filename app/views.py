@@ -800,6 +800,7 @@ class CanvasElementGetFormView(View):
                 })
                 form.fields['block'].widget = forms.HiddenInput()
                 form.add_params(block)
+                form.fields['segment'].queryset = CanvasBlockItem.objects.filter(block__name=u'Customer Segments', user=request.user)
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
                     'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token,
@@ -812,6 +813,7 @@ class CanvasElementGetFormView(View):
                 form = CanvasElementForm(instance=el)
                 form.fields['block'].widget = forms.HiddenInput()
                 form.add_params(el.block, el)
+                form.fields['segment'].queryset = CanvasBlockItem.objects.filter(block__name=u'Customer Segments', user=request.user)
                 csrf_token = request.COOKIES['csrftoken']
                 data = {
                     'data': render_to_string('bm-canvas/form.html', {'form': form, 'csrf_token_value': csrf_token,
