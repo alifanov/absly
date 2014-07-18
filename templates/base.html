@@ -221,7 +221,7 @@
         </a>
         <ul class="submenu {% if active == 'events' %}active{% endif %}">
             <li><a href="#">Posts</a></li>
-            <li><a href="#">News</a></li>
+            <li><a href="{% url 'news-view' %}">News</a></li>
             <li><a href="{% url 'system-notifications-view' %}">System</a></li>
             <li><a href="{% url 'investors-requests' %}">Investors requests</a></li>
         </ul>
