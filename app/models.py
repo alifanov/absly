@@ -159,7 +159,7 @@ class CanvasBlock(models.Model):
 
     def get_certainly_level(self, user):
         els = 0.0
-        M = self.elements.count()
+        M = self.elements.filter(user=user).count()
         N = 3
         lvl = sum([int(el.level) for el in self.elements.filter(user=user)])*100.0/M/N
         return lvl
