@@ -611,3 +611,7 @@ li.active a.canvas-element-item-link {
 .steps-recomendations .add-step {
     margin-bottom: 10px;
 }
+
+.system-comment-form .form-group {
+    width: 60%
+}
