@@ -16,15 +16,16 @@
         </div>
         <div class="comments">
         {% for comment in s.get_comments %}
-            <div class="system-comment">
-                <div>
+            <div class="system-comment panel panel-default">
+                <div class="panel-heading">
                     <span>{{ comment.user.username }}</span>
                     <span class="pull-right">{{ comment.created }}</span>
                 </div>
-                <div>
+                <div class="panel-body">
                     {{ comment.text }}
                 </div>
             </div>
+
         {% endfor %}
         <div class="system-comment-form">
             <form method="POST">
