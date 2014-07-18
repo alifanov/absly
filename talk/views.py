@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from app.views import StatisticsMixin
 from talk.models import *
 
@@ -15,3 +15,8 @@ class SystemView(StatisticsMixin, ListView):
     queryset = SystemNotification.objects.order_by('-created')
     template_name = 'system/list.html'
     context_object_name = 'ss'
+
+class SystemDetailView(StatisticsMixin, DetailView):
+    model = SystemNotification
+    template_name = 'system/item.html'
+    context_object_name = 's'

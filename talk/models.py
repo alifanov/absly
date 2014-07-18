@@ -52,6 +52,9 @@ class SystemNotification(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
+    def get_comments(self):
+        return self.comments.order_by('-created')
+
     def __unicode__(self):
         return self.title
 
@@ -60,7 +63,7 @@ class SystemNotification(models.Model):
         verbose_name_plural = u'Системные уведомления'
 
 class SystemComment(models.Model):
-    notify = models.ForeignKey(SystemNotification, verbose_name=u'Уведомление')
+    notify = models.ForeignKey(SystemNotification, verbose_name=u'Уведомление', related_name='comments')
     text = models.TextField(verbose_name=u'Текст')
     user = models.ForeignKey(User, verbose_name=u'Пользователь')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ s.title }}</h1>
+        <div class="system-notifications panel panel-default">
+            <div class="panel-heading">
+                <span class="pull-right">{{ s.created }}</span>
+                <a href="#">{{ s.title }}</a>
+            </div>
+            <div class="panel-body">
+                {{ s.text }}
+            </div>
+        </div>
+        {% for comment in s.get_comments %}
+            <div class="system-comment">
+                <div>
+                    <span>{{ comment.user.username }}</span>
+                    <span class="pull-right">{{ comment.created }}</span>
+                </div>
+                <div>
+                    {{ comment.text }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
