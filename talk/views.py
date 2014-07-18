@@ -26,7 +26,7 @@ class SystemDetailView(StatisticsMixin, DetailView, FormView):
     def form_valid(self, form):
         comment = form.save()
         comment.user=self.request.user
-        comment.notify = self.object
+        comment.notify = self.get_object()
         comment.save()
         return self.get(self.request)
 
