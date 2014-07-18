@@ -73,5 +73,5 @@ class SystemComment(models.Model):
         return u'[{}]: {}'.format(self.user.username, self.text)
 
     class Meta:
-        verbose_name = u'Комментарий'
-        verbose_name_plural = u'Комментарии'
+        verbose_name = u'Комментарий к системным уведомлениям'
+        verbose_name_plural = u'Комментарии к системным уведомлениям'
