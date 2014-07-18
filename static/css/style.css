@@ -352,6 +352,11 @@ ul.main-objects li {
     padding-left: 20px;
 }
 
+.definition-level {
+    float: left;
+    width: 86px;
+}
+
 .definition-level a {
     width: 15px;
     height: 7px;
