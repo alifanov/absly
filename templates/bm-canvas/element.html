@@ -3,11 +3,15 @@
     <a href="#" class="canvas-element-item-edit" rel="{{ it.pk }}">
         <span class="icon-edit pull-right"></span>
     </a>
-    <div class="definition-level">
-        <a href="#" rel="0" {% if it.level >= '0' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Гипотеза"></a>
-        <a href="#" rel="1" {% if it.level >= '1' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено фактами"></a>
-        <a href="#" rel="2" {% if it.level >= '2' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено действиями"></a>
-        <a href="#" rel="3" {% if it.level == '3' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено деньгами"></a>
+    <div class="definition-level row">
+        <div class="col-xs-8">
+            <a href="#" rel="0" {% if it.level >= '0' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Гипотеза"></a>
+            <a href="#" rel="1" {% if it.level >= '1' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено фактами"></a>
+            <a href="#" rel="2" {% if it.level >= '2' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено действиями"></a>
+            <a href="#" rel="3" {% if it.level == '3' %}class="done"{% endif %} data-toggle="tooltip" data-placement="bottom" title="Проверено деньгами"></a>
+        </div>
+        <div class="col-xs-4">
+            <a href="#" class="icon-question-sign" data-toggle="tooltip" data-placement="auto bottom" title="Стадия проверки элемента (может быть в одном из 4-х состояний: Гипотеза, Проверено фактами, Проверено действиями, Проверено деньгами)"></a>
+        </div>
     </div>
-    <a href="#" class="icon-question-sign" data-toggle="tooltip" data-placement="bottom" title="Стадия проверки элемента (может быть в одном из 4-х состояний: Гипотеза, Проверено фактами, Проверено действиями, Проверено деньгами)"></a>
 </li>
