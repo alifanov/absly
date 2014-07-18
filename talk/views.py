@@ -12,6 +12,13 @@ class InvestorsRequestsView(StatisticsMixin, TemplateView):
         ctx['active'] = 'events'
         return ctx
 
+class NewsView(StatisticsMixin, ListView):
+    model = News
+    template_name =
+
+    def get_queryset(self):
+        return self.request.user.abslylikenews.filter(is_public=True).order_by('-created')
+
 class SystemView(StatisticsMixin, ListView):
     model = SystemNotification
     queryset = SystemNotification.objects.filter(is_public=True).order_by('-created')

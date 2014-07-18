@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Рекомендованные новости</h1>
+        {% for s in news %}
+            <div class="system-notifications panel panel-default">
+                <div class="panel-heading">
+                    <span class="pull-right">{{ s.created }}</span>
+                    <a href="{{ s.link }}">{{ s.title }}</a>
+                </div>
+                <div class="panel-body">
+                    {{ s.desc }}
+                    <div>
+                        <a href="{{ s.link }}" target="_blank">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
