@@ -33,7 +33,7 @@ class Comment(models.Model):
         verbose_name_plural = u'Комментарии'
 
 class News(models.Model):
-    users = models.ManyToManyField(User, verbose_name=u'Пользователи')
+    users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='abslylikenews')
     title = models.CharField(max_length=256, verbose_name=u'Заголовок')
     link = models.TextField(verbose_name=u'Ссылка')
     desc = models.TextField(verbose_name=u'Краткое описание')
