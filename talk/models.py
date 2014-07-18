@@ -65,7 +65,7 @@ class SystemNotification(models.Model):
 class SystemComment(models.Model):
     notify = models.ForeignKey(SystemNotification, verbose_name=u'Уведомление', related_name='comments', null=True)
     text = models.TextField(verbose_name=u'Текст')
-    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', null=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
