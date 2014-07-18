@@ -4,7 +4,7 @@
     <input name="csrfmiddlewaretoken" value="{{ csrf_token_value }}" type="hidden" />
     <div class="modal-body">
         <div style="display: none;" class="alert-success">
-            Element successfully added
+            Элемент успешно добавлен
         </div>
         <div class="modal-form-body">
             {% for log in form.instance.get_logs %}
@@ -38,20 +38,21 @@
             {{ form.block }}
             {% if not block.is_segment %}
             <div class="form-group">
-                <label>Customer segment</label>
+                <label>Сегмент пользователя</label>
                 {{ form.segment|add_class:"form-control" }}
             </div>
             {% endif %}
             <div class="form-group">
+                <label>Название шага</label>
                 {{ form.name|add_class:"form-control" }}
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-primary edit-btn">{% if form.instance.pk %}Save{% else %}Add{% endif %}</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button type="submit" class="btn btn-primary edit-btn">{% if form.instance.pk %}Сохранить{% else %}Добавить{% endif %}</button>
         {% if form.instance.pk %}
-            <button type="submit" class="pull-left btn btn-danger del-btn">Delete</button>
+            <button type="submit" class="pull-left btn btn-danger del-btn">Удалить</button>
         {% endif %}
     </div>
 </form>

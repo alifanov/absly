@@ -30,12 +30,8 @@
                   </optgroup>
               {% endfor %}
           </select>
-{#          {{ step_form.element|add_class:"form-control" }}#}
       </div>
-{#      <div class="form-group">#}
-{#          <label>5. Choose direction</label>#}
           {{ step_form.type|add_class:"hidden" }}
-{#      </div>#}
         <div class="form-group">
             <label>5. Set target for step</label>
             <div>
@@ -44,7 +40,6 @@
             <div style="margin-top: 10px;">
                 {{ step_form.target_metrics_limit|add_class:"form-control"|attr:"placeholder:Количественный показатель цели"|attr:"value:" }}
             </div>
-
         </div>
     </div>
     <div class="modal-footer">
