@@ -17,6 +17,11 @@ class SystemView(StatisticsMixin, ListView):
     template_name = 'system/list.html'
     context_object_name = 'ss'
 
+    def get_context_data(self, **kwargs):
+        ctx = super(SystemView, self).get_context_data(**kwargs)
+        ctx['active'] = 'events'
+        return ctx
+
 class SystemDetailView(StatisticsMixin, DetailView, FormView):
     model = SystemNotification
     template_name = 'system/item.html'
@@ -33,4 +38,5 @@ class SystemDetailView(StatisticsMixin, DetailView, FormView):
     def get_context_data(self, **kwargs):
         ctx = super(SystemDetailView, self).get_context_data(**kwargs)
         ctx['form'] = self.form_class()
+        ctx['active'] = 'events'
         return ctx
