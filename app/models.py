@@ -48,11 +48,12 @@ class Project(models.Model):
             text=self.desc
         )
         summary_main = SummaryItem.objects.get(name=u'Проблема')
-        summary_problem = SummaryTextBlock.objects.create(
-            item=summary_main,
-            user=self.user,
-            text=self.desc
-        )
+        if self.problem:
+            summary_problem = SummaryTextBlock.objects.create(
+                item=summary_main,
+                user=self.user,
+                text=self.problem
+            )
         block = CanvasBlock.objects.get(name=u'Customer Segments')
         for customer in self.customers.all():
             new_el = CanvasBlockItem.objects.create(
