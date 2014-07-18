@@ -53,7 +53,7 @@ class SystemNotification(models.Model):
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
     def get_comments(self):
-        return self.comments.order_by('-created')
+        return self.comments.order_by('created')
 
     def __unicode__(self):
         return self.title
