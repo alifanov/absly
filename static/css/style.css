@@ -616,3 +616,7 @@ li.active a.canvas-element-item-link {
     width: 60%;
     margin: 0 auto;
 }
+
+.summary h2 {
+    border-bottom: 1px solid #f5f5f5;
+}
