@@ -15,6 +15,7 @@ class InvestorsRequestsView(StatisticsMixin, TemplateView):
 class NewsView(StatisticsMixin, ListView):
     model = News
     template_name = 'news/list.html'
+    context_object_name = 'news'
 
     def get_context_data(self, **kwargs):
         ctx = super(NewsView, self).get_context_data(**kwargs)
