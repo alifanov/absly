@@ -4,12 +4,14 @@
     <div class="container">
         <h1>Системные уведомления</h1>
         {% for s in ss %}
-            <div class="system-notifications">
-                <span>{{ s.created }}</span>
-                <a href="#">{{ s.title }}</a>
-                <p>
+            <div class="system-notifications panel panel-default">
+                <div class="panel-heading">
+                    <span class="pull-right">{{ s.created }}</span>
+                    <a href="#">{{ s.title }}</a>
+                </div>
+                <div class="panel-body">
                     {{ s.text }}
-                </p>
+                </div>
             </div>
         {% endfor %}
     </div>
