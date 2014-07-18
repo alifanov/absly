@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Системные уведомления</h1>
+        {% for s in ss %}
+            <div class="system-notifications">
+                <span>{{ s.created }}</span>
+                <a href="#">{{ s.title }}</a>
+                <p>
+                    {{ s.text }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
