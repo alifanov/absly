@@ -327,7 +327,7 @@ class SummaryLinkBlock(SummaryBlock):
     title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
     def render(self):
-        return u'<a href="{}">{}</a>'.format(self.link, self.title)
+        return u'<a href="{}">{}</a>'.format(self.link, self.title if self.title else self.link)
 
     def render_to_pdf(self):
         return self.render()
