@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, ListView, DetailView, FormView
 from app.views import StatisticsMixin
+from django.http import Http404
 from talk.models import *
 from talk.forms import *
 
@@ -29,7 +30,10 @@ class SystemDetailView(StatisticsMixin, DetailView, FormView):
     form_class = SystemCommentForm
 
     def get_object(self, queryset=None):
-        return queryset.filter(is_public=True)
+        try:
+            return self.model.objects.filter(is_public=True).get(pk=self.kwargs.get('pk'))
+        except:
+            raise Http404
 
     def form_valid(self, form):
         comment = form.save()
