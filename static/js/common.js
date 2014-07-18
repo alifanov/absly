@@ -195,6 +195,7 @@ $(function(){
             data: $(this).serializeArray(),
             success:function(resp){
                 $("#edit-recomendation-modal-id").modal('hide');
+                location.reload();
             }
         });
         return false;
