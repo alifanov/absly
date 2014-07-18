@@ -14,7 +14,12 @@ class InvestorsRequestsView(StatisticsMixin, TemplateView):
 
 class NewsView(StatisticsMixin, ListView):
     model = News
-    template_name =
+    template_name = 'news/list.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(NewsView, self).get_context_data(**kwargs)
+        ctx['active'] = 'events'
+        return ctx
 
     def get_queryset(self):
         return self.request.user.abslylikenews.filter(is_public=True).order_by('-created')
