@@ -353,8 +353,8 @@ ul.main-objects li {
 }
 
 .definition-level {
-    float: left;
-    width: 86px;
+    /*float: left;*/
+    /*width: 86px;*/
 }
 
 .definition-level a {
