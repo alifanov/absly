@@ -1,10 +1,10 @@
 from django.views.generic import TemplateView, ListView, DetailView, FormView
-from app.views import StatisticsMixin
+from app.views import LeftMenuMixin
 from django.http import Http404
 from talk.models import *
 from talk.forms import *
 
-class InvestorsRequestsView(StatisticsMixin, TemplateView):
+class InvestorsRequestsView(LeftMenuMixin, TemplateView):
     template_name = 'investors-requests.html'
 
     def get_context_data(self, **kwargs):
@@ -12,7 +12,7 @@ class InvestorsRequestsView(StatisticsMixin, TemplateView):
         ctx['active'] = 'events'
         return ctx
 
-class NewsView(StatisticsMixin, ListView):
+class NewsView(LeftMenuMixin, ListView):
     model = News
     template_name = 'news/list.html'
     context_object_name = 'news'
@@ -25,7 +25,7 @@ class NewsView(StatisticsMixin, ListView):
     def get_queryset(self):
         return self.request.user.abslylikenews.filter(is_public=True).order_by('-created')
 
-class SystemView(StatisticsMixin, ListView):
+class SystemView(LeftMenuMixin, ListView):
     model = SystemNotification
     queryset = SystemNotification.objects.filter(is_public=True).order_by('-created')
     template_name = 'system/list.html'
@@ -36,7 +36,7 @@ class SystemView(StatisticsMixin, ListView):
         ctx['active'] = 'events'
         return ctx
 
-class SystemDetailView(StatisticsMixin, DetailView, FormView):
+class SystemDetailView(LeftMenuMixin, DetailView, FormView):
     model = SystemNotification
     template_name = 'system/item.html'
     context_object_name = 's'
