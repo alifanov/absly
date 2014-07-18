@@ -37,6 +37,7 @@ class News(models.Model):
     title = models.CharField(max_length=256, verbose_name=u'Заголовок')
     link = models.TextField(verbose_name=u'Ссылка')
     desc = models.TextField(verbose_name=u'Краткое описание')
+    created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
     def __unicode__(self):
