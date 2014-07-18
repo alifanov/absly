@@ -6,7 +6,7 @@
     <div class="container summary">
     <a href="#" class="scrollToTop"></a>
         <h1>Executive Summary
-            <a target="_blank" href="{{ pdf_link }}" class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</a>
+{#            <a target="_blank" href="{{ pdf_link }}" class="btn btn-primary pull-right"><i class="icon-print"></i> PDF</a>#}
 {#            <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>#}
         </h1>
         <div class="row">
@@ -26,11 +26,11 @@
         {% for sg in summary_groups %}
             <a name="{{ sg.name }}"></a>
             <h2>{{ sg.name }}</h2>
-            {% for si in sg.items.all|by_user:request.user %}
+            {% for si in sg.items.all %}
                 <div class="es-data">
                     <a name="{{ si.name }}"></a>
                     <h3>{{ si.name }}</h3>
-                        {% for block in si.blocks.all %}
+                        {% for block in si.blocks.all|by_user:request.user %}
                             <div class="es-block">
                                 {{ block.render|safe }}
                                 <div class="es-edit-block">
