@@ -1,6 +1,7 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from app.views import StatisticsMixin
 from talk.models import *
+from talk.forms import *
 
 class InvestorsRequestsView(StatisticsMixin, TemplateView):
     template_name = 'investors-requests.html'
@@ -16,7 +17,8 @@ class SystemView(StatisticsMixin, ListView):
     template_name = 'system/list.html'
     context_object_name = 'ss'
 
-class SystemDetailView(StatisticsMixin, DetailView):
+class SystemDetailView(StatisticsMixin, DetailView, FormView):
     model = SystemNotification
     template_name = 'system/item.html'
     context_object_name = 's'
+    form_class = SystemCommentForm
