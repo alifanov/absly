@@ -13,7 +13,7 @@ class InvestorsRequestsView(StatisticsMixin, TemplateView):
 
 class SystemView(StatisticsMixin, ListView):
     model = SystemNotification
-    queryset = SystemNotification.objects.order_by('-created')
+    queryset = SystemNotification.objects.filter(is_public=True).order_by('-created')
     template_name = 'system/list.html'
     context_object_name = 'ss'
 
@@ -27,6 +27,9 @@ class SystemDetailView(StatisticsMixin, DetailView, FormView):
     template_name = 'system/item.html'
     context_object_name = 's'
     form_class = SystemCommentForm
+
+    def get_object(self, queryset=None):
+        return queryset.filter(is_public=True)
 
     def form_valid(self, form):
         comment = form.save()
