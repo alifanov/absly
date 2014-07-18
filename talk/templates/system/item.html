@@ -3,7 +3,7 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <div class="container">
+    <div class="container system-notification">
         <h1>{{ s.title }}</h1>
         <div class="system-notifications panel panel-default">
             <div class="panel-heading">
@@ -14,6 +14,7 @@
                 {{ s.text }}
             </div>
         </div>
+        <div class="comments">
         {% for comment in s.get_comments %}
             <div class="system-comment">
                 <div>
@@ -31,9 +32,10 @@
                 <div class="form-group">
                     <label>Ваш комментарий:</label>
                     {{ form.text|add_class:"form-control" }}
-                    <button class="btn btn-primary btn-block">Отправить</button>
                 </div>
+                    <button class="btn btn-primary btn-block">Отправить</button>
             </form>
+        </div>
         </div>
     </div>
 {% endblock %}
