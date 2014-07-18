@@ -22,3 +22,8 @@ class SystemDetailView(StatisticsMixin, DetailView, FormView):
     template_name = 'system/item.html'
     context_object_name = 's'
     form_class = SystemCommentForm
+
+    def get_context_data(self, **kwargs):
+        ctx = super(SystemDetailView, self).get_context_data(**kwargs)
+        ctx['form'] = self.form_class()
+        return ctx
