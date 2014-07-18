@@ -14,7 +14,7 @@
                 <div class="col-xs-2">
                     <a href="#{{ sg.name }}">{{ sg.name }}</a>
                     <ul>
-                        {% for si in sg.items.all|by_user:request.user %}
+                        {% for si in sg.items.all %}
                             <li>
                                 <a href="#{{ si.name }}">{{ si.name }}</a>
                             </li>
