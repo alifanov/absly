@@ -411,6 +411,7 @@ li.active a.canvas-element-item-link {
     display: block;
     margin: 30px auto;
     font-size: 26px;
+    margin-bottom: 10px;
 }
 
 .ga-config select {
@@ -626,6 +627,7 @@ li.active a.canvas-element-item-link {
     margin: 0 auto;
     padding-bottom: 10px;
     border-bottom: 1px solid #888;
+    margin-bottom: 30px;
 }
 
 .no-account a {
