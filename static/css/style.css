@@ -653,4 +653,6 @@ li.active a.canvas-element-item-link {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
+    color: white;
+    background: #0680ff;
 }
