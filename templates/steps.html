@@ -3,7 +3,14 @@
 {% block content %}
 <div class="container">
     <div class="steps-recomendations">
-        <h1>Steps</h1>
+        <h1>Шаги</h1>
+    <div class="steps-header">
+        <div class="row">
+            <div class="col-xs-4">Рекомендации</div>
+            <div class="col-xs-4">В процессе</div>
+            <div class="col-xs-4">Выполненные</div>
+        </div>
+    </div>
     <div class="steps-wrapper">
         <div class="row" data-sort="{{ request.session.steps_sort_customer|default:'0' }}" data-steps-group="customer">
             <h3>
