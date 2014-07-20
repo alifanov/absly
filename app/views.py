@@ -84,8 +84,6 @@ class StatisticsMixin(object):
             return HttpResponseRedirect('/new/')
         return super(StatisticsMixin, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self):
-        return {}
     def calc_certainly_level(self):
         ls = 0.0
         if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
