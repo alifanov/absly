@@ -76,18 +76,16 @@ class CreateProjectView(TemplateView):
         ctx['project_customers_formset'] = self.formset(queryset=Customer.objects.none())
         return ctx
 
-class EmptyProjectCheckMixin(object):
+class StatisticsMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
 
         if not Project.objects.filter(user=self.request.user).exists():
             return HttpResponseRedirect('/new/')
-        return super(EmptyProjectCheckMixin, self).dispatch(*args, **kwargs)
+        return super(StatisticsMixin, self).dispatch(*args, **kwargs)
 
     def get_context_data(self):
         return {}
-
-class StatisticsMixin(EmptyProjectCheckMixin):
     def calc_certainly_level(self):
         ls = 0.0
         if CanvasBlock.objects.filter(name__in=[u'Value Proposition', u'Customer Segments'], elements__isnull=True):
