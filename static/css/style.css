@@ -620,3 +620,10 @@ li.active a.canvas-element-item-link {
 .summary h2 {
     border-bottom: 1px solid #ccc;
 }
+
+.login-desc {
+    width: 400px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #888;
+}
