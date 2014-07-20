@@ -348,7 +348,7 @@ class GAProfileCompletedView(View):
             return HttpResponse("OK")
         return HttpResponseForbidden()
 
-class GAConfigView(StatisticsMixin, TemplateView):
+class GAConfigView(LeftMenuMixin, TemplateView):
     credentials = None
     template_name = 'ga.html'
 
