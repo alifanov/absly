@@ -105,7 +105,8 @@ $(function(){
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#id_deadline").datepicker({
-                    format: 'yyyy-mm-dd'
+                    format: 'yyyy-mm-dd',
+                    orientation: 'top'
                 });
                 $("#edit-recomendation-modal-id").modal('show');
                 }
@@ -180,7 +181,8 @@ $(function(){
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#id_deadline").datepicker({
-                    format: 'yyyy-mm-dd'
+                    format: 'yyyy-mm-dd',
+                    orientation: 'top'
                 });
                 $("#edit-recomendation-modal-id").modal('show');
                 }
