@@ -569,6 +569,7 @@ li.active a.canvas-element-item-link {
 
 .create-project {
     width: 600px;
+    padding-bottom: 200px;
 }
 
 .create-project h1 {
