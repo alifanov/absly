@@ -627,3 +627,7 @@ li.active a.canvas-element-item-link {
     padding-bottom: 10px;
     border-bottom: 1px solid #888;
 }
+
+.no-account a {
+    font-size: 18px;
+}
