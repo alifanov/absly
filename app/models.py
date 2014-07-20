@@ -287,6 +287,7 @@ class SummaryBlock(PolymorphicModel):
     def render(self):
         return self.item.name
 
+
     def render_to_pdf(self, p, x, y):
         p.drawString(x, y, self.item.name)
 
