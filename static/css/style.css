@@ -644,3 +644,13 @@ li.active a.canvas-element-item-link {
 .no-account p {
     margin-top: 20px;
 }
+
+.steps-header {
+    margin-top: 20px;
+}
+
+.steps-header div {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
