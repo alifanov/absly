@@ -173,7 +173,7 @@ $(function(){
         return false;
     });
 
-    $(".step-edit-link").click(function(){
+    $(document).on('click', ".step-edit-link", function(){
         $.ajax({
             type: "GET",
             url: "/steps/edit/"+$(this).attr('rel')+'/',
@@ -214,7 +214,7 @@ $(function(){
         return false;
     });
 
-    $(".recomendation-link").click(function(){
+    $(document).on('click', ".recomendation-link", function(){
         $.ajax({
             url: "/steps/recomendation/",
             type: "GET",
