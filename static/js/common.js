@@ -306,6 +306,7 @@ $(function(){
                 updateTopStatistics();
             }
         });
+        location.reload();
         return false;
     };
 
