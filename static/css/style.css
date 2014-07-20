@@ -652,7 +652,7 @@ li.active a.canvas-element-item-link {
 .steps-header div {
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
     color: white;
     background: #0680ff;
+    padding: 10px;
 }
