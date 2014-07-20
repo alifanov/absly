@@ -84,6 +84,8 @@ class EmptyProjectCheckMixin(object):
             return HttpResponseRedirect('/new/')
         return super(EmptyProjectCheckMixin, self).dispatch(*args, **kwargs)
 
+    def get_context_data(self):
+        return {}
 
 class StatisticsMixin(EmptyProjectCheckMixin):
     def calc_certainly_level(self):
