@@ -106,7 +106,8 @@ $(function(){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#id_deadline").datepicker({
                     format: 'yyyy-mm-dd',
-                    orientation: 'top'
+                    orientation: 'top auto',
+                    language: 'ru'
                 });
                 $("#edit-recomendation-modal-id").modal('show');
                 }
