@@ -649,7 +649,7 @@ li.active a.canvas-element-item-link {
     margin-top: 20px;
 }
 
-.steps-header div {
+.steps-header .steps-status {
     text-align: center;
     font-size: 20px;
     color: white;
