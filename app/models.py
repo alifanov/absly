@@ -327,7 +327,7 @@ class SummaryLinkBlock(SummaryBlock):
     title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
     def render(self):
-        return u'<a href="{}">{}</a>'.format(self.link, self.title if self.title else self.link)
+        return u'<a href="{}" target="_blank">{}</a>'.format(self.link, self.title if self.title else self.link)
 
     def render_to_pdf(self):
         return self.render()
@@ -347,11 +347,11 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     desc = models.TextField(verbose_name='Description')
 
     def render(self):
-        return u'<a href="{}"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
+        return u'<a href="{}" target="_blank"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
             .format(self.link, self.avatar.url, self.name, self.desc)
 
     def render_to_pdf(self):
-        return u'<a href="{}"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
+        return u'<a href="{}" target="_blank"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
             .format(self.link, self.avatar.path, self.name, self.desc)
 
     def save_image_from_url(self, url):
