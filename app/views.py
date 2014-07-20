@@ -125,7 +125,7 @@ def auth_return(request):
   storage.put(credential)
   return HttpResponseRedirect("/ga/")
 
-class GAFunnelView(StatisticsMixin, TemplateView):
+class GAFunnelView(LeftMenuMixin, TemplateView):
     credentials = None
     template_name = 'ga-funnel.html'
     ga_funnel_config = None
