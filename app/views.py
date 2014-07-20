@@ -106,6 +106,13 @@ class StatisticsMixin(object):
         ctx['certainly_level'] = int(self.calc_certainly_level())
         return ctx
 
+class LeftMenuMixin(StatisticsMixin):
+    def get_context_data(self, **kwargs):
+        ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
+        ctx['news_groups'] = NewsGroup.objects.all()
+        ctx['summary_groups'] = SummaryGroup.objects.all()
+        return ctx
+
 class UpdateTopStatisticsView(StatisticsMixin, View):
     def get(self, request, *args, **kwargs):
         ctx = self.get_context_data()
@@ -729,13 +736,6 @@ class RevenueStreamsJSONView(CanvasBlockItenJSONMixin, View):
 
 class CreateElementAjaxView(AjaxableResponseMixin, CreateView):
     model = CanvasBlockItem
-
-class LeftMenuMixin(StatisticsMixin):
-    def get_context_data(self, **kwargs):
-        ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
-        ctx['news_groups'] = NewsGroup.objects.all()
-        ctx['summary_groups'] = SummaryGroup.objects.all()
-        return ctx
 
 class DashboardView(LeftMenuMixin, TemplateView):
     template_name = 'dashboard.html'
