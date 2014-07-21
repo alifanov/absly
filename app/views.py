@@ -4,6 +4,7 @@ from app.models import News, NewsGroup, GAProfile
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
+from django.views.generic.base import ContextMixin
 from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.shortcuts import redirect
 import arrow, logging
@@ -76,7 +77,7 @@ class CreateProjectView(TemplateView):
         ctx['project_customers_formset'] = self.formset(queryset=Customer.objects.none())
         return ctx
 
-class StatisticsMixin(object):
+class StatisticsMixin(ContextMixin):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
 
