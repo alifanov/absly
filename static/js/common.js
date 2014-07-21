@@ -42,6 +42,23 @@ function resort_steps(){
 
 
 $(function(){
+    if($("#summary-menu").length){
+        $(window).scroll(function(){
+            if($(window).scrollTop() > $("#summary-menu").offset().top){
+                $("#summary-menu").css({
+                    'position': 'fixed',
+                    'top': '0px'
+                })
+            }
+            else{
+                $("#summary-menu").css({
+                    'position': 'statis',
+                    'top': 'auto'
+                })
+            }
+        });
+    }
+
     resort_steps();
 
     $(document).on('click', '.sort-step', function(){
