@@ -85,7 +85,7 @@ $(function(){
         item.find('.create-customer-btn').hide();
 //        $(this).parents().find('.create-customer-group:hidden').eq(0).show();
 //        $(this).hide();
-        var item_last = $(this).parents().find('.create-customer-group:visible:last');
+        var item_last = $('.create-customer-group:visible:last');
         item_last.find('.del-customer-btn').hide();
         if($('.create-customer-group:hidden').length){
             item_last.find('.create-customer-btn').show();
