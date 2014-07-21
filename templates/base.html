@@ -288,7 +288,7 @@
                 <span>Summary</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu {% if active == 'summary' %}active{% endif %}">
+            <ul id="summary-menu" class="submenu {% if active == 'summary' %}active{% endif %}">
                 <li><a href="{% url 'summary' %}">Полностью</a></li>
                 {% for sg in summary_groups %}
                     <li><a href="{% url 'summary' %}#{{ sg.name }}">{{ sg.name }}</a></li>
