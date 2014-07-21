@@ -433,6 +433,7 @@ $(function(){
             url: $(this).attr('action'),
             data: formData,
             processData: false,
+            contentType: false,
             success: function(){
 //                location.reload()
             }
