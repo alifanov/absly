@@ -666,3 +666,7 @@ li.active a.canvas-element-item-link {
 .summary .panel-default h2{
     padding-bottom: 20px;
 }
+
+.del-customer-btn {
+    display: none;
+}
