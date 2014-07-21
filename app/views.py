@@ -114,7 +114,7 @@ class LeftMenuMixin(StatisticsMixin):
         ctx['summary_groups'] = SummaryGroup.objects.all()
         return ctx
 
-class UpdateTopStatisticsView(StatisticsMixin, View):
+class UpdateTopStatisticsView(LeftMenuMixin, View):
     def get(self, request, *args, **kwargs):
         ctx = self.get_context_data()
         return HttpResponse(json.dumps(ctx), content_type='application/json')
