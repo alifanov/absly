@@ -1111,6 +1111,12 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryImageBlockForm
         if block.__class__.__name__ == 'SummaryLinkBlock':
             return SummaryLinkBlockForm
+        if block.__class__.__name__ == 'SummaryCrunchBaseBlock':
+            return SummaryCrunchBaseBlockForm
+        if block.__class__.__name__ == 'SummaryAngelListBlock':
+            return SummaryAngelListBlockForm
+        if block.__class__.__name__ == 'SummaryLinkedInBlock':
+            return SummaryLinkedInBlockForm
         return NotImplementedError(block.__class__.__name__)
 
 from reportlab.pdfbase import pdfmetrics
