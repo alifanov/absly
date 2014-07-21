@@ -1034,6 +1034,9 @@ class SummaryBlockView(CreateView):
         block.save()
         return self.get(self.request)
 
+    def form_invalid(self, form):
+        return HttpResponse(json.dumps(form.errors), content_type='application/json')
+
     def get(self, request, *args, **kwargs):
         form = self.form_class(initial={
             'item': SummaryItem.objects.get(pk=self.request.GET.get('id'))
