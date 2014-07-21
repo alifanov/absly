@@ -11,7 +11,7 @@
         </h1>
         <div class="row">
             {% for sg in summary_groups %}
-                <div class="col-xs-2">
+                <div class="col-xs-{% if forloop.counter == 3 or forloop.counter == 5 %}3{% else %}2{% endif %}">
                     <a href="#{{ sg.name }}">{{ sg.name }}</a>
                     <ul>
                         {% for si in sg.items.all %}
