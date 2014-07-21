@@ -46,14 +46,12 @@ $(function(){
         $(window).scroll(function(){
             if($(window).scrollTop() > $("#summary-menu").offset().top){
                 $("#summary-menu").css({
-                    'position': 'fixed',
-                    'top': '0px'
+                    'position': 'fixed'
                 })
             }
             else{
                 $("#summary-menu").css({
-                    'position': 'static',
-                    'top': 'auto'
+                    'position': 'static'
                 })
             }
         });
