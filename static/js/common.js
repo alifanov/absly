@@ -52,7 +52,7 @@ $(function(){
             }
             else{
                 $("#summary-menu").css({
-                    'position': 'statis',
+                    'position': 'static',
                     'top': 'auto'
                 })
             }
