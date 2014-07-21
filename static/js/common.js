@@ -46,7 +46,8 @@ $(function(){
         $(window).scroll(function(){
             if($(window).scrollTop() > $("#summary-menu").offset().top){
                 $("#summary-menu").css({
-                    'position': 'fixed'
+                    'position': 'fixed',
+                    top: '0'
                 })
             }
             else{
