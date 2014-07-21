@@ -432,7 +432,7 @@ $(function(){
             url: $(this).attr('action'),
             data: $(this).serializeArray(),
             success: function(){
-                location.reload()
+//                location.reload()
             }
         });
         return false;
