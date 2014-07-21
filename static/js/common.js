@@ -77,6 +77,7 @@ $(function(){
     $(".create-customer-btn").click(function(){
         $(this).parents().find('.create-customer-group:visible').next().show();
         $(this).hide();
+        $(this).parent().find('.del-customer-btn').show();
         return false;
     });
 
