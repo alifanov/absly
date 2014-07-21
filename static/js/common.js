@@ -94,7 +94,9 @@ $(function(){
     $(".del-customer-btn").click(function(){
         $(this).parent().parent().hide();
         $(this).hide();
-        $(this).parent().find('.create-customer-btn').show();
+        if($('.crate-customer-group:hidden').length){
+            $(this).parent().find('.create-customer-btn').show();
+        }
         return false;
     });
 
