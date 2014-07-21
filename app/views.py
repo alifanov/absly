@@ -114,14 +114,13 @@ class LeftMenuMixin(StatisticsMixin):
         ctx['summary_groups'] = SummaryGroup.objects.all()
         return ctx
 
-class UpdateTopStatisticsView(LeftMenuMixin, View):
+class UpdateTopStatisticsView(StatisticsMixin, View):
     def get(self, request, *args, **kwargs):
-        ctx = self.get_context_data()
+        ctx = {
+            'certainly_level': int(self.calc_certainly_level())
+        }
         return HttpResponse(json.dumps(ctx), content_type='application/json')
 
-    def get_context_data(self, **kwargs):
-        ctx = super(UpdateTopStatisticsView, self).get_context_data(**kwargs)
-        return ctx
 
 @login_required
 def auth_return(request):
