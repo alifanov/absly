@@ -432,7 +432,7 @@ $(function(){
             type: "POST",
             url: $(this).attr('action'),
             data: formData,
-            proccessData: false,
+            processData: false,
             success: function(){
 //                location.reload()
             }
