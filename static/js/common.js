@@ -97,7 +97,7 @@ $(function(){
         $(this).parent().parent().hide();
         $(this).hide();
         if($('.create-customer-group:hidden').length){
-            $(this).parent().find('.create-customer-btn').show();
+            $('.create-customer-group:visible:last').find('.create-customer-btn').show();
         }
         return false;
     });
