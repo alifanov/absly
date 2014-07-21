@@ -81,6 +81,13 @@ $(function(){
         return false;
     });
 
+    $(".del-customer-btn").click(function(){
+        $(this).parents().find('.create-customer-group:visible').hide();
+        $(this).hide();
+        $(this).parent().find('.del-customer-btn').show();
+        return false;
+    });
+
     $("input:checkbox, input:radio").uniform();
     $(".select-customer").select2({
         placeholder: "Кто ваши потребители ?"
