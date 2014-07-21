@@ -435,7 +435,7 @@ $(function(){
             processData: false,
             contentType: false,
             success: function(){
-//                location.reload()
+                location.reload()
             }
         });
         return false;
