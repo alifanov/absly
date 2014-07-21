@@ -480,6 +480,7 @@ $(function(){
             url: '/summary/cb/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });
@@ -493,6 +494,7 @@ $(function(){
             url: '/summary/angellist/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });
@@ -506,6 +508,7 @@ $(function(){
             url: '/summary/linkedin/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });
@@ -519,6 +522,7 @@ $(function(){
             url: '/summary/text/block/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });
@@ -532,6 +536,7 @@ $(function(){
             },
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });
@@ -545,6 +550,7 @@ $(function(){
             },
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
             }
         })
     });

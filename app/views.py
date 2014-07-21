@@ -1034,6 +1034,9 @@ class SummaryBlockView(CreateView):
         block.save()
         return self.get(self.request)
 
+    def get_title(self):
+        return u'Add block'
+
     def form_invalid(self, form):
         return HttpResponse(json.dumps(form.errors), content_type='application/json')
 
@@ -1043,31 +1046,49 @@ class SummaryBlockView(CreateView):
         })
         csrf_token = request.COOKIES['csrftoken']
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.get_full_path(), 'csrf_token_value': csrf_token})
-        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+        return HttpResponse(json.dumps({'data': data, 'title': self.get_title()}), content_type='application/json')
 
 class SummaryTextBlockView(SummaryBlockView):
     model = SummaryTextBlock
     form_class = SummaryTextBlockForm
 
+    def get_title(self):
+        return u'Add text block'
+
 class SummaryImageBlockView(SummaryBlockView):
     model = SummaryImageBlock
     form_class = SummaryImageBlockForm
+
+    def get_title(self):
+        return u'Add image block'
 
 class SummaryLinkBlockView(SummaryBlockView):
     model = SummaryLinkBlock
     form_class = SummaryLinkBlockForm
 
+    def get_title(self):
+        return u'Add link block'
+
 class SummaryLinkedInBlockView(SummaryBlockView):
     model = SummaryLinkedInBlock
     form_class = SummaryLinkedInBlockForm
+
+    def get_title(self):
+        return u'Add LinkedIn block'
 
 class SummaryAngelListBlockView(SummaryBlockView):
     model = SummaryAngelListBlock
     form_class = SummaryAngelListBlockForm
 
+    def get_title(self):
+        return u'Add AngelList block'
+
 class SummaryCrunchBaseBlockView(SummaryBlockView):
     model = SummaryCrunchBaseBlock
     form_class = SummaryCrunchBaseBlockForm
+
+    def get_title(self):
+        return u'Add CrunchBase block'
 
 class SummaryUpdateBlockView(UpdateView):
     template_name = 'summary/forms/edit.html'
