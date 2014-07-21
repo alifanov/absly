@@ -82,7 +82,7 @@ $(function(){
     });
 
     $(".del-customer-btn").click(function(){
-        $(this).parents().find('.create-customer-group').hide();
+        $(this).parent().parent().hide();
         $(this).hide();
         $(this).parent().find('.del-customer-btn').show();
         return false;
