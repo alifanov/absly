@@ -43,8 +43,9 @@ function resort_steps(){
 
 $(function(){
     if($("#summary-menu").length){
+        var menu_pos = $("#summary-menu").offset().top;
         $(window).scroll(function(){
-            if($(window).scrollTop() > $("#summary-menu").offset().top){
+            if($(window).scrollTop() > menu_pos){
                 $("#summary-menu").css({
                     'position': 'fixed',
                     top: '0'
