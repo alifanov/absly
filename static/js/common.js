@@ -80,7 +80,7 @@ $(function(){
         var item = $(this).parents().find('.create-customer-group:hidden').eq(0);
         item.show();
         item.find('input').val('');
-        item.find('select').val('');
+        item.find('select').select2('val', '');
         item.find('.del-customer-btn').show();
         item.find('.create-customer-btn').hide();
 //        $(this).parents().find('.create-customer-group:hidden').eq(0).show();
