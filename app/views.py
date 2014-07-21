@@ -1100,7 +1100,7 @@ class SummaryUpdateBlockView(UpdateView):
         form = self.get_form_class()(instance=block)
         csrf_token = request.COOKIES['csrftoken']
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.path, 'csrf_token_value': csrf_token})
-        return HttpResponse(json.dumps({'data': data}), content_type='application/json')
+        return HttpResponse(json.dumps({'data': data, 'title': self.get_title()}), content_type='application/json')
 
 
     def get_form_class(self):
@@ -1117,6 +1117,22 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryAngelListBlockForm
         if block.__class__.__name__ == 'SummaryLinkedInBlock':
             return SummaryLinkedInBlockForm
+        return NotImplementedError(block.__class__.__name__)
+
+    def get_title(self):
+        block = self.get_object()
+        if block.__class__.__name__ == 'SummaryTextBlock':
+            return u'Edit text block'
+        if block.__class__.__name__ == 'SummaryImageBlock':
+            return u'Edit image block'
+        if block.__class__.__name__ == 'SummaryLinkBlock':
+            return u'Edit link block'
+        if block.__class__.__name__ == 'SummaryCrunchBaseBlock':
+            return u'Edit CrunchBase block'
+        if block.__class__.__name__ == 'SummaryAngelListBlock':
+            return u'Edit AngelList block'
+        if block.__class__.__name__ == 'SummaryLinkedInBlock':
+            return u'Edit LinkedIn block'
         return NotImplementedError(block.__class__.__name__)
 
 from reportlab.pdfbase import pdfmetrics
