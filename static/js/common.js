@@ -427,10 +427,11 @@ $(function(){
     });
 
     $(document).on('submit', "form.summary-block-add", function(){
+        var formData = new FormData($(this)[0]);
         $.ajax({
             type: "POST",
             url: $(this).attr('action'),
-            data: $(this).serializeArray(),
+            data: formData,
             success: function(){
 //                location.reload()
             }
