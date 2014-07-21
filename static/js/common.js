@@ -465,6 +465,7 @@ $(function(){
             url: '/summary/update/block/'+_this.attr('rel') + '/',
             success: function(resp){
                 $(".modal-form-body").html(resp.data);
+                $(".modal-title").html(resp.title);
             }
         })
     });
