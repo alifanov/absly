@@ -678,3 +678,7 @@ li.active a.canvas-element-item-link {
 .news .panel-body .news-body {
     margin-left: 110px;
 }
+
+.system-notification {
+    width: 80%;
+}
