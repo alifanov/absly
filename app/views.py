@@ -274,7 +274,7 @@ class GAFunnelConfigAjaxView(View):
         if fcf.is_valid():
             fcf.save()
             return HttpResponse("OK")
-        return HttpResponse("{}".format(fdf.errors, fcf.errors))
+        return HttpResponse("{} [{}]".format(fdf.errors, fcf.errors))
 
 class GAWeboptsView(View):
 
