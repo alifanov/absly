@@ -1093,7 +1093,7 @@ class SummaryCrunchBaseBlockView(SummaryBlockView):
 class SummaryDeleteBlock(View):
 
     def get(self, request, *args, **kwargs):
-        block = request.user.summary_block.get(pk=self.kwargs.get('pk'))
+        block = request.user.summary_blocks.get(pk=self.kwargs.get('pk'))
         block.delete()
         return HttpResponse('OK')
 
