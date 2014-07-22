@@ -1193,7 +1193,7 @@ class SummaryPubView(ListView):
         else:
             raise Http404
 
-from django.contrib.auth.forms import AdminPasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 class PersonalDataView(LeftMenuMixin, FormView):
     template_name = 'registration/personal-data.html'
-    form_class = AdminPasswordChangeForm
+    form_class = PasswordChangeForm
