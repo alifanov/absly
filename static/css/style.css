@@ -682,3 +682,7 @@ li.active a.canvas-element-item-link {
 .system-notifications {
     width: 80%;
 }
+
+.reveal {
+    height: 40px;
+}
