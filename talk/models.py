@@ -22,7 +22,7 @@ class Post(models.Model):
         verbose_name_plural = u'Посты'
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, verbose_name=u'Пост', related_name='comments')
+    post = models.ForeignKey(Post, verbose_name=u'Пост', related_name='comments', blank=True)
     text = models.TextField(verbose_name=u'Текст')
     user = models.ForeignKey(User, verbose_name=u'Пользователь')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
