@@ -686,3 +686,7 @@ li.active a.canvas-element-item-link {
 .reveal {
     height: 40px;
 }
+
+.input-group-btn {
+    vertical-align: top;
+}
