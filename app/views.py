@@ -1197,3 +1197,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 class PersonalDataView(LeftMenuMixin, FormView):
     template_name = 'registration/personal-data.html'
     form_class = PasswordChangeForm
+
+    def get_form_kwargs(self, **kwargs):
+        kw = super(PersonalDataView, self).get_form_kwargs(**kwargs)
+        kw['user'] = self.request.user
+        return kw
