@@ -441,45 +441,49 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                     ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
 
                 fcf = FunnelConfgiForm(instance=ga_funnel_config)
-                vars = [(c,c) for c in ctx['ga_pages']]
-                vars.insert(0, (u'', '-----'))
-                field = forms.ChoiceField(
-                    widget=forms.Select, choices=vars
-                )
-                fcf.fields['activation_page'] = field
-                fcf.fields['retention_page'] = field
-                fcf.fields['referral_page'] = field
-                fcf.fields['revenue_page'] = field
+                if 'ga_pages' in ctx:
+                    vars = [(c,c) for c in ctx['ga_pages']]
+                    vars.insert(0, (u'', '-----'))
+                    field = forms.ChoiceField(
+                        widget=forms.Select, choices=vars
+                    )
+                    fcf.fields['activation_page'] = field
+                    fcf.fields['retention_page'] = field
+                    fcf.fields['referral_page'] = field
+                    fcf.fields['revenue_page'] = field
 
-                choices = [(c,c) for c in ctx['ga_events_categories']]
-                choices.insert(0, (u'', '----'))
-                field = forms.ChoiceField(
-                    widget=forms.Select, choices=choices
-                )
-                fcf.fields['activation_event_category'] = field
-                fcf.fields['retention_event_category'] = field
-                fcf.fields['referral_event_category'] = field
-                fcf.fields['revenue_event_category'] = field
+                if 'ga_events_categories' in ctx:
+                    choices = [(c,c) for c in ctx['ga_events_categories']]
+                    choices.insert(0, (u'', '----'))
+                    field = forms.ChoiceField(
+                        widget=forms.Select, choices=choices
+                    )
+                    fcf.fields['activation_event_category'] = field
+                    fcf.fields['retention_event_category'] = field
+                    fcf.fields['referral_event_category'] = field
+                    fcf.fields['revenue_event_category'] = field
 
-                choices = [(c,c) for c in ctx['ga_events_actions']]
-                choices.insert(0, (u'', '----'))
-                field = forms.ChoiceField(
-                    widget=forms.Select, choices=choices
-                )
-                fcf.fields['activation_event_action'] = field
-                fcf.fields['retention_event_action'] = field
-                fcf.fields['referral_event_action'] = field
-                fcf.fields['revenue_event_action'] = field
+                if 'ga_events_actions' in ctx:
+                    choices = [(c,c) for c in ctx['ga_events_actions']]
+                    choices.insert(0, (u'', '----'))
+                    field = forms.ChoiceField(
+                        widget=forms.Select, choices=choices
+                    )
+                    fcf.fields['activation_event_action'] = field
+                    fcf.fields['retention_event_action'] = field
+                    fcf.fields['referral_event_action'] = field
+                    fcf.fields['revenue_event_action'] = field
 
-                choices = [(c,c) for c in ctx['ga_events_labels']]
-                choices.insert(0, (u'', '----'))
-                field = forms.ChoiceField(
-                    widget=forms.Select, choices=choices
-                )
-                fcf.fields['activation_event_label'] = field
-                fcf.fields['retention_event_label'] = field
-                fcf.fields['referral_event_label'] = field
-                fcf.fields['revenue_event_label'] = field
+                if 'ga_events_labels' in ctx:
+                    choices = [(c,c) for c in ctx['ga_events_labels']]
+                    choices.insert(0, (u'', '----'))
+                    field = forms.ChoiceField(
+                        widget=forms.Select, choices=choices
+                    )
+                    fcf.fields['activation_event_label'] = field
+                    fcf.fields['retention_event_label'] = field
+                    fcf.fields['referral_event_label'] = field
+                    fcf.fields['revenue_event_label'] = field
                 ctx['funnel_config_form'] = fcf
                 ctx['funnel_date_form'] = FunnelDateForm(instance=ga_funnel_config)
                 ctx['funnel_date_form'].fields['date_range'] = forms.ChoiceField(
