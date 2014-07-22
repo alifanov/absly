@@ -32,7 +32,7 @@
                         <a name="{{ si.name }}"></a>
                         <h3>{{ si.name }}</h3>
                             {% for block in si.blocks.all|by_user:request.user %}
-                                <div class="es-block">
+                                <div class="es-block" id="esb-{{ block.pk }}">
                                     {{ block.render|safe }}
                                     <div class="es-edit-block">
                                         <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>
@@ -63,7 +63,7 @@
                             {% for sic in si.childs.all %}
                                 <h4>{{ sic.name }}</h4>
                                 {% for block in sic.blocks.all %}
-                                    <div class="es-block">
+                                    <div class="es-block" id="esb-{{ block.pk }}">
                                         {{ block.render|safe }}
                                         <div class="es-edit-block">
                                             <a href="#" rel="{{ block.pk }}" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Edit</a>

@@ -48,7 +48,7 @@ $(function(){
             type: "GET",
             url: "/summary/del/block/"+$(this).val() + "/",
             success: function(){
-                $("#se-"+_this.val()).remove();
+                $("#esb-"+_this.val()).remove();
                 $("#add-summary-text-block-modal-id").modal('hide');
             }
         });
