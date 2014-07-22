@@ -8,7 +8,7 @@
         </div>
     {% endfor %}
     {% if form.instance.pk %}
-        <button class="btn btn-danger">Удалить</button>
+        <button class="btn btn-danger del-summary-block" value="{{ form.instance.pk }}">Удалить</button>
     {% endif %}
     <button class=" pull-right btn btn-default">Сохранить</button>
     <div class="clearfix"></div>

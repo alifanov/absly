@@ -56,6 +56,7 @@ urlpatterns = patterns('',
     url(r'^api/canvas/item/(?P<pk>\d+)/$', CanvasBlockItemDetail.as_view(), name='canvas-block-item-detail'),
 
     url(r"^summary/update/block/(?P<pk>\d+)/$", SummaryUpdateBlockView.as_view(), name='summary-update-block'),
+    url(r"^summary/del/block/(?P<pk>\d+)/$", SummaryDeleteBlock.as_view(), name='summary-del-block'),
 
     url(r'^summary/cb/block/$', SummaryCrunchBaseBlockView.as_view(), name='summary-cb-block'),
     url(r'^summary/angellist/block/$', SummaryAngelListBlockView.as_view(), name='summary-angellist-block'),

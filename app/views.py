@@ -1090,6 +1090,13 @@ class SummaryCrunchBaseBlockView(SummaryBlockView):
     def get_title(self):
         return u'Add CrunchBase block'
 
+class SummaryDeleteBlock(View):
+
+    def get(self, request, *args, **kwargs):
+        block = request.user.summary_block.get(pk=self.kwargs.get('pk'))
+        block.delete()
+        return HttpResponse('OK')
+
 class SummaryUpdateBlockView(UpdateView):
     template_name = 'summary/forms/edit.html'
     model = SummaryBlock

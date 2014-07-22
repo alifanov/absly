@@ -281,7 +281,7 @@ class SummaryItem(models.Model):
         verbose_name_plural = u'SummaryItems'
 
 class SummaryBlock(PolymorphicModel):
-    user = models.ForeignKey(User, verbose_name=u'User', null=True)
+    user = models.ForeignKey(User, verbose_name=u'User', null=True, related_name='summary_blocks')
     item = models.ForeignKey(SummaryItem, verbose_name=u'Элемент Executive summary', related_name='blocks')
 
     def render(self):
@@ -295,7 +295,9 @@ class SummaryTextBlock(SummaryBlock):
     text = models.TextField(verbose_name=u'Текст')
 
     def render(self):
-        return self.text
+        return render_to_string('summary/text-widget.html', {
+            'block': self
+        })
 
     def render_to_pdf(self, p, x, y):
         return self.render()
@@ -311,7 +313,9 @@ class SummaryImageBlock(SummaryBlock):
     image = models.ImageField(upload_to=u'upload/', verbose_name=u'Image')
 
     def render(self):
-        return u'<img src="{}" class="es-img" />'.format(self.image.url)
+        return render_to_string('summary/image-widget.html', {
+            'block': self
+        })
 
     def render_to_pdf(self):
         return u'<img src="{}" class="es-img" />'.format(self.image.path)
@@ -327,8 +331,13 @@ class SummaryLinkBlock(SummaryBlock):
     link = models.TextField(verbose_name=u'Link')
     title = models.CharField(max_length=256, verbose_name=u'Title', blank=True)
 
+    def get_link_title(self):
+        return self.title if self.title else self.link
+
     def render(self):
-        return u'<a href="{}" target="_blank">{}</a>'.format(self.link, self.title if self.title else self.link)
+        return render_to_string('summary/link-widget.html', {
+            'block': self
+        })
 
     def render_to_pdf(self):
         return self.render()
@@ -348,8 +357,9 @@ class SummaryLinkedInBlock(SummaryLinkBlock):
     desc = models.TextField(verbose_name='Description')
 
     def render(self):
-        return u'<a href="{}" target="_blank"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\
-            .format(self.link, self.avatar.url, self.name, self.desc)
+        return render_to_string('summary/linkedin-widget.html', {
+            'block': self
+        })
 
     def render_to_pdf(self):
         return u'<a href="{}" target="_blank"><div class="contact-widget"><img src="{}" /><b>{}</b><p>{}</p></div></a>'\

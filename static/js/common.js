@@ -42,6 +42,18 @@ function resort_steps(){
 
 
 $(function(){
+    $(document).on('click', ".del-summary-block", function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            url: "/summary/del/block/"+$(this).val() + "/",
+            success: function(){
+                $("#se-"+_this.val()).remove();
+            }
+        });
+        return false;
+    });
+
     if($("#summary-menu").length){
         var menu_pos = $("#summary-menu").offset().top;
         $(window).scroll(function(){
