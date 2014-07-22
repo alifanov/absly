@@ -41,7 +41,12 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.username|add_class:"form-control"|attr:"placeholder:Your email" }}
-                {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
+                <div class="input-group">
+                    {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
+                    <span class="input-group-btn">
+                        <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+                    </span>
+                </div>
                 <input name="next" value="/" type="hidden" />
                 <a href="{% url 'auth_password_reset' %}" class=" forgot">Забыли пароль ?</a>
                 <button type="submit" class="btn-glow primary login">Вход</button>

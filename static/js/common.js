@@ -42,6 +42,18 @@ function resort_steps(){
 
 
 $(function(){
+    if($('.reveal').length){
+        $(".reveal").on('click', function(){
+            if($("#id_password").attr('type') == 'password'){
+                $("#id_password").attr('type', 'text');
+            }
+            else{
+                $("#id_password").attr('type', 'password');
+            }
+            return false;
+        })
+    }
+
     $(document).on('click', ".del-summary-block", function(){
         var _this = $(this);
         $.ajax({
