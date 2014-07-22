@@ -7,7 +7,7 @@
             {{ field|add_class:"form-control" }}
         </div>
     {% endfor %}
-    {% if form.instance %}
+    {% if form.instance.pk %}
         <button class="btn btn-danger">Удалить</button>
     {% endif %}
     <button class=" pull-right btn btn-default">Сохранить</button>
