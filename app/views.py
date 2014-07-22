@@ -130,7 +130,7 @@ def auth_return(request):
   credential = FLOW.step2_exchange(request.REQUEST)
   storage = Storage(CredentialsModel, 'id', request.user, 'credential')
   storage.put(credential)
-  return HttpResponseRedirect("/ga/")
+  return HttpResponseRedirect("/ga-config/")
 
 class GAFunnelView(LeftMenuMixin, TemplateView):
     credentials = None
