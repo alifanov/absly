@@ -13,11 +13,13 @@
                 </div>
                 <div class="panel-body">
                     {% thumbnail s.icon '100x100' crop='center' as im %}
-                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
                      {% endthumbnail %}
-                    {{ s.desc }}
-                    <div>
-                        <a href="{{ s.link }}" target="_blank">Подробнее</a>
+                    <div class="news-body">
+                        {{ s.desc }}
+                        <div>
+                            <a href="{{ s.link }}" target="_blank">Подробнее</a>
+                        </div>
                     </div>
                 </div>
             </div>
