@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
 {% block content %}
     <div class="container">
         <h1>Рекомендованные новости</h1>
@@ -10,6 +12,9 @@
                     <a href="{{ s.link }}" target="_blank">{{ s.title }}</a>
                 </div>
                 <div class="panel-body">
+                    {% thumbnail s.icon '100x100' crop='center' as im %}
+                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+                     {% endthumbnail %}
                     {{ s.desc }}
                     <div>
                         <a href="{{ s.link }}" target="_blank">Подробнее</a>
