@@ -7,6 +7,9 @@
         <h1>Personal data</h1>
         <div>
             <form method="POST" action="">
+                {% for err in form.non_field_errors %}
+                    {{ err }}
+                {% endfor %}
                 {% for err in form.errors %}
                     <div class="alert alert-danger">{{ err }}</div>
                 {% endfor %}
