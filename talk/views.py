@@ -11,10 +11,23 @@ class PostsView(LeftMenuMixin, ListView):
     def get_queryset(self):
         return Post.objects.order_by('-created')
 
-class PostDetailView(LeftMenuMixin, DetailView):
+class PostDetailView(LeftMenuMixin, DetailView, FormView):
     model = Post
     template_name = 'posts/item.html'
     context_object_name = 's'
+
+    def form_valid(self, form):
+        comment = form.save()
+        comment.user=self.request.user
+        comment.post = self.get_object()
+        comment.save()
+        return self.get(self.request)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(PostDetailView, self).get_context_data(**kwargs)
+        ctx['form'] = self.form_class()
+        ctx['active'] = 'events'
+        return ctx
 
 class InvestorsRequestsView(LeftMenuMixin, TemplateView):
     template_name = 'investors-requests.html'
