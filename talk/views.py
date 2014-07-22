@@ -11,6 +11,11 @@ class PostsView(LeftMenuMixin, ListView):
     def get_queryset(self):
         return Post.objects.order_by('-created')
 
+class PostDetailView(LeftMenuMixin, DetailView):
+    model = Post
+    template_name = 'posts/item.html'
+    context_object_name = 's'
+
 class InvestorsRequestsView(LeftMenuMixin, TemplateView):
     template_name = 'investors-requests.html'
 

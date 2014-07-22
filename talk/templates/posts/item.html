@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container system-notification">
+        <h1>{{ s.title }}</h1>
+        <div class="system-notifications panel panel-default">
+            <div class="panel-heading">
+                <span class="pull-right">{{ s.created }}</span>
+                <a href="#">{{ s.title }}</a>
+            </div>
+            <div class="panel-body">
+                {{ s.text }}
+            </div>
+        </div>
+        <div class="comments">
+        {% for comment in s.get_comments %}
+            <div class="system-comment panel panel-default">
+                <div class="panel-heading">
+                    <span>{{ comment.user.username }}</span>
+                    <span class="pull-right">{{ comment.created }}</span>
+                </div>
+                <div class="panel-body">
+                    {{ comment.text }}
+                </div>
+            </div>
+
+        {% endfor %}
+        <div class="system-comment-form">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Ваш комментарий:</label>
+                    {{ form.text|add_class:"form-control" }}
+                </div>
+                    <button class="btn btn-primary btn-block">Отправить</button>
+            </form>
+        </div>
+        </div>
+    </div>
+{% endblock %}

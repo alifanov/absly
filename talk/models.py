@@ -11,6 +11,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
+    def get_comments(self):
+        return self.comments.order_by('created')
+
     def __unicode__(self):
         return self.title
 

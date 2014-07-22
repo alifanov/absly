@@ -89,6 +89,7 @@ urlpatterns = patterns('',
     # talk
     url(r'^talk/requests/$', InvestorsRequestsView.as_view(), name='investors-requests'),
     url(r'^talk/posts/$', PostsView.as_view(), name='posts-view'),
+    url(r'^talk/posts/(?P<pk>\d+)/$', PostDetailView.as_view(), name='post-detail-view'),
     url(r'^talk/news/$', NewsView.as_view(), name='news-view'),
     url(r'^talk/system/$', SystemView.as_view(), name='system-notifications-view'),
     url(r'^talk/system/(?P<pk>\d+)/$', SystemDetailView.as_view(), name='system-notification-detail-view'),
