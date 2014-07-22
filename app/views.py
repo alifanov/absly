@@ -404,7 +404,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                     dimensions='ga:pagePath',
                     max_results=125
                 ).execute()
-                ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
+                if ga_pages.get('rows'):
+                    ctx['ga_pages'] = [p[0] for p in ga_pages.get('rows')]
 
                 ga_events_categories = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
@@ -414,7 +415,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                     dimensions='ga:eventCategory',
                     max_results=25
                 ).execute()
-                ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
+                if ga_events_categories.get('rows'):
+                    ctx['ga_events_categories'] = [p[0] for p in ga_events_categories.get('rows')]
 
                 ga_events_actions = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
@@ -424,7 +426,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                     dimensions='ga:eventAction',
                     max_results=25
                 ).execute()
-                ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
+                if ga_events_actions.get('rows'):
+                    ctx['ga_events_actions'] = [p[0] for p in ga_events_actions.get('rows')]
 
                 ga_events_labels = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
@@ -434,7 +437,9 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                     dimensions='ga:eventLabel',
                     max_results=25
                 ).execute()
-                ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
+                if ga_events_labels.get('rows'):
+                    ctx['ga_events_labels'] = [p[0] for p in ga_events_labels.get('rows')]
+
                 fcf = FunnelConfgiForm(instance=ga_funnel_config)
                 vars = [(c,c) for c in ctx['ga_pages']]
                 vars.insert(0, (u'', '-----'))
