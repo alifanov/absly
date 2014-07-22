@@ -39,6 +39,7 @@ class News(models.Model):
     desc = models.TextField(verbose_name=u'Краткое описание')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
+    icon = models.ImageField(upload_to='upload/', verbose_name=u'Превью')
 
     def __unicode__(self):
         return self.title
