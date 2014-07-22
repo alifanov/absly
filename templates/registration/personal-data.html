@@ -7,12 +7,17 @@
         <h1>Personal data</h1>
         <div>
             <form method="POST" action="">
+                {% if saved %}
+                    <div class="alert alert-success">Password successfully changed</div>
+                {% endif %}
                 {% for err in form.non_field_errors %}
                     {{ err }}
                 {% endfor %}
-                {% for err in form.errors %}
-                    <div class="alert alert-danger">{{ err }}</div>
-                {% endfor %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        <div class="alert alert-danger">{{ field.errors }}</div>
+                    {% endfor %}
+                {% endif %}
                 {% csrf_token %}
                 <div class="form-group">
                     {{ form.old_password|add_class:"form-control"|attr:"placeholder:Old password" }}

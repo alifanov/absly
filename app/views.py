@@ -1198,11 +1198,18 @@ class PersonalDataView(LeftMenuMixin, FormView):
     template_name = 'registration/personal-data.html'
     form_class = PasswordChangeForm
     success_url = '/personal/'
+    saved = False
 
     def form_valid(self, form):
         self.request.user.set_password(form.cleaned_data['new_password1'])
         self.request.user.save()
+        self.saved = True
         return super(PersonalDataView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(PersonalDataView, self).get_context_data(**kwargs)
+        ctx['saved'] = self.saved
+        return ctx
 
     def get_form_kwargs(self, **kwargs):
         kw = super(PersonalDataView, self).get_form_kwargs(**kwargs)
