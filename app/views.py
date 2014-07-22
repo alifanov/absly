@@ -1201,7 +1201,7 @@ class PersonalDataView(LeftMenuMixin, FormView):
 
     def form_valid(self, form):
         self.request.user.set_password(form.cleaned_data['new_password1'])
-        return HttpResponseRedirect(self.get_success_url())
+        return super(PersonalDataView, self).form_valid(form)
 
     def get_form_kwargs(self, **kwargs):
         kw = super(PersonalDataView, self).get_form_kwargs(**kwargs)
