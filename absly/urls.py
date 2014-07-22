@@ -97,6 +97,7 @@ urlpatterns = patterns('',
 
 
     url(r'^new/$', CreateProjectView.as_view(), name='new-project'),
+    url(r'^personal/$', PersonalDataView.as_view(), name='personal-data-view'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
