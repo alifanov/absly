@@ -165,7 +165,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'wkhtmltopdf'
 )
-DEFAULT_FROM_EMAIL = 'info@absly.progernachas.ru'
+DEFAULT_FROM_EMAIL = 'info@new.absly.com'
 ACCOUNT_ACTIVATION_DAYS = 3
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 MANDRILL_API_KEY = 'RDps2uN2lIy6-bpvWRctyQ'
