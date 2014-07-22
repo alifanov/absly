@@ -1199,6 +1199,10 @@ class PersonalDataView(LeftMenuMixin, FormView):
     form_class = PasswordChangeForm
     success_url = '/personal/'
 
+    def form_valid(self, form):
+        self.request.user.set_password(form.cleaned_data['new_password1'])
+        return HttpResponseRedirect(self.get_success_url())
+
     def get_form_kwargs(self, **kwargs):
         kw = super(PersonalDataView, self).get_form_kwargs(**kwargs)
         kw['user'] = self.request.user
