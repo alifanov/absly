@@ -24,7 +24,7 @@ class SummaryItemAdmin(admin.ModelAdmin):
     list_display = ['name', 'parent', 'group']
 
 class GAFunnelConfigAdminModel(admin.ModelAdmin):
-    list_display = ('id', 'user__username')
+    list_display = ('id', 'user')
 
 admin.site.register(GAFunnelConfig, GAFunnelConfigAdminModel)
 admin.site.register(CredentialsModel)
