@@ -4,7 +4,6 @@
 
 {% block content %}
     <div class="container metrics ga-config">
-        {{ funnel_data_form.as_p }}
         <h1>Воронка Google Analytics</h1>
     <form method="POST">{% csrf_token %}
         <table class="table ga-funnel-table-view">

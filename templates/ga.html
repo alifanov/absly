@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="container metrics ga-config">
+    {{ funnel_config_form.as_p }}
     <h1>Настройка Google Analytics</h1>
     {% if auth_url %}
         <a href="{{ auth_url }}">Подключить Google Analytics</a>
