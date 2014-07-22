@@ -670,3 +670,11 @@ li.active a.canvas-element-item-link {
 .del-customer-btn {
     display: none;
 }
+
+.news .panel-body img {
+    float: left;
+}
+
+.news .panel-body .news-body {
+    margin-left: 110px;
+}
