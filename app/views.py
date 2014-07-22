@@ -1204,6 +1204,7 @@ class PersonalDataView(LeftMenuMixin, FormView):
         self.request.user.set_password(form.cleaned_data['new_password1'])
         self.request.user.save()
         self.saved = True
+        raise ValueError('Saved')
         return super(PersonalDataView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
