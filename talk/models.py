@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Post(models.Model):
-    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    # user = models.ForeignKey(User, verbose_name=u'Пользователь')
     title = models.CharField(max_length=256, verbose_name=u'Заголовок')
     text = models.TextField(verbose_name=u'Текст')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
