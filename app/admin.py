@@ -23,7 +23,10 @@ class CanvasBlockItemAdmin(admin.ModelAdmin):
 class SummaryItemAdmin(admin.ModelAdmin):
     list_display = ['name', 'parent', 'group']
 
-admin.site.register(GAFunnelConfig)
+class GAFunnelConfigAdminModel(admin.ModelAdmin):
+    list_display = ('id', 'user__username')
+
+admin.site.register(GAFunnelConfig, GAFunnelConfigAdminModel)
 admin.site.register(CredentialsModel)
 admin.site.register(SummaryTextBlock)
 admin.site.register(SummaryImageBlock)
