@@ -15,6 +15,7 @@ class PostDetailView(LeftMenuMixin, DetailView, FormView):
     model = Post
     template_name = 'posts/item.html'
     context_object_name = 's'
+    form_class = PostCommentForm
 
     def form_valid(self, form):
         comment = form.save()
