@@ -24,7 +24,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, verbose_name=u'Пост', related_name='comments', blank=True, null=True)
     text = models.TextField(verbose_name=u'Текст')
-    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    user = models.ForeignKey(User, verbose_name=u'Пользователь', null=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     is_public = models.BooleanField(default=True, verbose_name=u'Опубликован')
 
