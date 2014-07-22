@@ -4,6 +4,13 @@ from django.http import Http404
 from talk.models import *
 from talk.forms import *
 
+class PostsView(LeftMenuMixin, ListView):
+    template_name = 'posts/list.html'
+    context_object_name = 'ss'
+
+    def get_queryset(self):
+        return Post.objects.order_by('-created')
+
 class InvestorsRequestsView(LeftMenuMixin, TemplateView):
     template_name = 'investors-requests.html'
 
