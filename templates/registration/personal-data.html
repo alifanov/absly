@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container">
+        <h1>Personal data</h1>
+        <div>
+            <form method="POST" action="">
+                {% for err in form.errors %}
+                    <div class="alert alert-danger">{{ err }}</div>
+                {% endfor %}
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.old_password|add_class:"form-controls"|attr:"placeholder:Old password" }}
+                </div>
+                <div class="form-group">
+                    {{ form.new_password1|add_class:"form-controls"|attr:"placeholder:New password" }}
+                </div>
+                <div class="form-group">
+                    {{ form.new_password2|add_class:"form-controls"|attr:"placeholder:Repeat new password" }}
+                </div>
+                <button class="btn btn-primary btn-block">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

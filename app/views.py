@@ -3,7 +3,7 @@
 from app.models import News, NewsGroup, GAProfile
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView, FormView
 from django.views.generic.base import ContextMixin
 from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.shortcuts import redirect
@@ -1192,3 +1192,8 @@ class SummaryPubView(ListView):
             return self.request.user.summary_items.order_by('pk')
         else:
             raise Http404
+
+from django.contrib.auth.forms import AdminPasswordChangeForm
+class PersonalDataView(LeftMenuMixin, FormView):
+    template_name = 'registration/personal-data.html'
+    form_class = AdminPasswordChangeForm
