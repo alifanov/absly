@@ -27,7 +27,7 @@
                     {% if activation_value %}
                         <input class="form-control" disabled value="{{ activation_value }}" />
                     {% else %}
-                        {{ funnel_data_form.activation_value|add_class:"form-control" }}
+                        {{ funnel_data_form.a2|add_class:"form-control" }}
                     {% endif %}
                 </td>
                 <td>
@@ -40,7 +40,7 @@
                     {% if retention_value %}
                         <input class="form-control" disabled value="{{ retention_value }}" />
                     {% else %}
-                        {{ funnel_data_form.retention_value|add_class:"form-control" }}
+                        {{ funnel_data_form.r1|add_class:"form-control" }}
                     {% endif %}
                 </td>
                 <td>
@@ -53,7 +53,7 @@
                     {% if referral_value %}
                         <input class="form-control" disabled value="{{ referral_value }}" />
                     {% else %}
-                        {{ funnel_data_form.referral_value|add_class:"form-control" }}
+                        {{ funnel_data_form.r2|add_class:"form-control" }}
                     {% endif %}
                 </td>
                 <td>
@@ -66,7 +66,7 @@
                     {% if revenue_value %}
                         <input class="form-control" disabled value="{{ revenue_value }}" />
                     {% else %}
-                        {{ funnel_data_form.revenue_value|add_class:"form-control" }}
+                        {{ funnel_data_form.r3|add_class:"form-control" }}
                     {% endif %}
                 </td>
                 <td>
