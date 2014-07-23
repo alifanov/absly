@@ -406,7 +406,13 @@ $(function(){
         $.ajax({
             url: '/ga/config/funnel/',
             type: "POST",
-            data: $("#ga-funnel-config-form").serializeArray()
+            data: $("#ga-funnel-config-form").serializeArray(),
+            success: function(){
+                $(".alert-save-ga-config").show();
+                setTimeout(function(){
+                    $(".alert-save-ga-config").fadeOut(500);
+                }, 3000)
+            }
         });
         }, 1000);
     });
@@ -421,7 +427,13 @@ $(function(){
         $.ajax({
             url: '/ga/config/funnel/',
             type: "POST",
-            data: $("#ga-funnel-config-form").serializeArray()
+            data: $("#ga-funnel-config-form").serializeArray(),
+            success: function(){
+                $(".alert-save-ga-config").show();
+                setTimeout(function(){
+                    $(".alert-save-ga-config").fadeOut(500);
+                }, 3000)
+            }
         });
     });
 
@@ -435,7 +447,13 @@ $(function(){
         $.ajax({
             url: '/ga/config/funnel/',
             type: "POST",
-            data: $("#ga-funnel-config-form").serializeArray()
+            data: $("#ga-funnel-config-form").serializeArray(),
+            success: function(){
+                $(".alert-save-ga-config").show();
+                setTimeout(function(){
+                    $(".alert-save-ga-config").fadeOut(500);
+                }, 3000)
+            }
         });
     });
 
@@ -443,7 +461,13 @@ $(function(){
         $.ajax({
             type: "POST",
             url: '/ga/config/funnel/',
-            data: $("#date_range_form").serializeArray()
+            data: $("#date_range_form").serializeArray(),
+            success: function(){
+                $(".alert-save-ga-config").show();
+                setTimeout(function(){
+                    $(".alert-save-ga-config").fadeOut(500);
+                }, 3000)
+            }
         });
         return false;
     });
@@ -474,7 +498,13 @@ $(function(){
         $.ajax({
             type: "POST",
             url: '/ga/config/profile/',
-            data: $(".ga-config-profile-form").serializeArray()
+            data: $(".ga-config-profile-form").serializeArray(),
+            success: function(){
+                $(".alert-save-ga-config").show();
+                setTimeout(function(){
+                    $(".alert-save-ga-config").fadeOut(500);
+                }, 3000)
+            }
         });
     });
 

@@ -10,6 +10,9 @@
     {% else %}
         <hr/>
         <h2>1.  Выберите ваш профиль</h2>
+        <div class="alert alert-success alert-save-ga-config">
+            Configuration saved
+        </div>
         <form method="GET" action="" class="ga-config-profile-form">
             {% csrf_token %}
             <div class="row">
