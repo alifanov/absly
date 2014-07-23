@@ -38,10 +38,10 @@ class FunnelDateForm(ModelForm):
         model = GAFunnelConfig
         fields = ('date_range',)
 
-class FunnelDataForm(ModelForm):
-    class Meta:
-        model = GAFunnelConfig
-        fields = ('activation_value', 'retention_value', 'referral_value', 'revenue_value')
+# class FunnelDataForm(ModelForm):
+#     class Meta:
+#         model = GAFunnelConfig
+#         fields = ('activation_value', 'retention_value', 'referral_value', 'revenue_value')
 
 class GALogDataForm(ModelForm):
     class Meta:
