@@ -26,6 +26,7 @@ class SummaryItemAdmin(admin.ModelAdmin):
 class GAFunnelConfigAdminModel(admin.ModelAdmin):
     list_display = ('id', 'user')
 
+admin.site.register(GALogData)
 admin.site.register(GAFunnelConfig, GAFunnelConfigAdminModel)
 admin.site.register(CredentialsModel)
 admin.site.register(SummaryTextBlock)
