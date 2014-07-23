@@ -144,15 +144,18 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         self.logdata = GALogData.objects.filter(user=request.user).order_by('-end_date')[0]
-        if request.POST.get('activation_value'):
-            self.logdata.a2 = request.POST.get('activation_value')
-        if request.POST.get('retention_value'):
-            self.logdata.r1 = request.POST.get('retention_value')
-        if request.POST.get('referral_value'):
-            self.logdata.r2 = request.POST.get('referral_value')
-        if request.POST.get('revenue_value'):
-            self.logdata.r3 = request.POST.get('revenue_value')
-        self.logdata.save()
+        form = GALogDataForm(request.POST, instance=self.logdata)
+        if form.is_valid():
+            form.save()
+        # if request.POST.get('activation_value'):
+        #     self.logdata.a2 = request.POST.get('activation_value')
+        # if request.POST.get('retention_value'):
+        #     self.logdata.r1 = request.POST.get('retention_value')
+        # if request.POST.get('referral_value'):
+        #     self.logdata.r2 = request.POST.get('referral_value')
+        # if request.POST.get('revenue_value'):
+        #     self.logdata.r3 = request.POST.get('revenue_value')
+        # self.logdata.save()
         return self.get(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
