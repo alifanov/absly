@@ -452,8 +452,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_pages = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=logdata.start_date,
-                    end_date=logdata.end_date,
+                    start_date=logdata.get_start_str(),
+                    end_date=logdata.get_end_str(),
                     metrics='ga:users',
                     dimensions='ga:pagePath',
                     max_results=125
@@ -463,8 +463,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_categories = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=logdata.start_date,
-                    end_date=logdata.end_date,
+                    start_date=logdata.get_start_str(),
+                    end_date=logdata.get_end_str(),
                     metrics='ga:users',
                     dimensions='ga:eventCategory',
                     max_results=25
@@ -474,8 +474,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_actions = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=logdata.start_date,
-                    end_date=logdata.end_date,
+                    start_date=logdata.get_start_str(),
+                    end_date=logdata.get_end_str(),
                     metrics='ga:users',
                     dimensions='ga:eventAction',
                     max_results=25
@@ -485,8 +485,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_labels = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=logdata.start_date,
-                    end_date=logdata.end_date,
+                    start_date=logdata.get_start_str(),
+                    end_date=logdata.get_end_str(),
                     metrics='ga:users',
                     dimensions='ga:eventLabel',
                     max_results=25
@@ -552,51 +552,6 @@ class GAConfigView(LeftMenuMixin, TemplateView):
                         (24, u'24 месяца')
                     ]
                 )
-            # if self.request.GET.get('account'):
-            #     wps = service.management().webproperties().list(accountId=self.request.GET.get('account')).execute()
-            #     webprops_config = []
-            #     for wp in wps.get('items'):
-            #         webprops_config.append((wp.get('id'), wp.get('name')))
-            #     ctx['webprops'] = webprops_config
-            #     ctx['account'] = self.request.GET.get('account')
-            # if self.request.GET.get('webprop'):
-            #     profiles = service.management().profiles().list(
-            #         accountId=self.request.GET.get('account'),
-            #         webPropertyId=self.request.GET.get('webprop')
-            #     ).execute()
-            #     if profiles.get('totalResults') > 0:
-            #         profiles_config = []
-            #         for pro in profiles.get('items'):
-            #             profiles_config.append((pro.get('id'), pro.get('name')))
-            #         ctx['profiles'] = profiles_config
-            #     else:
-            #         ctx['profiles_error'] = u'Нет данных'
-            #         ctx['webprop'] = self.request.GET.get('webprop')
-            # if self.request.GET.get('profile'):
-            #     ga_profile = None
-            #     if GAProfile.objects.filter(user=self.request.user).exists():
-            #         ga_profile = GAProfile.objects.get(user=self.request.user)
-            #         ga_profile.account_id = self.request.GET.get('account')
-            #         ga_profile.webproperty_id = self.request.GET.get('webprop')
-            #         ga_profile.profile_id = self.request.GET.get('profile')
-            #     else:
-            #         ga_profile = GAProfile(
-            #             user=self.request.user,
-            #             account_id = self.request.GET.get('account'),
-            #             webproperty_id = self.request.GET.get('webprop'),
-            #             profile_id = self.request.GET.get('profile'),
-            #         )
-            #     ga_profile.save()
-            #     ctx['account'] = self.request.GET.get('account')
-
-            # data = profile_config
-            # data = service.data().ga().get(
-            #     start_date='2014-01-01',
-            #     end_date='2014-06-18',
-            #     ids='ga:82650359',
-            #     metrics='ga:sessions'
-            # ).execute()
-            # ctx['data'] = data
         return ctx
 
 @login_required
