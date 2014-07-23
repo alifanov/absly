@@ -416,11 +416,19 @@ class GAConfigView(LeftMenuMixin, TemplateView):
         ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        if created or not ga_funnel_config.end_date or not ga_funnel_config.start_date:
-            ga_funnel_config.end_date = date.today().strftime('%Y-%m-%d')
-            ga_funnel_config.start_date = date.today() + relativedelta(months=-1)
-            ga_funnel_config.start_date = ga_funnel_config.start_date.strftime('%Y-%m-%d')
-            ga_funnel_config.save()
+        if not GALogData.objects.filter(user=self.request.user).exists():
+            logdata = GALogData.objects.create(
+                user=self.request.user,
+                start_date = datetime.now(),
+                end_date = datetime.now() + relativedelta(months=1)
+            )
+        else:
+            logdata = GALogData.objects.filter(user=self.request.user).order_by('-end_date')[0]
+        # if created or not ga_funnel_config.end_date or not ga_funnel_config.start_date:
+        #     ga_funnel_config.end_date = date.today().strftime('%Y-%m-%d')
+        #     ga_funnel_config.start_date = date.today() + relativedelta(months=-1)
+        #     ga_funnel_config.start_date = ga_funnel_config.start_date.strftime('%Y-%m-%d')
+        #     ga_funnel_config.save()
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
@@ -443,8 +451,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_pages = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=ga_funnel_config.start_date,
-                    end_date=ga_funnel_config.end_date,
+                    start_date=logdata.start_date,
+                    end_date=logdata.end_date,
                     metrics='ga:users',
                     dimensions='ga:pagePath',
                     max_results=125
@@ -454,8 +462,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_categories = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=ga_funnel_config.start_date,
-                    end_date=ga_funnel_config.end_date,
+                    start_date=logdata.start_date,
+                    end_date=logdata.end_date,
                     metrics='ga:users',
                     dimensions='ga:eventCategory',
                     max_results=25
@@ -465,8 +473,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_actions = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=ga_funnel_config.start_date,
-                    end_date=ga_funnel_config.end_date,
+                    start_date=logdata.start_date,
+                    end_date=logdata.end_date,
                     metrics='ga:users',
                     dimensions='ga:eventAction',
                     max_results=25
@@ -476,8 +484,8 @@ class GAConfigView(LeftMenuMixin, TemplateView):
 
                 ga_events_labels = service.data().ga().get(
                     ids='ga:{}'.format(ga_profile.profile_id),
-                    start_date=ga_funnel_config.start_date,
-                    end_date=ga_funnel_config.end_date,
+                    start_date=logdata.start_date,
+                    end_date=logdata.end_date,
                     metrics='ga:users',
                     dimensions='ga:eventLabel',
                     max_results=25
