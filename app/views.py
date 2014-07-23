@@ -286,6 +286,14 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             gaLogDataForm.fields['r3'].readonly = True
 
         ctx['funnel_data_form'] = gaLogDataForm
+
+        ll = GALogData.objects.filter(user=self.request.user).order_by('end_date')[:12]
+        ctx['a1_list'] = json.dumps([ [i+1, n.a1] for i,n in enumerate(ll)])
+        ctx['a2_list'] = json.dumps([ [i+1, n.a2] for i,n in enumerate(ll)])
+        ctx['r1_list'] = json.dumps([ [i+1, n.r1] for i,n in enumerate(ll)])
+        ctx['r2_list'] = json.dumps([ [i+1, n.r2] for i,n in enumerate(ll)])
+        ctx['r3_list'] = json.dumps([ [i+1, n.r3] for i,n in enumerate(ll)])
+        ctx['ticks'] = json.dumps([ [i+1, n.get_end_str()] for i,n in enumerate(ll)])
         return ctx
 
 class GAFunnelConfigAjaxView(View):

@@ -82,6 +82,63 @@
         {% if ga_users %}
         <script type="text/javascript">
             $(function(){
+                var a1 = {{ a1_list }};
+                var a2 = {{ a2_list }};
+                var r1 = {{ r1_list }};
+                var r2 = {{ r2_list }};
+                var r3 = {{ r3_list }};
+            var plot = $.plot($("#funnel"),
+                [
+                    {
+                        data: r3, label: "Revenue"
+                    },
+                    {
+                        data: r2, label: "Referral"
+                    },
+                    {
+                        data: r1, label: "Retention"
+                    },
+                 { data: a2, label: "Activation" },
+                { data: a1, label: "Acquisition"}
+                ], {
+                    series: {
+                        lines: { show: true,
+                                lineWidth: 1,
+                                fill: true,
+                                fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.13 } ] }
+                             },
+                        points: { show: true,
+                                 lineWidth: 2,
+                                 radius: 3
+                             },
+                        shadowSize: 0,
+                        stack: false
+                    },
+                    grid: { hoverable: true,
+                           clickable: true,
+                           tickColor: "#f9f9f9",
+                           borderWidth: 0
+                        },
+                    legend: {
+                            labelBoxBorderColor: "#fff"
+                        },
+                    colors: ["#a7b5c5", "#30a0eb"],
+                    xaxis: {
+                        ticks: {{ ticks }},
+                        font: {
+                            size: 12,
+                            family: "Open Sans, Arial",
+                            variant: "small-caps",
+                            color: "#697695"
+                        }
+                    },
+                    yaxis: {
+                        ticks:3,
+                        tickDecimals: 0,
+                        font: {size:12, color: "#9da3a9"}
+                    }
+                 });
+
                 var colors = (function () {
                         var hues = [.6, .2, .05, .1333, .75, 0],
                             colors = [];
