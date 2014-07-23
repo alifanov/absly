@@ -308,9 +308,7 @@ class GAFunnelConfigAjaxView(View):
         fdf = FunnelDateForm(request.POST, instance=ga_funnel_config)
         if fdf.is_valid():
             fdf.save()
-            logdata,created = GALogData.objects.get_or_create(
-                user=request.user
-            )
+            logdata = GALogData.objects.filter(user=request.user).order_by('-end_date')[0]
             if not logdata.start_date:
                 logdata.start_date = datetime.now()
             logdata.end_date = logdata.start_date + relativedelta(months=ga_funnel_config.date_range)
