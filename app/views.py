@@ -447,7 +447,7 @@ class GAConfigView(LeftMenuMixin, TemplateView):
             for acc in accounts.get('items'):
                 accounts_config.append((acc.get('id'), acc.get('name')))
             ctx['accounts'] = accounts_config
-            if ga_profile.account_id and ga_funnel_config.start_date and ga_funnel_config.end_date:
+            if ga_profile.account_id and logdata.start_date and logdata.end_date:
                 ctx['account'] = ga_profile.account_id
 
                 ga_pages = service.data().ga().get(
