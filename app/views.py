@@ -183,8 +183,8 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
 
     def get_ga_data(self, **kwargs):
         kwargs['ids'] = 'ga:{}'.format(self.ga_profile.profile_id)
-        kwargs['start_date'] = self.logdata.start_date
-        kwargs['end_date'] = self.logdata.end_date
+        kwargs['start_date'] = self.logdata.get_start_str()
+        kwargs['end_date'] = self.logdata.get_end_str()
         return self.service.data().ga().get(**kwargs).execute()
 
     def get_context_data(self, **kwargs):
