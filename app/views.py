@@ -225,7 +225,7 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
         if 'activation_value' in ctx:
             self.logdata.a2 = ctx['activation_value']
             self.logdata.save()
-            gaLogDataForm.fields['activation_value'].readonly = True
+            gaLogDataForm.fields['a2'].readonly = True
 
         if self.ga_funnel_config.retention_page:
             ctx['retention_value'] = self.get_ga_data(
@@ -244,7 +244,7 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
         if 'retention_value' in ctx:
             self.logdata.r1 = ctx['retention_value']
             self.logdata.save()
-            gaLogDataForm.fields['retention_value'].readonly = True
+            gaLogDataForm.fields['r1'].readonly = True
 
         if self.ga_funnel_config.referral_page:
             ctx['referral_value'] = self.get_ga_data(
@@ -263,7 +263,7 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
         if 'referral_value' in ctx:
             self.logdata.r2 = ctx['referral_value']
             self.logdata.save()
-            gaLogDataForm.fields['referral_value'].readonly = True
+            gaLogDataForm.fields['r2'].readonly = True
 
         if self.ga_funnel_config.revenue_page:
             ctx['revenue_value'] = self.get_ga_data(
@@ -282,7 +282,7 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
         if 'revenue_value' in ctx:
             self.logdata.r3 = ctx['revenue_value']
             self.logdata.save()
-            gaLogDataForm.fields['revenue_value'].readonly = True
+            gaLogDataForm.fields['r3'].readonly = True
 
         ctx['funnel_data_form'] = gaLogDataForm
         return ctx
