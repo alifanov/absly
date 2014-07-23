@@ -101,7 +101,8 @@ class StatisticsMixin(ContextMixin):
         ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
             user=self.request.user
         )
-        if ga_funnel_config.user_sum and ga_funnel_config.revenue_value:
+        logdata = GALogData.objects.filter(user=self.request.user).order_by('-end_date')[0]
+        if ga_funnel_config.user_sum and logdata.revenue_value:
             ctx['money_sum'] = ga_funnel_config.revenue_value*ga_funnel_config.user_sum
             ctx['money_time'] = ga_funnel_config.date_range
         ctx['certainly_level'] = int(self.calc_certainly_level())
