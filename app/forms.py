@@ -43,6 +43,11 @@ class FunnelDataForm(ModelForm):
         model = GAFunnelConfig
         fields = ('activation_value', 'retention_value', 'referral_value', 'revenue_value')
 
+class GALogDataForm(ModelForm):
+    class Meta:
+        model = GALogData
+        exclude = ['start_date', 'end_date', 'user']
+
 class SummaryItemForm(ModelForm):
     class Meta:
         model = SummaryItem

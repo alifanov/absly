@@ -138,6 +138,7 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
     ga_funnel_config = None
     ga_profile = None
     service = None
+    logdata = None
 
     def post(self, request, *args, **kwargs):
         self.ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
@@ -156,9 +157,21 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         if not self.ga_funnel_config:
-            self.ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(
+            self.ga_funnel_config, created = GAFunnelConfig.objects.get_or_create(
                 user=request.user
             )
+            if not self.logdata:
+                if not GALogData.objects.filter(user=request.user, end_date__gte=datetime.now()).exists():
+                    oldlogdata = GALogData.objects.filter(user=request.user).order_by('-end_date')[0]
+                    newlogdata = GALogData.objects.create(
+                        user=request.user,
+                        start_date=oldlogdata.end_date,
+                        end_date=oldlogdata.end_date + relativedelta(months=self.ga_funnel_config.date_range)
+                    )
+                    self.logdata = newlogdata
+                else:
+                    self.logdata = GALogData.objects.filter(user=request.user, end_date__gte=datetime.now())[0]
+
         storage = Storage(CredentialsModel, 'id', self.request.user, 'credential')
         self.credential = storage.get()
         if self.credential is None or self.credential.invalid == True:
@@ -168,8 +181,8 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
 
     def get_ga_data(self, **kwargs):
         kwargs['ids'] = 'ga:{}'.format(self.ga_profile.profile_id)
-        kwargs['start_date'] = self.ga_funnel_config.start_date
-        kwargs['end_date'] = self.ga_funnel_config.end_date
+        kwargs['start_date'] = self.logdata.start_date
+        kwargs['end_date'] = self.logdata.end_date
         return self.service.data().ga().get(**kwargs).execute()
 
     def get_context_data(self, **kwargs):
@@ -180,12 +193,19 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
 
         self.ga_profile,created = GAProfile.objects.get_or_create(user=self.request.user)
         self.ga_funnel_config,created = GAFunnelConfig.objects.get_or_create(user=self.request.user)
+
+        gaLogDataForm = GALogDataForm(instance=self.logdata)
+
         ga_users = self.get_ga_data(metrics='ga:users')
         if ga_users.get('rows'):
             ctx['ga_users'] = ga_users.get('rows')[0][0]
+            self.logdata.a1 = int(ctx['ga_users'])
+            self.logdata.save()
+            gaLogDataForm.fields['acquisition_value'].readonly = True
 
-        fcf = FunnelConfgiForm(instance=self.ga_funnel_config)
-        ctx['funnel_config_form'] = fcf
+        # fcf = FunnelConfgiForm(instance=self.ga_funnel_config)
+        # ctx['funnel_config_form'] = fcf
+
 
         if self.ga_funnel_config.activation_page:
             ctx['activation_value'] = self.get_ga_data(
@@ -201,6 +221,10 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             if self.ga_funnel_config.activation_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.ga_funnel_config.activation_event_label)
             ctx['activation_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
+        if 'activation_value' in ctx:
+            self.logdata.a2 = ctx['activation_value']
+            self.logdata.save()
+            gaLogDataForm.fields['activation_value'].readonly = True
 
         if self.ga_funnel_config.retention_page:
             ctx['retention_value'] = self.get_ga_data(
@@ -216,6 +240,10 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             if self.ga_funnel_config.retention_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.ga_funnel_config.retention_event_label)
             ctx['retention_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
+        if 'retention_value' in ctx:
+            self.logdata.r1 = ctx['retention_value']
+            self.logdata.save()
+            gaLogDataForm.fields['retention_value'].readonly = True
 
         if self.ga_funnel_config.referral_page:
             ctx['referral_value'] = self.get_ga_data(
@@ -231,6 +259,10 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             if self.ga_funnel_config.referral_event_label:
                 ff += u';ga:eventLabel=={}'.format(self.ga_funnel_config.referral_event_label)
             ctx['referral_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
+        if 'referral_value' in ctx:
+            self.logdata.r2 = ctx['referral_value']
+            self.logdata.save()
+            gaLogDataForm.fields['referral_value'].readonly = True
 
         if self.ga_funnel_config.revenue_page:
             ctx['revenue_value'] = self.get_ga_data(
@@ -246,8 +278,12 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             if self.ga_funnel_config.revenue_event_label:
                 ff += u';,ga:eventLabel=={}'.format(self.ga_funnel_config.revenue_event_label)
             ctx['revenue_value'] = self.get_ga_data(metrics='ga:users', max_results=1, filters=ff).get('rows')[0][0]
+        if 'revenue_value' in ctx:
+            self.logdata.r3 = ctx['revenue_value']
+            self.logdata.save()
+            gaLogDataForm.fields['revenue_value'].readonly = True
 
-        ctx['funnel_data_form'] = FunnelDataForm(instance=self.ga_funnel_config)
+        ctx['funnel_data_form'] = gaLogDataForm
         return ctx
 
 class GAFunnelConfigAjaxView(View):
