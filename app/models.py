@@ -127,6 +127,12 @@ class GALogData(models.Model):
     def get_end_str(self):
         return self.end_date.strftime('%Y-%m-%d')
 
+    def get_start_display(self):
+        return self.start_date.strftime('%Y.%m.%d')
+
+    def get_end_display(self):
+        return self.end_date.strftime('%Y.%m.%d')
+
     def __unicode__(self):
         return u'Log GA for {}'.format(self.user.username)
 
