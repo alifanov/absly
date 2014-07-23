@@ -79,6 +79,7 @@
         <div id="funnel">
 
         </div>
+        <div id="funnel_chart"></div>
         {% if ga_users %}
         <script type="text/javascript">
             $(function(){
@@ -87,7 +88,7 @@
                 var r1 = {{ r1_list }};
                 var r2 = {{ r2_list }};
                 var r3 = {{ r3_list }};
-            var plot = $.plot($("#funnel"),
+            var plot = $.plot($("#funnel_chart"),
                 [
                     {
                         data: r3, label: "Revenue"
@@ -124,7 +125,7 @@
                         },
                     colors: ["#a7b5c5", "#30a0eb"],
                     xaxis: {
-                        ticks: {{ ticks }},
+                        ticks: {{ ticks|safe }},
                         font: {
                             size: 12,
                             family: "Open Sans, Arial",
