@@ -262,14 +262,22 @@ class GAFunnelConfigAjaxView(View):
         fdf = FunnelDateForm(request.POST, instance=ga_funnel_config)
         if fdf.is_valid():
             fdf.save()
-            now = date.today()
-            end_date = now.strftime('%Y-%m-%d')
-            start_date = now + relativedelta(months=-ga_funnel_config.date_range)
-            start_date = start_date.strftime('%Y-%m-%d')
+            logdata,created = GALogData.objects.get_or_create(
+                user=request.user
+            )
+            if not logdata.start_date:
+                logdata.start_date = datetime.now()
+            logdata.end_date = logdata.start_date + relativedelta(months=ga_funnel_config.date_range)
+            logdata.save()
+
+            # now = date.today()
+            # end_date = now.strftime('%Y-%m-%d')
+            # start_date = now + relativedelta(months=-ga_funnel_config.date_range)
+            # start_date = start_date.strftime('%Y-%m-%d')
             # ga_funnel_config.date_range = ga_funnel_config.date_range
-            ga_funnel_config.start_date = start_date
-            ga_funnel_config.end_date = end_date
-            ga_funnel_config.save()
+            # ga_funnel_config.start_date = start_date
+            # ga_funnel_config.end_date = end_date
+            # ga_funnel_config.save()
             return HttpResponse("OK")
         if fcf.is_valid():
             fcf.save()

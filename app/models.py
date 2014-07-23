@@ -110,12 +110,30 @@ class GAProfile(models.Model):
         verbose_name = u'Настройка GA'
         verbose_name_plural = u'Настройки GA'
 
+class GALogData(models.Model):
+    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    start_date = models.DateTimeField(verbose_name=u'Начало периода')
+    end_date = models.DateTimeField(verbose_name=u'Конец периода')
+
+    a1 = models.IntegerField(default=0, verbose_name=u'Acquisition')
+    a2 = models.IntegerField(default=0, verbose_name=u'Activation')
+    r1 = models.IntegerField(default=0, verbose_name=u'Retention')
+    r2 = models.IntegerField(default=0, verbose_name=u'Referral')
+    r3 = models.IntegerField(default=0, verbose_name=u'Revenue')
+
+    def __unicode__(self):
+        return u'Log GA for {}'.format(self.user.username)
+
+    class Meta:
+        verbose_name = u'Лог данных из GA'
+        verbose_name_plural = u'Логи данных из GA'
+
 class GAFunnelConfig(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Пользователь', related_name='funnel_configs', null=True, blank=True)
 
     date_range = models.IntegerField(default=1, verbose_name=u'Период отслеживания')
-    start_date = models.CharField(max_length=100, verbose_name=u'Начало периода', blank=True)
-    end_date = models.CharField(max_length=100, verbose_name=u'Конец периода', blank=True)
+    # start_date = models.CharField(max_length=100, verbose_name=u'Начало периода', blank=True)
+    # end_date = models.CharField(max_length=100, verbose_name=u'Конец периода', blank=True)
 
     user_sum = models.FloatField(default=0.0, verbose_name=u'Стоимость пользователя')
 

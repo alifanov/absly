@@ -31,7 +31,7 @@ class CanvasElementForm(ModelForm):
 class FunnelConfgiForm(ModelForm):
     class Meta:
         model = GAFunnelConfig
-        exclude = ['start_date', 'end_date', 'user', 'date_range', 'activation_value', 'retention_value', 'referral_value', 'revenue_value']
+        exclude = ['user', 'date_range', 'activation_value', 'retention_value', 'referral_value', 'revenue_value']
 
 class FunnelDateForm(ModelForm):
     class Meta:
