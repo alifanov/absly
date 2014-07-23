@@ -203,7 +203,6 @@ class GAFunnelView(LeftMenuMixin, TemplateView):
             ctx['ga_users'] = ga_users.get('rows')[0][0]
             self.logdata.a1 = int(ctx['ga_users'])
             self.logdata.save()
-            gaLogDataForm.fields['acquisition_value'].readonly = True
 
         # fcf = FunnelConfgiForm(instance=self.ga_funnel_config)
         # ctx['funnel_config_form'] = fcf
