@@ -1207,7 +1207,7 @@ class SummaryPubView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super(SummaryPubView, self).get_context_data(**kwargs)
         ss = Snapshot.objects.get(hash=self.kwargs.get('hash'))
-        ctx['json'] = json.loads(ss.json)
+        ctx['json'] = json.loads(ss.data)
         return ctx
 
 
