@@ -693,4 +693,6 @@ li.active a.canvas-element-item-link {
 
 .snapshot-edit {
     display: none;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #aaa;
 }
