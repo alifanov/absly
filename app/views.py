@@ -1251,7 +1251,7 @@ class SnapshotView(View):
                 snapshot.generate_json(request.user)
                 return HttpResponse(json.dumps({
                     'link': 'http://new.absly.com/summary/public/{}/'.format(snapshot.hash)
-                }))
+                }), content_type='application/json')
             else:
                 return HttpResponse(u"{}".format(form.errors), status=500)
         return HttpResponse("OK")
