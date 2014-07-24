@@ -24,7 +24,7 @@ from reportlab.lib.utils import ImageReader
 class Snapshot(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Пользователь')
     created = models.DateTimeField(auto_now=True, verbose_name=u'Дата создания')
-    comment = models.TextField(verbose_name=u'Комментарий')
+    comment = models.TextField(verbose_name=u'Комментарий', blank=True)
     hash = models.TextField(blank=True, verbose_name=u'Hash')
     data = models.TextField(verbose_name=u'Данные', blank=True)
 
