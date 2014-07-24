@@ -1233,6 +1233,7 @@ class SnapshotView(View):
                 m = hashlib.md5()
                 m.update('{}{}'.format(request.user.email, snapshot.created))
                 snapshot.hash = m.hexdigest()
+                snapshot.project_name = Project.objects.get(user=request.user).name
                 snapshot.save()
                 snapshot.generate_json(request.user)
                 return HttpResponse(json.dumps({
