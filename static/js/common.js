@@ -42,7 +42,7 @@ function resort_steps(){
 
 
 $(function(){
-    $(".es-snapshot-edit form").submit(function(){
+    $(".snapshot-edit form").submit(function(){
         $.ajax({
             type: "POST",
             url: "/summary/snapshot/",
