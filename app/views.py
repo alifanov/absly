@@ -601,6 +601,8 @@ class AjaxableResponseMixin(object):
     def form_invalid(self, form):
         response = super(AjaxableResponseMixin, self).form_invalid(form)
 #        if self.request.is_ajax():
+        errs = form.errors
+        errs.append(form.non_field_errors)
         return self.render_to_json_response(form.errors, status=400)
 #        else:
 #            return response
