@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 
 from bs4 import BeautifulSoup
 import requests
-import time
+import time, json
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 
@@ -27,6 +27,17 @@ class Snapshot(models.Model):
     comment = models.TextField(verbose_name=u'Комментарий')
     hash = models.TextField(blank=True, verbose_name=u'Hash')
     data = models.TextField(verbose_name=u'Данные', blank=True)
+
+    def generate_json(self, user):
+        data = {}
+        for sg in SummaryGroup.objects.all():
+            data[sg.name] = []
+            for si in sg.items.all():
+                data[sg.name][si.name] = []
+                for block in si.blocks.filter(user=user).all():
+                    data[sg.name][si.name].append(block.render())
+        self.data = json.dumps(data)
+        self.save()
 
     def __unicode__(self):
         return u'[{}]: {}: {}'.format(self.created, self.user.email, self.comment[:20])

@@ -1248,6 +1248,7 @@ class SnapshotView(View):
                 m.update('{}{}'.format(request.user.email, snapshot.created))
                 snapshot.hash = m.hexdigest()
                 snapshot.save()
+                snapshot.generate_json(request.user)
             else:
                 return HttpResponse(u"{}".format(form.errors), status=500)
         return HttpResponse("OK")
