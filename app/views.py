@@ -916,16 +916,6 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
         s = get_current_site(self.request)
         m = hashlib.md5()
         m.update(self.request.user.email)
-        path = reverse('summary-public', kwargs={
-            'md5': m.hexdigest(),
-            'pk': self.request.user.pk
-        })
-        ctx['social_link'] = u'http://{}{}'.format(s.domain, path)
-        pdf_path = reverse('summary-public-pdf', kwargs={
-            'md5': m.hexdigest(),
-            'pk': self.request.user.pk
-        })
-        ctx['pdf_link'] = u'http://{}{}'.format(s.domain, pdf_path)
         ctx['snapshot_form'] = SnapshotForm()
         return ctx
 
