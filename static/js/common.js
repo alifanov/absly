@@ -42,6 +42,19 @@ function resort_steps(){
 
 
 $(function(){
+    $(".es-snapshot-btn").click(function(){
+        $(".snapshot-edit").slideDown(500);
+        $(this).hide();
+        return false;
+    });
+
+    $(".snapshot-edit .cancel-btn").click(function(){
+        $(".snapshot-edit").slideUp(500);
+        $(".es-snapshot-btn").show();
+        return false;
+    });
+
+
     if($('.reveal').length){
         $(".reveal").on('click', function(){
             if($("#id_password").attr('type') == 'password'){

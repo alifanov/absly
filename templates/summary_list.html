@@ -10,6 +10,16 @@
 {#            <a target="_blank" href="{{ social_link }}" class="btn btn-primary pull-right es-share-btn"><i class="icon-globe"></i> Share</a>#}
             <a href="#" class="btn btn-primary pull-right es-snapshot-btn"><i class="icon-tag"></i> Make snapshot</a>
         </h1>
+        <div class="snapshot-edit">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="comment" placeholder="Snapshot comment..."></textarea>
+                </div>
+                <button class="btn btn-primary pull-right">Make snapshot</button>
+                <button class="btn btn-primary pull-left cancel-btn">Cancel</button>
+            </form>
+        </div>
         <div class="row">
             {% for sg in summary_groups %}
                 <div class="col-xs-{% if forloop.counter == 3 or forloop.counter == 5 %}3{% else %}2{% endif %}">

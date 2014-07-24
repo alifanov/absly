@@ -690,3 +690,7 @@ li.active a.canvas-element-item-link {
 .input-group-btn {
     vertical-align: top;
 }
+
+.snapshot-edit {
+    display: none;
+}
