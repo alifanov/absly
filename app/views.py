@@ -2,6 +2,7 @@
 # Create your views here.
 from app.models import News, NewsGroup, GAProfile
 from datetime import date
+from django.contrib.auth.forms import PasswordChangeForm
 from dateutil.relativedelta import relativedelta
 from django.views.generic import ListView, View, TemplateView, DetailView, UpdateView, CreateView, FormView
 from django.views.generic.base import ContextMixin
@@ -1217,7 +1218,6 @@ class SummaryPubView(ListView):
         else:
             raise Http404
 
-from django.contrib.auth.forms import PasswordChangeForm
 class PersonalDataView(LeftMenuMixin, FormView):
     template_name = 'registration/personal-data.html'
     form_class = PasswordChangeForm
@@ -1239,3 +1239,7 @@ class PersonalDataView(LeftMenuMixin, FormView):
         kw = super(PersonalDataView, self).get_form_kwargs(**kwargs)
         kw['user'] = self.request.user
         return kw
+
+class SnapshotView(AjaxableResponseMixin, CreateView):
+    model = Snapshot
+    form_class = SnapshotForm

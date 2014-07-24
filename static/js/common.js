@@ -42,6 +42,20 @@ function resort_steps(){
 
 
 $(function(){
+    $(".es-snapshot-edit form").submit(function(){
+        $.ajax({
+            type: "POST",
+            url: "/summary/snapshot/",
+            data: $(this).serializeArray(),
+            success: function(r){
+                $(".snapshot-alert").slideDown(500);
+                $(".es-snapshot-edit").slideUp(500);
+                $(".snapshot-alert span").text(r.link);
+            }
+        });
+        return false;
+    });
+
     $(".es-snapshot-btn").click(function(){
         $(".snapshot-edit").slideDown(500);
         $(this).hide();

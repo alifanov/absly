@@ -691,6 +691,9 @@ li.active a.canvas-element-item-link {
     vertical-align: top;
 }
 
+.snapshot-alert {
+    display: none;
+}
 .snapshot-edit {
     display: none;
     margin-bottom: 30px;
