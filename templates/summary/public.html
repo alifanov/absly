@@ -55,7 +55,12 @@
         {% for key, values in json.items %}
             <h1>{{ key }}</h1>
             <div>
-                {{ values }}
+                {% for key, values in values.items %}
+                    <h2>{{ key }}</h2>
+                    <div>
+                        {{ values }}
+                    </div>
+                {% endfor %}
             </div>
         {% endfor %}
 
