@@ -695,4 +695,5 @@ li.active a.canvas-element-item-link {
     display: none;
     margin-bottom: 30px;
     border-bottom: 1px solid #aaa;
+    padding-bottom: 30px;
 }
