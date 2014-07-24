@@ -58,7 +58,11 @@
                     {% for k, v in values.items %}
                             <h2>{{ k }}</h2>
                             <div>
-                                {{ v }}
+                                {% if v %}
+                                    {% for vv in v %}
+                                        {{ vv }}
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                     {% endfor %}
                 </div>
