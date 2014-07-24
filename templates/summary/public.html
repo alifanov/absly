@@ -60,7 +60,7 @@
                             <div>
                                 {% if v %}
                                     {% for vv in v %}
-                                        {{ vv }}
+                                        {{ vv|safe }}
                                     {% endfor %}
                                 {% endif %}
                             </div>
