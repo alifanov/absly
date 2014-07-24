@@ -599,11 +599,7 @@ class AjaxableResponseMixin(object):
         return HttpResponse(data, **response_kwargs)
 
     def form_invalid(self, form):
-        err = []
-        for field in form:
-            if field.errors:
-                err.append(field.errors)
-        return self.render_to_json_response([err, form.non_field_errors()], status=400)
+        return self.render_to_json_response([form.errors, form.non_field_errors()], status=400)
 
     def form_valid(self, form):
         # We make sure to call the parent's form_valid() method because
@@ -930,9 +926,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
             'pk': self.request.user.pk
         })
         ctx['pdf_link'] = u'http://{}{}'.format(s.domain, pdf_path)
-        ctx['snapshot_form'] = SnapshotForm(initial={
-            'user': self.request.user
-        })
+        ctx['snapshot_form'] = SnapshotForm()
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
@@ -1243,11 +1237,12 @@ class PersonalDataView(LeftMenuMixin, FormView):
         kw['user'] = self.request.user
         return kw
 
-class SnapshotView(AjaxableResponseMixin, CreateView):
-    model = Snapshot
-    form_class = SnapshotForm
-
-    def get_form(self, form_class):
-        return form_class(initial={
-            'user': self.request.user
-        })
+class SnapshotView(View):
+    def post(self, request, *args, **kwargs):
+        if request.POST:
+            form = SnapshotForm(request.POST, initial={
+                'user': request.user
+            })
+            if form.is_valid():
+                snapshot = form.save()
+        return HttpResponse("OK")
