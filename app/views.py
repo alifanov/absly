@@ -1239,9 +1239,13 @@ class PersonalDataView(LeftMenuMixin, FormView):
 class SnapshotView(AjaxableResponseMixin, CreateView):
     model = Snapshot
     form_class = SnapshotForm
-    context_object_name = 'snapshot_form'
 
     def get_form(self, form_class):
         return form_class(initial={
             'user': self.request.user
         })
+
+    def get_context_data(self, **kwargs):
+        ctx = super(SnapshotView, self).get_context_data(**kwargs)
+        ctx['snapshot_form'] = self.get_form(self.get_form_class())
+        return ctx
