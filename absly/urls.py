@@ -69,6 +69,7 @@ urlpatterns = patterns('',
     url(r'^summary/public/(?P<md5>[\w\d]+)/(?P<pk>\d+)/pdf/$', SummaryPDFView.as_view(), name='summary-public-pdf'),
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
+    url(r'^summary/snapshot/$', SnapshotView.as_view(), name='snapshot-ajax-view'),
     url(r'^summary/(?P<pk>\d+)/$', ExecutiveSummaryItemView.as_view(), name='summary-group'),
     url(r'^summary/item/(?P<pk>\d+)/$', ExecutiveSummaryItemUpdateView.as_view(), name='summary-item-update'),
 
