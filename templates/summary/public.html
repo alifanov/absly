@@ -53,15 +53,19 @@
         <h1>Executive summary for project PROJECT_NAME</h1>
 
         {% for key, values in json.items %}
-            <h1>{{ key }}</h1>
-            <div>
-                {% for key, values in values.items %}
-                    <h2>{{ key }}</h2>
-                    <div>
-                        {{ values }}
-                    </div>
-                {% endfor %}
-            </div>
+            {% if values %}
+                <h1>{{ key }}</h1>
+                <div>
+                    {% for k, v in values.items %}
+                        {% if v %}
+                            <h2>{{ k }}</h2>
+                            <div>
+                                {{ v }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endfor %}
 
     </div>
