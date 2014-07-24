@@ -8,7 +8,7 @@ from django.views.generic import ListView, View, TemplateView, DetailView, Updat
 from django.views.generic.base import ContextMixin
 from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.shortcuts import redirect
-import arrow, logging
+import arrow, logging, hashlib
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.csrf import csrf_exempt
@@ -1244,6 +1244,9 @@ class SnapshotView(View):
             if form.is_valid():
                 snapshot = form.save()
                 snapshot.user = request.user
+                m = hashlib.md5()
+                m.update('{}{}'.format(request.user.email, snapshot.created))
+                snapshot.hash = m.hexdigest()
                 snapshot.save()
             else:
                 return HttpResponse(u"{}".format(form.errors), status=500)
