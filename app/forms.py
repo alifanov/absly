@@ -124,3 +124,4 @@ class SummaryCrunchBaseBlockForm(ModelForm):
 class SnapshotForm(ModelForm):
     class Meta:
         model = Snapshot
+        exclude = ['user',]
