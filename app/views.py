@@ -1243,3 +1243,8 @@ class PersonalDataView(LeftMenuMixin, FormView):
 class SnapshotView(AjaxableResponseMixin, CreateView):
     model = Snapshot
     form_class = SnapshotForm
+
+    def get_form(self, form_class):
+        return form_class(initial={
+            'user': self.request.user
+        })
