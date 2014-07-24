@@ -2,7 +2,7 @@
 <html>
 <head lang="ru">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>ABSLY.com - Executive Summary of project Google</title>
+    <title>ABSLY.com - Executive Summary of project {{ project_name }}</title>
     <!-- bootstrap -->
     <link href="{{ STATIC_URL }}theme/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="{{ STATIC_URL }}theme/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
@@ -50,7 +50,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Executive summary for project PROJECT_NAME</h1>
+        <h1>Executive summary for project {{ project_name }}</h1>
 
         {% for key, values in json.items %}
                 <h1>{{ key }}</h1>
