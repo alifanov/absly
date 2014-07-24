@@ -1201,19 +1201,15 @@ class SummaryPDFView(View):
         else:
             raise Http404
 
-class SummaryPubView(ListView):
+class SummaryPubView(TemplateView):
     template_name = 'summary/public.html'
-    model = SummaryItem
-    context_object_name = 'items'
 
-    def get_queryset(self):
-        user = User.objects.get(pk=self.kwargs.get('pk'))
-        m = hashlib.md5()
-        m.update(user.email)
-        if m.hexdigest() == self.kwargs.get('md5'):
-            return self.request.user.summary_items.order_by('pk')
-        else:
-            raise Http404
+    def get_context_data(self, **kwargs):
+        ctx = super(SummaryPubView, self).get_context_data(**kwargs)
+        ss = Snapshot.objects.get(hash=self.kwargs.get('hash'))
+        ctx['json'] = json.loads(ss.json)
+        return ctx
+
 
 class PersonalDataView(LeftMenuMixin, FormView):
     template_name = 'registration/personal-data.html'
