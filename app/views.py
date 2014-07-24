@@ -1240,11 +1240,9 @@ class PersonalDataView(LeftMenuMixin, FormView):
 class SnapshotView(View):
     def post(self, request, *args, **kwargs):
         if request.POST:
-            form = SnapshotForm(request.POST, initial={
-                'user': request.user
-            })
+            form = SnapshotForm(request.POST)
             if form.is_valid():
                 snapshot = form.save()
             else:
-                return HttpResponse(u"{}".format(form.errors))
+                return HttpResponse(u"{}".format(form.errors), status=500)
         return HttpResponse("OK")
