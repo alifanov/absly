@@ -926,7 +926,9 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
             'pk': self.request.user.pk
         })
         ctx['pdf_link'] = u'http://{}{}'.format(s.domain, pdf_path)
-        ctx['snapshot_form'] = SnapshotForm()
+        ctx['snapshot_form'] = SnapshotForm(initial={
+            'user': self.request.user
+        })
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
