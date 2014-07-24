@@ -1243,6 +1243,8 @@ class SnapshotView(View):
             form = SnapshotForm(request.POST)
             if form.is_valid():
                 snapshot = form.save()
+                snapshot.user = request.user
+                snapshot.save()
             else:
                 return HttpResponse(u"{}".format(form.errors), status=500)
         return HttpResponse("OK")
