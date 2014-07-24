@@ -50,7 +50,8 @@ $(function(){
             success: function(r){
                 $(".snapshot-alert").slideDown(500);
                 $(".snapshot-edit").slideUp(500);
-                $(".snapshot-alert span").text(r.link);
+                $(".snapshot-alert span a").html(r.link);
+                $(".snapshot-alert span a").attr('href',r.link);
             }
         });
         return false;

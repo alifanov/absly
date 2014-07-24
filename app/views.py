@@ -1249,6 +1249,9 @@ class SnapshotView(View):
                 snapshot.hash = m.hexdigest()
                 snapshot.save()
                 snapshot.generate_json(request.user)
+                return HttpResponse(json.dumps({
+                    'link': 'http://new.absly.com/summary/public/{}/'.format(snapshot.hash)
+                }))
             else:
                 return HttpResponse(u"{}".format(form.errors), status=500)
         return HttpResponse("OK")
