@@ -22,7 +22,7 @@ from polymorphic import PolymorphicModel
 from reportlab.lib.utils import ImageReader
 
 class Snapshot(models.Model):
-    project_name = models.CharField(verbose_name=u'Название проекта', blank=True)
+    project_name = models.CharField(verbose_name=u'Название проекта', blank=True, max_length=256)
     user = models.ForeignKey(User, verbose_name=u'Пользователь', null=True)
     created = models.DateTimeField(auto_now=True, verbose_name=u'Дата создания')
     comment = models.TextField(verbose_name=u'Комментарий')
