@@ -18,7 +18,9 @@
                         <td>{{ snapshot.pk }}</td>
                         <td>{{ snapshot.created }}</td>
                         <td>{{ snapshot.comment }}</td>
-                        <td>{{ snapshot.get_link }}</td>
+                        <td>
+                            <a href="{{ snapshot.get_link }}">Snapshot</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
