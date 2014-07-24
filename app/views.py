@@ -1245,4 +1245,6 @@ class SnapshotView(View):
             })
             if form.is_valid():
                 snapshot = form.save()
+            else:
+                return HttpResponse(u"{}".format(form.errors))
         return HttpResponse("OK")
