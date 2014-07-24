@@ -31,7 +31,7 @@ class Snapshot(models.Model):
     def generate_json(self, user):
         data = {}
         for sg in SummaryGroup.objects.all():
-            data[sg.name] = []
+            data[sg.name] = {}
             for si in sg.items.all():
                 data[sg.name][si.name] = []
                 for block in si.blocks.filter(user=user).all():
