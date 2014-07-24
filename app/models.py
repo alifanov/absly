@@ -21,6 +21,20 @@ from oauth2client.django_orm import CredentialsField
 from polymorphic import PolymorphicModel
 from reportlab.lib.utils import ImageReader
 
+class Snapshot(models.Model):
+    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    created = models.DateTimeField(auto_now=True, verbose_name=u'Дата создания')
+    comment = models.TextField(verbose_name=u'Комментарий')
+    hash = models.TextField(blank=True, verbose_name=u'Hash')
+    data = models.TextField(verbose_name=u'Данные', blank=True)
+
+    def __unicode__(self):
+        return u'[{}]: {}: {}'.format(self.created, self.user.email, self.comment[:20])
+
+    class Meta:
+        verbose_name = u'ES Snapshot'
+        verbose_name_plural = u'ES Snapshots'
+
 # Create your models here.
 class Project(models.Model):
     is_first = models.BooleanField(default=True, verbose_name=u'First-Time Founder')
