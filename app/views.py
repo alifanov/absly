@@ -926,6 +926,7 @@ class ExecutiveSummaryView(LeftMenuMixin, ListView):
             'pk': self.request.user.pk
         })
         ctx['pdf_link'] = u'http://{}{}'.format(s.domain, pdf_path)
+        ctx['snapshot_form'] = SnapshotForm()
         return ctx
 
 class ExecutiveSummaryItemView(LeftMenuMixin, DetailView):
@@ -1244,8 +1245,3 @@ class SnapshotView(AjaxableResponseMixin, CreateView):
         return form_class(initial={
             'user': self.request.user
         })
-
-    def get_context_data(self, **kwargs):
-        ctx = super(SnapshotView, self).get_context_data(**kwargs)
-        ctx['snapshot_form'] = self.get_form(self.get_form_class())
-        return ctx
