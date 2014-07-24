@@ -66,6 +66,7 @@ urlpatterns = patterns('',
     url(r'^summary/image/block/$', SummaryImageBlockView.as_view(), name='summary-image-block'),
 
     url(r'^summary/public/(?P<hash>[\w\d]+)/$', SummaryPubView.as_view(), name='summary-public'),
+    url(r'^summary/snapshots/$', SnapshotsListView.as_view(), name='summary-snapshots-view'),
 
     url(r'^summary/$', ExecutiveSummaryView.as_view(), name='summary'),
     url(r'^summary/snapshot/$', SnapshotView.as_view(), name='snapshot-ajax-view'),

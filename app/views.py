@@ -1224,6 +1224,13 @@ class PersonalDataView(LeftMenuMixin, FormView):
         kw['user'] = self.request.user
         return kw
 
+class SnapshotsListView(ListView):
+    template_name = 'summary/snapshot_list.html'
+    context_object_name = 'snapshots'
+
+    def get_queryset(self):
+        return Snapshot.objects.filter(user=self.request.user).order_by('-created')
+
 class SnapshotView(View):
     def post(self, request, *args, **kwargs):
         if request.POST:

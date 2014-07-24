@@ -29,6 +29,9 @@ class Snapshot(models.Model):
     hash = models.TextField(blank=True, verbose_name=u'Hash')
     data = models.TextField(verbose_name=u'Данные', blank=True)
 
+    def get_link(self):
+        return u'http://new.absly.com/summary/public/{}/'.format(self.hash)
+
     def generate_json(self, user):
         data = {}
         for sg in SummaryGroup.objects.all():

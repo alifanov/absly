@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Snapshots</h1>
+        <table class="table">
+            <thead>
+                <th>
+                    <td>ID</td>
+                    <td>Date</td>
+                    <td>Comment</td>
+                    <td>Link</td>
+                </th>
+            </thead>
+            <tbody>
+                {% for snapshot in snapshots %}
+                    <tr>
+                        <td>{{ snapshot.pk }}</td>
+                        <td>{{ snapshot.created }}</td>
+                        <td>{{ snapshot.comment }}</td>
+                        <td>{{ snapshot.get_link }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

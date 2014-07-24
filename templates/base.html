@@ -293,6 +293,9 @@
                 {% for sg in summary_groups %}
                     <li><a href="{% url 'summary' %}#{{ sg.name }}">{{ sg.name }}</a></li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'summary-snapshots-view' %}">Snapshots</a>
+                </li>
             </ul>
         </li>
     </ul>
