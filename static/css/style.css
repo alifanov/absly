@@ -700,3 +700,7 @@ li.active a.canvas-element-item-link {
     border-bottom: 1px solid #aaa;
     padding-bottom: 30px;
 }
+
+.snapshot-edit .hidden {
+    display: none;
+}
