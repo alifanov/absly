@@ -715,5 +715,13 @@ li.active a.canvas-element-item-link {
     padding: 20px;
 }
 
+#talk-guide,
+#steps-guide,
+#bmc-guide,
+#metrics-guide,
+#es-guide {
+    display: none;
+}
+
 .guide-block {
 }

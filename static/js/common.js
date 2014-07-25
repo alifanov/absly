@@ -47,6 +47,17 @@ $(function(){
         return false;
     });
 
+    $(".guide-block a").click(function(){
+        if($(this).parent().attr('id') != 'es-guide'){
+            $(this).parent().hide();
+            $($(this).attr('href')).show();
+        }
+        else{
+            $(".guide-modal").modal().close();
+        }
+        return false;
+    });
+
     $(".snapshot-edit form").submit(function(){
         $.ajax({
             type: "POST",
