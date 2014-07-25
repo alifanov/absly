@@ -194,28 +194,24 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        {% if active == 'dashboard' %}
-            <li>
+        <li>
+            {% if active == 'dashboard' %}
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
                 </div>
-                {% else %}
-            <li>
-        {% endif %}
+            {% endif %}
             <a href="/">
                 <i class="icon-dashboard"></i>
                 <span>Dashboard</span>
             </a>
         </li>
+        <li id="talk-guide-area">
         {% if active == 'events' %}
-            <li>
-                <div class="pointer">
-                    <div class="arrow"></div>
-                    <div class="arrow_border"></div>
-                </div>
-        {% else %}
-            <li>
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
         {% endif %}
         <a href="#" class="dropdown-toggle">
             <i class="icon-comments-alt"></i>

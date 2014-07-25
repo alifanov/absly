@@ -51,6 +51,10 @@ $(function(){
         if($(this).parent().attr('id') != 'es-guide'){
             $(this).parent().hide();
             $($(this).attr('href')).show();
+            $($(this).attr('href') + '-area').css({
+                'position': 'relative',
+                'z-index': '101'
+            });
         }
         else{
             $(".guide-modal").modal().close();
