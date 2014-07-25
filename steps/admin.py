@@ -34,8 +34,7 @@ class RecomendationAdminModel(admin.ModelAdmin):
             'fields': ['bmc_key_partners_hypothesys', 'bmc_key_partners_facts', 'bmc_key_partners_actions', 'bmc_key_partners_money']
         })
     )
-    class Meta:
-        model = Recomentdation
+    filter_horizontal = ('users',)
 
 admin.site.register(Task)
 admin.site.register(Step)
