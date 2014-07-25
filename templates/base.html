@@ -224,44 +224,37 @@
             <li><a href="{% url 'system-notifications-view' %}">System</a></li>
             <li><a href="{% url 'investors-requests' %}">Investors requests</a></li>
         </ul>
-        {% if active == 'steps' %}
-        <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-        {% else %}
-            <li>
-        {% endif %}
+        <li id="steps-guide-area">
+            {% if active == 'steps' %}
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+            {% endif %}
             <a href="{% url 'steps' %}">
                 <i class="icon-check"></i>
                 <span>Steps</span>
             </a>
         </li>
-        {% if active == 'canvas' %}
-        <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-        {% else %}
-            <li>
-        {% endif %}
+        <li id="bmc-guide-area">
+            {% if active == 'canvas' %}
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+            {% endif %}
             <a href="{% url 'canvas' %}">
                 <i class="icon-th-large"></i>
                 <span>BM Canvas</span>
             </a>
         </li>
-        {% if active == 'metrics' %}
-
-        <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-        {% else %}
-            <li>
-        {% endif %}
+        <li id="metrics-guide-area">
+            {% if active == 'metrics' %}
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+            {% endif %}
             <a class="dropdown-toggle" href="#">
                 <i class="icon-signal"></i>
                 <span>Metrics</span>
@@ -272,15 +265,13 @@
                 <li><a href="{% url 'ga-funnel-view' %}">Воронка</a></li>
             </ul>
         </li>
-        {% if active == 'summary' %}
-        <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-        {% else %}
-            <li>
-        {% endif %}
+        <li id="es-guide-area">
+            {% if active == 'summary' %}
+                <div class="pointer">
+                    <div class="arrow"></div>
+                    <div class="arrow_border"></div>
+                </div>
+            {% endif %}
             <a class="dropdown-toggle" href="#">
                 <i class="icon-sitemap"></i>
                 <span>Summary</span>
