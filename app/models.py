@@ -328,6 +328,8 @@ class SummaryItem(models.Model):
     add_linkedin = models.BooleanField(verbose_name=u'Can add linkedIn field', default=False)
     add_angellist = models.BooleanField(verbose_name=u'Can add AngelList field', default=False)
     add_cb = models.BooleanField(verbose_name=u'Can add CrunchBase field', default=False)
+    add_ms = models.BooleanField(verbose_name=u'Can add Market Size field', default=False)
+    add_ir = models.BooleanField(verbose_name=u'Can add Investment Request field', default=False)
 
     def is_empty_text(self):
         return True and self.text.strip()
@@ -385,6 +387,39 @@ class SummaryImageBlock(SummaryBlock):
     class Meta:
         verbose_name_plural = u'Images'
         verbose_name = u'Image'
+
+class SummaryMarketBlock(SummaryBlock):
+    size = models.FloatField(default=10.0, verbose_name=u'Размер рынка в млрд. $')
+    desc = models.TextField(verbose_name=u'Описание рынка')
+
+    class Meta:
+        verbose_name = u'Market size widget'
+        verbose_name_plural = u'Market size widgets'
+
+    def get_render(self):
+        return render_to_string('summary/market-size-widget.html', {
+            'block': self
+        })
+
+    def __unicode__(self):
+        return u'Market Size Widget #{}'.format(self.pk)
+
+class SummaryInvestmentRequestBlock(SummaryBlock):
+    sum = models.FloatField(default=10.0, verbose_name=u'Сумма инвестиций в млн. $')
+    option = models.FloatField(default=2.0, verbose_name=u'Доля компании в %')
+    targets = models.TextField(verbose_name=u'На что пойдут инвестиции')
+
+    def render(self):
+        return render_to_string('summary/investment-request-widget.html', {
+            'block': self
+        })
+
+    def __unicode__(self):
+        return u'Investment Request Widget'
+
+    class Meta:
+        verbose_name = u'Investment Request Widget'
+        verbose_name_plural = u'Investment Request Widgets'
 
 class SummaryLinkBlock(SummaryBlock):
     link = models.TextField(verbose_name=u'Link')

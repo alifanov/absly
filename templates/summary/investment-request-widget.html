@@ -1,0 +1,10 @@
+<div class="summary-widget" id="se-{{ block.pk }}">
+    <div class="ir-sum">Сумма инвестиций: {{ block.sum }}</div>
+    <div class="ir-option">Процент компании: {{ block.option }}%</div>
+    <div class="ir-targets">
+        На что будут потрачены инвестиции:
+        <div>
+            {{ block.targets|linebreaksbr }}
+        </div>
+    </div>
+</div>
