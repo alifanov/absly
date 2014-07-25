@@ -723,5 +723,14 @@ li.active a.canvas-element-item-link {
     display: none;
 }
 
+.guide-area-selected {
+    position: relative;
+    z-index: 101;
+    box-shadow: none;
+    border-bottom: 0;
+    background: white;
+    margin-left: 0px;
+}
+
 .guide-block {
 }
