@@ -52,6 +52,24 @@ class SummaryItemForm(ModelForm):
     class Meta:
         model = SummaryItem
 
+class SummaryMarketSizeBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryMarketSizeBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+
+    class Meta:
+        model = SummaryMarketBlock
+        exclude=('user',)
+
+class SummaryInvestmentRequestBlockForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SummaryInvestmentRequestBlockForm, self).__init__(*args, **kwargs)
+        self.fields['item'].widget = HiddenInput()
+
+    class Meta:
+        model = SummaryInvestmentRequestBlock
+        exclude=('user',)
+
 class SummaryTextBlockForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(SummaryTextBlockForm, self).__init__(*args, **kwargs)

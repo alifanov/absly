@@ -64,6 +64,8 @@ urlpatterns = patterns('',
     url(r'^summary/text/block/$', SummaryTextBlockView.as_view(), name='summary-text-block'),
     url(r'^summary/link/block/$', SummaryLinkBlockView.as_view(), name='summary-link-block'),
     url(r'^summary/image/block/$', SummaryImageBlockView.as_view(), name='summary-image-block'),
+    url(r'^summary/ms/block/$', SummaryMarketSizeBlockView.as_view(), name='summary-market-size-block'),
+    url(r'^summary/ir/block/$', SummaryInvestmentRequestBlockView.as_view(), name='summary-investment-request-block'),
 
     url(r'^summary/public/(?P<hash>[\w\d]+)/$', SummaryPubView.as_view(), name='summary-public'),
     url(r'^summary/snapshots/$', SnapshotsListView.as_view(), name='summary-snapshots-view'),

@@ -576,6 +576,34 @@ $(function(){
     });
 
 
+    $(".summary-add-ms").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            data: {
+                'id': _this.val()
+            },
+            url: '/summary/ms/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
+            }
+        })
+    });
+    $(".summary-add-ir").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            data: {
+                'id': _this.val()
+            },
+            url: '/summary/ir/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
+            }
+        })
+    });
     $(".summary-add-cb").click(function(){
         var _this = $(this);
         $.ajax({

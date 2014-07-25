@@ -1060,6 +1060,20 @@ class SummaryBlockView(CreateView):
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.get_full_path(), 'csrf_token_value': csrf_token})
         return HttpResponse(json.dumps({'data': data, 'title': self.get_title()}), content_type='application/json')
 
+class SummaryMarketSizeBlockView(SummaryBlockView):
+    model = SummaryMarketBlock
+    form_class = SummaryMarketSizeBlockForm
+
+    def get_title(self):
+        return u'Add market size block'
+
+class SummaryInvestmentRequestBlockView(SummaryBlockView):
+    model = SummaryInvestmentRequestBlock
+    form_class = SummaryInvestmentRequestBlockForm
+
+    def get_title(self):
+        return u'Add investment request block'
+
 class SummaryTextBlockView(SummaryBlockView):
     model = SummaryTextBlock
     form_class = SummaryTextBlockForm
