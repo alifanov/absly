@@ -60,7 +60,7 @@ $(function(){
         else{
             $(".guide-modal").modal().close();
             $("#sidebar-nav #dashboard-menu .pointer .arrow, #sidebar-nav #dashboard-menu .pointer .arrow_border").css({
-                'z-index': 1002
+                'z-index': 1001
             });
         }
         return false;
