@@ -43,7 +43,9 @@ function resort_steps(){
 
 $(function(){
     $("#show-guide").click(function(){
-        $(".guide-modal").modal().open();
+        $(".guide-modal").modal().open({
+            closeOnOverlayClick: false
+        });
         $(".pointer").hide();
         return false;
     });
