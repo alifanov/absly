@@ -1150,6 +1150,10 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryAngelListBlockForm
         if block.__class__.__name__ == 'SummaryLinkedInBlock':
             return SummaryLinkedInBlockForm
+        if block.__class__.__name__ == 'SummaryMarketBlock':
+            return SummaryMarketSizeBlockForm
+        if block.__class__.__name__ == 'SummaryInvestmentRequestBlock':
+            return SummaryInvestmentRequestBlockForm
         return NotImplementedError(block.__class__.__name__)
 
     def get_title(self):
@@ -1166,6 +1170,10 @@ class SummaryUpdateBlockView(UpdateView):
             return u'Edit AngelList block'
         if block.__class__.__name__ == 'SummaryLinkedInBlock':
             return u'Edit LinkedIn block'
+        if block.__class__.__name__ == 'SummaryMarketBlock':
+            return u'Edit Market Size block'
+        if block.__class__.__name__ == 'SummaryInvestmentRequestBlock':
+            return u'Edit Investment Request block'
         return NotImplementedError(block.__class__.__name__)
 
 from reportlab.pdfbase import pdfmetrics
