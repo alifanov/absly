@@ -342,6 +342,7 @@ class SummaryItem(models.Model):
     class Meta:
         verbose_name = u'SummaryItem'
         verbose_name_plural = u'SummaryItems'
+        ordering = ['order']
 
 class SummaryBlock(PolymorphicModel):
     user = models.ForeignKey(User, verbose_name=u'User', null=True, related_name='summary_blocks')
