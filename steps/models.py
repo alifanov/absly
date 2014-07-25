@@ -18,7 +18,6 @@ class Step(models.Model):
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     status = models.BooleanField(default=False, verbose_name=u'Выполнена')
-    # target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(verbose_name=u'Уровень цели по метрике', blank=True)
     target_metrics_current = models.IntegerField(default=0, verbose_name=u'Текущее значение по цели')
@@ -49,12 +48,57 @@ class Recomentdation(models.Model):
     users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='recomendations')
     title = models.CharField(max_length=256, verbose_name=u'Название')
     desc = models.TextField(verbose_name=u'Описание')
-    target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
+    # target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
     target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
-    element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
+    # element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Время создания')
+
+    bmc_customer_segments_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_customer_segments_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_customer_segments_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_customer_segments_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_cost_structure_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_cost_structure_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_cost_structure_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_cost_structure_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_revenue_streams_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_revenue_streams_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_revenue_streams_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_revenue_streams_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_channels_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_channels_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_channels_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_channels_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_customer_relationship_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_customer_relationship_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_customer_relationship_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_customer_relationship_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_value_proposition_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_value_proposition_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_value_proposition_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_value_proposition_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_key_resources_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_key_resources_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_key_resources_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_key_resources_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_key_activities_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_key_activities_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_key_activities_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_key_activities_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
+
+    bmc_key_partners_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
+    bmc_key_partners_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
+    bmc_key_partners_actions = models.BooleanField(default=False, verbose_name=u'Проверено действиями')
+    bmc_key_partners_money = models.BooleanField(default=False, verbose_name=u'Проверено деньгами')
 
     def create_step(self, user):
         s = Step.objects.create(
