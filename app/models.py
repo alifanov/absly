@@ -396,7 +396,7 @@ class SummaryMarketBlock(SummaryBlock):
         verbose_name = u'Market size widget'
         verbose_name_plural = u'Market size widgets'
 
-    def get_render(self):
+    def render(self):
         return render_to_string('summary/market-size-widget.html', {
             'block': self
         })
