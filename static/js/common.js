@@ -58,10 +58,10 @@ $(function(){
             $($(this).attr('href') + '-area a').addClass('guide-area-selected');
         }
         else{
+            $(".guide-modal").modal().close();
             $("#sidebar-nav #dashboard-menu .pointer .arrow, #sidebar-nav #dashboard-menu .pointer .arrow_border").css({
                 'z-index': 1002
             });
-            $(".guide-modal").modal().close();
         }
         return false;
     });
