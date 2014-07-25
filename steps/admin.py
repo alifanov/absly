@@ -4,7 +4,7 @@ from steps.models import *
 class RecomendationAdminModel(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields':(
-            'users', 'title', 'desc', 'target_metrics', 'target_metrics_limit', 'target_metrics_current', 'type'
+            'users', 'title', 'desc', 'target_metrics', 'target_metrics_limit', 'type'
         )}),
         ('Customer Segments Condition', {
             'fields': ('bmc_customer_segments_hypothesys', 'bmc_customer_segments_facts', 'bmc_customer_segments_actions', 'bmc_customer_segments_money')
