@@ -42,6 +42,11 @@ function resort_steps(){
 
 
 $(function(){
+    $("#show-guide").click(function(){
+        $(".guide-modal").modal().open();
+        return false;
+    });
+
     $(".snapshot-edit form").submit(function(){
         $.ajax({
             type: "POST",

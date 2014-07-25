@@ -7,6 +7,9 @@
         window.analytics.track('Dashboard view');
     </script>
     <div class="container dashboard">
+        {% if request.user.is_superuser %}
+            <a id="show-guide" href="#">Show Guide</a>
+        {% endif %}
         <div class="row">
             <div class="col-xs-6">
                 <h2>Last steps</h2>
@@ -53,6 +56,11 @@
             </div>
         </div>
     </div>
+
+    <div class="guide-modal">
+        Guide
+    </div>
+
     <script type="text/javascript">
         $(function(){
             var acquisition = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61]];
