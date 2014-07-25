@@ -704,3 +704,7 @@ li.active a.canvas-element-item-link {
 .snapshot-edit .hidden {
     display: none;
 }
+
+.guide-modal {
+    display: none;
+}
