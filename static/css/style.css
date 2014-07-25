@@ -707,6 +707,7 @@ li.active a.canvas-element-item-link {
 
 .guide-modal {
     display: none;
+    width: 600px;
     margin: 30px auto;
     background: #f2f2f2;
     color: #888;
