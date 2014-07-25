@@ -48,10 +48,10 @@ $(function(){
     });
 
     $(".guide-block a").click(function(){
+        $(".guide-area-selected").removeClass('guide-area-selected');
         if($(this).parent().attr('id') != 'es-guide'){
             $(this).parent().hide();
             $($(this).attr('href')).show();
-            $(".guide-area-selected").removeClass('guide-area-selected');
             $($(this).attr('href') + '-area a').addClass('guide-area-selected');
         }
         else{
