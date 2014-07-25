@@ -44,9 +44,9 @@ function resort_steps(){
 $(function(){
     $("#show-guide").click(function(){
         $(".guide-modal").modal().open();
-        $("#sidebar-nav #dashboard-menu .pointer .arrow, #sidebar-nav #dashboard-menu .pointer .arrow_border").css({
-            'z-index': 10
-        });
+//        $("#sidebar-nav #dashboard-menu .pointer .arrow, #sidebar-nav #dashboard-menu .pointer .arrow_border").css({
+//            'z-index': 10
+//        });
         return false;
     });
 
@@ -59,9 +59,6 @@ $(function(){
         }
         else{
             $(".guide-modal").modal().close();
-            $("#sidebar-nav #dashboard-menu .pointer .arrow, #sidebar-nav #dashboard-menu .pointer .arrow_border").css({
-                'z-index': 1
-            });
         }
         return false;
     });
