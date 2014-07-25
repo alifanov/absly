@@ -5,11 +5,11 @@ class RecomendationAdminModel(admin.ModelAdmin):
     class Meta:
         model = Recomentdation
         fieldsets = (
-            (None, {'fields':[
+            (None, {'fields':(
                 'users', 'title', 'desc', 'target_metrics', 'target_metrics_limit', 'target_metrics_current', 'type'
-            ]}),
+            )}),
             ('Customer Segments Condition', {
-                'fields': ['bmc_customer_segments_hypothesys', 'bmc_customer_segments_facts', 'bmc_customer_segments_actions', 'bmc_customer_segments_money']
+                'fields': ('bmc_customer_segments_hypothesys', 'bmc_customer_segments_facts', 'bmc_customer_segments_actions', 'bmc_customer_segments_money')
             }),
             ('Cost Structure Condition', {
                 'fields': ['bmc_cost_structure_hypothesys', 'bmc_cost_structure_facts', 'bmc_cost_structure_actions', 'bmc_cost_structure_money']
