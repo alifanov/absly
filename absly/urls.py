@@ -15,6 +15,7 @@ analytics.init('kt58pb0ynb', flush_at=1)
 
 urlpatterns = patterns('',
     # Examples:
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^oauth2callback/$', auth_return, name='oauth2-callback'),
     url(r'^ga-config/$', GAConfigView.as_view(), name='ga-config-view'),
     url(r'^ga/config/account/$', GAWeboptsView.as_view(), name='ga-config-account'),

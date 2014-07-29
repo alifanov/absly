@@ -111,7 +111,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages")
 
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'cvsbhd_qx=(s-_tmmd#6+*+&j7(*!xtm3dcx(r3^j&g401x60u'
 
@@ -163,8 +162,16 @@ INSTALLED_APPS = (
     'rest_framework',
     'polymorphic',
     'django.contrib.contenttypes',
-    'wkhtmltopdf'
+    'wkhtmltopdf',
+    'social.apps.django_app.default'
 )
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+
+
 DEFAULT_FROM_EMAIL = 'info@new.absly.com'
 ACCOUNT_ACTIVATION_DAYS = 3
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"

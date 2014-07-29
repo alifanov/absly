@@ -64,7 +64,7 @@ class RegisterView(TemplateView):
             new_user.is_active = True
             new_user.save()
             # send mail
-            send_mail(u'Вы успешно зарегистрированы на сайте new.absly.com', u'Ваш логин: {}\nВаш пароль: {}'.format(data['email'], data['password']), u'lifanov@absly.com',
+            send_mail(u'Привет. Вот твой пароль для new.absly.com', u'Ваш логин: {}\nВаш пароль: {}'.format(data['email'], data['password']), u'lifanov@absly.com',
                       [data['email'],])
 
             # login
