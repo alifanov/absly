@@ -38,6 +38,7 @@ from oauth2client import xsrfutil
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.django_orm import Storage
 from django.contrib.auth import authenticate, login
+from django.core.mail import send_mail
 
 # OAuth2.0 process
 CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), '..','absly', 'client_secrets.json')
@@ -63,6 +64,8 @@ class RegisterView(TemplateView):
             new_user.is_active = True
             new_user.save()
             # send mail
+            send_mail(u'Вы успешно зарегистрированы на сайте new.absly.com', u'Ваш логин: {}\nВаш пароль: {}'.format(data['email'], data['password']), u'lifanov@absly.com',
+                      [data['email'],])
 
             # login
             user = authenticate(username=data['email'], password=data['password'])
