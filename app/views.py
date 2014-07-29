@@ -189,12 +189,17 @@ class StatisticsMixin(ContextMixin):
     def get_market_score(self):
         if SummaryMarketBlock.objects.filter(user=self.request.user).exists():
             market_size = SummaryMarketBlock.objects.filter(user=self.request.user).all()[0].size
+            if market_size < 100.0: return 0.0
+            if 100.0 <= market_size <= 500.0: return 1.0
+            if 500.0 < market_size <= 1000.0: return 2.0
+            if market_size > 1000.0: return 3.0
         return 0.0
 
     def calc_funding_ready(self):
         fr = 0.0
         if SummaryValuationBlock.objects.filter(user=self.request.user).exists():
             valuation = SummaryValuationBlock.objects.filter(user = self.request.user).all()[0].size
+            fr = self.get_valuation_score(valuation) + 2.0*self.get_fr_certainly_level() + self.get_market_score()
 
         return fr
 
@@ -209,6 +214,7 @@ class StatisticsMixin(ContextMixin):
             ctx['money_sum'] = logdata.r3*ga_funnel_config.user_sum
             ctx['money_time'] = ga_funnel_config.date_range
         ctx['certainly_level'] = int(self.calc_certainly_level())
+        ctx['funding_ready_level'] = int(self.calc_funding_ready())
         return ctx
 
 class LeftMenuMixin(StatisticsMixin):
