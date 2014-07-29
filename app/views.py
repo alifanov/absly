@@ -49,6 +49,9 @@ FLOW = flow_from_clientsecrets(
 class RegisterView(TemplateView):
     template_name = 'registration/custom-register.html'
 
+    def post(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         ctx = super(RegisterView, self).get_context_data(**kwargs)
         ctx['form'] = RegisterForm()
