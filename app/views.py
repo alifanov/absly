@@ -116,6 +116,8 @@ class CreateProjectView(TemplateView):
         return ctx
 
 class StatisticsMixin(ContextMixin):
+    stage = 'angel'
+
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
 
@@ -133,6 +135,68 @@ class StatisticsMixin(ContextMixin):
             else:
                 ls += 2.0*block.get_certainly_level(self.request.user)/22.0
         return round(ls)
+
+    def get_valuation_score(self, valuation):
+        if 0.5 <= valuation <= 0.65:
+            self.stage = 'angel'
+            return 3.0
+        if 0.65 < valuation <= 0.8:
+            self.stage = 'angel'
+            return 2.0
+        if 0.8 < valuation <= 1.0:
+            self.stage = 'angel'
+            return 1.0
+        if 1.0 < valuation <= 2.0:
+            self.stage = 'seed'
+            return 3.0
+        if 2.0 < valuation <= 3.0:
+            self.stage = 'seed'
+            return 2.0
+        if 3.0 < valuation <= 4.0:
+            self.stage = 'seed'
+            return 1.0
+        if 4.0 < valuation <= 6.0:
+            self.stage = 'sa'
+            return 3.0
+        if 6.0 < valuation <= 8.0:
+            self.stage = 'sa'
+            return 2.0
+        if 8.0 < valuation <= 10.0:
+            self.stage = 'sa'
+            return 1.0
+        return 0.0
+
+    def get_fr_certainly_level(self):
+        l = self.calc_certainly_level()
+        l_score = 0.0
+        if 0 <= l <= 10.0 and self.stage == 'angel': return 0.0
+        if 10.0 < l <= 20.0 and self.stage == 'angel': return 1.0
+        if 20.0 < l <= 40.0 and self.stage == 'angel': return 2.0
+        if l > 40.0 and self.stage == 'angel': return 3.0
+
+        if l < 50.0 and self.stage == 'seed': return 0.0
+        if 50.0 <= l <= 60.0 and self.stage == 'seed': return 1.0
+        if 60.0 < l <= 70.0 and self.stage == 'seed': return 2.0
+        if l > 70.0 and self.stage == 'seed': return 3.0
+
+        if l < 70.0 and self.stage == 'sa': return 0.0
+        if 70.0 <= l <= 80.0 and self.stage == 'sa': return 1.0
+        if 80.0 < l <= 90.0 and self.stage == 'sa': return 2.0
+        if l > 90.0 and self.stage == 'sa': return 3.0
+
+        return l_score
+
+    def get_market_score(self):
+        if SummaryMarketBlock.objects.filter(user=self.request.user).exists():
+            market_size = SummaryMarketBlock.objects.filter(user=self.request.user).all()[0].size
+        return 0.0
+
+    def calc_funding_ready(self):
+        fr = 0.0
+        if SummaryValuationBlock.objects.filter(user=self.request.user).exists():
+            valuation = SummaryValuationBlock.objects.filter(user = self.request.user).all()[0].size
+
+        return fr
 
     def get_context_data(self, **kwargs):
         ctx = super(StatisticsMixin, self).get_context_data(**kwargs)

@@ -393,7 +393,7 @@ class SummaryImageBlock(SummaryBlock):
         verbose_name = u'Image'
 
 class SummaryMarketBlock(SummaryBlock):
-    size = models.FloatField(default=10.0, verbose_name=u'Размер рынка в млрд. $')
+    size = models.FloatField(default=10.0, verbose_name=u'Размер рынка в млн. $')
     desc = models.TextField(verbose_name=u'Описание рынка')
 
     class Meta:
