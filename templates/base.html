@@ -169,7 +169,11 @@
 {#        </li>#}
         <li class="dropdown">
             <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                {{ request.user.username }}
+                {% if request.user.first_name and request.user.last_name %}
+                    {{ request.user.first_name }} {{ request.user.last_name }}
+                {% else %}
+                    {{ request.user.username }}
+                {% endif %}
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
