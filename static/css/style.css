@@ -734,3 +734,18 @@ li.active a.canvas-element-item-link {
 
 .guide-block {
 }
+
+.google-login a {
+    display: block;
+    height: 40px;
+    background: #328EE2;
+    color: white;
+    line-height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.google-login a:hover {
+    text-decoration: none;
+    background: #5fa1e2;
+}
