@@ -46,6 +46,14 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://new.absly.com/oauth2callback')
 
+class RegisterView(TemplateView):
+    template_name = 'registration/custom-register.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(RegisterView, self).get_context_data(**kwargs)
+        ctx['form'] = RegisterForm()
+        return ctx
+
 class StepsSortView(View):
     def get(self, request, *args, **kwargs):
         request.session['steps_sort_customer'] = request.GET.get('customer')

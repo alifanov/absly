@@ -1,4 +1,5 @@
 from django.forms import ModelForm, HiddenInput, TextInput, ModelChoiceField
+from django import forms
 from app.models import *
 
 class ProjectForm(ModelForm):
@@ -143,3 +144,48 @@ class SnapshotForm(ModelForm):
     class Meta:
         model = Snapshot
         exclude = ['user',]
+
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
+
+
+attrs_dict = {'class': 'required'}
+
+class RegisterForm(forms.Form):
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs=dict(attrs_dict, maxlength=256)),
+        label=_("Email")
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
+        label=_("Password")
+    )
+    def clean_email(self):
+        """
+        Validate that the username is alphanumeric and is not already
+        in use.
+
+        """
+        email = self.cleaned_data['email'].strip()
+        try:
+            User.objects.get(email__iexact=email)
+        except User.DoesNotExist:
+            return email.lower()
+        raise forms.ValidationError(
+            _('A user with that email already exists.'))
+
+    def clean(self):
+        """
+        Verifiy that the values entered into the two password fields match.
+
+        Note that an error here will end up in ``non_field_errors()`` because
+        it doesn't apply to a single field.
+
+        """
+        data = self.cleaned_data
+        if not 'email' in data:
+            return data
+        if not 'password' in data:
+            return data
+        return self.cleaned_data
+
