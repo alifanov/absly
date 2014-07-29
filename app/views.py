@@ -200,7 +200,7 @@ class StatisticsMixin(ContextMixin):
         if SummaryValuationBlock.objects.filter(user=self.request.user).exists():
             valuation = SummaryValuationBlock.objects.filter(user = self.request.user).all()[0].size
             fr = self.get_valuation_score(valuation) + 2.0*self.get_fr_certainly_level() + self.get_market_score()
-            fr = fr/18.0
+            fr = 100.0*fr/18.0
 
         return fr
 
