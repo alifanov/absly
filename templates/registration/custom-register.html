@@ -37,7 +37,7 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.email|add_class:"form-control"|attr:"placeholder:E-mail address" }}
-                {{ form.password1|add_class:"form-control"|attr:"placeholder:Your password" }}
+                {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
                 <input name="next" value="/" type="hidden" />
                 <button type="submit" class="btn-glow primary login">Sign up</button>
             </form>
