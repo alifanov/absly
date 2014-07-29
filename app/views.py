@@ -1196,7 +1196,7 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkedInBlockForm
         if block.__class__.__name__ == 'SummaryMarketBlock':
             return SummaryMarketSizeBlockForm
-        if block.__class__.__name__ == 'SummaryvaluationBlock':
+        if block.__class__.__name__ == 'SummaryValuationBlock':
             return SummaryValuationBlockForm
         if block.__class__.__name__ == 'SummaryInvestmentRequestBlock':
             return SummaryInvestmentRequestBlockForm
