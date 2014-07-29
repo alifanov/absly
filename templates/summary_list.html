@@ -58,6 +58,9 @@
                                 </div>
                             {% endfor %}
                             <div class="es-addon-btns">
+                                {% if si.add_valuation %}
+                                    <button value="{{ si.pk }}" class="btn btn-default summary-add-valuation" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add Valuation</button>
+                                {% endif %}
                                 {% if si.add_ms %}
                                     <button value="{{ si.pk }}" class="btn btn-default summary-add-ms" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add Market Size</button>
                                 {% endif %}
@@ -95,6 +98,9 @@
                                     </div>
                                 {% endfor %}
                                     <div class="es-addon-btns">
+                                        {% if sic.add_valuation %}
+                                            <button value="{{ sic.pk }}" class="btn btn-default summary-add-valuation" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add Valuation</button>
+                                        {% endif %}
                                         {% if sic.add_ms %}
                                             <button value="{{ sic.pk }}" class="btn btn-default summary-add-ms" data-toggle="modal" data-target="#add-summary-text-block-modal-id">Add Market Size</button>
                                         {% endif %}

@@ -612,6 +612,20 @@ $(function(){
             }
         })
     });
+    $(".summary-add-valuation").click(function(){
+        var _this = $(this);
+        $.ajax({
+            type: "GET",
+            data: {
+                'id': _this.val()
+            },
+            url: '/summary/valuation/block/',
+            success: function(resp){
+                $(".modal-form-body").html(resp.data);
+                $(".modal-title").text(resp.title);
+            }
+        })
+    });
     $(".summary-add-ir").click(function(){
         var _this = $(this);
         $.ajax({

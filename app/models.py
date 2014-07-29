@@ -332,6 +332,7 @@ class SummaryItem(models.Model):
     add_cb = models.BooleanField(verbose_name=u'Can add CrunchBase field', default=False)
     add_ms = models.BooleanField(verbose_name=u'Can add Market Size field', default=False)
     add_ir = models.BooleanField(verbose_name=u'Can add Investment Request field', default=False)
+    add_valuation = models.BooleanField(verbose_name=u'Can add Valuation field', default=False)
 
     def is_empty_text(self):
         return True and self.text.strip()
