@@ -37,6 +37,7 @@ from django.conf import settings
 from oauth2client import xsrfutil
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.django_orm import Storage
+from django.contrib.auth import authenticate, login
 
 # OAuth2.0 process
 CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), '..','absly', 'client_secrets.json')
@@ -53,7 +54,23 @@ class RegisterView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = RegisterForm(request.POST)
         if form.is_valid():
-            raise ValueError("OK")
+            data = form.cleaned_data
+            new_user = User.objects.create(
+                username=data['email'],
+                email=data['email']
+            )
+            new_user.set_password(data['password'])
+            new_user.is_active = True
+            new_user.save()
+            # send mail
+
+            # login
+            user = authenticate(username=data['email'], password=data['password'])
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/')
+            else:
+                raise ValueError("User not found")
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

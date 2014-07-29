@@ -14,7 +14,6 @@
         <a href="/" class="top-home-link">
             ABSLY
         </a>
-    {{ form.errors }}
             <div class="alert-warning">
                 {% if form.non_field_errors %}
                     {{ form.non_field_errors }}
@@ -34,20 +33,20 @@
 
         <div class="box">
             <div class="content-wrap">
-                <h6>Sign Up</h6>
+                <h6>Регистрация</h6>
             <form method="POST">
                 {% csrf_token %}
-                {{ form.email|add_class:"form-control"|attr:"placeholder:E-mail address" }}
-                {{ form.password|add_class:"form-control"|attr:"placeholder:Your password" }}
+                {{ form.email|add_class:"form-control"|attr:"placeholder:Ваш e-mail" }}
+                {{ form.password|add_class:"form-control"|attr:"placeholder:Ваш пароль" }}
                 <input name="next" value="/" type="hidden" />
-                <button type="submit" class="btn-glow primary login">Sign up</button>
+                <button type="submit" class="btn-glow primary login">Зарегистрироваться</button>
             </form>
             </div>
         </div>
 
         <div class="already">
-            <p>Already have an account?</p>
-            <a href="{% url 'auth_login' %}">Sign in</a>
+            <p>Уже есть аккаунт?</p>
+            <a href="{% url 'auth_login' %}">Войти</a>
         </div>
     </div>
 {% endblock %}
