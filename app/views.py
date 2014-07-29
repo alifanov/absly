@@ -1097,6 +1097,13 @@ class SummaryBlockView(CreateView):
         data = render_to_string(self.template_name, {'form': form, 'backurl': request.get_full_path(), 'csrf_token_value': csrf_token})
         return HttpResponse(json.dumps({'data': data, 'title': self.get_title()}), content_type='application/json')
 
+class SummaryValuationBlockView(SummaryBlockView):
+    model = SummaryValuationBlock
+    form_class = SummaryValuationBlockForm
+
+    def get_title(self):
+        return u'Add valuation block'
+
 class SummaryMarketSizeBlockView(SummaryBlockView):
     model = SummaryMarketBlock
     form_class = SummaryMarketSizeBlockForm
@@ -1189,6 +1196,8 @@ class SummaryUpdateBlockView(UpdateView):
             return SummaryLinkedInBlockForm
         if block.__class__.__name__ == 'SummaryMarketBlock':
             return SummaryMarketSizeBlockForm
+        if block.__class__.__name__ == 'SummaryvaluationBlock':
+            return SummaryValuationBlockForm
         if block.__class__.__name__ == 'SummaryInvestmentRequestBlock':
             return SummaryInvestmentRequestBlockForm
         return NotImplementedError(block.__class__.__name__)
@@ -1207,6 +1216,8 @@ class SummaryUpdateBlockView(UpdateView):
             return u'Edit AngelList block'
         if block.__class__.__name__ == 'SummaryLinkedInBlock':
             return u'Edit LinkedIn block'
+        if block.__class__.__name__ == 'SummaryValuationBlock':
+            return u'Edit Valuation block'
         if block.__class__.__name__ == 'SummaryMarketBlock':
             return u'Edit Market Size block'
         if block.__class__.__name__ == 'SummaryInvestmentRequestBlock':

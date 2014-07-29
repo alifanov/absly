@@ -407,6 +407,22 @@ class SummaryMarketBlock(SummaryBlock):
     def __unicode__(self):
         return u'Market Size Widget #{}'.format(self.pk)
 
+class SummaryValuationBlock(SummaryBlock):
+    size = models.FloatField(default=10.0, verbose_name=u'Оценка стоимость компании в млн. $')
+    desc = models.TextField(verbose_name=u'Описание')
+
+    class Meta:
+        verbose_name = u'Valuation widget'
+        verbose_name_plural = u'Valuation widgets'
+
+    def render(self):
+        return render_to_string('summary/valuation-widget.html', {
+            'block': self
+        })
+
+    def __unicode__(self):
+        return u'Valuation Widget #{}'.format(self.pk)
+
 class SummaryInvestmentRequestBlock(SummaryBlock):
     sum = models.FloatField(default=10.0, verbose_name=u'Сумма инвестиций в млн. $')
     option = models.FloatField(default=2.0, verbose_name=u'Доля компании в %')
