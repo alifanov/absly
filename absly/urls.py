@@ -28,6 +28,10 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('registration.backends.default.urls')),
 
+    # register
+    url(r'^register/$', RegisterView.as_view(), name='register-view'),
+
+
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^ng-canvas/$', TemplateView.as_view(template_name='ng-canvas.html'), name='ng-canvas'),
     url(r'^canvas/$', CanvasView.as_view(), name='canvas'),
