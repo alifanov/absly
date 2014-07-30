@@ -42,13 +42,15 @@ function resort_steps(){
 
 
 $(function(){
-//    $("#show-guide").click(function(){
-//        $(".guide-modal").modal().open({
-//            closeOnOverlayClick: false
-//        });
-//        $(".pointer").hide();
-//        return false;
-//    });
+    $("#show-guide").click(function(){
+        $(".guide-modal").modal().open({
+            show: true,
+            backdrop: 'static',
+            keyboard: false
+        });
+        $(".pointer").hide();
+        return false;
+    });
 //
 //    $(".guide-block a").click(function(){
 //        $(".guide-area-selected").removeClass('guide-area-selected');
