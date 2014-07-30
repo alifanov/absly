@@ -8,9 +8,11 @@ class EmailOrUsernameModelBackend(object):
         else:
             kwargs = {'username': username}
         try:
-            user = User.objects.get(**kwargs)
+            user = User.objects.filter(**kwargs)[0]
             if user.check_password(password):
                 return user
+        except IndexError:
+            return None
         except User.DoesNotExist:
             return None
 
