@@ -224,7 +224,8 @@ $(function(){
                     format: 'yyyy-mm-dd',
                     orientation: 'auto',
                     language: 'ru',
-                    todayHighlight: true
+                    todayHighlight: true,
+                    autoclose: true
                 });
                 $("#edit-recomendation-modal-id").modal({
                     'backdrop': 'static',
@@ -302,6 +303,7 @@ $(function(){
             success: function(resp){
                 $("#edit-recomendation-modal-id .modal-content").html(resp.data);
                 $("#id_deadline").datepicker({
+                    autoclose: true,
                     format: 'yyyy-mm-dd',
                     todayHighlight: true,
                     language: 'ru'
