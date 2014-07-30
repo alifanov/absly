@@ -3,6 +3,7 @@
 {% load thumbnail %}
 
 {% block last_js %}
+    <script type="text/javascript">
     $(function(){
         {% if show_help %}
             $(".guide-wrapper").modal({
@@ -13,6 +14,7 @@
             $(".pointer").hide();
         {% endif %}
     });
+    </script>
 {% endblock %}
 
 {% block content %}
