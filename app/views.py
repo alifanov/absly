@@ -885,6 +885,7 @@ class DashboardView(LeftMenuMixin, TemplateView):
             ctx['ga_r1_list'] = json.dumps([[i+1, v.r1] for i,v in enumerate(ctx['ga_logs'])])
             ctx['ga_r2_list'] = json.dumps([[i+1, v.r2] for i,v in enumerate(ctx['ga_logs'])])
             ctx['ga_r3_list'] = json.dumps([[i+1, v.r3] for i,v in enumerate(ctx['ga_logs'])])
+            ctx['ga_dates'] = json.dumps([[i+1, v.end_date.strftime('%d.%m.%Y')] for i,v in enumerate(ctx['ga_logs'])])
         return ctx
 
 class CanvasLogFormView(View):
