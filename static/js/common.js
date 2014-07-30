@@ -43,7 +43,7 @@ function resort_steps(){
 
 $(function(){
     $("#show-guide").click(function(){
-        $(".bs-example-modal-sm").modal().open({
+        $(".guide-wrapper").modal().open({
             show: true,
             backdrop: 'static',
             keyboard: false
