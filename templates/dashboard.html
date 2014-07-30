@@ -8,6 +8,7 @@
     </script>
     <div class="container dashboard">
         {% if request.user.is_superuser %}
+            {{ request.session.twice }}
             <a id="show-guide" href="#" class="pull-right">Show help</a>
         {% endif %}
         <div class="row">
