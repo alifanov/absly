@@ -878,6 +878,7 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx['active'] = 'dashboard'
         ctx['news'] = News.objects.order_by('-created')
         ctx['steps'] = Step.objects.filter(removed=False, user=self.request.user, status=False).order_by('deadline')
+        ctx['ga_logs'] = GALogData.objects.filter(user=self.request.user).order_by('end_date')
         return ctx
 
 class CanvasLogFormView(View):

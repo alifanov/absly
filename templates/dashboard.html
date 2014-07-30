@@ -56,7 +56,11 @@
                 </div>
             </div>
             <div class="col-xs-6">
-                <div id="statsChart"></div>
+                <div id="statsChart">
+                    {% if ga_logs.count == 0 %}
+                        <p>У вас пока нет данных из Google Analytics. Вы можете подключить и настроить Google Analytics по <a href="{% url 'ga-config-view' %}">ссылке</a> </p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
