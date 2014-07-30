@@ -224,7 +224,10 @@ $(function(){
                     language: 'ru',
                     todayHighlight: true
                 });
-                $("#edit-recomendation-modal-id").modal('show');
+                $("#edit-recomendation-modal-id").modal({
+                    'backdrop': 'static',
+                    'show': true
+                });
                 }
         });
         return false;
