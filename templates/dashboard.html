@@ -69,7 +69,12 @@
     <script type="text/javascript">
         $(function(){
             {% if show_help %}
-                $("#show-guide").trigger('click');
+                $(".guide-wrapper").modal({
+                    show: true,
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $(".pointer").hide();
             {% endif %}
             var acquisition = {{ ga_a1_list|default:"0" }};
             var activation = {{ ga_a2_list|default:"0" }};
