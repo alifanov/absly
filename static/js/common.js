@@ -60,7 +60,7 @@ $(function(){
             $($(this).attr('href') + '-area a').addClass('guide-area-selected');
         }
         else{
-            $(".guide-modal").modal('close');
+            $(".guide-wrapper").modal('close');
             $(".pointer").show();
         }
         return false;
