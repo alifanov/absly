@@ -1295,43 +1295,6 @@ class SummaryUpdateBlockView(UpdateView):
             return u'Edit Investment Request block'
         return NotImplementedError(block.__class__.__name__)
 
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase import ttfonts
-from StringIO import StringIO
-import ho.pisa as pisa
-from django.template.loader import get_template
-from django.template import Context
-from django.conf import settings
-
-def render_to_pdf(template_src, context_dict):
-    pisa.showLogging()
-    template = get_template(template_src)
-    context = Context(context_dict)
-    html = template.render(context)
-    result = StringIO()
-    pdf = pisa.CreatePDF(StringIO(html.encode('utf-8')), result, show_error_as_pdf=True, encoding='UTF-8')
-    if not pdf.err:
-        return result.getvalue()
-    return False
-
-class SummaryPDFView(View):
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        m = hashlib.md5()
-        m.update(user.email)
-        if m.hexdigest() == self.kwargs.get('md5'):
-            pdf = render_to_pdf('summary/pdf.html', {
-                'STATIC_URL': settings.STATIC_URL,
-                'summary_groups': SummaryGroup.objects.all(),
-                'FONTS_DIR': "/usr/share/fonts/truetype/msttcorefonts/",
-                'request': request
-            })
-            response = HttpResponse(str(pdf), content_type='application/pdf')
-            response['Content-Disposition'] = 'attachment; filename="summary-{}.pdf"'.format(user.pk)
-            return response
-        else:
-            raise Http404
-
 class SummaryPubView(TemplateView):
     template_name = 'summary/public.html'
 
