@@ -16,6 +16,7 @@ from django.contrib.sites.models import get_current_site
 from reportlab.pdfgen import canvas
 
 from app.models import *
+from talk.models import *
 from app.forms import *
 from steps.models import Step
 from django import forms
