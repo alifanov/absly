@@ -747,3 +747,8 @@ li.active a.canvas-element-item-link {
     text-decoration: none;
     background: #5fa1e2;
 }
+
+.content.row {
+    margin-left: 0;
+    margin-right: 0;
+}
