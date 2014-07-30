@@ -44,7 +44,7 @@
             {% endif %}
             <div class="form-group">
                 <label>Название элемента</label>
-                {{ form.name|add_class:"form-control" }}
+                {{ form.name|add_class:"form-control"|attr:"required:required" }}
             </div>
         </div>
     </div>
