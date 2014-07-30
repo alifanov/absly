@@ -162,7 +162,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'polymorphic',
     'django.contrib.contenttypes',
-    'wkhtmltopdf',
+    # 'wkhtmltopdf',
     'social.apps.django_app.default'
 )
 
