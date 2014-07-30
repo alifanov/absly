@@ -721,7 +721,7 @@ li.active a.canvas-element-item-link {
     display: none;
 }
 
-li > a.guide-area-selected {
+#sidebar-nav #dashboard-menu > li > a.guide-area-selected {
     position: relative;
     z-index: 9999;
     box-shadow: 0 0px 50px #5fb2ff;
