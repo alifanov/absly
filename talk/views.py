@@ -11,6 +11,11 @@ class PostsView(LeftMenuMixin, ListView):
     def get_queryset(self):
         return Post.objects.order_by('-created')
 
+    def get_context_data(self, **kwargs):
+        ctx = super(PostsView, self).get_context_data(**kwargs)
+        ctx['active'] = 'events'
+        return ctx
+
 class PostDetailView(LeftMenuMixin, DetailView, FormView):
     model = Post
     template_name = 'posts/item.html'
