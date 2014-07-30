@@ -6,12 +6,7 @@
     <script type="text/javascript">
     $(function(){
         {% if show_help %}
-            $(".guide-wrapper").modal({
-                show: true,
-                backdrop: 'static',
-                keyboard: false
-            });
-            $(".pointer").hide();
+            $("#show-guide").trigger('click');
         {% endif %}
     });
     </script>
