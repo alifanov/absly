@@ -222,7 +222,6 @@ class StatisticsMixin(ContextMixin):
 class LeftMenuMixin(StatisticsMixin):
     def get_context_data(self, **kwargs):
         ctx = super(LeftMenuMixin, self).get_context_data(**kwargs)
-        ctx['news_groups'] = NewsGroup.objects.all()
         ctx['summary_groups'] = SummaryGroup.objects.all()
         return ctx
 
