@@ -879,6 +879,12 @@ class DashboardView(LeftMenuMixin, TemplateView):
         ctx['news'] = News.objects.order_by('-created')
         ctx['steps'] = Step.objects.filter(removed=False, user=self.request.user, status=False).order_by('deadline')
         ctx['ga_logs'] = GALogData.objects.filter(user=self.request.user).order_by('end_date')
+        if ctx['ga_logs']:
+            ctx['ga_a1_list'] = json.dumps([[i+1, v.a1] for i,v in enumerate(ctx['ga_logs'])])
+            ctx['ga_a2_list'] = json.dumps([[i+1, v.a2] for i,v in enumerate(ctx['ga_logs'])])
+            ctx['ga_r1_list'] = json.dumps([[i+1, v.r1] for i,v in enumerate(ctx['ga_logs'])])
+            ctx['ga_r2_list'] = json.dumps([[i+1, v.r2] for i,v in enumerate(ctx['ga_logs'])])
+            ctx['ga_r3_list'] = json.dumps([[i+1, v.r3] for i,v in enumerate(ctx['ga_logs'])])
         return ctx
 
 class CanvasLogFormView(View):

@@ -120,11 +120,11 @@
 
     <script type="text/javascript">
         $(function(){
-            var acquisition = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61]];
-            var activation = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
-            var retention = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
-            var referral = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
-            var revenue = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47]];
+            var acquisition = {{ ga_a1_list }};
+            var activation = {{ ga_a2_list }};
+            var retention = {{ ga_r1_list }};
+            var referral = {{ ga_r2_list }};
+            var revenue = {{ ga_r3_list }};
             var plot = $.plot($("#statsChart"),
                 [
                     {
