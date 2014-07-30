@@ -1,6 +1,6 @@
 #coding: utf-8
 # Create your views here.
-from app.models import News, NewsGroup, GAProfile
+from app.models import GAProfile
 from datetime import date
 from django.contrib.auth.forms import PasswordChangeForm
 from dateutil.relativedelta import relativedelta
