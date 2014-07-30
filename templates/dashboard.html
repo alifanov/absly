@@ -128,16 +128,20 @@
             var plot = $.plot($("#statsChart"),
                 [
                     {
-                        data: revenue, label: "Revenue"
+                        data: acquisition, label: "Acquisition"
+                    },
+                     {
+                         data: activation, label: "Activation"
+                     },
+                    {
+                        data: retention, label: "Retention"
                     },
                     {
                         data: referral, label: "Referral"
                     },
                     {
-                        data: retention, label: "Retention"
-                    },
-                 { data: activation, label: "Activation" },
-                { data: acquisition, label: "Acquisition"}
+                        data: revenue, label: "Revenue"
+                    }
                 ], {
                     series: {
                         lines: { show: true,
