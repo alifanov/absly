@@ -51,20 +51,20 @@ $(function(){
         $(".pointer").hide();
         return false;
     });
-//
-//    $(".guide-block a").click(function(){
-//        $(".guide-area-selected").removeClass('guide-area-selected');
-//        if($(this).parent().attr('id') != 'es-guide'){
-//            $(this).parent().hide();
-//            $($(this).attr('href')).show();
-//            $($(this).attr('href') + '-area a').addClass('guide-area-selected');
-//        }
-//        else{
-//            $(".guide-modal").modal().close();
-//            $(".pointer").show();
-//        }
-//        return false;
-//    });
+
+    $(".guide-block a").click(function(){
+        $(".guide-area-selected").removeClass('guide-area-selected');
+        if($(this).parent().attr('id') != 'es-guide'){
+            $(this).parent().hide();
+            $($(this).attr('href')).show();
+            $($(this).attr('href') + '-area a').addClass('guide-area-selected');
+        }
+        else{
+            $(".guide-modal").modal().close();
+            $(".pointer").show();
+        }
+        return false;
+    });
 
     $(".snapshot-edit form").submit(function(){
         $.ajax({
