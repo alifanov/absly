@@ -721,7 +721,7 @@ li.active a.canvas-element-item-link {
     display: none;
 }
 
-.guide-area-selected {
+li > a.guide-area-selected {
     position: relative;
     z-index: 9999;
     box-shadow: 0 0px 50px #5fb2ff;
