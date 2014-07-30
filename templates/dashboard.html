@@ -17,6 +17,8 @@
                     {% with step=cs %}
                         {% include 'step-item.html' %}
                     {% endwith %}
+                {% empty %}
+                    <p>У вас пока нет ни одного шага в выполнении. Вы можете их добавить по <a href="{% url 'steps' %}">ссылке</a> </p>
                 {% endfor %}
             </div>
             <div class="col-xs-3">
@@ -48,6 +50,8 @@
                             </div>
                         </div>
                     </div>
+                    {% empty %}
+                        <p>У вас пока нет ни одной рекомендованной новости</p>
                     {% endfor %}
                 </div>
             </div>
