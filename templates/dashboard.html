@@ -2,13 +2,24 @@
 
 {% load thumbnail %}
 
+{% block last_js %}
+    $(function(){
+        {% if show_help %}
+            $(".guide-wrapper").modal({
+                show: true,
+                backdrop: 'static',
+                keyboard: false
+            });
+            $(".pointer").hide();
+        {% endif %}
+    });
+{% endblock %}
+
 {% block content %}
     <script type="text/javascript">
         window.analytics.track('Dashboard view');
     </script>
     <div class="container dashboard">
-        {{ request.session.twice }}
-        {{ show_help }}
         <a id="show-guide" href="#" class="pull-right">Show help</a>
         <div class="row">
             <div class="col-xs-6">
@@ -68,14 +79,7 @@
 
     <script type="text/javascript">
         $(function(){
-            {% if show_help %}
-                $(".guide-wrapper").modal({
-                    show: true,
-                    backdrop: 'static',
-                    keyboard: false
-                });
-                $(".pointer").hide();
-            {% endif %}
+            {% if ga_a1_list %}
             var acquisition = {{ ga_a1_list|default:"0" }};
             var activation = {{ ga_a2_list|default:"0" }};
             var retention = {{ ga_r1_list|default:"0" }};
@@ -172,7 +176,7 @@
                     previousPoint = null;
                 }
             });
-
+            {% endif %}
 
         });
     </script>
