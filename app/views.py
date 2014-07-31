@@ -47,7 +47,7 @@ CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), '..','absly', 'client_s
 FLOW = flow_from_clientsecrets(
     CLIENT_SECRETS,
   scope='https://www.googleapis.com/auth/analytics.readonly',
-    redirect_uri='http://new.absly.com/complete/google-oauth2/')
+    redirect_uri='http://new.absly.com/oauth2callback/')
 
 class RegisterView(TemplateView):
     template_name = 'registration/custom-register.html'
