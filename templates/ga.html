@@ -68,7 +68,7 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                        {% if funnel_config_form.activation_page.queryset.count %}
+                        {% if funnel_config_form.activation_page.choices %}
                             <div class="ga-funnel-page {% if funnel_config_form.activation_event_category.value %}hidden{% endif %}">
                                 {{ funnel_config_form.activation_page }}
                             </div>
