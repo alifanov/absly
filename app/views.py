@@ -1339,7 +1339,7 @@ class PersonalDataView(LeftMenuMixin, FormView):
         kw['user'] = self.request.user
         return kw
 
-class SnapshotsListView(ListView):
+class SnapshotsListView(LeftMenuMixin, ListView):
     template_name = 'summary/snapshot_list.html'
     context_object_name = 'snapshots'
 
