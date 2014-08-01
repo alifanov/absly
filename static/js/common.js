@@ -465,9 +465,9 @@ $(function(){
             type: "POST",
             data: $("#ga-funnel-config-form").serializeArray(),
             success: function(){
-                $(".alert-save-ga-config").show();
+                $(".alert-ga-profit").show();
                 setTimeout(function(){
-                    $(".alert-save-ga-config").fadeOut(500);
+                    $(".alert-ga-profit").fadeOut(500);
                 }, 3000)
             }
         });
@@ -486,9 +486,9 @@ $(function(){
             type: "POST",
             data: $("#ga-funnel-config-form").serializeArray(),
             success: function(){
-                $(".alert-save-ga-config").show();
+                $(".alert-ga-funnel").show();
                 setTimeout(function(){
-                    $(".alert-save-ga-config").fadeOut(500);
+                    $(".alert-ga-funnel").fadeOut(500);
                 }, 3000)
             }
         });
@@ -506,9 +506,9 @@ $(function(){
             type: "POST",
             data: $("#ga-funnel-config-form").serializeArray(),
             success: function(){
-                $(".alert-save-ga-config").show();
+                $(".alert-ga-funnel").show();
                 setTimeout(function(){
-                    $(".alert-save-ga-config").fadeOut(500);
+                    $(".alert-ga-funnel").fadeOut(500);
                 }, 3000)
             }
         });
@@ -520,9 +520,9 @@ $(function(){
             url: '/ga/config/funnel/',
             data: $("#date_range_form").serializeArray(),
             success: function(){
-                $(".alert-save-ga-config").show();
+                $(".alert-ga-time").show();
                 setTimeout(function(){
-                    $(".alert-save-ga-config").fadeOut(500);
+                    $(".alert-ga-time").fadeOut(500);
                 }, 3000)
             }
         });
@@ -557,9 +557,9 @@ $(function(){
             url: '/ga/config/profile/',
             data: $(".ga-config-profile-form").serializeArray(),
             success: function(){
-                $(".alert-save-ga-config").show();
+                $(".alert-ga-profile").show();
                 setTimeout(function(){
-                    $(".alert-save-ga-config").fadeOut(500);
+                    $(".alert-ga-profile").fadeOut(500);
                 }, 3000)
             }
         });

@@ -10,8 +10,8 @@
     {% else %}
         <hr/>
         <h2>1.  Выберите ваш профиль</h2>
-        <div class="alert alert-success alert-save-ga-config">
-            Configuration saved
+        <div class="alert alert-success alert-save-ga-config alert-ga-profile">
+            Настройки профиля сохранены
         </div>
         <form method="GET" action="" class="ga-config-profile-form">
             {% csrf_token %}
@@ -29,6 +29,9 @@
         </form>
         <hr/>
         <h2>2. Настройте период отслеживания</h2>
+        <div class="alert alert-success alert-save-ga-config alert-ga-time">
+            Настройка периода отслеживания сохранена
+        </div>
         <p>
             Выберите промежуток времени за который будут собираться данные
         </p>
@@ -43,6 +46,9 @@
         </form>
         <hr/>
         <h2>3. Настройте этапы воронки</h2>
+        <div class="alert alert-success alert-save-ga-config alert-ga-funnel">
+            Настройки воронки сохранены
+        </div>
     <form method="POST" action="" id="ga-funnel-config-form">
         <table class="table ga-funnel-table">
             <thead>
@@ -165,6 +171,9 @@
         </table>
         <hr/>
         <h2>4. Настройте прибыль с платящего пользователя</h2>
+            <div class="alert alert-success alert-save-ga-config alert-ga-profit">
+                Настройка прибыли с пользователя сохранена
+            </div>
             <div class="row">
                 <div class="col-xs-4">
                     <div class="form-group">
