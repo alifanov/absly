@@ -54,7 +54,7 @@ class Snapshot(models.Model):
 class RevenueType(models.Model):
     name = models.CharField(max_length=256, verbose_name=u'Название')
     examples = models.TextField(verbose_name=u'Примеры компаний', blank=True)
-    desc = models.TextField(verbose_name=u'Описание')
+    desc = models.TextField(verbose_name=u'Описание', blank=True)
 
     def __unicode__(self):
         return self.name

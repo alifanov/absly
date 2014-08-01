@@ -226,7 +226,7 @@ content = open(os.path.join(BASE_DIR, 'revenue.csv'))
 reader = csv.reader(content)
 for row in reader:
     name = row[1]
-    examples = None
+    examples = u''
     if u':' in row[1]:
         name = row[1].split(u':')[0]
         examples = row[1].split(u':')[1]
