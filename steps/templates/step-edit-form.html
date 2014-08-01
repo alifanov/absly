@@ -47,13 +47,15 @@
 {#                  <div class="tab-pane" id="discussion">...</div>#}
                   <div class="tab-pane" id="target">
                           <div class="form-group">
-                            <label>Target for step</label>
+                            <label>Цель шага</label>
                             <div>
                                 {{ step_form.target_metrics|add_class:"form-control"|attr:"placeholder:Цель по завершении шага" }}
                             </div>
+                            <label>Сколько нужно сделать</label>
                             <div style="margin-top: 10px;">
                                 {{ step_form.target_metrics_limit|add_class:"form-control"|attr:"placeholder:Количественный показатель цели" }}
                             </div>
+                            <label>Сколько сделано сейчас</label>
                             <div style="margin-top: 10px;">
                                 {{ step_form.target_metrics_current|add_class:"form-control"|attr:"placeholder:Текущее значение" }}
                             </div>
