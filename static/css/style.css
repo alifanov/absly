@@ -551,7 +551,7 @@ li.active a.canvas-element-item-link {
 
 .scrollToTop{
 	width:100px;
-	height:130px;
+	height:100px;
 	padding:10px;
 	text-align:center;
 	background: whiteSmoke;
@@ -559,8 +559,8 @@ li.active a.canvas-element-item-link {
 	color: #444;
 	text-decoration: none;
 	position:fixed;
-	bottom:75px;
-	right:40px;
+	bottom:10px;
+	left:10px;
 	display:none;
 	background: url('/static/img/arrow-up.png') no-repeat 0px 20px;
 }
