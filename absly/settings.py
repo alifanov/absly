@@ -225,14 +225,16 @@ import csv
 content = open(os.path.join(BASE_DIR, 'revenue.csv'))
 reader = csv.reader(content)
 for row in reader:
-    name = row[1]
-    examples = u''
-    if u':' in row[1]:
-        name = row[1].split(u':')[0]
-        examples = row[1].split(u':')[1]
-    desc = row[2]
-    RevenueType.objects.create(
-        name=name,
-        examples=examples,
-        desc=desc
-    )
+    if row[1]:
+        s = row[1].decode('utf-8')
+        name = s
+        examples = u''
+        if u':' in s:
+            name = s.split(u':')[0]
+            examples = s.split(u':')[1]
+        desc = row[2].decode('utf-8')
+        RevenueType.objects.create(
+            name=name,
+            examples=examples,
+            desc=desc
+        )
