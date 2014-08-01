@@ -51,6 +51,19 @@ class Snapshot(models.Model):
         verbose_name_plural = u'ES Snapshots'
 
 # Create your models here.
+class RevenueType(models.Model):
+    name = models.CharField(max_length=256, verbose_name=u'Название')
+    examples = models.TextField(verbose_name=u'Примеры компаний', blank=True)
+    desc = models.TextField(verbose_name=u'Описание')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'Модель монетизации'
+        verbose_name_plural = u'Модели монетизации'
+
+
 class Project(models.Model):
     is_first = models.BooleanField(default=True, verbose_name=u'First-Time Founder')
     user = models.ForeignKey(User, verbose_name=u'Автор проекта', blank=True, null=True)
