@@ -1,6 +1,6 @@
 #coding: utf-8
 from django.db import models
-from app.models import CanvasBlockItem
+from app.models import CanvasBlockItem, RevenueType, SummaryItem
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.utils.timezone import utc
@@ -54,6 +54,11 @@ class Recomentdation(models.Model):
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     # element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Время создания')
+
+    ga_disabled = models.BooleanField(default=False, verbose_name=u'Не подключена воронка')
+
+    revenue_choosen = models.ManyToManyField(RevenueType, verbose_name=u'Для каких моделей монетизации подходит')
+    summary_item_empty = models.ManyToManyField(SummaryItem, verbose_name=u'Пусто в каких блоках Executive Summary')
 
     bmc_customer_segments_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
     bmc_customer_segments_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
