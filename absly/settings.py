@@ -220,21 +220,21 @@ SOCIAL_AUTH_GOOGLE_PLUS_USE_DEPRECATED_API = True
 
 # insert revenue models
 
-from app.models import RevenueType
-import csv
-content = open(os.path.join(BASE_DIR, 'revenue.csv'))
-reader = csv.reader(content)
-for row in reader:
-    if row[1]:
-        s = row[1].decode('utf-8')
-        name = s
-        examples = u''
-        if u':' in s:
-            name = s.split(u':')[0]
-            examples = s.split(u':')[1]
-        desc = row[2].decode('utf-8')
-        RevenueType.objects.create(
-            name=name,
-            examples=examples,
-            desc=desc
-        )
+# from app.models import RevenueType
+# import csv
+# content = open(os.path.join(BASE_DIR, 'revenue.csv'))
+# reader = csv.reader(content)
+# for row in reader:
+#     if row[1]:
+#         s = row[1].decode('utf-8')
+#         name = s
+#         examples = u''
+#         if u':' in s:
+#             name = s.split(u':')[0]
+#             examples = s.split(u':')[1]
+#         desc = row[2].decode('utf-8')
+#         RevenueType.objects.create(
+#             name=name,
+#             examples=examples,
+#             desc=desc
+#         )
