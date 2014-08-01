@@ -50,7 +50,7 @@ class Recomentdation(models.Model):
     desc = models.TextField(verbose_name=u'Описание')
     # target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
     target_metrics = models.CharField(max_length=256, verbose_name=u'Цель по метрике', blank=True)
-    target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике')
+    target_metrics_limit = models.IntegerField(default=0, verbose_name=u'Уровень цели по метрике', blank=True)
     type = models.CharField(max_length=1, choices=STEP_TYPE, verbose_name=u'Тип шага')
     # element = models.ForeignKey(CanvasBlockItem, verbose_name=u'Элемент блока бизнес-модели')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'Время создания')
