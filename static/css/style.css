@@ -753,3 +753,7 @@ li.active a.canvas-element-item-link {
         width: 970px;
     }
 }
+
+.alert-save-ga-config {
+    display: none;
+}
