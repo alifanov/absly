@@ -150,6 +150,10 @@ class SummaryCrunchBaseBlockForm(ModelForm):
         exclude=['title', 'photo', 'name', 'desc', 'user']
 
 class SnapshotForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SnapshotForm, self).__init__(*args, **kwargs)
+        self.fields['comment'].widget = TextInput()
+
     class Meta:
         model = Snapshot
         exclude = ['user',]

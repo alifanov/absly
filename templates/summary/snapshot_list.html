@@ -6,18 +6,16 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Date</th>
-                    <th>Comment</th>
-                    <th>Link</th>
+                    <th>Название</th>
+                    <th>Дата создания</th>
+                    <th>Ссылка</th>
                 </tr>
             </thead>
             <tbody>
                 {% for snapshot in snapshots %}
                     <tr>
-                        <td>{{ snapshot.pk }}</td>
-                        <td>{{ snapshot.created }}</td>
                         <td>{{ snapshot.comment }}</td>
+                        <td>{{ snapshot.created }}</td>
                         <td>
                             <a target="_blank" href="{{ snapshot.get_link }}">Snapshot</a>
                         </td>

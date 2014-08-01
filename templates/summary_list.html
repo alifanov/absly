@@ -19,7 +19,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    {{ snapshot_form.comment|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Snapshot comment..." }}
+                    {{ snapshot_form.comment|add_class:"form-control"|attr:"required:required"|attr:"placeholder:Введите название" }}
 {#                    <textarea name="comment" class="form-control" placeholder="Snapshot comment..."></textarea>#}
                 </div>
                 <button class="btn btn-primary pull-right">Make snapshot</button>
