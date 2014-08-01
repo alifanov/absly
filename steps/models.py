@@ -45,7 +45,7 @@ class Step(models.Model):
 
 
 class Recomentdation(models.Model):
-    users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='recomendations')
+    users = models.ManyToManyField(User, verbose_name=u'Пользователи', related_name='recomendations', blank=True, null=True)
     title = models.CharField(max_length=256, verbose_name=u'Название')
     desc = models.TextField(verbose_name=u'Описание')
     # target_custom = models.CharField(max_length=256, verbose_name=u'Абстрактная цель', blank=True)
