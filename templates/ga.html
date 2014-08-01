@@ -120,25 +120,33 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                        <div class="ga-funnel-page {% if funnel_config_form.referral_event_category.value %}hidden{% endif %}">
-                            {{ funnel_config_form.referral_page }}
-                        </div>
+                        {% if funnel_config_form.referral_page.queryset.count %}
+                            <div class="ga-funnel-page {% if funnel_config_form.referral_event_category.value %}hidden{% endif %}">
+                                {{ funnel_config_form.referral_page }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>|</td>
                     <td>
-                        <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.referral_event_category }}
-                        </div>
+                        {% if funnel_config_form.referral_event_category.queryset.count %}
+                            <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.referral_event_category }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>
-                        <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.referral_event_action }}
-                        </div>
+                        {% if funnel_config_form.referral_event_action.queryset.count %}
+                            <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.referral_event_action }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>
-                        <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.referral_event_label }}
-                        </div>
+                        {% if funnel_config_form.referral_event_label.queryset.count %}
+                            <div class="ga-funnel-events  {% if funnel_config_form.referral_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.referral_event_label }}
+                            </div>
+                        {% endif %}
                     </td>
             </tr>
             <tr>
@@ -147,20 +155,26 @@
                 </a> </td>
                 </td>
                     <td>
-                        <div class="ga-funnel-page {% if funnel_config_form.revenue_event_category.value %}hidden{% endif %}">
-                            {{ funnel_config_form.revenue_page }}
-                        </div>
+                        {% if funnel_config_form.revenue_page.queryset.count %}
+                            <div class="ga-funnel-page {% if funnel_config_form.revenue_event_category.value %}hidden{% endif %}">
+                                {{ funnel_config_form.revenue_page }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>|</td>
                     <td>
-                        <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.revenue_event_category }}
-                        </div>
+                        {% if funnel_config_form.revenue_event_category.queryset.count %}
+                            <div class="ga-funnel-events ga-funnel-events-category {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.revenue_event_category }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>
-                        <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.revenue_event_action }}
-                        </div>
+                        {% if funnel_config_form.revenue_event_action.queryset.count %}
+                            <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.revenue_event_action }}
+                            </div>
+                        {% endif %}
                     </td>
                     <td>
                         {% if funnel_config_form.revenue_event_label.queryset.count %}
