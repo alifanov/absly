@@ -163,9 +163,11 @@
                         </div>
                     </td>
                     <td>
-                        <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
-                            {{ funnel_config_form.revenue_event_label }}
-                        </div>
+                        {% if funnel_config_form.revenue_event_label.queryset.count %}
+                            <div class="ga-funnel-events  {% if funnel_config_form.revenue_page.value %}hidden{% endif %}">
+                                {{ funnel_config_form.revenue_event_label }}
+                            </div>
+                        {% endif %}
                     </td>
             </tr>
         </table>
