@@ -1343,6 +1343,11 @@ class SnapshotsListView(ListView):
     template_name = 'summary/snapshot_list.html'
     context_object_name = 'snapshots'
 
+    def get_context_data(self, **kwargs):
+        ctx = super(SnapshotsListView, self).get_context_data(**kwargs)
+        ctx['active'] = 'summary'
+        return ctx
+
     def get_queryset(self):
         return Snapshot.objects.filter(user=self.request.user).order_by('-created')
 
