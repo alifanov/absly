@@ -156,7 +156,7 @@ INSTALLED_APPS = (
     'app',
     'steps',
     'talk',
-    'south',
+    # 'south',
     'sorl.thumbnail',
     'widget_tweaks',
     'djrill',
