@@ -68,8 +68,7 @@
                     <span class="icon-question-sign"></span>
                 </a> </td>
                     <td>
-                    {{ funnel_config_form.activation_page.field.choices }}
-                        {% if funnel_config_form.activation_page.choices %}
+                        {% if funnel_config_form.activation_page.field.choices %}
                             <div class="ga-funnel-page {% if funnel_config_form.activation_event_category.value %}hidden{% endif %}">
                                 {{ funnel_config_form.activation_page }}
                             </div>
