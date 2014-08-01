@@ -58,7 +58,7 @@ class Recomentdation(models.Model):
     ga_disabled = models.BooleanField(default=False, verbose_name=u'Не подключена воронка')
 
     revenue_choosen = models.ManyToManyField(RevenueType, verbose_name=u'Для каких моделей монетизации подходит')
-    summary_item_empty = models.ManyToManyField(SummaryItem, verbose_name=u'Пусто в каких блоках Executive Summary')
+    summary_item_empty = models.ManyToManyField(SummaryItem, verbose_name=u'Пусто в каких блоках Executive Summary', blank=True, null=True)
 
     bmc_customer_segments_hypothesys = models.BooleanField(default=False, verbose_name=u'Гипотеза')
     bmc_customer_segments_facts = models.BooleanField(default=False, verbose_name=u'Проверено фактами')
