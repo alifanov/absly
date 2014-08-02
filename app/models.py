@@ -69,7 +69,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, verbose_name=u'Автор проекта', blank=True, null=True)
     name = models.CharField(max_length=256, verbose_name=u'Название проекта')
     desc = models.TextField(verbose_name=u'Описание проекта')
-    revenue_type = models.ForeignKey(RevenueType, verbose_name=u'Модель монетизации')
+    revenue_type = models.ForeignKey(RevenueType, verbose_name=u'Модель монетизации', blank=True, null=True)
     site = models.CharField(max_length=256, verbose_name=u'Сайт проекта', blank=True)
     problem = models.TextField(verbose_name=u'Проблема', blank=True)
 
