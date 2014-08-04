@@ -1354,6 +1354,7 @@ class SnapshotsListView(LeftMenuMixin, ListView):
 class TextPageView(DetailView):
     template_name = 'page.html'
     model = TextPage
+    context_object_name = 'page'
 
 class SnapshotView(View):
     def post(self, request, *args, **kwargs):
