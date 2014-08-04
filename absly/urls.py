@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^ga/config/profile/$', GAProfileCompletedView.as_view(), name='ga-config-profile'),
     url(r'^ga/config/funnel/$', GAFunnelConfigAjaxView.as_view(), name='ga-config-funnel'),
     url(r'^ga-funnel/$', GAFunnelView.as_view(), name='ga-funnel-view'),
-
+    url(r'^redactor/', include('redactor.urls')),
 
     url(r'^$', DashboardView.as_view(), name='home'),
 
@@ -113,4 +113,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?P<slug>[-\w]+)/$', TextPageView.as_view(), name='text-page-view'),
 )

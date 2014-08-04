@@ -20,6 +20,19 @@ from oauth2client.django_orm import FlowField
 from oauth2client.django_orm import CredentialsField
 from polymorphic import PolymorphicModel
 from reportlab.lib.utils import ImageReader
+from redactor.fields import RedactorField
+
+class TextPage(models.Model):
+    title = models.CharField(max_length=256, verbose_name=u'Заголовок')
+    slug = models.CharField(max_length=256, verbose_name=u'Slug')
+    text = RedactorField(verbose_name=u'Текст')
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = u'Текстовая страница'
+        verbose_name_plural = u'Текстовые страницы'
 
 class Snapshot(models.Model):
     project_name = models.CharField(verbose_name=u'Название проекта', blank=True, max_length=256)

@@ -163,9 +163,13 @@ INSTALLED_APPS = (
     'rest_framework',
     'polymorphic',
     'django.contrib.contenttypes',
+    'redactor',
     # 'wkhtmltopdf',
     'social.apps.django_app.default'
 )
+
+REDACTOR_OPTIONS = {'lang': 'ru'}
+REDACTOR_UPLOAD = 'uploads/'
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',

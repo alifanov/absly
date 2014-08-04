@@ -1351,6 +1351,10 @@ class SnapshotsListView(LeftMenuMixin, ListView):
     def get_queryset(self):
         return Snapshot.objects.filter(user=self.request.user).order_by('-created')
 
+class TextPageView(DetailView):
+    template_name = 'page.html'
+    model = TextPage
+
 class SnapshotView(View):
     def post(self, request, *args, **kwargs):
         if request.POST:
