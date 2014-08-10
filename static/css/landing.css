@@ -10,3 +10,107 @@ html,body{
     /* Negative indent footer by it's height */
     margin: 0 auto -100px;
 }
+
+.inner h1.page-header {
+    margin-top: 100px;
+}
+
+.inner {
+    background: url('../img/p4h-bg.jpg') no-repeat center center;
+    background-size: cover;
+    margin-top: -20px;
+}
+
+.promo {
+    margin-top: 260px;
+    text-align: center;
+    min-height: 530px;
+    color: #fff;
+    text-transform: uppercase;
+    /*background: rgba(200, 200, 200, 0.7);*/
+}
+
+.promo h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.promo .desc {
+    font-size: 20px;
+}
+
+footer {
+    background: url('../img/bg-footer.jpg');
+    min-height: 150px;
+    color: white;
+}
+
+.feedback {
+    background: #F8F8F8;
+    border-top: 1px solid #e7e7e7;
+    min-height: 460px;
+}
+
+.feedback .panel img {
+    margin-right: 10px;
+}
+.feedback .work {
+    text-align: center;
+    padding-bottom: 20px;;
+}
+
+.feedback .work p{
+    text-align: justify;
+}
+
+.feedback .work img {
+    border-radius: 5px;
+}
+
+.we-do-2 {
+    background: #F8F8F8;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.we-do-3,
+.we-do-1 {
+    background: #fff;
+}
+
+.work-scheme h4 {
+    min-height: 60px;
+    text-align: center;
+}
+
+.work-scheme img {
+    text-align: center;
+    padding-bottom: 30px;;
+}
+
+.we-do {
+    margin-top: 30px;;
+}
+
+.we-do h3 {
+    font-size: 54px;
+    padding-top: 100px;
+}
+
+.we-do p {
+    font-size: 20px;
+}
+
+.we-do-3 {
+    margin-bottom: 100px;
+}
+
+.title-block {
+    /*background: rgba(255, 255, 255, 0.62);*/
+}
+
+.social h4{
+    text-align: right;
+    font-size: 15px;
+    margin-top: 30px;
+}
