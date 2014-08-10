@@ -41,14 +41,14 @@ html,body{
 
 footer {
     background: url('../img/bg-footer.jpg');
-    min-height: 150px;
+    min-height: 250px;
     color: white;
 }
 
 .feedback {
     background: #F8F8F8;
     border-top: 1px solid #e7e7e7;
-    min-height: 460px;
+    min-height: 300px;
 }
 
 .feedback .panel img {
