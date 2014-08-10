@@ -157,6 +157,11 @@
                     data: $(this).serializeArray(),
                     success: function(){
                         $(".work-scheme form").slideUp(500);
+                        $(".thx-msg").slideDown(500);
+                        setTimeout(function(){
+                            $(".work-scheme form").slideDown(500);
+                            $(".thx-msg").slideUp(500);
+                        }, 3000);
                     }
                 });
                 return false;
