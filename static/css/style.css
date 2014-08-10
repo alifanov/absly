@@ -117,6 +117,11 @@ ul.main-objects li {
     color: #428bca;
 }
 
+.steps-recomendations h3 {
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
 .steps-recomendations {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
