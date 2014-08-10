@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^ga-funnel/$', GAFunnelView.as_view(), name='ga-funnel-view'),
     url(r'^redactor/', include('redactor.urls')),
 
-    url(r'^$', DashboardView.as_view(), name='home'),
+    url(r'^$', LandingView.as_view(), name='home'),
 
     url(r'^accounts/', include('registration.backends.default.urls')),
 

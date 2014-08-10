@@ -49,6 +49,9 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://new.absly.com/oauth2callback/')
 
+class LandingView(TemplateView):
+    template_name = 'landing.html'
+
 class RegisterView(TemplateView):
     template_name = 'registration/custom-register.html'
     form = None
