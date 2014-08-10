@@ -100,25 +100,14 @@
 
         <div class="feedback">
             <div class="container">
-                <h2 style="text-align: center;">Как мы работаем</h2>
+                <h2 style="text-align: center;">Да, я хочу попробовать</h2>
                 <hr />
                 <div class="row work-scheme">
-                    <div class="col-lg-3">
-                        <h4>Вы формируете заявку с описанием проблемы</h4>
-                        <img class="center-block" src="{{ STATIC_URL }}img/request.png" />
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>Мы проверяем её и определяем сумму за работу</h4>
-                        <img class="center-block" src="{{ STATIC_URL }}img/check.png" />
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>Вы оплачиваете указанную сумму и мы приступаем к работе</h4>
-                        <img class="center-block" src="{{ STATIC_URL }}img/work.png" />
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>Принимайте работу!</h4>
-                        <img class="center-block" src="{{ STATIC_URL }}img/done.png" />
-                    </div>
+                    <form method="POST" class="form-inline">
+                        {% csrf_token %}
+                        <input class="form-control" placeholder="Введите вашу почту..." />
+                        <button class="btn btn-primary">Да, я хочу быть первым</button>
+                    </form>
                 </div>
             </div>
         </div>
