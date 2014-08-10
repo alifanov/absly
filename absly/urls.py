@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^redactor/', include('redactor.urls')),
 
     url(r'^$', LandingView.as_view(), name='home'),
+    url(r'^subscribe/$', SubscribeView.as_view(), name='subscribe'),
 
     url(r'^accounts/', include('registration.backends.default.urls')),
 

@@ -115,3 +115,8 @@ footer {
 .social img {
     margin-left: 20px;
 }
+
+.thx-msg {
+    display: none;
+    text-align: center;
+}

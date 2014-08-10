@@ -106,12 +106,16 @@
                     <form method="POST" class="">
                         {% csrf_token %}
                         <div class="col-xs-6">
-                            <input class="form-control" placeholder="Введите вашу почту..." required="required" />
+                            <input class="form-control" type="email" name="email" placeholder="Введите вашу почту..." required="required" />
                         </div>
                         <div class="col-xs-6">
                             <button class="btn btn-primary btn-block">Да, я хочу быть первым</button>
                         </div>
                     </form>
+                    <div class="thx-msg">
+                        Спасибо, ваша заявка отправлена. <br/>
+                        Как только мы выпустим релиз - вы узнаете об этом в первых числах.
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,5 +146,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  </body>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $(".work-scheme form").submit(function(){
+                $.ajax({
+                    'url': '/subscribe/',
+                    type: 'POST',
+                    data: $(this).serializeArray(),
+                    success: function(){
+                        $(".work-scheme form").slideUp(500);
+                    }
+                });
+                return false;
+            });
+        })
+    </script>
+
+  </body>
 </html>

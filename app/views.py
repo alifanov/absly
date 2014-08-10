@@ -49,6 +49,12 @@ FLOW = flow_from_clientsecrets(
   scope='https://www.googleapis.com/auth/analytics.readonly',
     redirect_uri='http://new.absly.com/oauth2callback/')
 
+class SubscribeView(View):
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('email'):
+            send_mail(u'New subscriber', request.POST.get('email'), 'info@absly.com', ['lifanov@absly.com'])
+        return HttpResponse('OK')
+
 class LandingView(TemplateView):
     template_name = 'landing.html'
 
