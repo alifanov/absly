@@ -369,7 +369,7 @@ ul.main-objects li {
 }
 
 #main-stats .stat {
-    min-height: 112px;
+    /*min-height: 112px;*/
 }
 
 #sidebar-nav {
